@@ -3,7 +3,6 @@
 <p style="text-align: center;"><span style="font-size: 24px;"><strong><a href="https://discord.gg/8K2rUgE"><b>[Discord]</b></a></strong></span></p>
 <p style="text-align: center;"><img src="https://img.shields.io/discord/475654902610395146?label=Frontier%20Union&amp;logo=discord&amp;style=plastic" alt="Discord" /></p>
 <p style="text-align: center;"><span style="font-size: 24px;"><strong>-------------------------------------------------------------------------------------------------</strong></span></p>
-<hr /><hr /><hr /><hr />
 <p style="text-align: left;"><span style="font-size: 24px;"><strong>Eki(In the origin Japanese, "Station") Mod is a mod focus on station decorations and railway decorations.&nbsp;</strong></span></p>
 <p style="text-align: center;"><span style="font-size: 24px;"><strong>-------------------------------------------------------------------------------------------------</strong></span></p>
 <p style="text-align: left;"><span style="font-size: 36px;"><strong>FAQ:</strong></span></p>
