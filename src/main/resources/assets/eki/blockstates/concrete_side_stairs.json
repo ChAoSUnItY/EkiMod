@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model" : "eki:concrete_side_stairs", "y" : 180},
+    	"facing=west": { "model" : "eki:concrete_side_stairs", "y" : 90 },
+    	"facing=south": { "model" : "eki:concrete_side_stairs"},
+    	"facing=east": { "model" :"eki:concrete_side_stairs", "y" : 270 }
+    }
+}

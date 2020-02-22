@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:handrail", "y" : 180},
+    	"facing=west": { "model" : "eki:handrail", "y" : 90 },
+    	"facing=south": { "model" : "eki:handrail"},
+    	"facing=east": { "model" :"eki:handrail", "y" : 270 }
+    }
+}

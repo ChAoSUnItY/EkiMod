@@ -1,0 +1,79 @@
+{
+	"parent": "block/block",
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+		"particle": "eki:blocks/panelframe",
+        "handrail": "eki:blocks/panelframe"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "beam1",
+            "from": [ 2, 0, 7 ], 
+            "to": [ 4, 7, 9 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 2, 7 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 2, 7 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 2, 7 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 2, 7 ] },
+                "down": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "beam2",
+            "from": [ 12, 0, 7 ], 
+            "to": [ 14, 7, 9 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 2, 7 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 2, 7 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 2, 7 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 2, 7 ] },
+                "down": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "beam3",
+            "from": [ 0, 7, 7 ], 
+            "to": [ 14, 9, 9 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 14, 2 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 14, 2 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] },
+                "up": { "texture": "#handrail", "uv": [ 0, 0, 14, 2 ] },
+                "down": { "texture": "#handrail", "uv": [ 0, 0, 14, 2 ] }
+            }
+        }
+    ]
+}

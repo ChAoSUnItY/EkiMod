@@ -1,0 +1,6 @@
+{
+    "variants":
+    {
+        "variant=default": { "model": "eki:washed_granolithic_finish" }
+    }
+}

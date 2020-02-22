@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:grille_light_black", "y" : 180},
+    	"facing=west": { "model" : "eki:grille_light_black", "y" : 90 },
+    	"facing=south": { "model" : "eki:grille_light_black"},
+    	"facing=east": { "model" :"eki:grille_light_black", "y" : 270 }
+    }
+}

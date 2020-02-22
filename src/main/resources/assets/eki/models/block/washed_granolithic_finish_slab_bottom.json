@@ -1,0 +1,9 @@
+{
+    "parent": "block/half_slab",
+    "textures":
+    {
+        "bottom": "eki:blocks/washed_granolithic_finish",
+        "top": "eki:blocks/washed_granolithic_finish",
+        "side": "eki:blocks/washed_granolithic_finish"
+    }
+}

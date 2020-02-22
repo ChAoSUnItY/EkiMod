@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:station_stairs_gentle_top", "y" : 180},
+    	"facing=west": { "model" : "eki:station_stairs_gentle_top", "y" : 90 },
+    	"facing=south": { "model" : "eki:station_stairs_gentle_top"},
+    	"facing=east": { "model" :"eki:station_stairs_gentle_top", "y" : 270 }
+    }
+}

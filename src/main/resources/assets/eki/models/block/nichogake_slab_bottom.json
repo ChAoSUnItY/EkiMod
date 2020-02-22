@@ -1,0 +1,9 @@
+{
+    "parent": "block/half_slab",
+    "textures":
+    {
+        "bottom": "eki:blocks/nichogake",
+        "top": "eki:blocks/nichogake",
+        "side": "eki:blocks/nichogake"
+    }
+}

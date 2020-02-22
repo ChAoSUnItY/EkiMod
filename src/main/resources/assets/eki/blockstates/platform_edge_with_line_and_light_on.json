@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:platform_edge_with_line_and_light_on", "y" : 180},
+    	"facing=west": { "model" : "eki:platform_edge_with_line_and_light_on", "y" : 90 },
+    	"facing=south": { "model" : "eki:platform_edge_with_line_and_light_on"},
+    	"facing=east": { "model" :"eki:platform_edge_with_line_and_light_on", "y" : 270 }
+    }
+}

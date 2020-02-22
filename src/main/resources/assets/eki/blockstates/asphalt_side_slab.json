@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model" : "eki:asphalt_side_slab", "y" : 180},
+    	"facing=west": { "model" : "eki:asphalt_side_slab", "y" : 90 },
+    	"facing=south": { "model" : "eki:asphalt_side_slab"},
+    	"facing=east": { "model" :"eki:asphalt_side_slab", "y" : 270 }
+    }
+}

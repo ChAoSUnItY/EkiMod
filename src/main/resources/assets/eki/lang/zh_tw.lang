@@ -1,0 +1,71 @@
+//ChAoS_UnItY
+//STATION SECTION
+//station stuff
+tile.handrail.name=扶手
+tile.handrail_corner.name=扶手轉角
+//platforms
+tile.platform_edge.name=月台邊
+tile.platform_edge_with_guide_brick.name=月台邊含導盲磚
+tile.platform_edge_with_guide_brick_and_line.name=月台邊含導盲磚和標線
+tile.platform_edge_with_line.name=月台邊含標線
+tile.platform_asphalt_with_guide_brick.name=月台磚含標線 (瀝青)
+tile.platform_edge_with_line_and_light_off.name=月台邊含標線和列車警示燈
+tile.platform_edge_with_line_and_light_on.name=月台邊含標線和列車警示燈 (開啟)
+//beams and panels
+tile.panel_black.name=螢幕 (黑色 WIP)
+tile.panel_white.name=螢幕 (白色 WIP)
+tile.panel_beam_with_cross_black.name=螢幕支架含樑 (黑色)
+tile.panel_beam_with_cross_white.name=螢幕支架含樑 (白色)
+tile.bending_beam_white.name=彎曲支架 (白色)
+tile.bending_beam_black.name=彎曲支架 (黑色)
+tile.support_beam_white.name=支撐架樑 (白色)
+tile.support_beam_black.name=支撐架樑 (黑色)
+tile.panel_beam_black.name=螢幕支架 (黑色)
+tile.panel_beam_white.name=螢幕支架 (白色)
+tile.beam_black.name=橫樑 (黑色)
+tile.beam_white.name=橫樑 (白色)
+//station pillars
+tile.station_pillar_base.name=車站柱子 (底部)
+tile.station_pillar_center.name=車站柱子 (中間)
+tile.station_pillar_top.name=車站柱子 (頂部)
+tile.station_pillar_base_with_fire_extinguisher_in.name=車站柱子 (底部含滅火器)
+//BLOCKS
+//blocks
+tile.retaining_wall.name=擋土牆
+tile.architectural_concrete.name=清水混凝土
+tile.concrete.name=混凝土
+tile.nichogake.name=二丁磚
+tile.washed_granolithic_finish.name=洗石子
+tile.asphalt.name=瀝青
+//stairs
+tile.architectural_concrete_stairs.name=清水混凝土階梯
+tile.concrete_stairs.name=混凝土階梯
+tile.nichogake_stairs.name=二丁磚階梯
+tile.washed_granolithic_finish_stairs.name=洗石子階梯
+tile.asphalt_stairs.name=瀝青階梯
+//slabs
+tile.architectural_concrete_slab_half.name=清水混凝土半磚
+tile.concrete_slab_half.name=混凝土半磚
+tile.nichogake_slab_half.name=二丁磚半磚
+tile.washed_granolithic_finish_slab_half.name=洗石子半磚
+tile.asphalt_slab_half.name=瀝青半磚
+//side slabs
+tile.retaining_wall_side_slab.name=擋土牆垂直半磚
+tile.architectural_concrete_side_slab.name=清水混凝土垂直半磚
+tile.concrete_side_slab.name=混凝土垂直半磚
+tile.nichogake_side_slab.name=二丁磚垂直半磚
+tile.washed_granolithic_finish_side_slab.name=洗石子垂直半磚
+tile.asphalt_side_slab.name=瀝青垂直半磚
+//custom stairs
+tile.station_stairs.name=車站階梯
+tile.station_stairs_gentle_top.name=車站緩階梯 (上部)
+tile.station_stairs_gentle_bot.name=車站緩階梯 (底部)
+//LIGHT SECTION
+tile.grille_light_white.name=格柵燈 (白色)
+tile.grille_light_black.name=格柵燈 (黑色)
+tile.tunnel_light.name=隧道內用燈
+tile.wall_neon_light.name=牆上霓虹燈
+
+itemGroup.eki_block=Eki 方塊
+itemGroup.eki_station=Eki 車站
+itemGroup.eki_lights=Eki 燈具

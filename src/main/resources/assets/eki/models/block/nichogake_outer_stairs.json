@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "eki:blocks/nichogake",
+        "top": "eki:blocks/nichogake",
+        "side": "eki:blocks/nichogake"
+    }
+}

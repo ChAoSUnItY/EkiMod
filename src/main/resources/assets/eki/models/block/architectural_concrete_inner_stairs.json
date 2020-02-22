@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "eki:blocks/architectural_concrete",
+        "top": "eki:blocks/architectural_concrete",
+        "side": "eki:blocks/architectural_concrete"
+    }
+}
