@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:beam_white", "y" : 180},
+    	"facing=west": { "model" : "eki:beam_white", "y" : 90 },
+    	"facing=south": { "model" : "eki:beam_white"},
+    	"facing=east": { "model" :"eki:beam_white", "y" : 270 }
+    }
+}

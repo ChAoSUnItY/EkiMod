@@ -1,0 +1,71 @@
+//ChAoS_UnItY , GukkyGukz
+//STATION SECTION
+//station stuff
+tile.handrail.name=Handrail
+tile.handrail_corner.name=Handrail Corner
+//platforms
+tile.platform_edge.name=Platform Edge
+tile.platform_edge_with_guide_brick.name=Platform Edge With Guide Brick
+tile.platform_edge_with_guide_brick_and_line.name=Platform Edge with Guide Brick and Line
+tile.platform_edge_with_line.name=Platform Edge with Line
+tile.platform_asphalt_with_guide_brick.name=Platform Brick with Line (Asphalt)
+tile.platform_edge_with_line_and_light_off.name=Platform Edge with Line and Light
+tile.platform_edge_with_line_and_light_on.name=Platform Edge with Line and Light (On)
+//station pillars
+tile.station_pillar_base.name=Station Pillar Base
+tile.station_pillar_center.name=Station Pillar Center
+tile.station_pillar_top.name=Station Pillar Top
+tile.station_pillar_base_with_fire_extinguisher_in.name=Station Pillar Base with Fire Extinguisher
+//beams and panels
+tile.panel_black.name=Panel (Black WIP)
+tile.panel_white.name=Panel (White WIP)
+tile.panel_beam_with_cross_black.name=Panel Beam with Cross (Black)
+tile.panel_beam_with_cross_white.name=Panel Beam with Cross (White)
+tile.bending_beam_white.name=Bending Beam (White)
+tile.bending_beam_black.name=Bending Beam (Black)
+tile.support_beam_white.name=Support Beam (White)
+tile.support_beam_black.name=Support Beam (Black)
+tile.panel_beam_black.name=Panel Beam (Black)
+tile.panel_beam_white.name=Panel Beam (White)
+tile.beam_black.name=Beam (Black)
+tile.beam_white.name=Beam (White)
+//BLOCKS
+//blocks
+tile.retaining_wall.name=Retaining Wall
+tile.architectural_concrete.name=Architectural Concrete
+tile.concrete.name=Concrete
+tile.nichogake.name=Nichogake
+tile.washed_granolithic_finish.name=Washed Granolithic Finish
+tile.asphalt.name=Asphalt
+//stairs
+tile.architectural_concrete_stairs.name=Architectural Concrete Stairs
+tile.concrete_stairs.name=Concrete Stairs
+tile.nichogake_stairs.name=Nichogake Stairs
+tile.washed_granolithic_finish_stairs.name=Washed Granolithic Finish Stairs
+tile.asphalt_stairs.name=Asphalt Stairs
+//slabs
+tile.architectural_concrete_slab_half.name=Architectural Concrete Slab
+tile.concrete_slab_half.name=Concrete Slab
+tile.nichogake_slab_half.name=Nichogake Slab
+tile.washed_granolithic_finish_slab_half.name=Washed Granolithic Finish Slab
+tile.asphalt_slab_half.name=Asphalt Slab
+//side slabs
+tile.retaining_wall_side_slab.name=Retaining Wall Side Slab
+tile.architectural_concrete_side_slab.name=Architectural Concrete Side Slab
+tile.concrete_side_slab.name=Concrete Side Slab
+tile.nichogake_side_slab.name=Nichogake Side Slab
+tile.washed_granolithic_finish_side_slab.name=Washed Granolithic Finish Side Slab
+tile.asphalt_side_slab.name=Asphalt Side Slab
+//custom stairs
+tile.station_stairs.name=Station Stairs
+tile.station_stairs_gentle_top.name=Station Stairs Gentle (Top)
+tile.station_stairs_gentle_bot.name=Station Stairs Gentle (Bottom)
+//LIGHT SECTION
+tile.grille_light_white.name=Grille Light (White)
+tile.grille_light_black.name=Grille Light (Black)
+tile.tunnel_light.name=Tunnel Light
+tile.wall_neon_light.name=Wall Neon Light
+
+itemGroup.eki_block=Eki Block
+itemGroup.eki_station=Eki Station
+itemGroup.eki_lights=Eki Lights

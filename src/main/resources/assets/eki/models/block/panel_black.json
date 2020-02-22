@@ -1,0 +1,133 @@
+{
+	"parent": "block/block",
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+    	"particle": "eki:blocks/panelframe",
+        "handrail": "eki:blocks/panelframe",
+        "panel": "eki:blocks/panel",
+        "panelframe": "eki:blocks/panelframe"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "handler1",
+            "from": [ 2, 10, 7 ], 
+            "to": [ 4, 16, 9 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 2, 6 ] },
+                "up": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "handler2",
+            "from": [ 12, 10, 7 ], 
+            "to": [ 14, 16, 9 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 2, 6 ] },
+                "up": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "handler3",
+            "from": [ 2, 8, 4 ], 
+            "to": [ 4, 10, 12 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 8, 2 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 8, 2 ] },
+                "up": { "texture": "#handrail", "uv": [ 0, 0, 2, 8 ] },
+                "down": { "texture": "#handrail", "uv": [ 0, 0, 2, 8 ] }
+            }
+        },
+        {
+            "name": "handler4",
+            "from": [ 12, 8, 4 ], 
+            "to": [ 14, 10, 12 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 8, 2 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 2, 2 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 8, 2 ] },
+                "up": { "texture": "#handrail", "uv": [ 0, 0, 2, 8 ] },
+                "down": { "texture": "#handrail", "uv": [ 0, 0, 2, 8 ] }
+            }
+        },
+        {
+            "name": "handler5",
+            "from": [ 4, 10, 7 ], 
+            "to": [ 12, 12, 9 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 8, 2 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 8, 2 ] },
+                "up": { "texture": "#handrail", "uv": [ 0, 0, 8, 2 ] },
+                "down": { "texture": "#handrail", "uv": [ 0, 0, 8, 2 ] }
+            }
+        },
+        {
+            "name": "Panel1",
+            "from": [ 0, 6, 4.25 ], 
+            "to": [ 16, 16, 5.25 ], 
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "x", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "#panel", "uv": [ 0, 0, 16, 10 ] },
+                "east": { "texture": "#panelframe", "uv": [ 0, 0, 1, 10 ] },
+                "south": { "texture": "#panelframe", "uv": [ 0, 0, 16, 10 ] },
+                "west": { "texture": "#panelframe", "uv": [ 0, 0, 1, 10 ] },
+                "up": { "texture": "#panelframe", "uv": [ 0, 0, 16, 1 ] },
+                "down": { "texture": "#panelframe", "uv": [ 0, 0, 16, 1 ] }
+            }
+        },
+        {
+            "name": "Panel2",
+            "from": [ 0, 6, 10.75 ], 
+            "to": [ 16, 16, 11.75 ], 
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "x", "angle": 22.5 },
+            "faces": {
+                "north": { "texture": "#panelframe", "uv": [ 0, 0, 16, 10 ] },
+                "east": { "texture": "#panelframe", "uv": [ 0, 0, 1, 10 ] },
+                "south": { "texture": "#panel", "uv": [ 0, 0, 16, 10 ] },
+                "west": { "texture": "#panelframe", "uv": [ 0, 0, 1, 10 ] },
+                "up": { "texture": "#panelframe", "uv": [ 0, 0, 16, 1 ] },
+                "down": { "texture": "#panelframe", "uv": [ 0, 0, 16, 1 ] }
+            }
+        }
+    ]
+}

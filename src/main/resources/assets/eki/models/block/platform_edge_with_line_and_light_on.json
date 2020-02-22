@@ -1,0 +1,8 @@
+{
+    "parent": "eki:block/platform_edges",
+    "textures": {
+        "top": "eki:blocks/platform_edge_light_on_with_line",
+        "side": "eki:blocks/platform_side",
+        "facetorailway": "eki:blocks/edge_facetorailway"
+    }
+}

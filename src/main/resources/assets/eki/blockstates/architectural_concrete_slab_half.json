@@ -1,0 +1,7 @@
+{
+    "variants":
+    {
+        "half=bottom,variant=default": { "model": "eki:architectural_concrete_slab_bottom" },
+        "half=top,variant=default": { "model": "eki:architectural_concrete_slab_top" }
+    }
+}

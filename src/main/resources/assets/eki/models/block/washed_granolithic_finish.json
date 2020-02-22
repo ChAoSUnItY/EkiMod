@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "eki:blocks/washed_granolithic_finish",
+        "down": "eki:blocks/washed_granolithic_finish",
+        "up": "eki:blocks/washed_granolithic_finish",
+        "north": "eki:blocks/washed_granolithic_finish",
+        "east": "eki:blocks/washed_granolithic_finish",
+        "south": "eki:blocks/washed_granolithic_finish",
+        "west": "eki:blocks/washed_granolithic_finish"
+    }
+}

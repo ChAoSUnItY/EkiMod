@@ -1,0 +1,9 @@
+{
+    "parent": "block/half_slab",
+    "textures":
+    {
+        "bottom": "eki:blocks/asphalt",
+        "top": "eki:blocks/asphalt",
+        "side": "eki:blocks/asphalt"
+    }
+}

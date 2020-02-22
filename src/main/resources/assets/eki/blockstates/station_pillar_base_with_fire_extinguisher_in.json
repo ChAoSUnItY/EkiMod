@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:station_pillar_base_with_fire_extinguisher_in", "y" : 180},
+    	"facing=west": { "model" : "eki:station_pillar_base_with_fire_extinguisher_in", "y" : 90 },
+    	"facing=south": { "model" : "eki:station_pillar_base_with_fire_extinguisher_in"},
+    	"facing=east": { "model" :"eki:station_pillar_base_with_fire_extinguisher_in", "y" : 270 }
+    }
+}
