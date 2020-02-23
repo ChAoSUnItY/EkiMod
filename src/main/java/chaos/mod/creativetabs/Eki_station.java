@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class Eki_station extends CreativeTabs{
 	public Eki_station(String label) {
-		super("eki_station");
+		super(label);
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class Eki_lights extends CreativeTabs{
 	public Eki_lights(String label) {
-		super("eki_lights");
+		super(label);
 	}
 
 	@SideOnly(Side.CLIENT)

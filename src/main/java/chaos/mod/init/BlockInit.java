@@ -5,18 +5,14 @@ import java.util.List;
 
 import chaos.mod.Main;
 import chaos.mod.objects.block.BlockBase;
+import chaos.mod.objects.block.BlockCustomStair;
 import chaos.mod.objects.block.BlockHandRail;
-import chaos.mod.objects.block.BlockHandRailCorner;
 import chaos.mod.objects.block.BlockHasFace;
 import chaos.mod.objects.block.BlockLights;
-import chaos.mod.objects.block.BlockLightsTransluent;
 import chaos.mod.objects.block.BlockPlatformEdge;
 import chaos.mod.objects.block.BlockSideSlab;
 import chaos.mod.objects.block.BlockSlabDoubleBaseCommon;
 import chaos.mod.objects.block.BlockSlabHalfBaseCommon;
-import chaos.mod.objects.block.BlockStairBot;
-import chaos.mod.objects.block.BlockStairFull;
-import chaos.mod.objects.block.BlockStairTop;
 import chaos.mod.objects.block.BlockStairsCommon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
@@ -26,9 +22,9 @@ public class BlockInit {
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	//STATION SECTION
 	//station stuff
-	public static final Block HANDRAIL = new BlockHandRail("handrail", Material.ROCK, Main.eki_station_tab);
+	public static final Block HANDRAIL = new BlockHandRail("handrail", Material.ROCK, Main.eki_station_tab, 1);
 	
-	public static final Block HANDRAIL_CORNER = new BlockHandRailCorner("handrail_corner", Material.ROCK, Main.eki_station_tab);
+	public static final Block HANDRAIL_CORNER = new BlockHandRail("handrail_corner", Material.ROCK, Main.eki_station_tab, 2);
 	//platforms
 	public static final Block PLATFORM_EDGE = new BlockPlatformEdge("platform_edge", Material.ROCK, Main.eki_station_tab, false, false);
 	
@@ -131,17 +127,17 @@ public class BlockInit {
 	
 	public static final Block ASPHALT_SIDE_SLAB = new BlockSideSlab("asphalt_side_slab", Material.ROCK, Main.eki_block_tab);
 	//custom stairs
-	public static final Block STATION_STAIRS = new BlockStairFull("station_stairs", Material.ROCK, Main.eki_block_tab);
+	public static final Block STATION_STAIRS = new BlockCustomStair("station_stairs", Material.ROCK, Main.eki_block_tab, 1);
 	
-	public static final Block STATION_STAIRS_GENTLE_TOP = new BlockStairTop("station_stairs_gentle_top", Material.ROCK, Main.eki_block_tab);
+	public static final Block STATION_STAIRS_GENTLE_BOT = new BlockCustomStair("station_stairs_gentle_bot", Material.ROCK, Main.eki_block_tab, 2);
 	
-	public static final Block STATION_STAIRS_GENTLE_BOT = new BlockStairBot("station_stairs_gentle_bot", Material.ROCK, Main.eki_block_tab);
+	public static final Block STATION_STAIRS_GENTLE_TOP = new BlockCustomStair("station_stairs_gentle_top", Material.ROCK, Main.eki_block_tab, 3);
 	//LIGHT SECTION
-	public static final Block GRILLE_LIGHT_WHITE = new BlockLights("grille_light_white", Material.ROCK, Main.eki_lights_tab, 1F);
+	public static final Block GRILLE_LIGHT_WHITE = new BlockLights("grille_light_white", Material.ROCK, Main.eki_lights_tab, 1F, false, false);
 	
-	public static final Block GRILLE_LIGHT_BLACK = new BlockLights("grille_light_black", Material.ROCK, Main.eki_lights_tab, 1F);
+	public static final Block GRILLE_LIGHT_BLACK = new BlockLights("grille_light_black", Material.ROCK, Main.eki_lights_tab, 1F, false, false);
 	
-	public static final Block TUNNEL_LIGHT = new BlockLightsTransluent("tunnel_light", Material.ROCK, Main.eki_lights_tab, 7/15F, true);
+	public static final Block TUNNEL_LIGHT = new BlockLights("tunnel_light", Material.ROCK, Main.eki_lights_tab, 7/15F, true, true);
 	
-	public static final Block WALL_NEON_LIGHT = new BlockLightsTransluent("wall_neon_light", Material.ROCK, Main.eki_lights_tab, 1F, true);
+	public static final Block WALL_NEON_LIGHT = new BlockLights("wall_neon_light", Material.ROCK, Main.eki_lights_tab, 1F, true, true);
 }

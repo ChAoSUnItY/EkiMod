@@ -87,7 +87,6 @@ public class BlockSlabBaseCommon extends BlockSlab {
 
 	@Override
 	public boolean isDouble() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }
