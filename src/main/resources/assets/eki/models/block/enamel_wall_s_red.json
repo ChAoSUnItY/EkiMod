@@ -1,0 +1,6 @@
+{
+    "parent": "eki:block/cube_all",
+    "textures": {
+		"all": "eki:blocks/enamel_wall_panel_2x1_red"
+    }
+}

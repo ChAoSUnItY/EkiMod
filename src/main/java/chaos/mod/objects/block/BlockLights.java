@@ -1,5 +1,6 @@
 package chaos.mod.objects.block;
 
+import chaos.mod.objects.block.base.BlockHasFace;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,7 +14,7 @@ public class BlockLights extends BlockHasFace{
 	private final boolean transluent;
 	
 	public BlockLights(String name, Material material, CreativeTabs tab, Float light, boolean passable, boolean transluent) {
-		super(name, material, tab);
+		super(name, material, tab, true);
 		setLightLevel(light);
 		this.passable = passable;
 		this.transluent = transluent;
@@ -21,17 +22,11 @@ public class BlockLights extends BlockHasFace{
     
     @Override
 	public BlockRenderLayer getBlockLayer() {
-    	if(transluent) {
-    		return BlockRenderLayer.TRANSLUCENT;
-    	}
-    	return BlockRenderLayer.SOLID;
+    	return transluent ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.SOLID;
 	}
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-		if (!passable) {
-			return new AxisAlignedBB(0, 0, 0, 1, 1, 1);
-		}
-		return NULL_AABB;
+		return passable ? NULL_AABB : FULL_BLOCK_AABB;
 	}
 }

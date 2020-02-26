@@ -2,6 +2,7 @@ package chaos.mod.objects.block;
 
 import java.util.List;
 
+import chaos.mod.objects.block.base.BlockHasFace;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -20,10 +21,10 @@ public class BlockHandRail extends BlockHasFace {
 	public static final AxisAlignedBB HAND_RAIL_SOUTH_CORNER_AABB = new AxisAlignedBB(1, 0, 0.375D, 0.625D, 1.5D, 1);
 	public static final AxisAlignedBB HAND_RAIL_WEST_AABB = new AxisAlignedBB(0.625D, 0, 0, 1, 1.5D, 1);
 	public static final AxisAlignedBB HAND_RAIL_WEST_CORNER_AABB = new AxisAlignedBB(0.625D, 0, 1, 0, 1.5D, 0.625D);
-	public final int type;
+	public final int type; //1 Stands for Normal one, 2 Stands for Corner one
 	
 	public BlockHandRail(String name, Material material, CreativeTabs tab, int type) {
-		super(name, material, tab);
+		super(name, material, tab, false);
 		this.type = type;
 	}
 	

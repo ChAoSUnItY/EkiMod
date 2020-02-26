@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "variant=blue": { "model": "eki:enamel_wall_top_blue" },
+		"variant=green": { "model": "eki:enamel_wall_top_green" },
+		"variant=cyan": { "model": "eki:enamel_wall_top_cyan" },
+		"variant=purple": { "model": "eki:enamel_wall_top_purple" },
+		"variant=red": { "model": "eki:enamel_wall_top_red" },
+		"variant=yellow": { "model": "eki:enamel_wall_top_yellow" },
+		"variant=white": { "model": "eki:enamel_wall_top_white" }
+    }
+}
