@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:retaining_wall_corner", "y" : 180},
+    	"facing=west": { "model" : "eki:retaining_wall_corner", "y" : 90 },
+    	"facing=south": { "model" : "eki:retaining_wall_corner"},
+    	"facing=east": { "model" :"eki:retaining_wall_corner", "y" : 270 }
+    }
+}

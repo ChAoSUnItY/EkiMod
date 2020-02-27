@@ -16,9 +16,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
-	public static final CreativeTabs eki_block_tab = new Eki_block("Eki Block");
-	public static final CreativeTabs eki_station_tab = new Eki_station("Eki Station");
-	public static final CreativeTabs eki_lights_tab =new Eki_lights("Eki Lights");
+	public static final CreativeTabs eki_block_tab = new Eki_block("eki_block");
+	public static final CreativeTabs eki_station_tab = new Eki_station("eki_station");
+	public static final CreativeTabs eki_lights_tab =new Eki_lights("eki_lights");
 	
 	@Instance
 	public static Main instance;

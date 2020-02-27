@@ -2,7 +2,7 @@ package chaos.mod.objects.item;
 
 import chaos.mod.Main;
 import chaos.mod.init.ItemInit;
-import chaos.mod.util.IHasModel;
+import chaos.mod.util.interfaces.IHasModel;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
