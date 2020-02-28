@@ -62,29 +62,29 @@ public class BlockInit {
 	
 	public static final Block STATION_PILLAR_BASE_WITH_FIRE_EXTINGUISHER_IN = new BlockHasFace("station_pillar_base_with_fire_extinguisher_in", Material.ROCK, Main.eki_station_tab, false);
 	//beams and panels
-	public static final Block PANEL_WHITE = new BlockHasFace("panel_white", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block PANEL_WHITE = new BlockHasFace("panel_white", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block PANEL_BLACK = new BlockHasFace("panel_black", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block PANEL_BLACK = new BlockHasFace("panel_black", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block PANEL_BEAM_WHITE = new BlockHasFace("panel_beam_white", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block PANEL_BEAM_WHITE = new BlockHasFace("panel_beam_white", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block PANEL_BEAM_BLACK = new BlockHasFace("panel_beam_black", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block PANEL_BEAM_BLACK = new BlockHasFace("panel_beam_black", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block PANEL_BEAM_WITH_CROSS_WHITE = new BlockHasFace("panel_beam_with_cross_white", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block PANEL_BEAM_WITH_CROSS_WHITE = new BlockHasFace("panel_beam_with_cross_white", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block PANEL_BEAM_WITH_CROSS_BLACK = new BlockHasFace("panel_beam_with_cross_black", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block PANEL_BEAM_WITH_CROSS_BLACK = new BlockHasFace("panel_beam_with_cross_black", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block BENDING_BEAM_WHITE = new BlockHasFace("bending_beam_white", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block BENDING_BEAM_WHITE = new BlockHasFace("bending_beam_white", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block BENDING_BEAM_BLACK = new BlockHasFace("bending_beam_black", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block BENDING_BEAM_BLACK = new BlockHasFace("bending_beam_black", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block SUPPORT_BEAM_WHITE = new BlockHasFace("support_beam_white", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block SUPPORT_BEAM_WHITE = new BlockHasFace("support_beam_white", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block SUPPORT_BEAM_BLACK = new BlockHasFace("support_beam_black", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block SUPPORT_BEAM_BLACK = new BlockHasFace("support_beam_black", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block BEAM_BLACK = new BlockHasFace("beam_black", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block BEAM_BLACK = new BlockHasFace("beam_black", Material.ROCK, Main.eki_station_tab, false);
 	
-	public static final Block BEAM_WHITE = new BlockHasFace("beam_white", Material.ROCK, Main.eki_station_tab, true);
+	public static final Block BEAM_WHITE = new BlockHasFace("beam_white", Material.ROCK, Main.eki_station_tab, false);
 	//BLOCK SECTION
 	//blocks
 	public static final Block RETAINING_WALL = new BlockHasFace("retaining_wall", Material.ROCK, Main.eki_block_tab, false);
