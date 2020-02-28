@@ -14,7 +14,7 @@ public class BlockLights extends BlockHasFace{
 	private final boolean transluent;
 	
 	public BlockLights(String name, Material material, CreativeTabs tab, Float light, boolean passable, boolean transluent) {
-		super(name, material, tab, true);
+		super(name, material, tab, false);
 		setLightLevel(light);
 		this.passable = passable;
 		this.transluent = transluent;
