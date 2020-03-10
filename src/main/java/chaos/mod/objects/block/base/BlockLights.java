@@ -1,6 +1,5 @@
-package chaos.mod.objects.block;
+package chaos.mod.objects.block.base;
 
-import chaos.mod.objects.block.base.BlockHasFace;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;

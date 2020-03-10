@@ -14,9 +14,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockSideSlab extends BlockHasFace {
-	/***
-	 * WIP
-	 */
 	public static final AxisAlignedBB SIDE_BLOCK_NORTH_AABB = new AxisAlignedBB(0, 0, 0.5D, 1, 1, 1);
 	public static final AxisAlignedBB SIDE_BLOCK_EAST_AABB = new AxisAlignedBB(0, 0, 0, 0.5D, 1, 1);
 	public static final AxisAlignedBB SIDE_BLOCK_SOUTH_AABB = new AxisAlignedBB(0, 0, 0, 1, 1, 0.5D);
