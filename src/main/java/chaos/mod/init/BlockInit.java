@@ -10,6 +10,7 @@ import chaos.mod.objects.block.BlockPlatformEdgeOPF;
 import chaos.mod.objects.block.base.BlockBase;
 import chaos.mod.objects.block.base.BlockHasFace;
 import chaos.mod.objects.block.base.BlockLights;
+import chaos.mod.objects.block.machines.BlockVendor;
 import chaos.mod.objects.block.slabs.BlockSideSlab;
 import chaos.mod.objects.block.slabs.BlockSlabDoubleBaseCommon;
 import chaos.mod.objects.block.slabs.BlockSlabHalfBaseCommon;
@@ -63,6 +64,8 @@ public class BlockInit {
 	public static final Block PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF = new BlockPlatformEdgeOPF("platform_edge_with_line_and_light_off_opf", COMMON, STA, false, true);
 	//decorations
 	public static final Block WOODEN_BENCH = new BlockHasFace("wooden_bench", COMMON, STA, false);
+	//machines
+	public static final Block TICKET_VENDOR = new BlockVendor("ticket_vendor", COMMON, STA, false);
 	//pillars
 	public static final Block STATION_PILLAR_BASE = new BlockBase("station_pillar_base", COMMON, STA);
 	

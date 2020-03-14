@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "variant=black_dull": { "model": "eki:tessera_black_dull" },
+		"variant=cerulean_smooth": { "model": "eki:tessera_cerulean_smooth" },
+		"variant=cerulean": { "model": "eki:tessera_cerulean" },
+		"variant=blue_slate": { "model": "eki:tessera_blue_slate" },
+		"variant=blue_teal": { "model": "eki:tessera_blue_teal" },
+		"variant=brown_tortilla": { "model": "eki:tessera_brown_tortilla" },
+		"variant=gray_dove": { "model": "eki:tessera_gray_dove" },
+		"variant=gray_fossil": { "model": "eki:tessera_gray_fossil" },
+		"variant=gray": { "model": "eki:tessera_gray" },
+		"variant=green_fern": { "model": "eki:tessera_green_fern" },
+		"variant=green_lime": { "model": "eki:tessera_green_lime" },
+		"variant=orange_fire": { "model": "eki:tessera_orange_fire" },
+		"variant=purple_heather": { "model": "eki:tessera_purple_heather" },
+		"variant=red_rose": { "model": "eki:tessera_red_rose" },
+		"variant=red": { "model": "eki:tessera_red" },
+		"variant=yellow": { "model": "eki:tessera_yellow" }
+    }
+}
