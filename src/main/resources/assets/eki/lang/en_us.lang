@@ -124,7 +124,7 @@ item.rangefinder.tooltip=Start position : %d, %d, %d.
 
 itemGroup.eki_block=Eki Block
 itemGroup.eki_station=Eki Station
-itemGroup.eki_lights=Eki Lights
+itemGroup.eki_misc= Eki Misc
 
 //TILEENTITYS
 tile.ticket_vendor.name=Ticket vendor

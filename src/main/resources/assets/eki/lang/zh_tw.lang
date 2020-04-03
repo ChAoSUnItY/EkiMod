@@ -123,7 +123,7 @@ item.rangefinder.tooltip=起始位置：%d, %d, %d.
 
 itemGroup.eki_block=Eki 方塊
 itemGroup.eki_station=Eki 車站
-itemGroup.eki_lights=Eki 燈具
+itemGroup.eki_misc=Eki 雜項
 
 //TILEENTITYS
 tile.ticket_vendor.name=售票機

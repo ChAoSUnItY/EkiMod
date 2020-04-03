@@ -27,7 +27,7 @@ public class Main {
 	public static final Logger LOGGER = LogManager.getLogger("Eki Mod");
 	public static final CreativeTabs eki_block_tab = new Eki_block("eki_block");
 	public static final CreativeTabs eki_station_tab = new Eki_station("eki_station");
-	public static final CreativeTabs eki_misc_tab =new Eki_misc("eki_lights");
+	public static final CreativeTabs eki_misc_tab =new Eki_misc("eki_misc");
 	
 	@Instance
 	public static Main instance;

@@ -1,11 +1,13 @@
 package chaos.mod.tileentity;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class TileEntityTicketGate extends TileEntity {
 	private boolean hasAnchorPos = false;
@@ -24,7 +26,7 @@ public class TileEntityTicketGate extends TileEntity {
 	}
 
 	public int[] getAnchorPos() {
-		return hasAnchorPos ? new int[] { PosX, PosZ } : new int[] { pos.getX(), pos.getZ(), pos.getY() };
+		return hasAnchorPos ? new int[] { this.PosX, this.PosZ, this.PosY } : new int[] { pos.getX(), pos.getZ(), pos.getY() };
 	}
 
 	public BlockPos getAnchorPosForSub() {
@@ -45,6 +47,11 @@ public class TileEntityTicketGate extends TileEntity {
 		if (!hasAnchorPos) return false;
 		int[] another = stack.getTagCompound().getIntArray("pos");
 		return new int[] {this.PosX, this.PosZ, this.PosY} != another;
+	}
+	
+	@Override
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+		return oldState.getBlock() != newSate.getBlock();
 	}
 	
 	@Override
