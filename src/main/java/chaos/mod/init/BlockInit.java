@@ -10,6 +10,8 @@ import chaos.mod.objects.block.BlockPlatformEdgeOPF;
 import chaos.mod.objects.block.base.BlockBase;
 import chaos.mod.objects.block.base.BlockHasFace;
 import chaos.mod.objects.block.base.BlockLights;
+import chaos.mod.objects.block.machines.BlockAnchor;
+import chaos.mod.objects.block.machines.BlockGate;
 import chaos.mod.objects.block.machines.BlockVendor;
 import chaos.mod.objects.block.slabs.BlockSideSlab;
 import chaos.mod.objects.block.slabs.BlockSlabDoubleBaseCommon;
@@ -27,7 +29,7 @@ public class BlockInit {
 	//DEFINE SECTION
 	private static final CreativeTabs BLOCK = Main.eki_block_tab;
 	private static final CreativeTabs STA = Main.eki_station_tab;
-	private static final CreativeTabs LIGHT = Main.eki_lights_tab;
+	private static final CreativeTabs LIGHT = Main.eki_misc_tab;
 	private static final Material COMMON = Material.ROCK;
 	//INIT SECTION
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
@@ -65,7 +67,11 @@ public class BlockInit {
 	//decorations
 	public static final Block WOODEN_BENCH = new BlockHasFace("wooden_bench", COMMON, STA, false);
 	//machines
-	public static final Block TICKET_VENDOR = new BlockVendor("ticket_vendor", COMMON, STA, false);
+	public static final Block TICKET_VENDOR = new BlockVendor("ticket_vendor", COMMON, STA);
+	
+	public static final Block TICKET_GATE = new BlockGate("ticket_gate", COMMON, STA);
+	
+	public static final Block ANCHOR = new BlockAnchor("anchor", COMMON, STA);
 	//pillars
 	public static final Block STATION_PILLAR_BASE = new BlockBase("station_pillar_base", COMMON, STA);
 	

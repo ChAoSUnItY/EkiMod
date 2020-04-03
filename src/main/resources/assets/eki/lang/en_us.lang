@@ -67,6 +67,22 @@ tile.enamel_wall_top_purple.name=Enamel Wall (Purple Top)
 tile.enamel_wall_top_red.name=Enamel Wall (Red Top)
 tile.enamel_wall_top_yellow.name=Enamel Wall (Yellow Top)
 tile.enamel_wall_top_white.name=Enamel Wall (White Top)
+tile.tessera_black_dull.name=Mosaic Tessera (Dull Black)
+tile.tessera_cerulean_smooth.name=Mosaic Tessera (Cerulean Blue)
+tile.tessera_cerulean.name=Mosaic Tessera (Smooth Cerulean Blue)
+tile.tessera_blue_slate.name=Mosaic Tessera (Slate Blue)
+tile.tessera_blue_teal.name=Mosaic Tessera (Teal Blue)
+tile.tessera_brown_tortilla.name=Mosaic Tessera (Tortilla Brown)
+tile.tessera_gray_dove.name=Mosaic Tessera (Gray)
+tile.tessera_gray_fossil.name=Mosaic Tessera (Dove Gray)
+tile.tessera_gray.name=Mosaic Tessera (Fossil Gray)
+tile.tessera_green_fern.name=Mosaic Tessera (Fern Green)
+tile.tessera_green_lime.name=Mosaic Tessera (Lime Green)
+tile.tessera_orange_fire.name=Mosaic Tessera (Fire Orange)
+tile.tessera_purple_heather.name=Mosaic Tessera (Purple Heather)
+tile.tessera_red_rose.name=Mosaic Tessera (Red)
+tile.tessera_red.name=Mosaic Tessera (Rose Red)
+tile.tessera_yellow.name=Mosaic Tessera (Yellow)
 //stairs
 tile.architectural_concrete_stairs.name=Architectural Concrete Stairs
 tile.concrete_stairs.name=Concrete Stairs
@@ -99,9 +115,41 @@ tile.wall_neon_light.name=Wall Neon Light
 //ITEMINIT
 //TOOLS
 item.wrench.name=Wrench
-item.wrench.tooltip=A tool used for adjustment (No usage for now)
-
+item.wrench.withouttag.tooltip=A tool to bind anchor to ticket gate.
+item.wrench.withtag.tooltip=A tool to bind anchor to ticket gate. This tool has been bound to %d, %d, %d.
+item.ticket.name=Ticket
+item.ticket.tooltip=Worth %d dollars. :)
+item.rangefinder.name=Rangefinder
+item.rangefinder.tooltip=Start position : %d, %d, %d.
 
 itemGroup.eki_block=Eki Block
 itemGroup.eki_station=Eki Station
 itemGroup.eki_lights=Eki Lights
+
+//TILEENTITYS
+tile.ticket_vendor.name=Ticket vendor
+tile.ticket_gate.name=Ticket gate
+tile.anchor.name=Anchor
+tile.anchor.tooltip=A block use to bind ticket gates.
+tile.anchor.warning.tooltip=Breaking this block that had been bound to gates is not a clever way to reset......
+
+//GUIS
+container.ticket_vendor.state.success=Successfully Ticketed!
+container.ticket_vendor.state.shortage=Balance is shortage!
+container.ticket_vendor.state.failed=%d is invalid for value!
+container.ticket_vendor.state.illegal=%s typed an invalid value in ticket vendor.
+container.ticket_vendor.state.waiting=Waiting......
+container.ticket_vendor.button.provide=Ticket
+container.ticket_vendor.button.clear=Clear
+container.ticket_vendor.text.default=Insert value.
+
+//TEXTS
+chat.type.text.anchoredamounts=This anchor had been bound to %d ticket gates!
+chat.type.text.setpos=Passed from %d, %d, %d!
+chat.type.text.accessed=Exited from %d, %d, %d! Total Cost: %d, traveled for %d blocks!
+chat.type.text.notenoughvalue=Can't exit! This ticket is worth %d, but it needs %d to exit.
+chat.type.text.missingvalue=This ticket is not valuable!
+chat.type.text.missinganchor=Please select an anchor first!
+chat.type.text.anchorlinked=Connected to the anchor!
+chat.type.text.rangefinder.result=3D distance is %d, surface distance is %d.
+chat.type.text.rangefinder.getpos=Successfully bound to %d, %d, %d！

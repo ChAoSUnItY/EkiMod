@@ -16,6 +16,8 @@ public class BlockBase extends Block implements IHasModel {
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(tab);
+		setHardness(3);
+		setResistance(20);
 		
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
