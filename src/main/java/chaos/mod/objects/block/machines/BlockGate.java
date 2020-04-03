@@ -3,6 +3,9 @@ package chaos.mod.objects.block.machines;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import chaos.mod.Main;
 import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.base.BlockHasFace;
@@ -92,6 +95,9 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 					if (hasValue(stack, 3)) {
 						if (hasValue(stack, 4)) {
 							if (tileEntityTicketGate.hasAnchorPos()) {
+								if (!tileEntityTicketGate.isAnchorExists()) {
+									tileEntityTicketGate.clearAnchorPos();
+								}
 								if (tileEntityTicketGate.isAnchorExists()) {
 									TileEntityAnchor tileEntityAnchor = (TileEntityAnchor) worldIn
 											.getTileEntity(tileEntityTicketGate.getAnchorPosForSub());
@@ -110,17 +116,22 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 					} else if (facing == EnumFacing.UP || facing == state.getValue(FACING)) {
 						if (hasValue(stack, 0)) {
 							if (hasValue(stack, 1)) {
+								if (!tileEntityTicketGate.isAnchorExists()) {
+									tileEntityTicketGate.clearAnchorPos();
+								}
 								savePosIntoItem(hand, playerIn, tileEntityTicketGate, pos);
 								open(playerIn, worldIn, pos, state);
+								System.out.println(tileEntityTicketGate.getTileData());
 								return true;
 							}
 							if (hasValue(stack, 2)) {
-								int price = tileEntityTicketGate.isAnchorExists()
-										? calculatePrice(stack.getTagCompound().getIntArray("startPos"),
-												tileEntityTicketGate.getAnchorPos())
-										: calculatePrice(stack.getTagCompound().getIntArray("startPos"),
-												new int[] { pos.getX(), pos.getZ() });
+								if (!tileEntityTicketGate.isAnchorExists()) {
+									tileEntityTicketGate.clearAnchorPos();
+								}
+								int price = calculatePrice(stack.getTagCompound().getIntArray("startPos"),
+										tileEntityTicketGate.getAnchorPos());
 								int length = calculateLength(stack, pos, worldIn);
+								System.out.println(tileEntityTicketGate.getTileData());
 								if (getPosFromItem(stack, pos, worldIn)) {
 									ticketAccessible(playerIn, hand, pos, price, length);
 									open(playerIn, worldIn, pos, state);
@@ -213,15 +224,13 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 		stack2.setTagCompound(nbt);
 		playerIn.getHeldItem(hand).shrink(1);
 		playerIn.entityDropItem(stack2, (float) playerIn.getYOffset());
-		textSetPos.getStyle().setColor(TextFormatting.GREEN);
-		playerIn.sendMessage(textSetPos);
+		playerIn.sendMessage(simpleForm(textSetPos, TextFormatting.GREEN));
 	}
 
 	private void ticketAccessible(EntityPlayer playerIn, EnumHand hand, BlockPos pos, int price, int length) {
 		TextComponentString textAccessed = new TextComponentString(
 				I18n.format("chat.type.text.accessed", pos.getX(), pos.getY(), pos.getZ(), price, length));
-		textAccessed.getStyle().setColor(TextFormatting.GREEN);
-		playerIn.sendMessage(textAccessed);
+		playerIn.sendMessage(simpleForm(textAccessed, TextFormatting.GREEN));
 		playerIn.getHeldItem(hand).shrink(1);
 	}
 
@@ -229,20 +238,17 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 		int price = stack.getTagCompound().getInteger("value");
 		TextComponentString textNotEnoughValue = new TextComponentString(
 				I18n.format("chat.type.text.notenoughvalue", price, Actaulprice));
-		textNotEnoughValue.getStyle().setBold(true).setItalic(true).setColor(TextFormatting.RED);
-		playerIn.sendMessage(textNotEnoughValue);
+		playerIn.sendMessage(getFormed(textNotEnoughValue, TextFormatting.RED));
 	}
 
 	private void missingValue(EntityPlayer playerIn) {
 		TextComponentString textMissingValue = new TextComponentString(I18n.format("chat.type.text.missingvalue"));
-		textMissingValue.getStyle().setBold(true).setItalic(true).setColor(TextFormatting.RED);
-		playerIn.sendMessage(textMissingValue);
+		playerIn.sendMessage(getFormed(textMissingValue, TextFormatting.RED));
 	}
 
 	private void missingAnchor(EntityPlayer playerIn) {
 		TextComponentString textMissingAnchor = new TextComponentString(I18n.format("chat.type.text.missinganchor"));
-		textMissingAnchor.getStyle().setBold(true).setItalic(true).setColor(TextFormatting.RED);
-		playerIn.sendMessage(textMissingAnchor);
+		playerIn.sendMessage(getFormed(textMissingAnchor, TextFormatting.RED));
 	}
 
 	/***
@@ -308,8 +314,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	public int calculateLength(ItemStack stack, BlockPos pos, World worldIn) {
 		TileEntityTicketGate tileEntity = (TileEntityTicketGate) worldIn.getTileEntity(pos);
 		int[] startPos = stack.getTagCompound().getIntArray("startPos");
-		int length = tileEntity.isAnchorExists() ? calculatePrice(startPos, tileEntity.getAnchorPos()) / 100
-				: calculatePrice(startPos, new int[] { pos.getX(), pos.getZ() }) / 100;
+		int length = calculatePrice(startPos, tileEntity.getAnchorPos())/100;
 		return length;
 	}
 
@@ -319,6 +324,16 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 		worldIn.setBlockState(pos, state.withProperty(OPEN, true));
 		worldIn.scheduleBlockUpdate(pos, this, this.tickRate(worldIn), 5);
 		worldIn.playSound(null, pos, SoundEvent.REGISTRY.getObject(resourceLocation), SoundCategory.BLOCKS, 1, 1);
+	}
+	
+	private TextComponentString getFormed(TextComponentString text, @Nullable TextFormatting form) {
+		text.getStyle().setBold(true).setItalic(true).setColor(form == null ? TextFormatting.WHITE : form);
+		return text;
+	}
+	
+	private TextComponentString simpleForm(TextComponentString text, @Nonnull TextFormatting form) {
+		text.getStyle().setColor(form);
+		return text;
 	}
 
 	@Override

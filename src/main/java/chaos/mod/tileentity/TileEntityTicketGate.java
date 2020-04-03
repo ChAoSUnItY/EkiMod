@@ -24,6 +24,14 @@ public class TileEntityTicketGate extends TileEntity {
 			this.markDirty();
 		}
 	}
+	
+	public void clearAnchorPos() {
+		if (!world.isRemote) {
+			this.PosX = this.PosY = this.PosZ = 0;
+			this.hasAnchorPos = false;
+			this.markDirty();
+		}
+	}
 
 	public int[] getAnchorPos() {
 		return hasAnchorPos ? new int[] { this.PosX, this.PosZ, this.PosY } : new int[] { pos.getX(), pos.getZ(), pos.getY() };
