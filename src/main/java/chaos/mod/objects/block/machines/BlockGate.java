@@ -129,6 +129,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 								ticketInaccessible(playerIn, stack, price);
 								return true;
 							}
+						} else if (stack.getItem() == ItemInit.TICKET && !stack.hasTagCompound()) {
 							missingValue(playerIn);
 						}
 					}
