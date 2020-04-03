@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:ticket_vendor", "y" : 180},
+    	"facing=west": { "model" : "eki:ticket_vendor", "y" : 90 },
+    	"facing=south": { "model" : "eki:ticket_vendor"},
+    	"facing=east": { "model" :"eki:ticket_vendor", "y" : 270 }
+    }
+}
