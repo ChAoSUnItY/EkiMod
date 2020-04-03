@@ -19,6 +19,8 @@ tile.platform_edge_with_line_opf.name=Elevated Platform Edge with Line
 tile.platform_asphalt_with_guide_brick_opf.name=Elevated Platform Brick with Line (Asphalt)
 tile.platform_edge_with_line_and_light_off_opf.name=Elevated Platform Edge with Line and Light
 tile.platform_edge_with_line_and_light_on_opf.name=Elevated Platform Edge with Line and Light (On)
+//decorations
+tile.wooden_bench.name=Wooden Bench
 //station pillars
 tile.station_pillar_base.name=Station Pillar Base
 tile.station_pillar_center.name=Station Pillar Center

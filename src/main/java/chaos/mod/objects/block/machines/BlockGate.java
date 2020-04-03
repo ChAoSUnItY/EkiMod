@@ -44,7 +44,6 @@ import net.minecraft.world.World;
  */
 public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	public static final PropertyBool OPEN = PropertyBool.create("open");
-	protected int[] anchorPos;
 
 	public BlockGate(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab, false);
@@ -112,7 +111,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 						if (hasValue(stack, 0)) {
 							if (hasValue(stack, 1)) {
 								savePosIntoItem(hand, playerIn, tileEntityTicketGate, pos);
-								open(playerIn, worldIn, pos, state, tileEntityTicketGate);
+								open(playerIn, worldIn, pos, state);
 								return true;
 							}
 							if (hasValue(stack, 2)) {
@@ -124,7 +123,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 								int length = calculateLength(stack, pos, worldIn);
 								if (getPosFromItem(stack, pos, worldIn)) {
 									ticketAccessible(playerIn, hand, pos, price, length);
-									open(playerIn, worldIn, pos, state, tileEntityTicketGate);
+									open(playerIn, worldIn, pos, state);
 									return true;
 								}
 								ticketInaccessible(playerIn, stack, price);
@@ -313,11 +312,9 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 		return length;
 	}
 
-	public void open(EntityPlayer playerIn, World worldIn, BlockPos pos, IBlockState state,
-			TileEntityTicketGate tileEntityTicketGate) {
+	public void open(EntityPlayer playerIn, World worldIn, BlockPos pos, IBlockState state) {
 		ResourceLocation resourceLocation = new ResourceLocation("block.iron_door.open");
 		;
-		tileEntityTicketGate.shouldRefresh(worldIn, pos, state, state.withProperty(OPEN, true));
 		worldIn.setBlockState(pos, state.withProperty(OPEN, true));
 		worldIn.scheduleBlockUpdate(pos, this, this.tickRate(worldIn), 5);
 		worldIn.playSound(null, pos, SoundEvent.REGISTRY.getObject(resourceLocation), SoundCategory.BLOCKS, 1, 1);

@@ -18,6 +18,8 @@ tile.platform_edge_with_guide_brick_and_line_opf.name=月台邊加高含導盲�
 tile.platform_edge_with_line_opf.name=月台邊加高含標線
 tile.platform_edge_with_line_and_light_off_opf.name=月台邊加高含標線和列車警示燈
 tile.platform_edge_with_line_and_light_on_opf.name=月台邊加高含標線和列車警示燈 (開啟)
+//decorations
+tile.wooden_bench.name=木椅
 //beams and panels
 tile.panel_black.name=螢幕 (黑色 WIP)
 tile.panel_white.name=螢幕 (白色 WIP)
