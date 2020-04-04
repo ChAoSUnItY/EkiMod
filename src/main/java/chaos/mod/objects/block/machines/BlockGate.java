@@ -38,12 +38,7 @@ import net.minecraft.world.World;
 
 /***
  * Warning ! This block is missing some logical, to ensure the entire system
- * works fine, you should not ever do the following actions before author fixed
- * it's issues:
- * 
- * 1.Break a anchor that had been bound.
- *
- * Need more debug report.
+ * works fine, you should check every single message from console!
  */
 public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	public static final PropertyBool OPEN = PropertyBool.create("open");
