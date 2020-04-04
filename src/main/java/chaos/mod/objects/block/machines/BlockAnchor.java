@@ -21,6 +21,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 	public BlockAnchor(String name, Material material, CreativeTabs tab) {
@@ -50,6 +52,7 @@ public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World player, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.GRAY + I18n.format(getUnlocalizedName() + ".tooltip"));
 		tooltip.add(TextFormatting.DARK_RED + I18n.format(getUnlocalizedName() + ".warning.tooltip"));

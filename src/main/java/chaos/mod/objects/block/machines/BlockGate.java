@@ -73,9 +73,9 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 			List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean isActualState) {
 		if (state.getValue(OPEN)) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, NULL_AABB);
-			return;
+		} else {
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0, 1, 1.5, 1));
 		}
-		addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0, 1, 1.5, 1));
 	}
 
 	@Override
@@ -90,9 +90,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 					if (hasValue(stack, 3)) {
 						if (hasValue(stack, 4)) {
 							if (tileEntityTicketGate.hasAnchorPos()) {
-								if (!tileEntityTicketGate.isAnchorExists()) {
-									tileEntityTicketGate.clearAnchorPos();
-								}
+								clearAnchorIfNeeded(tileEntityTicketGate);
 								if (tileEntityTicketGate.isAnchorExists()) {
 									TileEntityAnchor tileEntityAnchor = (TileEntityAnchor) worldIn
 											.getTileEntity(tileEntityTicketGate.getAnchorPosForSub());
@@ -111,22 +109,16 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 					} else if (facing == EnumFacing.UP || facing == state.getValue(FACING)) {
 						if (hasValue(stack, 0)) {
 							if (hasValue(stack, 1)) {
-								if (!tileEntityTicketGate.isAnchorExists()) {
-									tileEntityTicketGate.clearAnchorPos();
-								}
+								clearAnchorIfNeeded(tileEntityTicketGate);
 								savePosIntoItem(hand, playerIn, tileEntityTicketGate, pos);
 								open(playerIn, worldIn, pos, state);
-								System.out.println(tileEntityTicketGate.getTileData());
 								return true;
 							}
 							if (hasValue(stack, 2)) {
-								if (!tileEntityTicketGate.isAnchorExists()) {
-									tileEntityTicketGate.clearAnchorPos();
-								}
+								clearAnchorIfNeeded(tileEntityTicketGate);
 								int price = calculatePrice(stack.getTagCompound().getIntArray("startPos"),
 										tileEntityTicketGate.getAnchorPos());
 								int length = calculateLength(stack, pos, worldIn);
-								System.out.println(tileEntityTicketGate.getTileData());
 								if (getPosFromItem(stack, pos, worldIn)) {
 									ticketAccessible(playerIn, hand, pos, price, length);
 									open(playerIn, worldIn, pos, state);
@@ -298,6 +290,12 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 		}
 		tileEntityTicketGate.saveAnchorPosIn(array[0], array[1], array[2]);
 		playerIn.sendMessage(textLinked);
+	}
+	
+	public void clearAnchorIfNeeded(TileEntityTicketGate tileEntityTicketGate) {
+		if (!tileEntityTicketGate.isAnchorExists()) {
+			tileEntityTicketGate.clearAnchorPos();
+		}
 	}
 
 	public int calculatePrice(int[] startPos, int[] endPos) {
