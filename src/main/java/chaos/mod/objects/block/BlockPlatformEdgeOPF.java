@@ -22,12 +22,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockPlatformEdgeOPF extends BlockHasFace {
-	public static final AxisAlignedBB PLATFORM_EDGE_BOUNDING_BOX_AABB = new AxisAlignedBB(0, 0, 0, 1, 1.5D, 1);
 	public static final AxisAlignedBB PLATFORM_EDGE_TOP_AABB = new AxisAlignedBB(0, 1.34375D, 0, 1, 1.5D, 1);
-	public static final AxisAlignedBB PLATFORM_EDGE_NORTH_AABB = new AxisAlignedBB(0, 0, 0.5D, 1, 1.34375D, 1);
-	public static final AxisAlignedBB PLATFORM_EDGE_EAST_AABB = new AxisAlignedBB(0, 0, 0, 0.5D, 1.34375D, 1);
-	public static final AxisAlignedBB PLATFORM_EDGE_SOUTH_AABB = new AxisAlignedBB(0, 0, 0, 1, 1.34375D, 0.5D);
-	public static final AxisAlignedBB PLATFORM_EDGE_WEST_AABB = new AxisAlignedBB(0.5D, 0, 0, 1, 1.34375D, 1);
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	private final boolean isOn;
 	private final boolean lightable;
@@ -44,23 +39,28 @@ public class BlockPlatformEdgeOPF extends BlockHasFace {
 	}
 
 	@Override
+	public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		return side == EnumFacing.UP ? false : true;
+	}
+
+	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
 			List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
 		switch (state.getValue(FACING)) {
 		case NORTH:
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_NORTH_AABB);
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0.5D, 1, 1.34375D, 1));
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_TOP_AABB);
 			break;
 		case SOUTH:
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_SOUTH_AABB);
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0, 1, 1.34375D, 0.5D));
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_TOP_AABB);
 			break;
 		case EAST:
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_EAST_AABB);
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0, 0.5D, 1.34375D, 1));
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_TOP_AABB);
 			break;
 		case WEST:
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_WEST_AABB);
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0.5D, 0, 0, 1, 1.34375D, 1));
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_TOP_AABB);
 		default:
 			break;
@@ -69,33 +69,32 @@ public class BlockPlatformEdgeOPF extends BlockHasFace {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return PLATFORM_EDGE_BOUNDING_BOX_AABB;
+		return new AxisAlignedBB(0, 0, 0, 1, 1.5D, 1);
 	}
 
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		if (!worldIn.isRemote) {
-			if (lightable) {
-				if (this.isOn && !worldIn.isBlockPowered(pos)) {
-					worldIn.scheduleBlockUpdate(pos, this, 0, 1);
-				} else if (!this.isOn && worldIn.isBlockPowered(pos)) {
-					switch (state.getValue(FACING)) {
-					case NORTH:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, EnumFacing.NORTH));
-						break;
-					case EAST:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, EnumFacing.EAST));
-						break;
-					case SOUTH:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, EnumFacing.SOUTH));
-						break;
-					case WEST:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, EnumFacing.WEST));
-						break;
-					default:
-						break;
-					}
-
+		if (!worldIn.isRemote && lightable) {
+			if (this.isOn && !worldIn.isBlockPowered(pos)) {
+				worldIn.scheduleBlockUpdate(pos, this, 0, 1);
+			} else if (!this.isOn && worldIn.isBlockPowered(pos)) {
+				IBlockState ON = BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState();
+				EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+				switch (state.getValue(FACING)) {
+				case NORTH:
+					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
+					break;
+				case EAST:
+					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
+					break;
+				case SOUTH:
+					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
+					break;
+				case WEST:
+					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
+					break;
+				default:
+					break;
 				}
 			}
 		}
@@ -103,27 +102,27 @@ public class BlockPlatformEdgeOPF extends BlockHasFace {
 
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
-		if (!worldIn.isRemote) {
-			if (lightable) {
-				if (this.isOn && !worldIn.isBlockPowered(pos)) {
-					worldIn.scheduleBlockUpdate(pos, this, 0, 1);
-				} else if (!this.isOn && worldIn.isBlockPowered(pos)) {
-					switch (state.getValue(FACING)) {
-					case NORTH:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, EnumFacing.NORTH));
-						break;
-					case EAST:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, EnumFacing.EAST));
-						break;
-					case SOUTH:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, EnumFacing.SOUTH));
-						break;
-					case WEST:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, EnumFacing.WEST));
-						break;
-					default:
-						break;
-					}
+		if (!worldIn.isRemote && lightable) {
+			if (this.isOn && !worldIn.isBlockPowered(pos)) {
+				worldIn.scheduleBlockUpdate(pos, this, 0, 1);
+			} else if (!this.isOn && worldIn.isBlockPowered(pos)) {
+				IBlockState ON = BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState();
+				EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+				switch (state.getValue(FACING)) {
+				case NORTH:
+					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
+					break;
+				case EAST:
+					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
+					break;
+				case SOUTH:
+					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
+					break;
+				case WEST:
+					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
+					break;
+				default:
+					break;
 				}
 			}
 		}
@@ -131,37 +130,33 @@ public class BlockPlatformEdgeOPF extends BlockHasFace {
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		if (!worldIn.isRemote) {
-			if (lightable) {
-				if (this.isOn && !worldIn.isBlockPowered(pos)) {
-					switch (state.getValue(FACING)) {
-					case NORTH:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF.getDefaultState().withProperty(FACING, EnumFacing.NORTH));
-						break;
-					case EAST:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF.getDefaultState().withProperty(FACING, EnumFacing.EAST));
-						break;
-					case SOUTH:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF.getDefaultState().withProperty(FACING, EnumFacing.SOUTH));
-						break;
-					case WEST:
-						worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF.getDefaultState().withProperty(FACING, EnumFacing.WEST));
-						break;
-					default:
-						break;
-					}
+		if (!worldIn.isRemote && lightable) {
+			if (this.isOn && !worldIn.isBlockPowered(pos)) {
+				IBlockState OFF = BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF.getDefaultState();
+				EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+				switch (state.getValue(FACING)) {
+				case NORTH:
+					worldIn.setBlockState(pos, OFF.withProperty(FACING, enumfacing));
+					break;
+				case EAST:
+					worldIn.setBlockState(pos, OFF.withProperty(FACING, enumfacing));
+					break;
+				case SOUTH:
+					worldIn.setBlockState(pos, OFF.withProperty(FACING, enumfacing));
+					break;
+				case WEST:
+					worldIn.setBlockState(pos, OFF.withProperty(FACING, enumfacing));
+					break;
+				default:
+					break;
 				}
 			}
 		}
 	}
 
-	public boolean isTopSolid(IBlockState state) {
-		return false;
-	}
-
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
 			EntityPlayer player) {
-		return isOn ? new ItemStack(BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF) : new ItemStack(state.getBlock());
+		return isOn ? new ItemStack(BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF) : new ItemStack(this);
 	}
 }

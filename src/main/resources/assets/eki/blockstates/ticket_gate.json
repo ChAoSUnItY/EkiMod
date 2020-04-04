@@ -1,0 +1,12 @@
+{
+    "variants":{
+    	"facing=north,open=true": { "model" : "eki:ticket_gate", "y" : 180},
+    	"facing=north,open=false": { "model" : "eki:ticket_gate", "y" : 180},
+    	"facing=west,open=true": { "model" : "eki:ticket_gate", "y" : 90 },
+    	"facing=west,open=false": { "model" : "eki:ticket_gate", "y" : 90 },
+    	"facing=south,open=true": { "model" : "eki:ticket_gate"},
+    	"facing=south,open=false": { "model" : "eki:ticket_gate"},
+    	"facing=east,open=true": { "model" :"eki:ticket_gate", "y" : 270 },
+    	"facing=east,open=false": { "model" :"eki:ticket_gate", "y" : 270 }
+    }
+}

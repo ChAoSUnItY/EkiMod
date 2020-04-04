@@ -61,7 +61,7 @@ public class BlockHasFace extends BlockBase {
 			worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
 		}
 	}
-
+	
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
 			float hitZ, int meta, EntityLivingBase placer, ItemStack stack) {
@@ -70,8 +70,7 @@ public class BlockHasFace extends BlockBase {
 
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
-		return state.withProperty(FACING,
-				rot.rotate((EnumFacing) state.getValue(FACING)));
+		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
 	}
 
 	@Override
@@ -103,7 +102,6 @@ public class BlockHasFace extends BlockBase {
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
 			ItemStack stack) {
-		worldIn.setBlockState(pos,
-				state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+		worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 	}
 }

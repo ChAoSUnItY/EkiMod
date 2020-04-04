@@ -40,6 +40,7 @@ public class BlockHandRail extends BlockHasFace {
 			case 2:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, HAND_RAIL_NORTH_AABB);
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, HAND_RAIL_NORTH_CORNER_AABB);
+				break;
 			default:
 				break;
 			}
@@ -52,6 +53,7 @@ public class BlockHandRail extends BlockHasFace {
 			case 2:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, HAND_RAIL_SOUTH_AABB);
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, HAND_RAIL_SOUTH_CORNER_AABB);
+				break;
 			default:
 				break;
 			}
@@ -64,6 +66,7 @@ public class BlockHandRail extends BlockHasFace {
 			case 2:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, HAND_RAIL_EAST_AABB);
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, HAND_RAIL_EAST_CORNER_AABB);
+				break;
 			default:
 				break;
 			}
@@ -76,6 +79,7 @@ public class BlockHandRail extends BlockHasFace {
 			case 2:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, HAND_RAIL_WEST_AABB);
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, HAND_RAIL_WEST_CORNER_AABB);
+				break;
 			default:
 				break;
 			}
@@ -85,4 +89,3 @@ public class BlockHandRail extends BlockHasFace {
 		}
 	}
 }
-

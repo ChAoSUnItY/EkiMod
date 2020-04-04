@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model" : "eki:wooden_bench", "y" : 180},
+    	"facing=west": { "model" : "eki:wooden_bench", "y" : 90 },
+    	"facing=south": { "model" : "eki:wooden_bench"},
+    	"facing=east": { "model" :"eki:wooden_bench", "y" : 270 }
+    }
+}

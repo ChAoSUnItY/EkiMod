@@ -3,7 +3,6 @@ package chaos.mod.objects.block.stairs;
 import java.util.List;
 
 import chaos.mod.objects.block.base.BlockHasFace;
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,17 +18,17 @@ public class BlockCustomStair extends BlockHasFace {
 	public static final AxisAlignedBB STAIR_EAST_TOP_AABB = new AxisAlignedBB(0, 0, 0, 0.5D, 1, 1);
 	public static final AxisAlignedBB STAIR_SOUTH_TOP_AABB = new AxisAlignedBB(0, 0, 0, 1, 1, 0.5D);
 	public static final AxisAlignedBB STAIR_WEST_TOP_AABB = new AxisAlignedBB(0.5D, 0, 0, 1, 1, 1);
-	public final int type; //1 Stands for Full one ,2 Stands for Bottom one, 3 Stands for Top one.
-	
+	public final int type; // 1 Stands for Full one ,2 Stands for Bottom one, 3 Stands for Top one.
+
 	public BlockCustomStair(String name, Material material, CreativeTabs tab, int type) {
 		super(name, material, tab, false);
 		this.type = type;
 	}
-	
+
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
 			List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
-		switch(state.getValue(BlockHorizontal.FACING)){
+		switch (state.getValue(FACING)) {
 		case NORTH:
 			switch (type) {
 			case 1:
@@ -98,7 +97,7 @@ public class BlockCustomStair extends BlockHasFace {
 			break;
 		}
 	}
-	
+
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		switch (type) {
@@ -110,7 +109,7 @@ public class BlockCustomStair extends BlockHasFace {
 			return FULL_BLOCK_AABB;
 		default:
 			return FULL_BLOCK_AABB;
-			
+
 		}
 	}
 }

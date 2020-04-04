@@ -2,6 +2,7 @@ package chaos.mod.objects.item;
 
 import java.util.List;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -17,6 +18,12 @@ public class ItemWrench extends ItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		tooltip.add(TextFormatting.GRAY + net.minecraft.client.resources.I18n.format(getUnlocalizedName() + ".tooltip", ""));
+		if (stack.hasTagCompound()) {
+			int[] array = stack.getTagCompound().getIntArray("pos");
+			tooltip.add(TextFormatting.GRAY
+					+ I18n.format(getUnlocalizedName() + ".withtag.tooltip", array[0], array[2], array[1]));
+		} else {
+			tooltip.add(TextFormatting.GRAY + I18n.format(getUnlocalizedName() + ".withouttag.tooltip"));
+		}
 	}
 }
