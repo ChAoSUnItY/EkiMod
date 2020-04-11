@@ -1,0 +1,18 @@
+[21:32:00] [main/INFO]: Setting user: Player853
+[21:32:02] [Client thread/INFO]: LWJGL Version: 2.9.1
+[21:32:11] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Eki Mod
+[21:32:12] [Sound Library Loader/INFO]: Sound engine started
+[21:32:14] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[21:32:14] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[21:32:14] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Eki Mod
+[21:32:15] [Client thread/INFO]: Created: 1024x512 textures/blocks-atlas
+[21:32:15] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[21:32:16] [Sound Library Loader/INFO]: Sound engine started
+[21:32:42] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[21:32:42] [Server thread/INFO]: Generating keypair
+[21:32:43] [Server thread/INFO]: Preparing start region for level 0
+[21:32:43] [Server thread/INFO]: Changing view distance to 8, from 10
+[21:32:44] [Server thread/INFO]: Player853[local:E:ed61983f] logged in with entity id 290 at (-775.9557030829634, 4.0, -1336.419941727884)
+[21:32:44] [Server thread/INFO]: Player853 joined the game
+[21:32:46] [Server thread/INFO]: Player853 has just earned the achievement [Taking Inventory]
+[21:32:46] [Client thread/INFO]: [CHAT] Player853 has just earned the achievement [Taking Inventory]
