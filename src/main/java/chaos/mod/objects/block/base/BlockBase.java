@@ -20,7 +20,7 @@ public class BlockBase extends Block {
 	}
 	
 	@Override
-	public void registerBlockIcons(IIconRegister p_149651_1_) {
-		this.blockIcon = p_149651_1_.registerIcon(this.getTextureName());
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		this.blockIcon = iconRegister.registerIcon(this.getTextureName());
 	}
 }

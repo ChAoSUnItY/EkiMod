@@ -23,7 +23,7 @@ public class BlockEnamelWall extends Block {
 		setBlockTextureName(Reference.MODID+":"+name);
 		setCreativeTab(tab);
 
-		BlockInit.METABLOCKS.add(this);
+		BlockInit.META_BLOCKS.add(this);
 	}
 	
 	@Override
@@ -54,6 +54,7 @@ public class BlockEnamelWall extends Block {
 	}
 	
 	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list) {
 		for(int i=0;i<types.length;i++) {
 			list.add(new ItemStack(block, 1, i));
