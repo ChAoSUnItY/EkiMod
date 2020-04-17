@@ -8,6 +8,8 @@ No other use is allowed without permission from GukkyGukz.
 
 FREEWORKS LIST 
 wooden_bench /w its texture
+ticket_vendor /w its texture
+faregate(open/closed) /w its texture
 END OF LIST
 
 Please contact me when modifying or redistibuting. Thanks.
