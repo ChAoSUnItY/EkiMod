@@ -3,14 +3,12 @@ package chaos.mod.objects.block.machines;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import chaos.mod.Main;
 import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.base.BlockHasFace;
 import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.tileentity.TileEntityTicketGate;
+import chaos.mod.util.utils.UtilLogger;
+import chaos.mod.util.utils.UtilTextFormer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -59,11 +57,11 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!worldIn.isRemote) {
 			if (state.getValue(OPEN)) {
-				ResourceLocation resourceLocation = new ResourceLocation("block.iron_door.close");
 				worldIn.setBlockState(pos, state.withProperty(OPEN, false));
 				worldIn.markBlockRangeForRenderUpdate(pos, pos);
-				worldIn.playSound(null, pos, SoundEvent.REGISTRY.getObject(resourceLocation), SoundCategory.BLOCKS, 1,
-						1);
+				worldIn.playSound(null, pos,
+						SoundEvent.REGISTRY.getObject(new ResourceLocation("block.iron_door.close")),
+						SoundCategory.BLOCKS, 1, 1);
 			}
 		}
 	}
@@ -95,7 +93,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 									TileEntityAnchor tileEntityAnchor = (TileEntityAnchor) worldIn
 											.getTileEntity(tileEntityTicketGate.getAnchorPosForSub());
 									if (tileEntityAnchor.getAnchoredObjectsAmount() <= 0) {
-										Main.LOGGER.info(
+										UtilLogger.info(
 												"An anchor has been detected unusally. Break this gate might be the solution.");
 									}
 									tileEntityAnchor.decreaseAnchoredObjectsAmount();
@@ -132,7 +130,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 						}
 					}
 				} catch (NullPointerException e) {
-					Main.LOGGER.info(
+					UtilLogger.info(
 							"A NullPointerExcception has just been occured. Please report this to [Eki Mod] author.");
 				}
 			}
@@ -211,13 +209,13 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 		stack2.setTagCompound(nbt);
 		playerIn.getHeldItem(hand).shrink(1);
 		playerIn.entityDropItem(stack2, (float) playerIn.getYOffset());
-		playerIn.sendMessage(simpleForm(textSetPos, TextFormatting.GREEN));
+		playerIn.sendMessage(UtilTextFormer.form(textSetPos, TextFormatting.GREEN, false, false));
 	}
 
 	private void ticketAccessible(EntityPlayer playerIn, EnumHand hand, BlockPos pos, int price, int length) {
 		TextComponentString textAccessed = new TextComponentString(
 				I18n.format("chat.type.text.accessed", pos.getX(), pos.getY(), pos.getZ(), price, length));
-		playerIn.sendMessage(simpleForm(textAccessed, TextFormatting.GREEN));
+		playerIn.sendMessage(UtilTextFormer.form(textAccessed, TextFormatting.GREEN, false, false));
 		playerIn.getHeldItem(hand).shrink(1);
 	}
 
@@ -225,17 +223,17 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 		int price = stack.getTagCompound().getInteger("value");
 		TextComponentString textNotEnoughValue = new TextComponentString(
 				I18n.format("chat.type.text.notenoughvalue", price, Actaulprice));
-		playerIn.sendMessage(getFormed(textNotEnoughValue, TextFormatting.RED));
+		playerIn.sendMessage(UtilTextFormer.form(textNotEnoughValue, TextFormatting.RED, true, true));
 	}
 
 	private void missingValue(EntityPlayer playerIn) {
 		TextComponentString textMissingValue = new TextComponentString(I18n.format("chat.type.text.missingvalue"));
-		playerIn.sendMessage(getFormed(textMissingValue, TextFormatting.RED));
+		playerIn.sendMessage(UtilTextFormer.form(textMissingValue, TextFormatting.RED, true, true));
 	}
 
 	private void missingAnchor(EntityPlayer playerIn) {
 		TextComponentString textMissingAnchor = new TextComponentString(I18n.format("chat.type.text.missinganchor"));
-		playerIn.sendMessage(getFormed(textMissingAnchor, TextFormatting.RED));
+		playerIn.sendMessage(UtilTextFormer.form(textMissingAnchor, TextFormatting.RED, true, true));
 	}
 
 	/***
@@ -285,13 +283,13 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 					.getTileEntity(new BlockPos(array[0], array[2], array[1]));
 			tileEntityAnchor.increaseAnchoredObjectsAmount();
 		} else {
-			Main.LOGGER.info(
+			UtilLogger.info(
 					"Your anchor is missing, it won't affect the proccess but some calculation won't be correct.");
 		}
 		tileEntityTicketGate.saveAnchorPosIn(array[0], array[1], array[2]);
 		playerIn.sendMessage(textLinked);
 	}
-	
+
 	public void clearAnchorIfNeeded(TileEntityTicketGate tileEntityTicketGate) {
 		if (!tileEntityTicketGate.isAnchorExists()) {
 			tileEntityTicketGate.clearAnchorPos();
@@ -307,26 +305,15 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	public int calculateLength(ItemStack stack, BlockPos pos, World worldIn) {
 		TileEntityTicketGate tileEntity = (TileEntityTicketGate) worldIn.getTileEntity(pos);
 		int[] startPos = stack.getTagCompound().getIntArray("startPos");
-		int length = calculatePrice(startPos, tileEntity.getAnchorPos())/100;
+		int length = calculatePrice(startPos, tileEntity.getAnchorPos()) / 100;
 		return length;
 	}
 
 	public void open(EntityPlayer playerIn, World worldIn, BlockPos pos, IBlockState state) {
-		ResourceLocation resourceLocation = new ResourceLocation("block.iron_door.open");
-		;
 		worldIn.setBlockState(pos, state.withProperty(OPEN, true));
 		worldIn.scheduleBlockUpdate(pos, this, this.tickRate(worldIn), 5);
-		worldIn.playSound(null, pos, SoundEvent.REGISTRY.getObject(resourceLocation), SoundCategory.BLOCKS, 1, 1);
-	}
-	
-	private TextComponentString getFormed(TextComponentString text, @Nullable TextFormatting form) {
-		text.getStyle().setBold(true).setItalic(true).setColor(form == null ? TextFormatting.WHITE : form);
-		return text;
-	}
-	
-	private TextComponentString simpleForm(TextComponentString text, @Nonnull TextFormatting form) {
-		text.getStyle().setColor(form);
-		return text;
+		worldIn.playSound(null, pos, SoundEvent.REGISTRY.getObject(new ResourceLocation("block.iron_door.open")),
+				SoundCategory.BLOCKS, 1, 1);
 	}
 
 	@Override

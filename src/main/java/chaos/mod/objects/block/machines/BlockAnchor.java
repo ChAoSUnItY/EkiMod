@@ -5,6 +5,7 @@ import java.util.List;
 import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.base.BlockBase;
 import chaos.mod.tileentity.TileEntityAnchor;
+import chaos.mod.util.utils.UtilTextFormer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -43,7 +44,7 @@ public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 					stack.setTagCompound(nbt);
 					TextComponentString text = new TextComponentString(
 							I18n.format("chat.type.text.anchoredamounts", tileEntityAnchor.getAnchoredObjectsAmount()));
-					text.getStyle().setColor(TextFormatting.WHITE);
+					UtilTextFormer.form(text, null, false, false);
 					playerIn.sendMessage(text);
 				}
 			}

@@ -13,34 +13,23 @@ public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		BlockPos pos = new BlockPos(x, y, z);
-		if (ID == Reference.GUITICKETVENDOR) {
-			return new ContainerTicketVendor(player.inventory,
-					(TileEntityTicketVendor) world.getTileEntity(pos), player);
+		switch (ID) {
+		case Reference.GUITICKETVENDOR:
+			return new ContainerTicketVendor(player.inventory, (TileEntityTicketVendor) world.getTileEntity(pos),
+					player);
+		default:
+			return null;
 		}
-		return null;
-		/*
-		 * switch (ID) { case Reference.GUITICKETVENDOR: return new
-		 * ContainerTicketVendor(player.inventory, (TileEnitityTicketVendor)
-		 * world.getTileEntity(new BlockPos(x, y, z))); default: return null; }
-		 */
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		BlockPos pos = new BlockPos(x, y, z);
-		if (ID == Reference.GUITICKETVENDOR) {
-			return new GuiTicketVendor(player.inventory, 
-					(TileEntityTicketVendor) world.getTileEntity(pos), player);
-		}
-		return null;
-		/*
 		switch (ID) {
 		case Reference.GUITICKETVENDOR:
-			return new GuiTicketVendor(player.inventory,
-					(TileEnitityTicketVendor) world.getTileEntity(new BlockPos(x, y, z)));
+			return new GuiTicketVendor(player.inventory, (TileEntityTicketVendor) world.getTileEntity(pos), player);
 		default:
 			return null;
 		}
-		*/
 	}
 }
