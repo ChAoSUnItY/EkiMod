@@ -1,5 +1,6 @@
 package chaos.mod.creativetabs;
 
+import chaos.mod.init.ItemInit;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -10,6 +11,6 @@ public class Eki_misc extends CreativeTabs{
 
 	@Override
 	public Item getTabIconItem() {
-		return null;
+		return ItemInit.WRENCH;
 	}
 }

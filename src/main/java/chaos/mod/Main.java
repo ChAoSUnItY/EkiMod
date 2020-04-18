@@ -4,7 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import chaos.mod.creativetabs.Eki_block;
+import chaos.mod.creativetabs.Eki_misc;
 import chaos.mod.init.BlockInit;
+import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.item.ItemBlockMeta;
 import chaos.mod.objects.block.item.ItemBlockSlab;
 import chaos.mod.proxy.ServerProxy;
@@ -21,9 +23,9 @@ import net.minecraft.creativetab.CreativeTabs;
 public class Main {
 	public static final Logger LOGGER = LogManager.getLogger("Eki Mod");
 	public static final CreativeTabs eki_block_tab = new Eki_block("eki_block");
+	public static final CreativeTabs eki_misc_tab = new Eki_misc("eki_misc");
 	// public static final CreativeTabs eki_station_tab = new
 	// Eki_station("eki_station");
-	// public static final CreativeTabs eki_misc_tab =new Eki_misc("eki_misc");
 
 	@Instance("EkiMod")
 	public static Main instance;
@@ -33,17 +35,16 @@ public class Main {
 
 	@EventHandler
 	public void preInit(FMLInitializationEvent event) {
-		LOGGER.info(BlockInit.HALF_SLAB.size());
 		for (int i = 0; i < BlockInit.BLOCKS.size(); i++) {
 			GameRegistry.registerBlock(BlockInit.BLOCKS.get(i),
 					BlockInit.BLOCKS.get(i).getUnlocalizedName().substring(5));
 		}
-
+		LOGGER.info("Blocks Registered!");
 		for (int i = 0; i < BlockInit.META_BLOCKS.size(); i++) {
 			GameRegistry.registerBlock(BlockInit.META_BLOCKS.get(i), ItemBlockMeta.class,
-					BlockInit.META_BLOCKS.get(i).getUnlocalizedName());
+					BlockInit.META_BLOCKS.get(i).getUnlocalizedName().substring(5));
 		}
-
+		LOGGER.info("Blocks /w meta Registered!");
 		for (int i = 0; i < BlockInit.HALF_SLAB.size(); i++) {
 			GameRegistry.registerBlock(BlockInit.HALF_SLAB.get(i), ItemBlockSlab.class,
 					BlockInit.HALF_SLAB.get(i).getUnlocalizedName().substring(5), BlockInit.HALF_SLAB.get(i),
@@ -52,6 +53,11 @@ public class Main {
 					BlockInit.FULL_SLAB.get(i).getUnlocalizedName().substring(5), BlockInit.HALF_SLAB.get(i),
 					BlockInit.FULL_SLAB.get(i));
 		}
+		LOGGER.info("Slabs Registered!");
+		for (int i = 0; i < ItemInit.ITEMS.size(); i++) {
+			GameRegistry.registerItem(ItemInit.ITEMS.get(i), ItemInit.ITEMS.get(i).getUnlocalizedName().substring(5));
+		}
+		LOGGER.info("Items Registered!");
 	}
 
 	@EventHandler

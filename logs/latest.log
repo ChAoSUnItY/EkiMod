@@ -1,23 +1,30 @@
-[20:15:58] [main/INFO]: Setting user: Player25
-[20:16:03] [Client thread/INFO]: LWJGL Version: 2.9.1
-[20:16:24] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Eki Mod
-[20:16:25] [Sound Library Loader/INFO]: Sound engine started
-[20:16:29] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
-[20:16:29] [Client thread/INFO]: Created: 16x16 textures/items-atlas
-[20:16:29] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Eki Mod
-[20:16:31] [Client thread/INFO]: Created: 1024x1024 textures/blocks-atlas
-[20:16:31] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[20:16:32] [Sound Library Loader/INFO]: Sound engine started
-[20:16:43] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[20:16:43] [Server thread/INFO]: Generating keypair
-[20:16:45] [Server thread/INFO]: Preparing start region for level 0
-[20:16:46] [Server thread/INFO]: Preparing spawn area: 17%
-[20:16:47] [Server thread/INFO]: Changing view distance to 8, from 10
-[20:16:48] [Server thread/INFO]: Player25[local:E:c1e86491] logged in with entity id 298 at (-777.7109732083196, 4.0, -1343.8803996732777)
-[20:16:48] [Server thread/INFO]: Player25 joined the game
-[20:16:49] [Server thread/INFO]: Saving and pausing game...
-[20:16:49] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[20:16:49] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[20:16:49] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[20:16:50] [Server thread/INFO]: Player25 has just earned the achievement [Taking Inventory]
-[20:16:50] [Client thread/INFO]: [CHAT] Player25 has just earned the achievement [Taking Inventory]
+[16:21:56] [main/INFO]: Setting user: Player646
+[16:21:58] [Client thread/INFO]: LWJGL Version: 2.9.1
+[16:22:09] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Eki Mod
+[16:22:10] [Sound Library Loader/INFO]: Sound engine started
+[16:22:17] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[16:22:17] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[16:22:17] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Eki Mod
+[16:22:18] [Client thread/INFO]: Created: 1024x1024 textures/blocks-atlas
+[16:22:19] [Client thread/INFO]: Created: 512x512 textures/items-atlas
+[16:22:19] [Sound Library Loader/INFO]: Sound engine started
+[16:22:27] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[16:22:27] [Server thread/INFO]: Generating keypair
+[16:22:31] [Server thread/INFO]: Preparing start region for level 0
+[16:22:31] [Server thread/INFO]: Changing view distance to 8, from 10
+[16:22:32] [Server thread/INFO]: Player646[local:E:58d6c426] logged in with entity id 280 at (-746.3293653735982, 4.0, -1336.6778521009867)
+[16:22:32] [Server thread/INFO]: Player646 加入了遊戲
+[16:22:34] [Server thread/INFO]: Player646 獲得成就 [盤點庫存] 
+[16:22:34] [Client thread/INFO]: [CHAT] Player646 獲得成就 [盤點庫存] 
+[16:22:47] [Client thread/INFO]: [CHAT] eki:tessera, eki:washed_granolithic_finish_stairs, eki:concrete_half_slab, eki:wrench, eki:asphalt, eki:asphalt_half_slab, eki:enamel_wall_top, eki:architectural_concrete_half_slab, eki:nichogake_stairs, eki:washed_granolithic_finish, eki:nichogake_full_slab, eki:enamel_wall_s, eki:washed_granolithic_finish_full_slab, eki:architectural_concrete_stairs, eki:architectural_concrete, eki:concrete, eki:ticket, eki:concrete_full_slab, eki:asphalt_full_slab, eki:architectural_concrete_full_slab, eki:rangefinder, eki:asphalt_stairs, eki:enamel_wall_bot, eki:nichogake, eki:nichogake_half_slab, eki:washed_granolithic_finish_half_slab, eki:concrete_stairs
+[16:22:56] [Server thread/INFO]: Saving and pausing game...
+[16:22:56] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[16:22:56] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[16:22:56] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[16:22:59] [Server thread/INFO]: Stopping server
+[16:22:59] [Server thread/INFO]: Saving players
+[16:22:59] [Server thread/INFO]: Saving worlds
+[16:22:59] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[16:22:59] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[16:22:59] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[16:23:15] [Client thread/INFO]: Stopping!

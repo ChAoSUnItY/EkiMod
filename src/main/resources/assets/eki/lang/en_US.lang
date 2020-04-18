@@ -1,0 +1,158 @@
+//ChAoS_UnItY , GukkyGukz
+//BLOCKSINIT
+//STATION SECTION (DISABLED)
+//station stuff
+tile.handrail.name=Handrail
+tile.handrail_corner.name=Handrail Corner
+//platforms
+tile.platform_edge.name=Platform Edge
+tile.platform_edge_with_guide_brick.name=Platform Edge With Guide Brick
+tile.platform_edge_with_guide_brick_and_line.name=Platform Edge with Guide Brick and Line
+tile.platform_edge_with_line.name=Platform Edge with Line
+tile.platform_asphalt_with_guide_brick.name=Platform Brick with Line (Asphalt)
+tile.platform_edge_with_line_and_light_off.name=Platform Edge with Line and Light
+tile.platform_edge_with_line_and_light_on.name=Platform Edge with Line and Light (On)
+tile.platform_edge_opf.name=Elevated Platform Edge 
+tile.platform_edge_with_guide_brick_opf.name=Elevated Platform Edge With Guide Brick
+tile.platform_edge_with_guide_brick_and_line_opf.name=Elevated Platform Edge with Guide Brick and Line
+tile.platform_edge_with_line_opf.name=Elevated Platform Edge with Line
+tile.platform_asphalt_with_guide_brick_opf.name=Elevated Platform Brick with Line (Asphalt)
+tile.platform_edge_with_line_and_light_off_opf.name=Elevated Platform Edge with Line and Light
+tile.platform_edge_with_line_and_light_on_opf.name=Elevated Platform Edge with Line and Light (On)
+//decorations
+tile.wooden_bench.name=Wooden Bench
+//station pillars
+tile.station_pillar_base.name=Station Pillar Base
+tile.station_pillar_center.name=Station Pillar Center
+tile.station_pillar_top.name=Station Pillar Top
+tile.station_pillar_base_with_fire_extinguisher_in.name=Station Pillar Base with Fire Extinguisher
+//beams and panels
+tile.panel_black.name=Panel (Black WIP)
+tile.panel_white.name=Panel (White WIP)
+tile.panel_beam_with_cross_black.name=Panel Beam with Cross (Black)
+tile.panel_beam_with_cross_white.name=Panel Beam with Cross (White)
+tile.bending_beam_white.name=Bending Beam (White)
+tile.bending_beam_black.name=Bending Beam (Black)
+tile.support_beam_white.name=Support Beam (White)
+tile.support_beam_black.name=Support Beam (Black)
+tile.panel_beam_black.name=Panel Beam (Black)
+tile.panel_beam_white.name=Panel Beam (White)
+tile.beam_black.name=Beam (Black)
+tile.beam_white.name=Beam (White)
+//BLOCKS (PART DISABLED)
+//blocks
+tile.retaining_wall.name=Retaining Wall
+tile.retaining_wall_corner.name=Retaining Wall Corner
+tile.architectural_concrete.name=Architectural Concrete
+tile.concrete.name=Concrete
+tile.nichogake.name=Nichogake
+tile.washed_granolithic_finish.name=Washed Granolithic Finish
+tile.asphalt.name=Asphalt
+tile.enamel_wall_bot_blue.name=Enamel Wall (Blue Bottom)
+tile.enamel_wall_bot_green.name=Enamel Wall (Green Bottom)
+tile.enamel_wall_bot_cyan.name=Enamel Wall (Cyan Bottom)
+tile.enamel_wall_bot_purple.name=Enamel Wall (Purple Bottom)
+tile.enamel_wall_bot_red.name=Enamel Wall (Red Bottom)
+tile.enamel_wall_bot_yellow.name=Enamel Wall (Yellow Bottom)
+tile.enamel_wall_bot_white.name=Enamel Wall (White Bottom)
+tile.enamel_wall_s_blue.name=Enamel Wall (Blue with Tile)
+tile.enamel_wall_s_green.name=Enamel Wall (Green with Tile)
+tile.enamel_wall_s_cyan.name=Enamel Wall (Cyan with Tile)
+tile.enamel_wall_s_purple.name=Enamel Wall (Purple with Tile)
+tile.enamel_wall_s_red.name=Enamel Wall (Red with Tile)
+tile.enamel_wall_s_yellow.name=Enamel Wall (Yellow with Tile)
+tile.enamel_wall_s_white.name=Enamel Wall (White with Tile)
+tile.enamel_wall_top_blue.name=Enamel Wall (Blue Top)
+tile.enamel_wall_top_green.name=Enamel Wall (Green Top)
+tile.enamel_wall_top_cyan.name=Enamel Wall (Cyan Top)
+tile.enamel_wall_top_purple.name=Enamel Wall (Purple Top)
+tile.enamel_wall_top_red.name=Enamel Wall (Red Top)
+tile.enamel_wall_top_yellow.name=Enamel Wall (Yellow Top)
+tile.enamel_wall_top_white.name=Enamel Wall (White Top)
+tile.tessera_black_dull.name=Mosaic Tessera (Dull Black)
+tile.tessera_cerulean_smooth.name=Mosaic Tessera (Cerulean Blue)
+tile.tessera_cerulean.name=Mosaic Tessera (Smooth Cerulean Blue)
+tile.tessera_blue_slate.name=Mosaic Tessera (Slate Blue)
+tile.tessera_blue_teal.name=Mosaic Tessera (Teal Blue)
+tile.tessera_brown_tortilla.name=Mosaic Tessera (Tortilla Brown)
+tile.tessera_gray_dove.name=Mosaic Tessera (Gray)
+tile.tessera_gray_fossil.name=Mosaic Tessera (Dove Gray)
+tile.tessera_gray.name=Mosaic Tessera (Fossil Gray)
+tile.tessera_green_fern.name=Mosaic Tessera (Fern Green)
+tile.tessera_green_lime.name=Mosaic Tessera (Lime Green)
+tile.tessera_orange_fire.name=Mosaic Tessera (Fire Orange)
+tile.tessera_purple_heather.name=Mosaic Tessera (Purple Heather)
+tile.tessera_red_rose.name=Mosaic Tessera (Red)
+tile.tessera_red.name=Mosaic Tessera (Rose Red)
+tile.tessera_yellow.name=Mosaic Tessera (Yellow)
+//stairs
+tile.architectural_concrete_stairs.name=Architectural Concrete Stairs
+tile.concrete_stairs.name=Concrete Stairs
+tile.nichogake_stairs.name=Nichogake Stairs
+tile.washed_granolithic_finish_stairs.name=Washed Granolithic Finish Stairs
+tile.asphalt_stairs.name=Asphalt Stairs
+//slabs
+tile.architectural_concrete_half_slab.name=Architectural Concrete Slab
+tile.concrete_half_slab.name=Concrete Slab
+tile.nichogake_half_slab.name=Nichogake Slab
+tile.washed_granolithic_finish_half_slab.name=Washed Granolithic Finish Slab
+tile.asphalt_half_slab.name=Asphalt Slab
+//side slabs (DISABLED)
+tile.retaining_wall_side_slab.name=Retaining Wall Side Slab
+tile.architectural_concrete_side_slab.name=Architectural Concrete Side Slab
+tile.concrete_side_slab.name=Concrete Side Slab
+tile.nichogake_side_slab.name=Nichogake Side Slab
+tile.washed_granolithic_finish_side_slab.name=Washed Granolithic Finish Side Slab
+tile.asphalt_side_slab.name=Asphalt Side Slab
+//custom stairs (DISABLED)
+tile.station_stairs.name=Station Stairs
+tile.station_stairs_gentle_top.name=Station Stairs Gentle (Top)
+tile.station_stairs_gentle_bot.name=Station Stairs Gentle (Bottom)
+//LIGHT SECTION (DISABLED)
+tile.grille_light_white.name=Grille Light (White)
+tile.grille_light_black.name=Grille Light (Black)
+tile.tunnel_light.name=Tunnel Light
+tile.wall_neon_light.name=Wall Neon Light
+
+//ITEMINIT (PART DISABLED)
+//TOOLS
+item.wrench.name=Wrench
+item.wrench.tooltip=A tool used for adjustment (No usage for now)
+item.wrench.withouttag.tooltip=A tool to bind anchor to ticket gate.
+item.wrench.withtag.tooltip=A tool to bind anchor to ticket gate. This tool has been bound to %d, %d, %d.
+item.ticket.name=Ticket
+item.ticket.tooltip=Worth %d dollars. :)
+item.rangefinder.name=Rangefinder
+item.rangefinder.tooltip=Start position : %d, %d, %d.
+
+itemGroup.eki_block=Eki Block
+itemGroup.eki_station=Eki Station (DISABLED)
+itemGroup.eki_misc= Eki Misc
+
+//TILEENTITYS (DISABLED)
+tile.ticket_vendor.name=Ticket vendor
+tile.ticket_gate.name=Ticket gate
+tile.anchor.name=Anchor
+tile.anchor.tooltip=A block use to bind ticket gates.
+tile.anchor.warning.tooltip=Breaking this block that had been bound to gates is not a clever way to reset......
+
+//GUIS (DISABLED)
+container.ticket_vendor.state.success=Successfully Ticketed!
+container.ticket_vendor.state.shortage=Balance is shortage!
+container.ticket_vendor.state.failed=%d is invalid for value!
+container.ticket_vendor.state.illegal=%s typed an invalid value in ticket vendor.
+container.ticket_vendor.state.waiting=Waiting......
+container.ticket_vendor.button.provide=Ticket
+container.ticket_vendor.button.clear=Clear
+container.ticket_vendor.text.default=Insert value.
+
+//TEXTS (PART DISABLED)
+chat.type.text.anchoredamounts=This anchor had been bound to %d ticket gates!
+chat.type.text.setpos=Passed from %d, %d, %d!
+chat.type.text.accessed=Exited from %d, %d, %d! Total Cost: %d, traveled for %d blocks!
+chat.type.text.notenoughvalue=Can't exit! This ticket is worth %d, but it needs %d to exit.
+chat.type.text.missingvalue=This ticket is not valuable!
+chat.type.text.missinganchor=Please select an anchor first!
+chat.type.text.anchorlinked=Connected to the anchor!
+chat.type.text.rangefinder.result=3D distance is %d, surface distance is %d.
+chat.type.text.rangefinder.getpos=Successfully bound to %d, %d, %d！

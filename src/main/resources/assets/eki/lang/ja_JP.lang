@@ -1,0 +1,157 @@
+//GukkyGukz
+//BLOCKINIT
+//STATION SECTION (DISABLED)
+//station stuff
+tile.handrail.name=手すり
+tile.handrail_corner.name=手すりコーナー
+//platforms
+tile.platform_edge.name=ホーム縁端
+tile.platform_edge_with_guide_brick.name=ホーム縁端滑り止めブロック
+tile.platform_edge_with_guide_brick_and_line.name=ホーム縁端滑り止めブロック (端線あり)
+tile.platform_edge_with_line.name=ホーム縁端 (端線あり)
+tile.platform_asphalt_with_guide_brick.name=黄色い点字ブロックアスファルト
+tile.platform_edge_with_line_and_light_off.name=ホーム縁端滑り止めブロック (端線スレッドラインあり)
+tile.platform_edge_with_line_and_light_on.name=ホーム縁端滑り止めブロック (端線スレッドラインあり)　(点)
+tile.platform_edge_opf.name=高いホーム縁端
+tile.platform_edge_with_guide_brick_opf.name=高いホーム縁端滑り止めブロック
+tile.platform_edge_with_guide_brick_and_line_opf.name=高いホーム縁端滑り止めブロック (端線あり)
+tile.platform_edge_with_line_opf.name=高いホーム縁端 (端線あり)
+tile.platform_asphalt_with_guide_brick_opf.name=高い黄色い点字ブロックアスファルト
+tile.platform_edge_with_line_and_light_off_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)
+tile.platform_edge_with_line_and_light_on_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)　(点)
+//beams and panels
+tile.panel_black.name=案内モニター (黒 WIP)
+tile.panel_white.name=案内モニター (白 WIP)
+tile.panel_beam_with_cross_black.name=モニター柱と桁 (黒)
+tile.panel_beam_with_cross_white.name=モニター柱と桁 (白)
+tile.bending_beam_white.name=曲げ桁 (白)
+tile.bending_beam_black.name=曲げ桁 (黒)
+tile.support_beam_white.name=桁端 (白)
+tile.support_beam_black.name=桁端 (黒)
+tile.panel_beam_black.name=モニター柱 (黒)
+tile.panel_beam_white.name=モニター柱 (白)
+tile.beam_black.name=桁 (黒)
+tile.beam_white.name=桁 (白)
+//decorations
+tile.wooden_bench.name=木のベンチ
+//station pillars
+tile.station_pillar_base.name=駅舎柱 (ベース)
+tile.station_pillar_center.name=駅舎柱 (中)
+tile.station_pillar_top.name=駅舎柱 (トップ)
+tile.station_pillar_base_with_fire_extinguisher_in.name=駅舎柱 (消火器ありのベース)
+//BLOCKS (PART DISABLED)
+//blocks
+tile.retaining_wall.name=擁壁
+tile.retaining_wall_corner.name=擁壁コーナー
+tile.architectural_concrete.name=打放しコンクリート
+tile.concrete.name=コンクリート
+tile.nichogake.name=二丁掛
+tile.washed_granolithic_finish.name=人造石洗出し
+tile.asphalt.name=アスファルト
+tile.enamel_wall_bot_blue.name=エナメル壁 (青色のベース)
+tile.enamel_wall_bot_green.name=エナメル壁 (緑色のベース)
+tile.enamel_wall_bot_cyan.name=エナメル壁 (青緑色のベース)
+tile.enamel_wall_bot_purple.name=エナメル壁 (紫色のベース)
+tile.enamel_wall_bot_red.name=エナメル壁 (赤色のベース)
+tile.enamel_wall_bot_yellow.name=エナメル壁 (黄色のベース)
+tile.enamel_wall_bot_white.name=エナメル壁 (白色のベース)
+tile.enamel_wall_s_blue.name=エナメル壁 (青色のタイル)
+tile.enamel_wall_s_green.name=エナメル壁 (緑色のタイル)
+tile.enamel_wall_s_cyan.name=エナメル壁 (青緑色のタイル)
+tile.enamel_wall_s_purple.name=エナメル壁 (紫色のタイル)
+tile.enamel_wall_s_red.name=エナメル壁 (赤色のタイル)
+tile.enamel_wall_s_yellow.name=エナメル壁 (黄色のタイル)
+tile.enamel_wall_s_white.name=エナメル壁 (白色のタイル)
+tile.enamel_wall_top_blue.name=エナメル壁 (青色のトップ)
+tile.enamel_wall_top_green.name=エナメル壁 (緑色のトップ)
+tile.enamel_wall_top_cyan.name=エナメル壁 (青緑色のトップ)
+tile.enamel_wall_top_purple.name=エナメル壁 (紫色のトップ)
+tile.enamel_wall_top_red.name=エナメル壁 (赤色のトップ)
+tile.enamel_wall_top_yellow.name=エナメル壁 (黄色のトップ)
+tile.enamel_wall_top_white.name=エナメル壁 (白色のトップ)
+tile.tessera_black_dull.name=タイル (暗黒色)
+tile.tessera_cerulean_smooth.name=タイル (紺碧色)
+tile.tessera_cerulean.name=タイル (スムーズ紺碧色)
+tile.tessera_blue_slate.name=タイル (スレートブルー)
+tile.tessera_blue_teal.name=タイル (青緑色)
+tile.tessera_brown_tortilla.name=タイル (トルティーヤブラウン)
+tile.tessera_gray_dove.name=タイル (灰色)
+tile.tessera_gray_fossil.name=タイル(ダブグレー)
+tile.tessera_gray.name=タイル (化石灰)
+tile.tessera_green_fern.name=タイル (シダグリーン)
+tile.tessera_green_lime.name=タイル (ライムグリーン)
+tile.tessera_orange_fire.name=タイル (ファイアオレンジ)
+tile.tessera_purple_heather.name=タイル (ヘザーパープル)
+tile.tessera_red_rose.name=タイル (赤色)
+tile.tessera_red.name=タイル (ローズレッド)
+tile.tessera_yellow.name=タイル (黄色)
+//stairs
+tile.architectural_concrete_stairs.name=打放しコンクリートの階段
+tile.concrete_stairs.name=コンクリートの階段
+tile.nichogake_stairs.name=二丁掛の階段
+tile.washed_granolithic_finish_stairs.name=人造石洗出しの階段
+tile.asphalt_stairs.name=アスファルトの階段
+//slabs
+tile.architectural_concrete_half_slab.name=打放しコンクリートのハーフブロック
+tile.concrete_half_slab.name=コンクリートのハーフブロック
+tile.nichogake_half_slab.name=二丁掛のハーフブロック
+tile.washed_granolithic_finish_half_slab.name=人造石洗出しのハーフブロック
+tile.asphalt_half_slab.name=アスファルトのハーフブロック
+//side slabs (DISABLED)
+tile.retaining_wall_side_slab.name=擁壁のサイドブロック
+tile.architectural_concrete_side_slab.name=打放しコンクリートのサイドブロック
+tile.concrete_side_slab.name=コンクリートのサイドブロック
+tile.nichogake_side_slab.name=二丁掛のサイドブロック
+tile.washed_granolithic_finish_side_slab.name=人造石洗出しのサイドブロック
+tile.asphalt_side_slab.name=アスファルトのサイドブロック
+//custom stairs (DISABLED)
+tile.station_stairs.name=駅の階段
+tile.station_stairs_gentle_top.name=駅の階段ハーフブロック (トップ)
+tile.station_stairs_gentle_bot.name=駅の階段ハーフブロック (ベース)
+//LIGHT SECTION (DISABLED)
+tile.grille_light_white.name=グリルライト (白)
+tile.grille_light_black.name=グリルライト (黒)
+tile.tunnel_light.name=トンネル照明
+tile.wall_neon_light.name=ウォールネオンライト
+
+//ITEMINIT (PART DISABLED)
+//TOOLS
+item.wrench.name=レンチ
+item.wrench.withouttag.tooltip=アンカーを改札にバインドするためのツール。
+item.wrench.withtag.tooltip=アンカーブロックをロックに設定するツール。%d, %d, %dに設定します。
+item.ticket.name=きっぷ
+item.ticket.tooltip=残高は %d 。 :)
+item.rangefinder.name=距離計
+item.rangefinder.tooltip=始点：%d, %d, %d.
+
+itemGroup.eki_block=駅ブロック
+itemGroup.eki_station=駅装飾
+itemGroup.eki_misc=駅その他
+
+//TILEENTITYS (DISABLED)
+tile.ticket_vendor.name=切符売り場
+tile.ticket_gate.name=改札
+tile.anchor.name=アンカー
+tile.anchor.tooltip=改札をバインドするためのブロック。
+tile.anchor.warning.tooltip=バインドされた場合はこのブロックを破壊するはいい考えではありません……
+
+//GUIS (DISABLED)
+container.ticket_vendor.state.success=発券しました！
+container.ticket_vendor.state.shortage=残高が不足しています：%d
+container.ticket_vendor.state.failed=%d は有効な金額ではありません
+container.ticket_vendor.state.illegal=%s が発券機に無効な金額を入力しました
+container.ticket_vendor.state.waiting=お待ちください......
+container.ticket_vendor.button.provide=発券
+container.ticket_vendor.button.clear=削除
+container.ticket_vendor.text.default=金高を入力してください
+
+//TEXTS (PART DISABLED)
+chat.type.text.anchoredamounts=このアンカーは %d 改札機にバインドされていました！
+chat.type.text.setpos=%d, %d, %d から通過しました！
+chat.type.text.accessed=%d, %d, %d を終了しました！総費用：%d、%dブロックを移動しました！
+chat.type.text.notenoughvalue=駅を出ることができません！残高は%d、%dが必要です。
+chat.type.text.missingvalue=この切符は価値がありません！
+chat.type.text.missinganchor=アンカーブロックを選択してください！
+chat.type.text.anchorlinked=アンカーにバインドしました！
+chat.type.text.rangefinder.result=立体距離：%d，平面距離：%d。
+chat.type.text.rangefinder.getpos=始点を％d、％d、％dにバインドしました！
