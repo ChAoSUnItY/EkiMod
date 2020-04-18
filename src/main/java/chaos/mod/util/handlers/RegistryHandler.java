@@ -1,7 +1,9 @@
 package chaos.mod.util.handlers;
 
+import chaos.mod.Main;
 import chaos.mod.init.BlockInit;
 import chaos.mod.init.ItemInit;
+import chaos.mod.util.Reference;
 import chaos.mod.util.interfaces.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -9,6 +11,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @EventBusSubscriber
 public class RegistryHandler{
@@ -36,5 +39,10 @@ public class RegistryHandler{
 				((IHasModel)block).registerModels();
 			}
 		}
+	}
+	
+	public static void preInit() {
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
+		PacketHandler.registerMessages(Reference.MODID);
 	}
 }
