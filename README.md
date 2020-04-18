@@ -1,16 +1,22 @@
-<p style="text-align: center;"><span style="font-size: 36px;"><strong>Caution! This project is under development!</strong></span></p>
-<p style="text-align: center;"><span style="font-size: 36px;"><strong>For Further Information, please check the link below!</strong></span></p>
-<p style="text-align: center;"><span style="font-size: 24px;"><strong><a href="https://discord.gg/8K2rUgE"><b>[Discord]</b></a></strong></span></p>
-<p style="text-align: center;"><img src="https://img.shields.io/discord/475654902610395146?label=Frontier%20Union&amp;logo=discord&amp;style=plastic" alt="Discord" /></p>
-<p style="text-align: center;"><span style="font-size: 24px;"><strong>-------------------------------------------------------------------------------------------------</strong></span></p>
-<p style="text-align: left;"><span style="font-size: 24px;"><strong>Eki(In the origin Japanese, "Station") Mod is a mod focus on station decorations and railway decorations.&nbsp;</strong></span></p>
-<p style="text-align: center;"><span style="font-size: 24px;"><strong>-------------------------------------------------------------------------------------------------</strong></span></p>
-<p style="text-align: left;"><span style="font-size: 36px;"><strong>FAQ:</strong></span></p>
-<ol>
-<li><span style="font-size: 24px;"><strong>Can I add this mod into my public(or private) modpack?</strong></span></li>
-<li><span style="font-size: 24px;">Yes! Of course you can do that!</span></li>
-<li><span style="font-size: 24px;"><strong>I have an issue / bug / crash / report / request, where can&nbsp;I send it?</strong></span></li>
-<li><span style="font-size: 24px;">There are several places you can do that, but I am mainly active on Discord, so Discord could be the best place to do that! Join this server for further information<a href="https://discord.gg/8K2rUgE"><strong> [Discord]</strong></a></span></li>
-<li><span style="font-size: 24px;"><strong>Will you make other versions of Eki Mod?</strong></span></li>
-<li><span style="font-size: 24px;">Yes, I will. But my plan is once 1.12.2 one gets a huge update, then all the other versions of Eki Mod will also get an update, but this plan might dump at any seconds due to I'm the only developer of Eki Mod, so stay tuned and make sure you've followed this project.</span></li>
-</ol>
+## Eki Mod 車站模組 <br>
+### A mod based on 1.7.10 Stations Mod! <br> 以1.7.10 Stations Mod為基底的模組!
+
+------------
+
+[![CurseForge](https://cf.way2muchnoise.eu/full_362606_%20%E7%B8%BD%E4%B8%8B%E8%BC%89%E9%87%8F.svg)](https://www.curseforge.com/minecraft/mc-mods/eki-mod) [![CurseForge](https://cf.way2muchnoise.eu/versions/%20%E9%81%A9%E7%94%A8%E7%89%88%E6%9C%AC%20%20_362606_all.svg)](https://www.curseforge.com/minecraft/mc-mods/eki-mod/files) <br> [![CurseForge](https://cf.way2muchnoise.eu/full_362606_Total%20Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/eki-mod) [![CurseForge](https://cf.way2muchnoise.eu/versions/362606_all.svg)](https://www.curseforge.com/minecraft/mc-mods/eki-mod/files)
+[![](https://img.shields.io/badge/Support%20%20Languages-%E7%B9%81%E9%AB%94%E4%B8%AD%E6%96%87%20%7C%20English%20%7C%20%E6%97%A5%E6%9C%AC%E8%AA%9E-green)]()
+
+------------
+
+> For more mod Informations, please go to the Curseforge page of this mod.
+> 更多說明請至Curseforge上Eki Mod的頁面了解。
+
+TODOs : 
+- Github Workflow
+- More languages support
+- In-game Tutorial Book
+
+將來預計實作 :
+- Github Workflow
+- 更多語言的支援
+- 遊戲內教學書
