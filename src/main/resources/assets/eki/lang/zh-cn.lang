@@ -1,0 +1,156 @@
+//ChAoS_UnItY
+//BLOCKINIT
+//STATION SECTION
+//station stuff
+tile.handrail.name=扶手
+tile.handrail_corner.name=扶手拐角
+//platforms
+tile.platform_edge.name=站台边缘
+tile.platform_edge_with_guide_brick.name=站台边缘（含盲道）
+tile.platform_edge_with_guide_brick_and_line.name=站台边缘（含盲道和安全线）
+tile.platform_edge_with_line.name=站台边缘（含安全线）
+tile.platform_asphalt_with_guide_brick.name=站台砖（含安全线，沥青）
+tile.platform_edge_with_line_and_light_off.name=站台边缘（含盲道，安全线和指示灯）
+tile.platform_edge_with_line_and_light_on.name=站台边缘（含盲道，安全线和开启的指示灯）
+tile.platform_edge_opf.name=增高的站台边缘
+tile.platform_edge_with_guide_brick_opf.name=增高的站台边缘（含盲道）
+tile.platform_edge_with_guide_brick_and_line_opf.name=增高的站台边缘（含盲道和安全线）
+tile.platform_edge_with_line_opf.name=增高的站台边缘（含安全线）
+tile.platform_edge_with_line_and_light_off_opf.name=增高的站台边缘（含盲道，安全线和指示灯）
+tile.platform_edge_with_line_and_light_on_opf.name=增高的站台边缘（含盲道，安全线和开启的指示灯）
+//decorations
+tile.wooden_bench.name=木椅
+//beams and panels
+tile.panel_black.name=屏幕（黑色 WIP）
+tile.panel_white.name=屏幕（白色 WIP）
+tile.panel_beam_with_cross_black.name=屏幕支架（含梁，黑色）
+tile.panel_beam_with_cross_white.name=屏幕支架（含梁，白色）
+tile.bending_beam_white.name=弯曲支架（白色）
+tile.bending_beam_black.name=弯曲支架（黑色）
+tile.support_beam_white.name=支撑梁（白色）
+tile.support_beam_black.name=支撑梁（黑色）
+tile.panel_beam_black.name=屏幕支架（白色）
+tile.panel_beam_white.name=屏幕支架（白色）
+tile.beam_black.name=横梁（黑色）
+tile.beam_white.name=横梁（白色）
+//station pillars
+tile.station_pillar_base.name=车站柱子（底部）
+tile.station_pillar_center.name=车站柱子（中间）
+tile.station_pillar_top.name=车站柱子（顶部）
+tile.station_pillar_base_with_fire_extinguisher_in.name=车站柱子（含灭火器，底部）
+//BLOCKS
+//blocks
+tile.retaining_wall.name=挡土墙
+tile.retaining_wall_corner.name=挡土墙拐角
+tile.architectural_concrete.name=清水混凝土
+tile.concrete.name=混凝土
+tile.nichogake.name=砖
+tile.washed_granolithic_finish.name=石子
+tile.asphalt.name=沥青
+tile.enamel_wall_bot_blue.name=搪瓷墙（蓝色底部）
+tile.enamel_wall_bot_green.name=搪瓷墙（绿色底部）
+tile.enamel_wall_bot_cyan.name=搪瓷墙（青色底部）
+tile.enamel_wall_bot_purple.name=搪瓷墙（紫色底部）
+tile.enamel_wall_bot_red.name=搪瓷墙（红色底部）
+tile.enamel_wall_bot_yellow.name=搪瓷墙（黄色底部）
+tile.enamel_wall_bot_white.name=搪瓷墙（白色底部）
+tile.enamel_wall_s_blue.name=搪瓷墙（蓝色含条纹）
+tile.enamel_wall_s_green.name=搪瓷墙（绿色含条纹）
+tile.enamel_wall_s_cyan.name=搪瓷墙（青色含条纹）
+tile.enamel_wall_s_purple.name=搪瓷墙（紫色含条纹）
+tile.enamel_wall_s_red.name=搪瓷墙（红色含条纹）
+tile.enamel_wall_s_yellow.name=搪瓷墙（黄色含条纹）
+tile.enamel_wall_s_white.name=搪瓷墙（白色含条纹）
+tile.enamel_wall_top_blue.name=搪瓷墙（蓝色顶部）
+tile.enamel_wall_top_green.name=搪瓷墙（绿色顶部）
+tile.enamel_wall_top_cyan.name=搪瓷墙（青色顶部）
+tile.enamel_wall_top_purple.name=搪瓷墙（紫色顶部）
+tile.enamel_wall_top_red.name=搪瓷墙（红色顶部）
+tile.enamel_wall_top_yellow.name=搪瓷墙（黄色顶部）
+tile.enamel_wall_top_white.name=搪瓷墙（白色顶部）
+tile.tessera_black_dull.name=纸皮石（深黑色）
+tile.tessera_cerulean_smooth.name=纸皮石（蔚蓝色）
+tile.tessera_cerulean.name=纸皮石（平滑蔚蓝色）
+tile.tessera_blue_slate.name=纸皮石（石板蓝）
+tile.tessera_blue_teal.name=纸皮石（蓝绿色）
+tile.tessera_brown_tortilla.name=纸皮石（玉米饼棕色）
+tile.tessera_gray_dove.name=纸皮石（灰色）
+tile.tessera_gray_fossil.name=纸皮石（鸽子灰色）
+tile.tessera_gray.name=纸皮石（化石灰）
+tile.tessera_green_fern.name=纸皮石（蕨绿色）
+tile.tessera_green_lime.name=纸皮石（柠檬绿）
+tile.tessera_orange_fire.name=纸皮石（火橙色）
+tile.tessera_purple_heather.name=纸皮石（石南紫）
+tile.tessera_red_rose.name=纸皮石（红色）
+tile.tessera_red.name=纸皮石（玫瑰红）
+tile.tessera_yellow.name=纸皮石（黄色）
+//stairs
+tile.architectural_concrete_stairs.name=清水混凝土楼梯
+tile.concrete_stairs.name=混凝土楼梯
+tile.nichogake_stairs.name=砖楼梯
+tile.washed_granolithic_finish_stairs.name=石子楼梯
+tile.asphalt_stairs.name=沥青楼梯
+//slabs
+tile.architectural_concrete_slab_half.name=清水混凝土台阶
+tile.concrete_slab_half.name=混凝土台阶
+tile.nichogake_slab_half.name=砖台阶
+tile.washed_granolithic_finish_slab_half.name=石子台阶
+tile.asphalt_slab_half.name=沥青台阶
+//side slabs
+tile.retaining_wall_side_slab.name=挡土墙垂直台阶
+tile.architectural_concrete_side_slab.name=清水混凝土垂直台阶
+tile.concrete_side_slab.name=混凝土垂直台阶
+tile.nichogake_side_slab.name=砖垂直台阶
+tile.washed_granolithic_finish_side_slab.name=石子垂直台阶
+tile.asphalt_side_slab.name=沥青垂直台阶
+//custom stairs
+tile.station_stairs.name=车站楼梯
+tile.station_stairs_gentle_top.name=车站缓楼梯（上部）
+tile.station_stairs_gentle_bot.name=車站缓楼梯（底部）
+//LIGHT SECTION
+tile.grille_light_white.name=格柵灯 (白色)
+tile.grille_light_black.name=格柵灯 (黑色)
+tile.tunnel_light.name=灯
+tile.wall_neon_light.name=霓虹灯
+
+//ITEMINIT
+//TOOLS
+item.wrench.name=扳手
+item.wrench.withouttag.tooltip=用来绑定锚点和闸机。
+item.wrench.withtag.tooltip=已选择%d，%d，%d的锚点。
+item.ticket.name=车票
+item.ticket.tooltip=%d元的车票:)
+item.rangefinder.name测距离
+item.rangefinder.tooltip=起始位置：%d，%d，%d。
+
+itemGroup.eki_block=Eki 方块
+itemGroup.eki_station=Eki 车站
+itemGroup.eki_misc=Eki 杂项
+
+//TILEENTITYS
+tile.ticket_vendor.name=售票机
+tile.ticket_gate.name=闸机
+tile.anchor.name=锚点
+tile.anchor.tooltip=用来标记这站中心的方块。
+tile.anchor.warning.tooltip=在已绑定的情況下打掉这个方块並不是个好主意......
+
+//GUIS
+container.ticket_vendor.state.success=购票成功！金额：%d
+container.ticket_vendor.state.shortage=您身上的余额不足：%d
+container.ticket_vendor.state.failed=%d 不是一个有效金额数目
+container.ticket_vendor.state.illegal=%s 玩家在售票机內輸入了无效的金额数目
+container.ticket_vendor.state.waiting=等待中......
+container.ticket_vendor.button.provide=购票
+container.ticket_vendor.button.clear=清除
+container.ticket_vendor.text.default=请输入入数字
+
+//TEXTS
+chat.type.text.anchoredamounts=该锚点已连接 %d 给闸机！
+chat.type.text.setpos=已从 %d，%d，%d 进站！
+chat.type.text.accessed=已从 %d, %d, %d 出站！共花费了%d,经过了%d格！
+chat.type.text.notenoughvalue=无法出站！车票额%d，但需要%d。
+chat.type.text.missingvalue=此票没有价值！
+chat.type.text.missinganchor=请先选取一给锚点！
+chat.type.text.anchorlinked=已绑定至锚点！
+chat.type.text.rangefinder.result=三维空间距离：%d，平面空间距离：%d。
+chat.type.text.rangefinder.getpos=成功绑定起始点至%d，%d，%d！
