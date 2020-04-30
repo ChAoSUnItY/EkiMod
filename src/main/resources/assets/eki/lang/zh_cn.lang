@@ -106,7 +106,7 @@ tile.asphalt_side_slab.name=沥青垂直台阶
 //custom stairs
 tile.station_stairs.name=车站楼梯
 tile.station_stairs_gentle_top.name=车站缓楼梯（上部）
-tile.station_stairs_gentle_bot.name=車站缓楼梯（底部）
+tile.station_stairs_gentle_bot.name=车站缓楼梯（底部）
 //LIGHT SECTION
 tile.grille_light_white.name=格柵灯 (白色)
 tile.grille_light_black.name=格柵灯 (黑色)
@@ -132,13 +132,13 @@ tile.ticket_vendor.name=售票机
 tile.ticket_gate.name=闸机
 tile.anchor.name=锚点
 tile.anchor.tooltip=用来标记这站中心的方块。
-tile.anchor.warning.tooltip=在已绑定的情況下打掉这个方块並不是个好主意......
+tile.anchor.warning.tooltip=在已绑定的情況下打掉这个方块并不是个好主意......
 
 //GUIS
 container.ticket_vendor.state.success=购票成功！金额：%d
 container.ticket_vendor.state.shortage=您身上的余额不足：%d
 container.ticket_vendor.state.failed=%d 不是一个有效金额数目
-container.ticket_vendor.state.illegal=%s 玩家在售票机內輸入了无效的金额数目
+container.ticket_vendor.state.illegal=%s 玩家在售票机内输入了无效的金额数目
 container.ticket_vendor.state.waiting=等待中......
 container.ticket_vendor.button.provide=购票
 container.ticket_vendor.button.clear=清除
