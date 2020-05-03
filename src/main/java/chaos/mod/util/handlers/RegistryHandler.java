@@ -14,6 +14,10 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+/**
+ * This mod is remade by ChAoS_UnItY, owned by noto.
+ * This file is created for 1.12.2 version of station mod.
+ */
 @EventBusSubscriber
 public class RegistryHandler{
 	@SubscribeEvent
