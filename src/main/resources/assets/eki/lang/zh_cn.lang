@@ -136,7 +136,7 @@ tile.anchor.warning.tooltip=在已绑定的情況下打掉这个方块并不是�
 
 //GUIS
 container.ticket_vendor.state.success=购票成功！金额：%d
-container.ticket_vendor.state.shortage=您身上的余额不足：%d
+container.ticket_vendor.state.shortage=您身上的余额无法购买%d元的票
 container.ticket_vendor.state.failed=%d 不是一个有效金额数目
 container.ticket_vendor.state.illegal=%s 玩家在售票机内输入了无效的金额数目
 container.ticket_vendor.state.waiting=等待中......
