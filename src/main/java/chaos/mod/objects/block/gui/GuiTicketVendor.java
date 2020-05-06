@@ -120,12 +120,6 @@ public class GuiTicketVendor extends GuiContainer {
 				PacketHandler.INSTANCE.sendToServer(new PacketVendorSpawnItemWorker(this.tileEntity.getPos(), price));
 			        updateScreen();
 			}
-			else if (!Main.isApiModLoaded) {
-				PacketHandler.INSTANCE.sendToServer(new PacketVendorSpawnItemWorker(this.tileEntity.getPos(), price));
-			        updateScreen();
-			}
-			else
-				this.state = TextFormatting.RED + I18n.format("container.ticket_vendor.state.shortage", price);
 			break;
 		case 1:
 			this.text.setText("");
