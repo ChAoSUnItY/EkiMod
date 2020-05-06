@@ -115,12 +115,12 @@ public class GuiTicketVendor extends GuiContainer {
 				this.state = TextFormatting.RED + I18n.format("container.ticket_vendor.state.shortage", price);
 				return;
 			}
-			if (Main.isApiModLoaded && ((int) GrandEconomyApi.getBalance(player.getUniqueID(), true) >= price)) {
+			else if (Main.isApiModLoaded && ((int) GrandEconomyApi.getBalance(player.getUniqueID(), true) >= price)) {
 				GrandEconomyApi.takeFromBalance(player.getUniqueID(), price, true);
 				PacketHandler.INSTANCE.sendToServer(new PacketVendorSpawnItemWorker(this.tileEntity.getPos(), price));
 			        updateScreen();
 			}
-			else if (!Main.isApiModLoaded)) {
+			else if (!Main.isApiModLoaded) {
 				PacketHandler.INSTANCE.sendToServer(new PacketVendorSpawnItemWorker(this.tileEntity.getPos(), price));
 			        updateScreen();
 			}
