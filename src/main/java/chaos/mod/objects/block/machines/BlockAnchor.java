@@ -2,16 +2,15 @@ package chaos.mod.objects.block.machines;
 
 import java.util.List;
 
+import chaos.mod.Eki;
 import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.base.BlockBase;
 import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.util.utils.UtilTextFormer;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,8 +25,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockAnchor extends BlockBase implements ITileEntityProvider {
-	public BlockAnchor(String name, Material material, CreativeTabs tab) {
-		super(name, material, tab);
+	public BlockAnchor(String name) {
+		super(name, Eki.STATION);
 	}
 
 	@Override
@@ -44,7 +43,7 @@ public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 					stack.setTagCompound(nbt);
 					TextComponentString text = new TextComponentString(
 							I18n.format("chat.type.text.anchoredamounts", tileEntityAnchor.getAnchoredObjectsAmount()));
-					UtilTextFormer.form(text, null, false, false);
+					UtilTextFormer.form(text, TextFormatting.WHITE, false, false);
 					playerIn.sendMessage(text);
 				}
 			}

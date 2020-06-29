@@ -2,6 +2,7 @@ package chaos.mod.objects.item;
 
 import java.util.List;
 
+import chaos.mod.util.utils.UtilTextFormer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,7 +44,7 @@ public class ItemRangeFinder extends ItemBase {
 						.round(Math.sqrt(Math.pow(endPos[0] - startPos[0], 2) + Math.pow(endPos[2] - startPos[2], 2)));
 				text = new TextComponentString(
 						I18n.format("chat.type.text.rangefinder.result", ThreeDimLength, TwoDimLength));
-				text.getStyle().setColor(TextFormatting.WHITE);
+				UtilTextFormer.form(text, TextFormatting.WHITE, false, false);
 				player.sendMessage(text);
 				return EnumActionResult.SUCCESS;
 			} else {
@@ -53,7 +54,7 @@ public class ItemRangeFinder extends ItemBase {
 				stack.setTagCompound(nbt);
 				text = new TextComponentString(
 						I18n.format("chat.type.text.rangefinder.getpos", pos.getX(), pos.getY(), pos.getZ()));
-				text.getStyle().setColor(TextFormatting.GREEN);
+				UtilTextFormer.form(text, TextFormatting.GREEN, false, false);
 				player.sendMessage(text);
 				return EnumActionResult.SUCCESS;
 			}

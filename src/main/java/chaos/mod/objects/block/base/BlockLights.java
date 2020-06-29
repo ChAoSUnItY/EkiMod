@@ -1,9 +1,10 @@
 package chaos.mod.objects.block.base;
 
-import net.minecraft.block.material.Material;
+import chaos.mod.Eki;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -12,11 +13,16 @@ public class BlockLights extends BlockHasFace{
 	private final boolean passable;
 	private final boolean transluent;
 	
-	public BlockLights(String name, Material material, CreativeTabs tab, Float light, boolean passable, boolean transluent) {
-		super(name, material, tab, false);
+	public BlockLights(String name, Float light, boolean passable, boolean transluent) {
+		super(name, Eki.MISC, false);
 		setLightLevel(light);
 		this.passable = passable;
 		this.transluent = transluent;
+	}
+	
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
     
     @Override

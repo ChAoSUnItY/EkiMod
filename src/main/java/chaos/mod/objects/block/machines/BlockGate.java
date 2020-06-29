@@ -3,6 +3,7 @@ package chaos.mod.objects.block.machines;
 import java.util.List;
 import java.util.Random;
 
+import chaos.mod.Eki;
 import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.base.BlockHasFace;
 import chaos.mod.tileentity.TileEntityAnchor;
@@ -10,13 +11,11 @@ import chaos.mod.tileentity.TileEntityTicketGate;
 import chaos.mod.util.utils.UtilLogger;
 import chaos.mod.util.utils.UtilTextFormer;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -41,8 +40,8 @@ import net.minecraft.world.World;
 public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	public static final PropertyBool OPEN = PropertyBool.create("open");
 
-	public BlockGate(String name, Material material, CreativeTabs tab) {
-		super(name, material, tab, false);
+	public BlockGate(String name) {
+		super(name, Eki.STATION, false);
 
 		this.setDefaultState(
 				this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, false));

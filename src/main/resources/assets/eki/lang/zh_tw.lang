@@ -1,4 +1,7 @@
 //ChAoS_UnItY
+//=====LANG INIT=====
+#PARSE_ESCAPES
+//===================
 //BLOCKINIT
 //STATION SECTION
 //station stuff
@@ -154,3 +157,8 @@ chat.type.text.missinganchor=請先選取一個錨點!
 chat.type.text.anchorlinked=已連結至錨點!
 chat.type.text.rangefinder.result=三維空間距離：%d，平面空間距離：%d。
 chat.type.text.rangefinder.getpos=成功綁定起始點至%d, %d, %d！
+
+
+//SYSTEM MESSAGES
+chat.type.text.versioncheckValid=你正運行Eki Mod最新版本!\n版本 >> %s
+chat.type.text.versioncheckInvalid=你的Eki Mod已經不再支援! 快去更新吧!\n點擊這裡來打開模組頁面.\n正在運行 >> %s\n最新版本 >> %s

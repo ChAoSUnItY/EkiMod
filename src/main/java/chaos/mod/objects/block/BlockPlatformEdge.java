@@ -3,15 +3,14 @@ package chaos.mod.objects.block;
 import java.util.List;
 import java.util.Random;
 
+import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
 import chaos.mod.objects.block.base.BlockHasFace;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -28,8 +27,8 @@ public class BlockPlatformEdge extends BlockHasFace {
 	private final boolean isOn;
 	private final boolean lightable;
 	
-	public BlockPlatformEdge(String name, Material material, CreativeTabs tab, boolean isOn, boolean lightable) {
-		super(name, material, tab, false);
+	public BlockPlatformEdge(String name, boolean isOn, boolean lightable) {
+		super(name, isOn ? null : Eki.STATION, false);
 		this.isOn = isOn;
 		this.lightable = lightable;
 		
@@ -71,82 +70,38 @@ public class BlockPlatformEdge extends BlockHasFace {
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
 		if (!worldIn.isRemote && lightable) {
-			if (this.isOn && !worldIn.isBlockPowered(pos)) {
-				worldIn.scheduleBlockUpdate(pos, this, 0, 1);
-			} else if (!this.isOn && worldIn.isBlockPowered(pos)) {
-				IBlockState ON = BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON.getDefaultState();
-				EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
-				switch (state.getValue(FACING)) {
-				case NORTH:
-					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
-					break;
-				case EAST:
-					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
-					break;
-				case SOUTH:
-					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
-					break;
-				case WEST:
-					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
-					break;
-				default:
-					break;
-				}
-			}
+			if (this.isOn && !worldIn.isBlockPowered(pos))
+            {
+                worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF.getDefaultState().withProperty(FACING, state.getValue(FACING)), 2);
+            }
+            else if (!this.isOn && worldIn.isBlockPowered(pos))
+            {
+                worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON.getDefaultState().withProperty(FACING, state.getValue(FACING)), 2);
+            }
 		}
 	}
 
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 		if (!worldIn.isRemote && lightable) {
-			if (this.isOn && !worldIn.isBlockPowered(pos)) {
-				worldIn.scheduleBlockUpdate(pos, this, 0, 1);
-			} else if (!this.isOn && worldIn.isBlockPowered(pos)) {
-				IBlockState ON = BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON.getDefaultState();
-				EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
-				switch (state.getValue(FACING)) {
-				case NORTH:
-					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
-					break;
-				case EAST:
-					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
-					break;
-				case SOUTH:
-					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
-					break;
-				case WEST:
-					worldIn.setBlockState(pos, ON.withProperty(FACING, enumfacing));
-					break;
-				default:
-					break;
-				}
-			}
+			if (this.isOn && !worldIn.isBlockPowered(pos))
+            {
+                worldIn.scheduleUpdate(pos, this, 4);
+            }
+            else if (!this.isOn && worldIn.isBlockPowered(pos))
+            {
+                worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON.getDefaultState().withProperty(FACING, state.getValue(FACING)), 2);
+            }
 		}
 	}
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!worldIn.isRemote && lightable) {
-			if (this.isOn && !worldIn.isBlockPowered(pos)) {
-				IBlockState OFF = BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF.getDefaultState();
-				EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
-				switch (state.getValue(FACING)) {
-				case NORTH:
-					worldIn.setBlockState(pos, OFF.withProperty(FACING, enumfacing));
-					break;
-				case EAST:
-					worldIn.setBlockState(pos, OFF.withProperty(FACING, enumfacing));
-					break;
-				case SOUTH:
-					worldIn.setBlockState(pos, OFF.withProperty(FACING, enumfacing));
-					break;
-				case WEST:
-					worldIn.setBlockState(pos, OFF.withProperty(FACING, enumfacing));
-					break;
-				default:
-					break;
-				}
-			}
+			if (this.isOn && !worldIn.isBlockPowered(pos))
+            {
+                worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF.getDefaultState().withProperty(FACING, state.getValue(FACING)), 2);
+            }
 		}
 	}
 

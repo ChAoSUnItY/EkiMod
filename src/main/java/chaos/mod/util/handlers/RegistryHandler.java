@@ -1,6 +1,6 @@
 package chaos.mod.util.handlers;
 
-import chaos.mod.Main;
+import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
 import chaos.mod.init.ItemInit;
 import chaos.mod.util.Reference;
@@ -47,7 +47,7 @@ public class RegistryHandler{
 	}
 	
 	public static void preInit() {
-		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Eki.instance, new GuiHandler());
 		PacketHandler.registerMessages(Reference.MODID);
 	}
 	
