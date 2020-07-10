@@ -5,7 +5,6 @@ import chaos.mod.init.ItemInit;
 import chaos.mod.proxy.ServerProxy;
 import chaos.mod.util.Reference;
 import chaos.mod.util.handlers.RegistryHandler;
-import chaos.mod.util.utils.UtilEki.UtilVersionChecker;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -20,8 +19,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class Eki {
-	public static UtilVersionChecker versionChecker;
-	public static boolean haveWarnedVersionOutOfDate = false;
 	public static boolean isApiModLoaded;
 	public static final CreativeTabs BLOCK = new CreativeTabs("eki_block") {
 		@SideOnly(Side.CLIENT)

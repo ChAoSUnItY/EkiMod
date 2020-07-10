@@ -11,17 +11,27 @@ import org.apache.commons.io.IOUtils;
 import chaos.mod.util.Reference;
 
 public class UtilEki {
+	private static final UtilEki EKI = new UtilEki();
+	
+	public static UtilEki getUtil() {
+		return EKI;
+	}
+	
+	public UtilVersionChecker getVersionChecker() {
+		return new UtilVersionChecker();
+	}
+	
 	public static class UtilVersionChecker {
-		public static boolean isLatestVersion() {
+		public boolean isLatestVersion() {
 			String latestVersion = worker();
 			return latestVersion.equals(Reference.VERSION);
 		}
 
-		public static String getLatestVersion() {
+		public String getLatestVersion() {
 			return worker();
 		}
 
-		private static String worker() {
+		private String worker() {
 			InputStream in = null;
 			String latestVersion = null;
 			try {
