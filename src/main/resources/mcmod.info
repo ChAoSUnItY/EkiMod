@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["ChAoS_UnItY"],
   "credits": "Yasushii, GukkyGukz, nagisa5, eeedx",
-  "logoFile": "/logo.png",
+  "logoFile": "assets/eki/textures/logo.png",
   "screenshots": [],
   "dependencies": []
 }
