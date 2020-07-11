@@ -20,9 +20,9 @@ public class ItemWrench extends ItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (stack.hasTagCompound()) {
-			int[] array = stack.getTagCompound().getIntArray("pos");
+			int[] pos = stack.getTagCompound().getIntArray("pos");
 			tooltip.add(TextFormatting.GRAY
-					+ I18n.format(getUnlocalizedName() + ".withtag.tooltip", array[0], array[2], array[1]));
+					+ I18n.format(getUnlocalizedName() + ".withtag.tooltip", pos[0], pos[2], pos[1]));
 		} else {
 			tooltip.add(TextFormatting.GRAY + I18n.format(getUnlocalizedName() + ".withouttag.tooltip"));
 		}

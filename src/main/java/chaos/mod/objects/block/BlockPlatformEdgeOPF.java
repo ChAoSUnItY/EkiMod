@@ -23,6 +23,10 @@ import net.minecraft.world.World;
 
 public class BlockPlatformEdgeOPF extends BlockHasFace {
 	public static final AxisAlignedBB PLATFORM_EDGE_TOP_AABB = new AxisAlignedBB(0, 1.34375D, 0, 1, 1.5D, 1);
+	public static final AxisAlignedBB PLATFORM_EDGE_WALL_NORTH_AABB = new AxisAlignedBB(0, 0, 0.5D, 1, 1.34375D, 1);
+	public static final AxisAlignedBB PLATFORM_EDGE_WALL_SOUTH_AABB = new AxisAlignedBB(0, 0, 0, 1, 1.34375D, 0.5D);
+	public static final AxisAlignedBB PLATFORM_EDGE_WALL_EAST_AABB = new AxisAlignedBB(0, 0, 0, 0.5D, 1.34375D, 1);
+	public static final AxisAlignedBB PLATFORM_EDGE_WALL_WEST_AABB = new AxisAlignedBB(0.5D, 0, 0, 1, 1.34375D, 1);
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	private final boolean isOn;
 	private final boolean lightable;
@@ -58,19 +62,19 @@ public class BlockPlatformEdgeOPF extends BlockHasFace {
 			List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean isActualState) {
 		switch (state.getValue(FACING)) {
 		case NORTH:
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0.5D, 1, 1.34375D, 1));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_WALL_NORTH_AABB);
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_TOP_AABB);
 			break;
 		case SOUTH:
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0, 1, 1.34375D, 0.5D));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_WALL_SOUTH_AABB);
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_TOP_AABB);
 			break;
 		case EAST:
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0, 0.5D, 1.34375D, 1));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_WALL_EAST_AABB);
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_TOP_AABB);
 			break;
 		case WEST:
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0.5D, 0, 0, 1, 1.34375D, 1));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_WALL_WEST_AABB);
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, PLATFORM_EDGE_TOP_AABB);
 		default:
 			break;

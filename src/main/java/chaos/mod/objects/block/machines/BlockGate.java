@@ -38,6 +38,7 @@ import net.minecraft.world.World;
  * works fine, you should check every single message from console!
  */
 public class BlockGate extends BlockHasFace implements ITileEntityProvider {
+	public static final AxisAlignedBB GATE_CLOSED_AABB = new AxisAlignedBB(0, 0, 0, 1, 1.5, 1);
 	public static final PropertyBool OPEN = PropertyBool.create("open");
 
 	public BlockGate(String name) {
@@ -71,7 +72,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 		if (state.getValue(OPEN)) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, NULL_AABB);
 		} else {
-			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0, 1, 1.5, 1));
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, GATE_CLOSED_AABB);
 		}
 	}
 
