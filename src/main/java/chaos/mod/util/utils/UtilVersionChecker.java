@@ -30,7 +30,7 @@ public class UtilVersionChecker {
 		InputStream in = null;
 		String latestVersion = null;
 		try {
-			in = new URL("http://chaos-module.wdfiles.com/local--code/eki").openStream();
+			in = new URL("https://raw.githubusercontent.com/KyleLin921021/EkiMod/master/src/main/resources/assets/eki/misc/version").openStream();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
