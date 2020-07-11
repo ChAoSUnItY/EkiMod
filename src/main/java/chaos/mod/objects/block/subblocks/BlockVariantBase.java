@@ -1,0 +1,37 @@
+package chaos.mod.objects.block.subblocks;
+
+import chaos.mod.Eki;
+import chaos.mod.init.BlockInit;
+import chaos.mod.init.ItemInit;
+import chaos.mod.objects.block.item.ItemBlockVariants;
+import chaos.mod.util.interfaces.IHasModel;
+import chaos.mod.util.interfaces.IMetaName;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
+
+public class BlockVariantBase extends Block implements IHasModel, IMetaName{
+	protected final String name;
+	
+	public BlockVariantBase(String name) {
+		super(Material.ROCK);
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(Eki.BLOCK);
+		this.name = name;
+
+		BlockInit.BLOCKS.add(this);
+		ItemInit.ITEMS.add(new ItemBlockVariants(this).setRegistryName(this.getRegistryName()));
+	}
+
+	@Override
+	public String getSpecialName(ItemStack stack) {
+		return null;
+	}
+
+	@Override
+	public void registerModels() {
+		
+	}
+
+}

@@ -9,7 +9,7 @@ public class UtilLogger {
 		LOGGER.info(s);
 	}
 	
-	public static void debug(String s) {
-		LOGGER.debug(s);
+	public static void info(Object obj) {
+		LOGGER.info(obj);
 	}
 }

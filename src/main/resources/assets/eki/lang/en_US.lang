@@ -1,4 +1,7 @@
 //ChAoS_UnItY , GukkyGukz
+//=====LANG INIT=====
+#PARSE_ESCAPES
+//===================
 //BLOCKSINIT
 //STATION SECTION
 //station stuff
@@ -155,3 +158,7 @@ chat.type.text.missinganchor=Please select an anchor first!
 chat.type.text.anchorlinked=Connected to the anchor!
 chat.type.text.rangefinder.result=3D distance is %d, surface distance is %d.
 chat.type.text.rangefinder.getpos=Successfully bound to %d, %d, %d！
+
+//SYSTEM MESSAGES
+chat.type.text.versioncheckValid=You are running on the latest version of Eki Mod!\nVersion >> %s
+chat.type.text.versioncheckInvalid=Your Eki Mod is out of date! Go update!\nClick this message to open mod page.\nNow Running >> %s\nLatest Version >> %s

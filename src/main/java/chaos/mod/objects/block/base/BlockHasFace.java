@@ -1,7 +1,6 @@
 package chaos.mod.objects.block.base;
 
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
@@ -19,8 +18,8 @@ public class BlockHasFace extends BlockBase {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public final boolean isOpaqueCube;
 
-	public BlockHasFace(String name, Material material, CreativeTabs tab, boolean isOpaqueCube) {
-		super(name, material, tab);
+	public BlockHasFace(String name, CreativeTabs tab, boolean isOpaqueCube) {
+		super(name, tab);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.isOpaqueCube = isOpaqueCube;
 	}
@@ -61,7 +60,7 @@ public class BlockHasFace extends BlockBase {
 			worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
 		}
 	}
-	
+
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
 			float hitZ, int meta, EntityLivingBase placer, ItemStack stack) {

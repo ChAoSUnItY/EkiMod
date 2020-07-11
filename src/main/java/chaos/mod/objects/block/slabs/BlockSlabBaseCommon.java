@@ -1,5 +1,6 @@
 package chaos.mod.objects.block.slabs;
 
+import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
@@ -8,7 +9,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
@@ -16,12 +16,12 @@ public class BlockSlabBaseCommon extends BlockSlab {
 	Block half;
 	public static final PropertyEnum<Variant> VARIANT = PropertyEnum.<Variant>create("variant", Variant.class);
 
-	public BlockSlabBaseCommon(String name, Material material, CreativeTabs tab, BlockSlab half) {
-		super(material);
-		this.setUnlocalizedName(name);
-		this.setCreativeTab(tab);
-		this.setRegistryName(name);
-		this.useNeighborBrightness = !this.isDouble();
+	public BlockSlabBaseCommon(String name, BlockSlab half) {
+		super(Material.ROCK);
+		setUnlocalizedName(name);
+		setCreativeTab(Eki.BLOCK);
+		setRegistryName(name);
+		useNeighborBrightness = !this.isDouble();
 
 		IBlockState state = this.blockState.getBaseState().withProperty(VARIANT, Variant.DEFAULT);
 		if (!this.isDouble())

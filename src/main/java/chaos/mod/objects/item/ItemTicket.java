@@ -14,13 +14,12 @@ public class ItemTicket extends ItemBase {
 		super(name);
 		this.setMaxStackSize(1);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		if (stack.hasTagCompound()) {
-			tooltip.add(TextFormatting.GRAY
-					+ I18n.format(getUnlocalizedName() + ".tooltip", stack.getTagCompound().getInteger("value")));
+			tooltip.add(TextFormatting.GRAY + I18n.format(getUnlocalizedName() + ".tooltip", stack.getTagCompound().getInteger("value")));
 		}
 	}
 }

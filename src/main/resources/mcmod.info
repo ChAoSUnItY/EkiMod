@@ -2,14 +2,14 @@
 {
   "modid": "eki",
   "name": "Eki Mod",
-  "description": "A station decoration mod based on 1.7.10 Station Mod!",
-  "version": "1.2.0-1.10.2",
+  "description": "A station decoration mod inspired by 1.7.10 Station Mod!",
+  "version": "1.2.2-1.10.2",
   "mcversion": "1.10.2",
   "url": "https://www.curseforge.com/minecraft/mc-mods/eki-mod",
   "updateUrl": "",
   "authorList": ["ChAoS_UnItY"],
   "credits": "Yasushii, GukkyGukz, nagisa5, eeedx",
-  "logoFile": "/logo.png",
+  "logoFile": "assets/eki/textures/logo.png",
   "screenshots": [],
   "dependencies": []
 }

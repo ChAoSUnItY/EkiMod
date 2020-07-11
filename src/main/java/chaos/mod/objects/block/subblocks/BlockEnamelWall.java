@@ -2,16 +2,10 @@ package chaos.mod.objects.block.subblocks;
 
 import java.util.List;
 
-import chaos.mod.Main;
-import chaos.mod.init.BlockInit;
-import chaos.mod.init.ItemInit;
-import chaos.mod.objects.block.item.ItemBlockVariants;
-import chaos.mod.util.handlers.EnumHandler;
+import chaos.mod.Eki;
 import chaos.mod.util.handlers.EnumHandler.EnamelWallEnumWallAType;
 import chaos.mod.util.interfaces.IHasModel;
 import chaos.mod.util.interfaces.IMetaName;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -24,26 +18,19 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockEnamelWall extends Block implements IHasModel, IMetaName {
-	public static final PropertyEnum<EnumHandler.EnamelWallEnumWallAType> VARIANT = PropertyEnum.<EnumHandler.EnamelWallEnumWallAType>create(
-			"variant", EnumHandler.EnamelWallEnumWallAType.class);
+public class BlockEnamelWall extends BlockVariantBase implements IHasModel, IMetaName {
+	public static final PropertyEnum<EnamelWallEnumWallAType> VARIANT = PropertyEnum.<EnamelWallEnumWallAType>create("variant", EnamelWallEnumWallAType.class);
 	private final String name;
 
-	public BlockEnamelWall(String name, Material material, CreativeTabs tab) {
-		super(material);
-		setUnlocalizedName(name);
-		setRegistryName(name);
-		setCreativeTab(tab);
-		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnamelWallEnumWallAType.BLUE));
+	public BlockEnamelWall(String name) {
+		super(name);
+		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnamelWallEnumWallAType.BLUE));
 		this.name = name;
-
-		BlockInit.BLOCKS.add(this);
-		ItemInit.ITEMS.add(new ItemBlockVariants(this).setRegistryName(this.getRegistryName()));
 	}
 
 	@Override
 	public int damageDropped(IBlockState state) {
-		return ((EnumHandler.EnamelWallEnumWallAType) state.getValue(VARIANT)).getMeta();
+		return ((EnamelWallEnumWallAType) state.getValue(VARIANT)).getMeta();
 	}
 
 	@Override
@@ -57,18 +44,17 @@ public class BlockEnamelWall extends Block implements IHasModel, IMetaName {
 	}
 
 	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
-			EntityPlayer player) {
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		return new ItemStack(Item.getItemFromBlock(this), 1, getMetaFromState(world.getBlockState(pos)));
 	}
-	
+
 	@Override
 	public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
-		for (EnumHandler.EnamelWallEnumWallAType variant : EnamelWallEnumWallAType.values()) {
+		for (EnamelWallEnumWallAType variant : EnamelWallEnumWallAType.values()) {
 			list.add(new ItemStack(this, 1, variant.getMeta()));
 		}
 	}
-	
+
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] { VARIANT });
@@ -76,14 +62,13 @@ public class BlockEnamelWall extends Block implements IHasModel, IMetaName {
 
 	@Override
 	public String getSpecialName(ItemStack stack) {
-		return EnumHandler.EnamelWallEnumWallAType.values()[stack.getItemDamage()].getName();
+		return EnamelWallEnumWallAType.values()[stack.getItemDamage()].getName();
 	}
 
 	@Override
 	public void registerModels() {
 		for (int i = 0; i < EnamelWallEnumWallAType.values().length; i++) {
-			Main.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), i,
-					name + "_" + EnamelWallEnumWallAType.values()[i].getName(), "inventory");
+			Eki.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), i, name + "_" + EnamelWallEnumWallAType.values()[i].getName(), "inventory");
 		}
 	}
 }

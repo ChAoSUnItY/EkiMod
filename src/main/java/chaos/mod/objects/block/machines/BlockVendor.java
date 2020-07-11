@@ -1,13 +1,11 @@
 package chaos.mod.objects.block.machines;
 
-import chaos.mod.Main;
+import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockHasFace;
 import chaos.mod.tileentity.TileEntityTicketVendor;
 import chaos.mod.util.Reference;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -17,14 +15,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockVendor extends BlockHasFace implements ITileEntityProvider {
-	public BlockVendor(String name, Material material, CreativeTabs tab) {
-		super(name, material, tab, false);
+	public BlockVendor(String name) {
+		super(name, Eki.STATION, false);
 	}
-	
+
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!worldIn.isRemote) playerIn.openGui(Main.instance, Reference.GUITICKETVENDOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (!worldIn.isRemote)
+			playerIn.openGui(Eki.instance, Reference.GUITICKETVENDOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
 

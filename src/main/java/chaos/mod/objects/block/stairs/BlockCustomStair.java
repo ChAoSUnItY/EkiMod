@@ -2,10 +2,10 @@ package chaos.mod.objects.block.stairs;
 
 import java.util.List;
 
+import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockHasFace;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -20,15 +20,14 @@ public class BlockCustomStair extends BlockHasFace {
 	public static final AxisAlignedBB STAIR_WEST_TOP_AABB = new AxisAlignedBB(0.5D, 0, 0, 1, 1, 1);
 	public final int type; // 1 Stands for Full one ,2 Stands for Bottom one, 3 Stands for Top one.
 
-	public BlockCustomStair(String name, Material material, CreativeTabs tab, int type) {
-		super(name, material, tab, false);
+	public BlockCustomStair(String name, int type) {
+		super(name, Eki.STATION, false);
 		this.type = type;
 	}
 
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
-		switch (state.getValue(FACING)) {
+	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
+		switch (state.getValue(BlockHorizontal.FACING)) {
 		case NORTH:
 			switch (type) {
 			case 1:

@@ -2,11 +2,10 @@ package chaos.mod.objects.block.slabs;
 
 import java.util.List;
 
+import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockHasFace;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -14,13 +13,12 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockSideSlab extends BlockHasFace {
-	public BlockSideSlab(String name, Material material, CreativeTabs tab) {
-		super(name, material, tab, false);
+	public BlockSideSlab(String name) {
+		super(name, Eki.BLOCK, false);
 	}
-	
+
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
+	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
 		switch (state.getValue(BlockHorizontal.FACING)) {
 		case NORTH:
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, new AxisAlignedBB(0, 0, 0.5D, 1, 1, 1));

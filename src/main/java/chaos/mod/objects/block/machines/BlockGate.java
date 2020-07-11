@@ -3,6 +3,7 @@ package chaos.mod.objects.block.machines;
 import java.util.List;
 import java.util.Random;
 
+import chaos.mod.Eki;
 import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.base.BlockHasFace;
 import chaos.mod.tileentity.TileEntityAnchor;
@@ -10,13 +11,11 @@ import chaos.mod.tileentity.TileEntityTicketGate;
 import chaos.mod.util.utils.UtilLogger;
 import chaos.mod.util.utils.UtilTextFormer;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -39,13 +38,13 @@ import net.minecraft.world.World;
  * works fine, you should check every single message from console!
  */
 public class BlockGate extends BlockHasFace implements ITileEntityProvider {
+	public static final AxisAlignedBB GATE_CLOSED_AABB = new AxisAlignedBB(0, 0, 0, 1, 1.5, 1);
 	public static final PropertyBool OPEN = PropertyBool.create("open");
 
-	public BlockGate(String name, Material material, CreativeTabs tab) {
-		super(name, material, tab, false);
+	public BlockGate(String name) {
+		super(name, Eki.STATION, false);
 
-		this.setDefaultState(
-				this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, false));
 	}
 
 	@Override
@@ -59,16 +58,13 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 			if (state.getValue(OPEN)) {
 				worldIn.setBlockState(pos, state.withProperty(OPEN, false));
 				worldIn.markBlockRangeForRenderUpdate(pos, pos);
-				worldIn.playSound(null, pos,
-						SoundEvent.REGISTRY.getObject(new ResourceLocation("block.iron_door.close")),
-						SoundCategory.BLOCKS, 1, 1);
+				worldIn.playSound(null, pos, SoundEvent.REGISTRY.getObject(new ResourceLocation("block.iron_door.close")), SoundCategory.BLOCKS, 1, 1);
 			}
 		}
 	}
 
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
+	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
 		if (state.getValue(OPEN)) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, NULL_AABB);
 			return;
@@ -77,8 +73,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 		ItemStack stack = playerIn.getHeldItem(hand);
 		if (!worldIn.isRemote) {
@@ -92,11 +87,9 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 							if (tileEntityTicketGate.hasAnchorPos()) {
 								clearAnchorIfNeeded(tileEntityTicketGate);
 								if (tileEntityTicketGate.isAnchorExists()) {
-									TileEntityAnchor tileEntityAnchor = (TileEntityAnchor) worldIn
-											.getTileEntity(tileEntityTicketGate.getAnchorPosForSub());
+									TileEntityAnchor tileEntityAnchor = (TileEntityAnchor) worldIn.getTileEntity(tileEntityTicketGate.getAnchorPosForSub());
 									if (tileEntityAnchor.getAnchoredObjectsAmount() <= 0) {
-										UtilLogger.info(
-												"An anchor has been detected unusally. Break this gate might be the solution.");
+										UtilLogger.info("An anchor has been detected unusally. Break this gate might be the solution.");
 									}
 									tileEntityAnchor.decreaseAnchoredObjectsAmount();
 								}
@@ -116,8 +109,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 							}
 							if (hasValue(stack, 2)) {
 								clearAnchorIfNeeded(tileEntityTicketGate);
-								int price = calculatePrice(stack.getTagCompound().getIntArray("startPos"),
-										tileEntityTicketGate.getAnchorPos());
+								int price = calculatePrice(stack.getTagCompound().getIntArray("startPos"), tileEntityTicketGate.getAnchorPos());
 								int length = calculateLength(stack, pos, worldIn);
 								if (getPosFromItem(stack, pos, worldIn)) {
 									ticketAccessible(playerIn, hand, pos, price, length);
@@ -132,8 +124,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 						}
 					}
 				} catch (NullPointerException e) {
-					UtilLogger.info(
-							"A NullPointerExcception has just been occured. Please report this to [Eki Mod] author.");
+					UtilLogger.info("A NullPointerExcception has just been occured. Please report this to [Eki Mod] author.");
 					e.printStackTrace();
 				}
 			}
@@ -197,12 +188,10 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 
 	}
 
-	private void savePosIntoItem(EnumHand hand, EntityPlayer playerIn, TileEntityTicketGate tileEntityTicketGate,
-			BlockPos pos) {
+	private void savePosIntoItem(EnumHand hand, EntityPlayer playerIn, TileEntityTicketGate tileEntityTicketGate, BlockPos pos) {
 		NBTTagCompound nbt = new NBTTagCompound();
 		ItemStack stack2 = new ItemStack(ItemInit.TICKET, 1);
-		TextComponentString textSetPos = new TextComponentString(
-				I18n.format("chat.type.text.setpos", pos.getX(), pos.getY(), pos.getZ()));
+		TextComponentString textSetPos = new TextComponentString(I18n.format("chat.type.text.setpos", pos.getX(), pos.getY(), pos.getZ()));
 		nbt.setInteger("value", playerIn.getHeldItem(hand).getTagCompound().getInteger("value"));
 		if (tileEntityTicketGate.isAnchorExists()) {
 			savePosIntoItem(nbt, tileEntityTicketGate);
@@ -216,16 +205,14 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	}
 
 	private void ticketAccessible(EntityPlayer playerIn, EnumHand hand, BlockPos pos, int price, int length) {
-		TextComponentString textAccessed = new TextComponentString(
-				I18n.format("chat.type.text.accessed", pos.getX(), pos.getY(), pos.getZ(), price, length));
+		TextComponentString textAccessed = new TextComponentString(I18n.format("chat.type.text.accessed", pos.getX(), pos.getY(), pos.getZ(), price, length));
 		playerIn.addChatMessage(UtilTextFormer.form(textAccessed, TextFormatting.GREEN, false, false));
 		playerIn.getHeldItem(hand).stackSize--;
 	}
 
 	private void ticketInaccessible(EntityPlayer playerIn, ItemStack stack, int Actaulprice) {
 		int price = stack.getTagCompound().getInteger("value");
-		TextComponentString textNotEnoughValue = new TextComponentString(
-				I18n.format("chat.type.text.notenoughvalue", price, Actaulprice));
+		TextComponentString textNotEnoughValue = new TextComponentString(I18n.format("chat.type.text.notenoughvalue", price, Actaulprice));
 		playerIn.addChatMessage(UtilTextFormer.form(textNotEnoughValue, TextFormatting.RED, true, true));
 	}
 
@@ -272,22 +259,18 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	public boolean getPosFromItem(ItemStack stack, BlockPos pos, World worldIn) {
 		TileEntityTicketGate tileEntity = (TileEntityTicketGate) worldIn.getTileEntity(pos);
 		int[] startPos = stack.getTagCompound().getIntArray("startPos");
-		int price = tileEntity.isAnchorExists() ? calculatePrice(startPos, tileEntity.getAnchorPos())
-				: calculatePrice(startPos, new int[] { pos.getX(), pos.getZ() });
+		int price = tileEntity.isAnchorExists() ? calculatePrice(startPos, tileEntity.getAnchorPos()) : calculatePrice(startPos, new int[] { pos.getX(), pos.getZ() });
 		return price <= stack.getTagCompound().getInteger("value");
 	}
 
-	public void saveAnchorIn(EntityPlayer playerIn, ItemStack stack, World worldIn,
-			TileEntityTicketGate tileEntityTicketGate) {
+	public void saveAnchorIn(EntityPlayer playerIn, ItemStack stack, World worldIn, TileEntityTicketGate tileEntityTicketGate) {
 		TextComponentString textLinked = new TextComponentString(I18n.format("chat.type.text.anchorlinked"));
 		int[] array = stack.getTagCompound().getIntArray("pos");
 		if (!(worldIn.getTileEntity(new BlockPos(array[0], array[2], array[1])) == null)) {
-			TileEntityAnchor tileEntityAnchor = (TileEntityAnchor) worldIn
-					.getTileEntity(new BlockPos(array[0], array[2], array[1]));
+			TileEntityAnchor tileEntityAnchor = (TileEntityAnchor) worldIn.getTileEntity(new BlockPos(array[0], array[2], array[1]));
 			tileEntityAnchor.increaseAnchoredObjectsAmount();
 		} else {
-			UtilLogger.info(
-					"Your anchor is missing, it won't affect the proccess but some calculation won't be correct.");
+			UtilLogger.info("Your anchor is missing, it won't affect the proccess but some calculation won't be correct.");
 		}
 		tileEntityTicketGate.saveAnchorPosIn(array[0], array[1], array[2]);
 		playerIn.addChatMessage(textLinked);
@@ -300,8 +283,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	}
 
 	public int calculatePrice(int[] startPos, int[] endPos) {
-		int price = (int) (Math
-				.round(Math.sqrt(Math.pow(endPos[0] - startPos[0], 2) + Math.pow(endPos[1] - startPos[1], 2))) * 100);
+		int price = (int) (Math.round(Math.sqrt(Math.pow(endPos[0] - startPos[0], 2) + Math.pow(endPos[1] - startPos[1], 2))) * 100);
 		return price;
 	}
 
@@ -315,8 +297,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	public void open(EntityPlayer playerIn, World worldIn, BlockPos pos, IBlockState state) {
 		worldIn.setBlockState(pos, state.withProperty(OPEN, true));
 		worldIn.scheduleBlockUpdate(pos, this, this.tickRate(worldIn), 5);
-		worldIn.playSound(null, pos, SoundEvent.REGISTRY.getObject(new ResourceLocation("block.iron_door.open")),
-				SoundCategory.BLOCKS, 1, 1);
+		worldIn.playSound(null, pos, SoundEvent.REGISTRY.getObject(new ResourceLocation("block.iron_door.open")), SoundCategory.BLOCKS, 1, 1);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package chaos.mod.objects.block.stairs;
 
-import chaos.mod.Main;
+import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
 import chaos.mod.init.ItemInit;
 import chaos.mod.util.interfaces.IHasModel;
@@ -24,6 +24,6 @@ public class BlockStairsCommon extends BlockStairs implements IHasModel{
 	
 	@Override
 	public void registerModels() {
-		Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		Eki.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 }
