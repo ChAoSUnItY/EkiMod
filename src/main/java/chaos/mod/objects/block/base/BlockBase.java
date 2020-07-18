@@ -1,8 +1,5 @@
 package chaos.mod.objects.block.base;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
 import chaos.mod.init.ItemInit;
@@ -14,12 +11,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
 public class BlockBase extends Block implements IHasModel {
-	public BlockBase(@Nonnull String name, @Nullable CreativeTabs tab) {
+	public BlockBase(String name, CreativeTabs tab) {
 		super(Material.ROCK);
 		constructor(name, tab);
 	}
 
-	private void constructor(@Nonnull String name, @Nullable CreativeTabs tab) {
+	private void constructor(String name, CreativeTabs tab) {
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(tab == null ? Eki.BLOCK : tab);

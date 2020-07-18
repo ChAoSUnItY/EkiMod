@@ -3,12 +3,11 @@ package chaos.mod.util.network;
 import chaos.mod.init.ItemInit;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -67,7 +66,6 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 		}
 
 		void processMessage(PacketVendorSpawnItemWorker message, MessageContext ctx) {
-			ResourceLocation resourceLocation = new ResourceLocation("block.dispenser.launch");
 			TileEntity tileEntity = ctx.getServerHandler().player.getServerWorld().getTileEntity(message.pos);
 			World world = ctx.getServerHandler().player.getEntityWorld();
 			BlockPos pos = tileEntity.getPos();
@@ -77,8 +75,7 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 			ticket.setTagCompound(nbt);
 			tileEntity.getWorld().spawnEntity(new EntityItem(tileEntity.getWorld(), pos.getX()+0.5, pos.getY()+1,
 					pos.getZ()+0.5, ticket));
-			world.playSound(null, pos, SoundEvent.REGISTRY.getObject(resourceLocation), SoundCategory.BLOCKS, 1, 1);
-			//PacketHandler.INSTANCE.sendTo(new PacketReturnWorker(), ctx.getServerHandler().player);
+			world.playSound(null, pos, SoundEvents.BLOCK_DISPENSER_LAUNCH, SoundCategory.BLOCKS, 1, 1);
 		}
 	}
 }
