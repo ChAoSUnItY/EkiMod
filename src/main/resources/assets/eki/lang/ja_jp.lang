@@ -24,9 +24,7 @@ tile.station_pillar_base.name=駅の柱 (ベース)
 tile.station_pillar_center.name=駅の柱 (中)
 tile.station_pillar_top.name=駅の柱 (トップ)
 tile.station_pillar_base_with_fire_extinguisher_in.name=消火器の柱 (ベース)
-//beams and panels
-tile.panel_black.name=案内モニター (黒 WIP)
-tile.panel_white.name=案内モニター (白 WIP)
+//beams
 tile.panel_beam_with_cross_black.name=モニター柱と桁 (黒)
 tile.panel_beam_with_cross_white.name=モニター柱と桁 (白)
 tile.bending_beam_white.name=曲げ桁 (白)

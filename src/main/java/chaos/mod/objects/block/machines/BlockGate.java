@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import chaos.mod.Eki;
+import chaos.mod.Eki.EkiConfig;
 import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.base.BlockHasFace;
 import chaos.mod.tileentity.TileEntityAnchor;
@@ -298,7 +299,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 
 	public int calculatePrice(int[] startPos, int[] endPos) {
 		int price = (int) (Math
-				.round(Math.sqrt(Math.pow(endPos[0] - startPos[0], 2) + Math.pow(endPos[1] - startPos[1], 2))) * 100);
+				.round(Math.sqrt(Math.pow(endPos[0] - startPos[0], 2) + Math.pow(endPos[1] - startPos[1], 2)))/ 100) * EkiConfig.priceMultiplier;
 		return price;
 	}
 

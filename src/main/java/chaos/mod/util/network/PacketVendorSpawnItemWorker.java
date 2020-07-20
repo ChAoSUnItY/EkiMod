@@ -1,6 +1,12 @@
 package chaos.mod.util.network;
 
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.util.UUID;
+
 import chaos.mod.init.ItemInit;
+import chaos.mod.tileentity.TileEntityTicketVendor;
+import chaos.mod.util.utils.UtilLogger;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.SoundEvents;
@@ -22,14 +28,16 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 
 	private BlockPos pos;
 	private int price;
+	private UUID uuid;
 
 	public PacketVendorSpawnItemWorker() {
 		this.messageValid = false;
 	}
 
-	public PacketVendorSpawnItemWorker(BlockPos pos, int price) {
+	public PacketVendorSpawnItemWorker(BlockPos pos, int price, UUID uuid) {
 		this.pos = pos;
 		this.price = price;
+		this.uuid = uuid;
 		this.messageValid = true;
 	}
 
@@ -38,6 +46,7 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 		try {
 			this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
 			this.price = buf.readInt();
+			this.uuid = UUID.fromString(buf.readCharSequence(36, Charset.forName("utf-8")).toString());
 		} catch (IndexOutOfBoundsException e) {
 			return;
 		}
@@ -52,6 +61,10 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 		buf.writeInt(pos.getY());
 		buf.writeInt(pos.getZ());
 		buf.writeInt(price);
+		ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
+		bb.putLong(uuid.getMostSignificantBits());
+	    bb.putLong(uuid.getLeastSignificantBits());
+		buf.writeBytes(bb.array());
 	}
 
 	public static class Handler implements IMessageHandler<PacketVendorSpawnItemWorker, IMessage> {
@@ -71,10 +84,13 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 			BlockPos pos = tileEntity.getPos();
 			ItemStack ticket = new ItemStack(ItemInit.TICKET, 1);
 			NBTTagCompound nbt = new NBTTagCompound();
+			
 			nbt.setInteger("value", message.price);
 			ticket.setTagCompound(nbt);
 			tileEntity.getWorld().spawnEntity(new EntityItem(tileEntity.getWorld(), pos.getX()+0.5, pos.getY()+1,
 					pos.getZ()+0.5, ticket));
+			((TileEntityTicketVendor) tileEntity).addMoney(message.price);
+			UtilLogger.info(((TileEntityTicketVendor) tileEntity).getMoney());
 			world.playSound(null, pos, SoundEvents.BLOCK_DISPENSER_LAUNCH, SoundCategory.BLOCKS, 1, 1);
 		}
 	}

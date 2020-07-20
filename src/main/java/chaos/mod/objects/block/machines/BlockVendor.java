@@ -13,7 +13,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockVendor extends BlockHasFace implements ITileEntityProvider {
+public class BlockVendor extends BlockHasFace implements ITileEntityProvider{
 	public BlockVendor(String name) {
 		super(name, Eki.STATION, false);
 	}
@@ -24,7 +24,7 @@ public class BlockVendor extends BlockHasFace implements ITileEntityProvider {
 		if (!worldIn.isRemote) playerIn.openGui(Eki.instance, Reference.GUITICKETVENDOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityTicketVendor();

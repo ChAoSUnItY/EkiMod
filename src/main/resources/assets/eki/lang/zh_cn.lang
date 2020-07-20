@@ -20,9 +20,7 @@ tile.platform_edge_with_line_and_light_off_opf.name=增高的站台边缘（含�
 tile.platform_edge_with_line_and_light_on_opf.name=增高的站台边缘（含盲道，安全线和开启的指示灯）
 //decorations
 tile.wooden_bench.name=木椅
-//beams and panels
-tile.panel_black.name=屏幕（黑色 WIP）
-tile.panel_white.name=屏幕（白色 WIP）
+//beams
 tile.panel_beam_with_cross_black.name=屏幕支架（含梁，黑色）
 tile.panel_beam_with_cross_white.name=屏幕支架（含梁，白色）
 tile.bending_beam_white.name=弯曲支架（白色）
@@ -137,7 +135,7 @@ tile.anchor.warning.tooltip=在已绑定的情況下打掉这个方块并不是�
 //GUIS
 container.ticket_vendor.state.success=购票成功！金额：%d
 container.ticket_vendor.state.shortage=您身上的余额无法购买%d元的票
-container.ticket_vendor.state.failed=%d 不是一个有效金额数目
+container.ticket_vendor.state.failed=%s 不是一个有效金额数目
 container.ticket_vendor.state.illegal=%s 玩家在售票机内输入了无效的金额数目
 container.ticket_vendor.state.waiting=等待中......
 container.ticket_vendor.button.provide=购票

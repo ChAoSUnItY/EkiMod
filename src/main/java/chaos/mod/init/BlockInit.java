@@ -77,11 +77,7 @@ public class BlockInit {
 	public static final Block STATION_PILLAR_TOP = new BlockBase("station_pillar_top", STA);
 	
 	public static final Block STATION_PILLAR_BASE_WITH_FIRE_EXTINGUISHER_IN = new BlockHasFace("station_pillar_base_with_fire_extinguisher_in", STA, false);
-	//beams and panels
-	public static final Block PANEL_WHITE = new BlockHasFace("panel_white", STA, false);
-	
-	public static final Block PANEL_BLACK = new BlockHasFace("panel_black", STA, false);
-	
+	//beams
 	public static final Block PANEL_BEAM_WHITE = new BlockHasFace("panel_beam_white", STA, false);
 	
 	public static final Block PANEL_BEAM_BLACK = new BlockHasFace("panel_beam_black", STA, false);

@@ -1,6 +1,7 @@
 package chaos.mod.util.handlers;
 
 import chaos.mod.util.network.PacketVendorSpawnItemWorker;
+import chaos.mod.util.network.PacketVendorWithdrawWorker;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -18,5 +19,6 @@ public class PacketHandler {
 		INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(channelName);
 		
 		INSTANCE.registerMessage(PacketVendorSpawnItemWorker.Handler.class, PacketVendorSpawnItemWorker.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(PacketVendorWithdrawWorker.Handler.class, PacketVendorWithdrawWorker.class, nextID(), Side.SERVER);
 	}
 }

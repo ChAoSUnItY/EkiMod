@@ -29,9 +29,7 @@ tile.station_pillar_base.name=Station Pillar Base
 tile.station_pillar_center.name=Station Pillar Center
 tile.station_pillar_top.name=Station Pillar Top
 tile.station_pillar_base_with_fire_extinguisher_in.name=Station Pillar Base with Fire Extinguisher
-//beams and panels
-tile.panel_black.name=Panel (Black WIP)
-tile.panel_white.name=Panel (White WIP)
+//beams
 tile.panel_beam_with_cross_black.name=Panel Beam with Cross (Black)
 tile.panel_beam_with_cross_white.name=Panel Beam with Cross (White)
 tile.bending_beam_white.name=Bending Beam (White)
@@ -139,12 +137,15 @@ tile.anchor.tooltip=A block use to bind ticket gates.
 tile.anchor.warning.tooltip=Breaking this block that had been bound to gates is not a clever way to reset......
 
 //GUIS
-container.ticket_vendor.state.success=Successfully Ticketed!
+container.ticket_vendor.state.success=Successfully ticketed!
 container.ticket_vendor.state.shortage=Balance is shortage!
-container.ticket_vendor.state.failed=%d is invalid for value!
+container.ticket_vendor.state.failed=%s is invalid for value!
 container.ticket_vendor.state.illegal=%s typed an invalid value in ticket vendor.
 container.ticket_vendor.state.waiting=Waiting......
+container.ticket_vendor.state.withdraw=Successfully withdrawed!
+container.ticket_vendor.state.permission=Insufficient permissions.
 container.ticket_vendor.button.provide=Ticket
+container.ticket_vendor.button.withdraw=Withdraw
 container.ticket_vendor.button.clear=Clear
 container.ticket_vendor.text.default=Insert value.
 

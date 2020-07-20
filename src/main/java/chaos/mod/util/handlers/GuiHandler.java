@@ -15,8 +15,7 @@ public class GuiHandler implements IGuiHandler {
 		BlockPos pos = new BlockPos(x, y, z);
 		switch (ID) {
 		case Reference.GUITICKETVENDOR:
-			return new ContainerTicketVendor(player.inventory, (TileEntityTicketVendor) world.getTileEntity(pos),
-					player);
+			return new ContainerTicketVendor(player.inventory, (TileEntityTicketVendor) world.getTileEntity(pos), player);
 		default:
 			return null;
 		}

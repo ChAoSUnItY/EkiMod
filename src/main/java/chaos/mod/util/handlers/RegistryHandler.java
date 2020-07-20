@@ -11,6 +11,9 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
@@ -46,9 +49,17 @@ public class RegistryHandler{
 		}
 	}
 	
-	public static void preInit() {
+	public static void preInit(FMLPreInitializationEvent event) {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Eki.instance, new GuiHandler());
 		PacketHandler.registerMessages(Reference.MODID);
+	}
+	
+	public static void init(FMLInitializationEvent event) {
+		
+	}
+	
+	public static void postInit(FMLPostInitializationEvent event) {
+		
 	}
 	
 	public static boolean modChecker() {

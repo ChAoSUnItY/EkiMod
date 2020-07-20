@@ -1,5 +1,7 @@
 package chaos.mod;
 
+import java.io.File;
+
 import chaos.mod.init.BlockInit;
 import chaos.mod.init.ItemInit;
 import chaos.mod.proxy.ServerProxy;
@@ -7,6 +9,8 @@ import chaos.mod.util.Reference;
 import chaos.mod.util.handlers.RegistryHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.Config.RangeInt;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -44,10 +48,12 @@ public class Eki {
 
 	@SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.SERVER)
 	public static ServerProxy proxy;
+	
+	public static File config;
 
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
-		RegistryHandler.preInit();
+		RegistryHandler.preInit(event);
 	}
 
 	@EventHandler
@@ -59,4 +65,10 @@ public class Eki {
 		isApiModLoaded = RegistryHandler.modChecker();
 	}
 
+	@Config(modid = Reference.MODID, category = "Ticket System")
+    public static class EkiConfig {
+        @Config.Comment("Multiplier for ticket calculation, formula: MULTIPLIER * (LENGTH TRAVELED / 100) = PRICE")
+        @RangeInt(min = 1, max = 10000)
+        public static int priceMultiplier = 100;
+    }
 }

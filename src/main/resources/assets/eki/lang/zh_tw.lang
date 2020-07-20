@@ -23,9 +23,7 @@ tile.platform_edge_with_line_and_light_off_opf.name=月台邊加高含標線和�
 tile.platform_edge_with_line_and_light_on_opf.name=月台邊加高含標線和列車警示燈 (開啟)
 //decorations
 tile.wooden_bench.name=木椅
-//beams and panels
-tile.panel_black.name=螢幕 (黑色 WIP)
-tile.panel_white.name=螢幕 (白色 WIP)
+//beams
 tile.panel_beam_with_cross_black.name=螢幕支架含樑 (黑色)
 tile.panel_beam_with_cross_white.name=螢幕支架含樑 (白色)
 tile.bending_beam_white.name=彎曲支架 (白色)
@@ -108,8 +106,8 @@ tile.washed_granolithic_finish_side_slab.name=洗石子垂直半磚
 tile.asphalt_side_slab.name=瀝青垂直半磚
 //custom stairs
 tile.station_stairs.name=車站階梯
-tile.station_stairs_gentle_top.name=車站緩階梯 (上部)
-tile.station_stairs_gentle_bot.name=車站緩階梯 (底部)
+tile.station_stairs_gentle_top.name=車站緩階梯 (上半部)
+tile.station_stairs_gentle_bot.name=車站緩階梯 (下半部)
 //LIGHT SECTION
 tile.grille_light_white.name=格柵燈 (白色)
 tile.grille_light_black.name=格柵燈 (黑色)
@@ -140,10 +138,13 @@ tile.anchor.warning.tooltip=在已綁定的情況下打掉這個方塊並不是�
 //GUIS
 container.ticket_vendor.state.success=出票成功！金額：%d
 container.ticket_vendor.state.shortage=您身上的餘額不足：%d
-container.ticket_vendor.state.failed=%d 並不是一個有效金額數目
+container.ticket_vendor.state.failed=%s 並不是一個有效金額數目
 container.ticket_vendor.state.illegal=%s 玩家在售票機內輸入了無效的金額數目
 container.ticket_vendor.state.waiting=等待中......
+container.ticket_vendor.state.withdraw=提款成功！
+container.ticket_vendor.state.permission=權限不足
 container.ticket_vendor.button.provide=出票
+container.ticket_vendor.button.withdraw=提款
 container.ticket_vendor.button.clear=清除
 container.ticket_vendor.text.default=請輸入數字
 
