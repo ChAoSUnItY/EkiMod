@@ -1,6 +1,7 @@
 package chaos.mod.objects.block.subblocks;
 
 import chaos.mod.Eki;
+import chaos.mod.objects.block.base.BlockVariantBase;
 import chaos.mod.util.handlers.EnumHandler.EnamelWallEnumWallAType;
 import chaos.mod.util.interfaces.IHasModel;
 import chaos.mod.util.interfaces.IMetaName;

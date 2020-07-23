@@ -2,6 +2,7 @@ package chaos.mod.objects.block.slabs;
 
 import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
+import chaos.mod.util.utils.UtilTranslatable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
@@ -18,7 +19,7 @@ public class BlockSlabBaseCommon extends BlockSlab {
 
 	public BlockSlabBaseCommon(String name, BlockSlab half) {
 		super(Material.ROCK);
-		setUnlocalizedName(name);
+		setUnlocalizedName(UtilTranslatable.getEki(name));
 		setCreativeTab(Eki.BLOCK);
 		setRegistryName(name);
 		useNeighborBrightness = !this.isDouble();

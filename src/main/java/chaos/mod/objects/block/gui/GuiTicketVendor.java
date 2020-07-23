@@ -3,6 +3,7 @@ package chaos.mod.objects.block.gui;
 import java.io.IOException;
 
 import chaos.mod.Eki;
+import chaos.mod.init.BlockInit;
 import chaos.mod.objects.block.container.ContainerTicketVendor;
 import chaos.mod.tileentity.TileEntityTicketVendor;
 import chaos.mod.util.Reference;
@@ -84,7 +85,7 @@ public class GuiTicketVendor extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		this.fontRenderer.drawString(I18n.format("tile.ticket_vendor.name"), (this.xSize / 2 - this.fontRenderer.getStringWidth(I18n.format("tile.ticket_vendor.name")) / 2) + 3, 8, 4210752);
+		this.fontRenderer.drawString(BlockInit.TICKET_VENDOR.getLocalizedName(), (this.xSize / 2 - this.fontRenderer.getStringWidth(BlockInit.TICKET_VENDOR.getLocalizedName()) / 2), 8, 4210752);
 		this.fontRenderer.drawString(I18n.format("container.inventory"), 8, this.ySize - 93, 4210752);
 		this.fontRenderer.drawString(this.state, (this.xSize / 2) - (this.fontRenderer.getStringWidth(state) / 2), 20, 16711680);
 		if (this.warning != null) {

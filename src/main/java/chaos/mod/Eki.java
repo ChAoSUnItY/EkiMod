@@ -7,6 +7,7 @@ import chaos.mod.init.ItemInit;
 import chaos.mod.proxy.ServerProxy;
 import chaos.mod.util.Reference;
 import chaos.mod.util.handlers.RegistryHandler;
+import chaos.mod.util.utils.UtilTranslatable;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Config;
@@ -24,19 +25,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class Eki {
 	public static boolean isApiModLoaded;
-	public static final CreativeTabs BLOCK = new CreativeTabs("eki_block") {
+	public static final CreativeTabs BLOCK = new CreativeTabs(UtilTranslatable.getEki("block")) {
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem() {
 			return new ItemStack(BlockInit.RETAINING_WALL);
 		}
 	};
-	public static final CreativeTabs STATION = new CreativeTabs("eki_station") {
+	public static final CreativeTabs STATION = new CreativeTabs(UtilTranslatable.getEki("station")) {
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem() {
 			return new ItemStack(BlockInit.HANDRAIL);
 		}
 	};
-	public static final CreativeTabs MISC = new CreativeTabs("eki_misc") {
+	public static final CreativeTabs MISC = new CreativeTabs(UtilTranslatable.getEki("misc")) {
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem() {
 			return new ItemStack(ItemInit.WRENCH);

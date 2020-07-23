@@ -1,4 +1,4 @@
-package chaos.mod.objects.block.subblocks;
+package chaos.mod.objects.block.base;
 
 import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
@@ -6,6 +6,7 @@ import chaos.mod.init.ItemInit;
 import chaos.mod.objects.block.item.ItemBlockVariants;
 import chaos.mod.util.interfaces.IHasModel;
 import chaos.mod.util.interfaces.IMetaName;
+import chaos.mod.util.utils.UtilTranslatable;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,7 @@ public class BlockVariantBase extends Block implements IHasModel, IMetaName{
 	
 	public BlockVariantBase(String name) {
 		super(Material.ROCK);
-		setUnlocalizedName(name);
+		setUnlocalizedName(UtilTranslatable.getEki(name));
 		setRegistryName(name);
 		setCreativeTab(Eki.BLOCK);
 		this.name = name;

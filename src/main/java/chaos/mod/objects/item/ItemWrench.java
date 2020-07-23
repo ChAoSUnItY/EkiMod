@@ -2,9 +2,11 @@ package chaos.mod.objects.item;
 
 import java.util.List;
 
-import net.minecraft.client.resources.I18n;
+import chaos.mod.util.utils.UtilBlockPos;
+import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -20,11 +22,10 @@ public class ItemWrench extends ItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (stack.hasTagCompound()) {
-			int[] pos = stack.getTagCompound().getIntArray("pos");
-			tooltip.add(TextFormatting.GRAY
-					+ I18n.format(getUnlocalizedName() + ".withtag.tooltip", pos[0], pos[2], pos[1]));
+			BlockPos pos = UtilBlockPos.getPos(stack.getTagCompound().getIntArray("pos"));
+			tooltip.add(new UtilTCString(getUnlocalizedName() + ".withtag.tooltip", pos.getX(), pos.getY(), pos.getZ()).applyFormat(TextFormatting.GRAY).getFormattedText());
 		} else {
-			tooltip.add(TextFormatting.GRAY + I18n.format(getUnlocalizedName() + ".withouttag.tooltip"));
+			tooltip.add(new UtilTCString(getUnlocalizedName() + ".withouttag.tooltip").applyFormat(TextFormatting.GRAY).getFormattedText());
 		}
 	}
 }
