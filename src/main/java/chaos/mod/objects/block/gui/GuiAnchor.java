@@ -110,10 +110,8 @@ public class GuiAnchor extends GuiScreen {
 
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
-		if (!text.isFocused()) {
-			if (keyCode == 1 || mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)) {
-				mc.player.closeScreen();
-			}
+		if (!text.isFocused() && (keyCode == 1 || mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))) {
+			mc.player.closeScreen();
 		}
 		super.keyTyped(typedChar, keyCode);
 		text.textboxKeyTyped(typedChar, keyCode);

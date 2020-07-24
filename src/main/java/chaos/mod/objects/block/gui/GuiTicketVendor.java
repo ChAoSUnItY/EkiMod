@@ -22,6 +22,8 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.client.GuiScrollingList;
+import net.minecraftforge.fml.client.GuiSlotModList;
 import the_fireplace.grandeconomy.api.GrandEconomyApi;
 
 public class GuiTicketVendor extends GuiContainer {
@@ -38,6 +40,7 @@ public class GuiTicketVendor extends GuiContainer {
 	public GuiButton buttonProvide;
 	public GuiButton buttonClear;
 	public GuiButton buttonWithdraw;
+	//public  listStations;
 	public Container container;
 
 	public GuiTicketVendor(InventoryPlayer invPlayer, TileEntityTicketVendor te, EntityPlayer player) {
@@ -66,6 +69,7 @@ public class GuiTicketVendor extends GuiContainer {
 			buttonClear = new GuiButton(1, guiLeft + (baseX * 3) + 23, guiTop + baseY + 20, (baseWidthX / 2) - 10, (baseHeightY / 2) + 10,
 					new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
 		}
+		//listStations = new 
 		buttonList.add(buttonProvide);
 		buttonList.add(buttonClear);
 		text.setFocused(true);

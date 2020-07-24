@@ -23,10 +23,7 @@ public class Station {
 	@Override
 	public boolean equals(Object obj) {
 		Station sta = (Station) obj;
-		if (sta.getPos().equals(pos) && sta.getName().equals(name)) {
-			return true;
-		}
-		return false;
+		return sta.getPos().equals(pos) && sta.getName().equals(name);
 	}
 
 	public String getPosStringFormat() {
