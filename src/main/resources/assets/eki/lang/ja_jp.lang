@@ -2,104 +2,104 @@
 //BLOCKSINIT
 //STATION SECTION
 //station stuff
-tile.handrail.name=手すり
-tile.handrail_corner.name=手すりコーナー
+tile.eki.handrail.name=手すり
+tile.eki.handrail_corner.name=手すりコーナー
 //platforms 
-tile.platform_edge.name=ホーム縁端
-tile.platform_edge_with_guide_brick.name=ホーム縁端滑り止めブロック
-tile.platform_edge_with_guide_brick_and_line.name=ホーム縁端滑り止めブロック (端線あり)
-tile.platform_edge_with_line.name=ホーム縁端 (端線あり)
-tile.platform_asphalt_with_guide_brick.name=黄色い点字ブロックアスファルト
-tile.platform_edge_with_line_and_light_off.name=ホーム縁端滑り止めブロック (端線スレッドラインあり)
-tile.platform_edge_with_line_and_light_on.name=ホーム縁端滑り止めブロック (端線スレッドラインあり)　(点)
-tile.platform_edge_opf.name=高いホーム縁端
-tile.platform_edge_with_guide_brick_opf.name=高いホーム縁端滑り止めブロック
-tile.platform_edge_with_guide_brick_and_line_opf.name=高いホーム縁端滑り止めブロック (端線あり)
-tile.platform_edge_with_line_opf.name=高いホーム縁端 (端線あり)
-tile.platform_asphalt_with_guide_brick_opf.name=高い黄色い点字ブロックアスファルト
-tile.platform_edge_with_line_and_light_off_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)
-tile.platform_edge_with_line_and_light_on_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)　(点)
+tile.eki.platform_edge.name=ホーム縁端
+tile.eki.platform_edge_with_guide_brick.name=ホーム縁端滑り止めブロック
+tile.eki.platform_edge_with_guide_brick_and_line.name=ホーム縁端滑り止めブロック (端線あり)
+tile.eki.platform_edge_with_line.name=ホーム縁端 (端線あり)
+tile.eki.platform_asphalt_with_guide_brick.name=黄色い点字ブロックアスファルト
+tile.eki.platform_edge_with_line_and_light_off.name=ホーム縁端滑り止めブロック (端線スレッドラインあり)
+tile.eki.platform_edge_with_line_and_light_on.name=ホーム縁端滑り止めブロック (端線スレッドラインあり)　(点)
+tile.eki.platform_edge_opf.name=高いホーム縁端
+tile.eki.platform_edge_with_guide_brick_opf.name=高いホーム縁端滑り止めブロック
+tile.eki.platform_edge_with_guide_brick_and_line_opf.name=高いホーム縁端滑り止めブロック (端線あり)
+tile.eki.platform_edge_with_line_opf.name=高いホーム縁端 (端線あり)
+tile.eki.platform_asphalt_with_guide_brick_opf.name=高い黄色い点字ブロックアスファルト
+tile.eki.platform_edge_with_line_and_light_off_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)
+tile.eki.platform_edge_with_line_and_light_on_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)　(点)
 //station pillars
-tile.station_pillar_base.name=駅の柱 (ベース)
-tile.station_pillar_center.name=駅の柱 (中)
-tile.station_pillar_top.name=駅の柱 (トップ)
-tile.station_pillar_base_with_fire_extinguisher_in.name=消火器の柱 (ベース)
+tile.eki.station_pillar_base.name=駅の柱 (ベース)
+tile.eki.station_pillar_center.name=駅の柱 (中)
+tile.eki.station_pillar_top.name=駅の柱 (トップ)
+tile.eki.station_pillar_base_with_fire_extinguisher_in.name=消火器の柱 (ベース)
 //beams
-tile.panel_beam_with_cross_black.name=モニター柱と桁 (黒)
-tile.panel_beam_with_cross_white.name=モニター柱と桁 (白)
-tile.bending_beam_white.name=曲げ桁 (白)
-tile.bending_beam_black.name=曲げ桁 (黒)
-tile.support_beam_white.name=桁端 (白)
-tile.support_beam_black.name=桁端 (黒)
-tile.panel_beam_black.name=モニター柱 (黒)
-tile.panel_beam_white.name=モニター柱 (白)
-tile.beam_black.name=桁 (黒)
-tile.beam_white.name=桁 (白)
+tile.eki.panel_beam_with_cross_black.name=モニター柱と桁 (黒)
+tile.eki.panel_beam_with_cross_white.name=モニター柱と桁 (白)
+tile.eki.bending_beam_white.name=曲げ桁 (白)
+tile.eki.bending_beam_black.name=曲げ桁 (黒)
+tile.eki.support_beam_white.name=桁端 (白)
+tile.eki.support_beam_black.name=桁端 (黒)
+tile.eki.panel_beam_black.name=モニター柱 (黒)
+tile.eki.panel_beam_white.name=モニター柱 (白)
+tile.eki.beam_black.name=桁 (黒)
+tile.eki.beam_white.name=桁 (白)
 //BLOCKS
 //blocks
-tile.retaining_wall.name=擁壁
-tile.retaining_wall_corner.name=擁壁コーナー
-tile.architectural_concrete.name=打放しコンクリート
-tile.concrete.name=コンクリート
-tile.nichogake.name=二丁掛
-tile.washed_granolithic_finish.name=人造石洗出し
-tile.asphalt.name=アスファルト
-tile.enamel_wall_bot_blue.name=エナメル壁 (青色のベース)
-tile.enamel_wall_bot_green.name=エナメル壁 (緑色のベース)
-tile.enamel_wall_bot_cyan.name=エナメル壁 (青緑色のベース)
-tile.enamel_wall_bot_purple.name=エナメル壁 (紫色のベース)
-tile.enamel_wall_bot_red.name=エナメル壁 (赤色のベース)
-tile.enamel_wall_bot_yellow.name=エナメル壁 (黄色のベース)
-tile.enamel_wall_bot_white.name=エナメル壁 (白色のベース)
-tile.enamel_wall_s_blue.name=エナメル壁 (青色のタイル)
-tile.enamel_wall_s_green.name=エナメル壁 (緑色のタイル)
-tile.enamel_wall_s_cyan.name=エナメル壁 (青緑色のタイル)
-tile.enamel_wall_s_purple.name=エナメル壁 (紫色のタイル)
-tile.enamel_wall_s_red.name=エナメル壁 (赤色のタイル)
-tile.enamel_wall_s_yellow.name=エナメル壁 (黄色のタイル)
-tile.enamel_wall_s_white.name=エナメル壁 (白色のタイル)
-tile.enamel_wall_top_blue.name=エナメル壁 (青色のトップ)
-tile.enamel_wall_top_green.name=エナメル壁 (緑色のトップ)
-tile.enamel_wall_top_cyan.name=エナメル壁 (青緑色のトップ)
-tile.enamel_wall_top_purple.name=エナメル壁 (紫色のトップ)
-tile.enamel_wall_top_red.name=エナメル壁 (赤色のトップ)
-tile.enamel_wall_top_yellow.name=エナメル壁 (黄色のトップ)
-tile.enamel_wall_top_white.name=エナメル壁 (白色のトップ)
+tile.eki.retaining_wall.name=擁壁
+tile.eki.retaining_wall_corner.name=擁壁コーナー
+tile.eki.architectural_concrete.name=打放しコンクリート
+tile.eki.concrete.name=コンクリート
+tile.eki.nichogake.name=二丁掛
+tile.eki.washed_granolithic_finish.name=人造石洗出し
+tile.eki.asphalt.name=アスファルト
+tile.eki.enamel_wall_bot_blue.name=エナメル壁 (青色のベース)
+tile.eki.enamel_wall_bot_green.name=エナメル壁 (緑色のベース)
+tile.eki.enamel_wall_bot_cyan.name=エナメル壁 (青緑色のベース)
+tile.eki.enamel_wall_bot_purple.name=エナメル壁 (紫色のベース)
+tile.eki.enamel_wall_bot_red.name=エナメル壁 (赤色のベース)
+tile.eki.enamel_wall_bot_yellow.name=エナメル壁 (黄色のベース)
+tile.eki.enamel_wall_bot_white.name=エナメル壁 (白色のベース)
+tile.eki.enamel_wall_s_blue.name=エナメル壁 (青色のタイル)
+tile.eki.enamel_wall_s_green.name=エナメル壁 (緑色のタイル)
+tile.eki.enamel_wall_s_cyan.name=エナメル壁 (青緑色のタイル)
+tile.eki.enamel_wall_s_purple.name=エナメル壁 (紫色のタイル)
+tile.eki.enamel_wall_s_red.name=エナメル壁 (赤色のタイル)
+tile.eki.enamel_wall_s_yellow.name=エナメル壁 (黄色のタイル)
+tile.eki.enamel_wall_s_white.name=エナメル壁 (白色のタイル)
+tile.eki.enamel_wall_top_blue.name=エナメル壁 (青色のトップ)
+tile.eki.enamel_wall_top_green.name=エナメル壁 (緑色のトップ)
+tile.eki.enamel_wall_top_cyan.name=エナメル壁 (青緑色のトップ)
+tile.eki.enamel_wall_top_purple.name=エナメル壁 (紫色のトップ)
+tile.eki.enamel_wall_top_red.name=エナメル壁 (赤色のトップ)
+tile.eki.enamel_wall_top_yellow.name=エナメル壁 (黄色のトップ)
+tile.eki.enamel_wall_top_white.name=エナメル壁 (白色のトップ)
 //stairs
-tile.architectural_concrete_stairs.name=打放しコンクリートの階段
-tile.concrete_stairs.name=コンクリートの階段
-tile.nichogake_stairs.name=二丁掛の階段
-tile.washed_granolithic_finish_stairs.name=人造石洗出しの階段
-tile.asphalt_stairs.name=アスファルトの階段
+tile.eki.architectural_concrete_stairs.name=打放しコンクリートの階段
+tile.eki.concrete_stairs.name=コンクリートの階段
+tile.eki.nichogake_stairs.name=二丁掛の階段
+tile.eki.washed_granolithic_finish_stairs.name=人造石洗出しの階段
+tile.eki.asphalt_stairs.name=アスファルトの階段
 //slabs
-tile.architectural_concrete_slab_half.name=打放しコンクリートのハーフブロック
-tile.concrete_slab_half.name=コンクリートのハーフブロック
-tile.nichogake_slab_half.name=二丁掛のハーフブロック
-tile.washed_granolithic_finish_slab_half.name=人造石洗出しのハーフブロック
-tile.asphalt_slab_half.name=アスファルトのハーフブロック
+tile.eki.architectural_concrete_slab_half.name=打放しコンクリートのハーフブロック
+tile.eki.concrete_slab_half.name=コンクリートのハーフブロック
+tile.eki.nichogake_slab_half.name=二丁掛のハーフブロック
+tile.eki.washed_granolithic_finish_slab_half.name=人造石洗出しのハーフブロック
+tile.eki.asphalt_slab_half.name=アスファルトのハーフブロック
 //side slabs
-tile.retaining_wall_side_slab.name=擁壁のサイドブロック
-tile.architectural_concrete_side_slab.name=打放しコンクリートのサイドブロック
-tile.concrete_side_slab.name=コンクリートのサイドブロック
-tile.nichogake_side_slab.name=二丁掛のサイドブロック
-tile.washed_granolithic_finish_side_slab.name=人造石洗出しのサイドブロック
-tile.asphalt_side_slab.name=アスファルトのサイドブロック
+tile.eki.retaining_wall_side_slab.name=擁壁のサイドブロック
+tile.eki.architectural_concrete_side_slab.name=打放しコンクリートのサイドブロック
+tile.eki.concrete_side_slab.name=コンクリートのサイドブロック
+tile.eki.nichogake_side_slab.name=二丁掛のサイドブロック
+tile.eki.washed_granolithic_finish_side_slab.name=人造石洗出しのサイドブロック
+tile.eki.asphalt_side_slab.name=アスファルトのサイドブロック
 //custom stairs
-tile.station_stairs.name=駅の階段
-tile.station_stairs_gentle_top.name=駅の階段ハーフブロック (トップ)
-tile.station_stairs_gentle_bot.name=駅の階段ハーフブロック (ベース)
+tile.eki.station_stairs.name=駅の階段
+tile.eki.station_stairs_gentle_top.name=駅の階段ハーフブロック (トップ)
+tile.eki.station_stairs_gentle_bot.name=駅の階段ハーフブロック (ベース)
 //LIGHT SECTION
-tile.grille_light_white.name=グリルライト (白)
-tile.grille_light_black.name=グリルライト (黒)
-tile.tunnel_light.name=トンネル照明
-tile.wall_neon_light.name=ウォールネオンライト
+tile.eki.grille_light_white.name=グリルライト (白)
+tile.eki.grille_light_black.name=グリルライト (黒)
+tile.eki.tunnel_light.name=トンネル照明
+tile.eki.wall_neon_light.name=ウォールネオンライト
 
 //ITEMINIT
 //TOOLS
-item.wrench.name=レンチ
-item.wrench.tooltip=調整ツール (作用なし)
+item.eki.wrench.name=レンチ
+item.eki.wrench.tooltip=調整ツール (作用なし)
 
 
-itemGroup.eki_block=駅ブロック
-itemGroup.eki_station=駅装飾
-itemGroup.eki_lights=駅照明
+itemGroup.eki.block=駅ブロック
+itemGroup.eki.station=駅装飾
+itemGroup.eki.lights=駅照明

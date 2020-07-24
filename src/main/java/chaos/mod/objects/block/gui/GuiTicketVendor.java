@@ -10,11 +10,13 @@ import chaos.mod.util.Reference;
 import chaos.mod.util.handlers.PacketHandler;
 import chaos.mod.util.network.PacketVendorSpawnItemWorker;
 import chaos.mod.util.network.PacketVendorWithdrawWorker;
+import chaos.mod.util.utils.UtilTranslatable;
+import chaos.mod.util.utils.UtilTranslatable.TranslateType;
+import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -24,7 +26,7 @@ import the_fireplace.grandeconomy.api.GrandEconomyApi;
 
 public class GuiTicketVendor extends GuiContainer {
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MODID, "textures/gui/container/ticket_vendor.png");
-	private TileEntityTicketVendor tileEntity;
+	private TileEntityTicketVendor te;
 	private EntityPlayer player;
 	protected int baseX = 21;
 	protected int baseY = 32;
@@ -38,13 +40,13 @@ public class GuiTicketVendor extends GuiContainer {
 	public GuiButton buttonWithdraw;
 	public Container container;
 
-	public GuiTicketVendor(InventoryPlayer invPlayer, TileEntityTicketVendor tileEntity, EntityPlayer player) {
-		super(new ContainerTicketVendor(invPlayer, tileEntity, player));
+	public GuiTicketVendor(InventoryPlayer invPlayer, TileEntityTicketVendor te, EntityPlayer player) {
+		super(new ContainerTicketVendor(invPlayer, te, player));
 
-		this.tileEntity = tileEntity;
+		this.te = te;
 		this.player = player;
-		this.state = TextFormatting.GRAY + I18n.format("container.ticket_vendor.state.waiting");
-		this.container = new ContainerTicketVendor(invPlayer, tileEntity, player);
+		state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.waiting").applyFormat(TextFormatting.GRAY).getFormattedText();
+		container = new ContainerTicketVendor(invPlayer, te, player);
 	}
 
 	@Override
@@ -52,57 +54,59 @@ public class GuiTicketVendor extends GuiContainer {
 		super.initGui();
 		text = new GuiTextField(0, fontRenderer, guiLeft + baseX + 1, guiTop + baseY, baseWidthX, baseHeightY);
 		if (Eki.isApiModLoaded) {
-			buttonProvide = new GuiButton(0, guiLeft + 21, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10, TextFormatting.WHITE + I18n.format("container.ticket_vendor.button.provide"));
-			buttonWithdraw = new GuiButton(1, guiLeft + 58, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10, I18n.format("container.ticket_vendor.button.withdraw"));
-			buttonClear = new GuiButton(2, guiLeft + 95, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10, TextFormatting.WHITE + I18n.format("container.ticket_vendor.button.clear"));
-			this.buttonList.add(this.buttonWithdraw);
+			buttonProvide = new GuiButton(0, guiLeft + 21, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10,
+					new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.provide").getFormattedText());
+			buttonWithdraw = new GuiButton(1, guiLeft + 58, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10,
+					new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.withdraw").getFormattedText());
+			buttonClear = new GuiButton(2, guiLeft + 95, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10, new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
+			buttonList.add(buttonWithdraw);
 		} else {
 			buttonProvide = new GuiButton(0, guiLeft + baseX, guiTop + baseY + 20, (baseWidthX / 2) - 10, (baseHeightY / 2) + 10,
-					TextFormatting.WHITE + I18n.format("container.ticket_vendor.button.provide"));
+					new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.provide").getFormattedText());
 			buttonClear = new GuiButton(1, guiLeft + (baseX * 3) + 23, guiTop + baseY + 20, (baseWidthX / 2) - 10, (baseHeightY / 2) + 10,
-					TextFormatting.WHITE + I18n.format("container.ticket_vendor.button.clear"));
+					new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
 		}
-		this.buttonList.add(this.buttonProvide);
-		this.buttonList.add(this.buttonClear);
-		this.text.setFocused(true);
-		this.text.setCanLoseFocus(true);
-		this.text.setText(I18n.format("container.ticket_vendor.text.default"));
-		this.text.setMaxStringLength(100);
+		buttonList.add(buttonProvide);
+		buttonList.add(buttonClear);
+		text.setFocused(true);
+		text.setCanLoseFocus(true);
+		text.setText(new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.text.default").getFormattedText());
+		text.setMaxStringLength(100);
 	}
 
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		if (Eki.isApiModLoaded) {
-			this.buttonWithdraw.drawButton(mc, mouseX, mouseY, partialTicks);
+			buttonWithdraw.drawButton(mc, mouseX, mouseY, partialTicks);
 		}
-		this.buttonProvide.drawButton(mc, mouseX, mouseY, partialTicks);
-		this.buttonClear.drawButton(mc, mouseX, mouseY, partialTicks);
-		this.drawDefaultBackground();
+		buttonProvide.drawButton(mc, mouseX, mouseY, partialTicks);
+		buttonClear.drawButton(mc, mouseX, mouseY, partialTicks);
+		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
-		this.text.drawTextBox();
-		this.renderHoveredToolTip(mouseX, mouseY);
+		text.drawTextBox();
+		renderHoveredToolTip(mouseX, mouseY);
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		this.fontRenderer.drawString(BlockInit.TICKET_VENDOR.getLocalizedName(), (this.xSize / 2 - this.fontRenderer.getStringWidth(BlockInit.TICKET_VENDOR.getLocalizedName()) / 2), 8, 4210752);
-		this.fontRenderer.drawString(I18n.format("container.inventory"), 8, this.ySize - 93, 4210752);
-		this.fontRenderer.drawString(this.state, (this.xSize / 2) - (this.fontRenderer.getStringWidth(state) / 2), 20, 16711680);
-		if (this.warning != null) {
-			this.fontRenderer.drawString(this.warning, 8, this.ySize - 113, 16711680);
+		fontRenderer.drawString(BlockInit.TICKET_VENDOR.getLocalizedName(), (xSize / 2 - fontRenderer.getStringWidth(BlockInit.TICKET_VENDOR.getLocalizedName()) / 2), 8, 4210752);
+		fontRenderer.drawString(new UtilTranslatable("container.inventory").getFormattedText(), 8, ySize - 93, 4210752);
+		fontRenderer.drawString(state, xSize / 2 - fontRenderer.getStringWidth(state) / 2, 20, 16711680);
+		if (warning != null) {
+			fontRenderer.drawString(warning, 8, ySize - 113, 16711680);
 		}
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.getTextureManager().bindTexture(TEXTURES);
-		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, this.xSize, this.ySize);
+		mc.getTextureManager().bindTexture(TEXTURES);
+		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 	}
 
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-		this.text.mouseClicked(mouseX, mouseY, mouseButton);
+		text.mouseClicked(mouseX, mouseY, mouseButton);
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 	}
 
@@ -114,11 +118,11 @@ public class GuiTicketVendor extends GuiContainer {
 				tryVendingTicket();
 				break;
 			case 1:
-				if (this.player.canUseCommand(2, "")) {
-					this.state = TextFormatting.GREEN + I18n.format("container.ticket_vendor.state.withdraw");
-					PacketHandler.INSTANCE.sendToServer(new PacketVendorWithdrawWorker(this.player.getGameProfile().getId(), this.tileEntity.getPos()));
+				if (player.canUseCommand(2, "")) {
+					state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.withdraw").applyFormat(TextFormatting.GREEN).getFormattedText();
+					PacketHandler.INSTANCE.sendToServer(new PacketVendorWithdrawWorker(player.getGameProfile().getId(), te.getPos()));
 				} else {
-					this.state = TextFormatting.RED + I18n.format("container.ticket_vendor.state.permission");
+					state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.permission").applyFormat(TextFormatting.RED).getFormattedText();
 				}
 				updateScreen();
 				break;
@@ -146,12 +150,12 @@ public class GuiTicketVendor extends GuiContainer {
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
-		this.text.textboxKeyTyped(typedChar, keyCode);
+		text.textboxKeyTyped(typedChar, keyCode);
 	}
 
 	@Override
 	public void updateScreen() {
-		this.text.updateCursorCounter();
+		text.updateCursorCounter();
 		super.updateScreen();
 	}
 
@@ -160,30 +164,30 @@ public class GuiTicketVendor extends GuiContainer {
 		try {
 			price = Integer.parseInt(text.getText());
 		} catch (NumberFormatException e) {
-			this.state = TextFormatting.RED + I18n.format("container.ticket_vendor.state.failed", text.getText());
+			state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.failed", text.getText()).applyFormat(TextFormatting.RED).getFormattedText();
 			updateScreen();
 			return;
 		}
-		this.state = TextFormatting.GREEN + I18n.format("container.ticket_vendor.state.success", price);
+		this.state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.success", price).applyFormat(TextFormatting.GREEN).getFormattedText();
 		if (price <= 0) {
-			this.state = TextFormatting.RED + I18n.format("container.ticket_vendor.state.shortage", price);
+			state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.shortage", price).applyFormat(TextFormatting.RED).getFormattedText();
 			return;
 		} else if (Eki.isApiModLoaded) {
 			if ((int) GrandEconomyApi.getBalance(player.getUniqueID(), true) >= price) {
 				GrandEconomyApi.takeFromBalance(player.getUniqueID(), price, true);
 			} else {
-				this.state = TextFormatting.RED + I18n.format("container.ticket_vendor.state.shortage", price);
+				state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.shortage", price).applyFormat(TextFormatting.RED).getFormattedText();
 				updateScreen();
 				return;
 			}
 		}
-		PacketHandler.INSTANCE.sendToServer(new PacketVendorSpawnItemWorker(this.tileEntity.getPos(), price, player.getGameProfile().getId()));
+		PacketHandler.INSTANCE.sendToServer(new PacketVendorSpawnItemWorker(this.te.getPos(), price));
 		updateScreen();
 	}
 
 	private void resetText() {
-		this.text.setText("");
-		this.text.setFocused(true);
+		text.setText("");
+		text.setFocused(true);
 		updateScreen();
 	}
 }

@@ -136,17 +136,20 @@ tile.eki.anchor.tooltip=用來標記為車站中心的方塊。
 tile.eki.anchor.warning.tooltip=在已綁定的情況下打掉這個方塊並不是個好主意......
 
 //GUIS
-container.ticket_vendor.state.success=出票成功！金額：%d
-container.ticket_vendor.state.shortage=您身上的餘額不足：%d
-container.ticket_vendor.state.failed=%s 並不是一個有效金額數目
-container.ticket_vendor.state.illegal=%s 玩家在售票機內輸入了無效的金額數目
-container.ticket_vendor.state.waiting=等待中......
-container.ticket_vendor.state.withdraw=提款成功！
-container.ticket_vendor.state.permission=權限不足
-container.ticket_vendor.button.provide=出票
-container.ticket_vendor.button.withdraw=提款
-container.ticket_vendor.button.clear=清除
-container.ticket_vendor.text.default=請輸入數字
+container.eki.ticket_vendor.state.success=出票成功！金額：%d
+container.eki.ticket_vendor.state.shortage=您身上的餘額不足：%d
+container.eki.ticket_vendor.state.failed=%s 並不是一個有效金額數目
+container.eki.ticket_vendor.state.illegal=%s 玩家在售票機內輸入了無效的金額數目
+container.eki.ticket_vendor.state.waiting=等待中......
+container.eki.ticket_vendor.state.withdraw=提款成功！
+container.eki.ticket_vendor.state.permission=權限不足
+container.eki.ticket_vendor.button.provide=出票
+container.eki.ticket_vendor.button.withdraw=提款
+container.eki.ticket_vendor.text.default=請輸入數字
+container.eki.anchor.station.name=站名：
+container.eki.anchor.text=請輸入名稱
+container.eki.anchor.button.confirm=確認
+container.eki.button.clear=清除
 
 //TEXTS
 chat.type.text.eki.anchorAmount=該錨點已連接 %d 個票閘!

@@ -137,17 +137,20 @@ tile.eki.anchor.tooltip=A block use to bind ticket gates.
 tile.eki.anchor.warning.tooltip=Breaking this block that had been bound to gates is not a clever way to reset......
 
 //GUIS
-container.ticket_vendor.state.success=Successfully ticketed!
-container.ticket_vendor.state.shortage=Balance is shortage!
-container.ticket_vendor.state.failed=%s is invalid for value!
-container.ticket_vendor.state.illegal=%s typed an invalid value in ticket vendor.
-container.ticket_vendor.state.waiting=Waiting......
-container.ticket_vendor.state.withdraw=Successfully withdrawed!
-container.ticket_vendor.state.permission=Insufficient permissions.
-container.ticket_vendor.button.provide=Ticket
-container.ticket_vendor.button.withdraw=Withdraw
-container.ticket_vendor.button.clear=Clear
-container.ticket_vendor.text.default=Insert value.
+container.eki.ticket_vendor.state.success=Successfully ticketed!
+container.eki.ticket_vendor.state.shortage=Balance is shortage!
+container.eki.ticket_vendor.state.failed=%s is invalid for value!
+container.eki.ticket_vendor.state.illegal=%s typed an invalid value in ticket vendor.
+container.eki.ticket_vendor.state.waiting=Waiting......
+container.eki.ticket_vendor.state.withdraw=Successfully withdrawed!
+container.eki.ticket_vendor.state.permission=Insufficient permissions.
+container.eki.ticket_vendor.button.provide=Ticket
+container.eki.ticket_vendor.button.withdraw=Withdraw
+container.eki.ticket_vendor.text.default=Insert value.
+container.eki.anchor.station.name=Sta. Name:
+container.eki.anchor.text=Insert Station Name
+container.eki.anchor.button.confirm=Confirm
+container.eki.button.clear=Clear
 
 //TEXTS
 chat.type.text.eki.anchoredamounts=This anchor had been bound to %d ticket gates!
@@ -162,5 +165,5 @@ chat.type.text.eki.rangefinder.result=3D distance is %d, surface distance is %d.
 chat.type.text.eki.rangefinder.getpos=Successfully bound to %d, %d, %d！
 
 //SYSTEM MESSAGES
-chat.type.text.versioncheckValid=You are running on the latest version of Eki Mod!\nVersion >> %s
-chat.type.text.versioncheckInvalid=Your Eki Mod is out of date! Go update!\nClick this message to open mod page.\nNow Running >> %s\nLatest Version >> %s
+chat.type.text.eki.versioncheckValid=You are running on the latest version of Eki Mod!\nVersion >> %s
+chat.type.text.eki.versioncheckInvalid=Your Eki Mod is out of date! Go update!\nClick this message to open mod page.\nNow Running >> %s\nLatest Version >> %s

@@ -9,5 +9,6 @@ public class Reference {
 	public static final String SERVER = "chaos.mod.proxy.ServerProxy";
 	
 	public static final int GUITICKETVENDOR = 1;
+	public static final int GUIANCHOR = 2;
 }
 

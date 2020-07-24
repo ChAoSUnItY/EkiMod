@@ -26,6 +26,11 @@ public class BlockVendor extends BlockHasFace implements ITileEntityProvider{
 	}
 	
 	@Override
+	public TileEntity createTileEntity(World world, IBlockState state) {
+		return new TileEntityTicketVendor();
+	}
+	
+	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityTicketVendor();
 	}

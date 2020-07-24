@@ -1,12 +1,7 @@
 package chaos.mod.util.network;
 
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.util.UUID;
-
 import chaos.mod.init.ItemInit;
 import chaos.mod.tileentity.TileEntityTicketVendor;
-import chaos.mod.util.utils.UtilLogger;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.SoundEvents;
@@ -28,28 +23,21 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 
 	private BlockPos pos;
 	private int price;
-	private UUID uuid;
 
 	public PacketVendorSpawnItemWorker() {
 		this.messageValid = false;
 	}
 
-	public PacketVendorSpawnItemWorker(BlockPos pos, int price, UUID uuid) {
+	public PacketVendorSpawnItemWorker(BlockPos pos, int price) {
 		this.pos = pos;
 		this.price = price;
-		this.uuid = uuid;
 		this.messageValid = true;
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		try {
-			this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
-			this.price = buf.readInt();
-			this.uuid = UUID.fromString(buf.readCharSequence(36, Charset.forName("utf-8")).toString());
-		} catch (IndexOutOfBoundsException e) {
-			return;
-		}
+		this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
+		this.price = buf.readInt();
 		this.messageValid = true;
 	}
 
@@ -61,10 +49,6 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 		buf.writeInt(pos.getY());
 		buf.writeInt(pos.getZ());
 		buf.writeInt(price);
-		ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
-		bb.putLong(uuid.getMostSignificantBits());
-	    bb.putLong(uuid.getLeastSignificantBits());
-		buf.writeBytes(bb.array());
 	}
 
 	public static class Handler implements IMessageHandler<PacketVendorSpawnItemWorker, IMessage> {
@@ -73,24 +57,23 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 		public IMessage onMessage(PacketVendorSpawnItemWorker message, MessageContext ctx) {
 			if (!message.messageValid && ctx.side != Side.SERVER)
 				return null;
-			FMLCommonHandler.instance().getWorldThread(ctx.netHandler)
-					.addScheduledTask(() -> processMessage(message, ctx));
+			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> processMessage(message, ctx));
 			return null;
 		}
 
 		void processMessage(PacketVendorSpawnItemWorker message, MessageContext ctx) {
-			TileEntity tileEntity = ctx.getServerHandler().player.getServerWorld().getTileEntity(message.pos);
+			TileEntity te = ctx.getServerHandler().player.getServerWorld().getTileEntity(message.pos);
 			World world = ctx.getServerHandler().player.getEntityWorld();
-			BlockPos pos = tileEntity.getPos();
+			BlockPos pos = te.getPos();
 			ItemStack ticket = new ItemStack(ItemInit.TICKET, 1);
 			NBTTagCompound nbt = new NBTTagCompound();
-			
+
 			nbt.setInteger("value", message.price);
 			ticket.setTagCompound(nbt);
-			tileEntity.getWorld().spawnEntity(new EntityItem(tileEntity.getWorld(), pos.getX()+0.5, pos.getY()+1,
-					pos.getZ()+0.5, ticket));
-			((TileEntityTicketVendor) tileEntity).addMoney(message.price);
-			UtilLogger.info(((TileEntityTicketVendor) tileEntity).getMoney());
+			if (!ctx.getServerHandler().player.inventory.addItemStackToInventory(ticket)) {
+				te.getWorld().spawnEntity(new EntityItem(te.getWorld(), pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, ticket));
+			}
+			((TileEntityTicketVendor) te).addMoney(message.price);
 			world.playSound(null, pos, SoundEvents.BLOCK_DISPENSER_LAUNCH, SoundCategory.BLOCKS, 1, 1);
 		}
 	}
