@@ -1,4 +1,7 @@
 //GukkyGukz
+//=====LANG INIT=====
+#PARSE_ESCAPES
+//===================
 //BLOCKSINIT
 //STATION SECTION
 //station stuff

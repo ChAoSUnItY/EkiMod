@@ -1,6 +1,8 @@
 package chaos.mod.objects.block.gui;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import chaos.mod.init.BlockInit;
 import chaos.mod.tileentity.TileEntityAnchor;
@@ -75,8 +77,10 @@ public class GuiAnchor extends GuiScreen {
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		// draw string
 		fontRenderer.drawString(BlockInit.ANCHOR.getLocalizedName(), (x + 176 / 2) - (fontRenderer.getStringWidth(BlockInit.ANCHOR.getLocalizedName()) / 2), y + 8, 4210752);
-		fontRenderer.drawString(new UtilTCString(TranslateType.CONTAINER, "anchor.station.name").getFormattedText() + " " + (te.isValidStation() ? te.getStation().getName() : ""), x + 70, y
-				+ 20, 4210752);
+		fontRenderer.drawString(new UtilTCString(TranslateType.CONTAINER, "anchor.station.name").getFormattedText(), x + 70, y + 20, 4210752);
+		if (te.isValidStation()) {
+			fontRenderer.drawString(te.getStation().getName(), x + 70, y + 28, 4210752);
+		}
 	}
 
 	@Override
@@ -86,7 +90,7 @@ public class GuiAnchor extends GuiScreen {
 			resetText();
 			break;
 		case 1:
-			if (text.getText().isEmpty() || text.getText().equalsIgnoreCase(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText())) {
+			if (text.getText().isEmpty() || text.getText().equalsIgnoreCase(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText()) || isIllegalName(text.getText())) {
 				return;
 			}
 			PacketHandler.INSTANCE.sendToServer(new PacketAnchorCreateStationWorker(text.getText(), te.getPos()));
@@ -131,5 +135,11 @@ public class GuiAnchor extends GuiScreen {
 		text.setText("");
 		text.setFocused(true);
 		updateScreen();
+	}
+
+	private boolean isIllegalName(String s) {
+		Pattern pattern = Pattern.compile("[~#@*+%{}<>\\[\\]|\"\\_^]");
+		Matcher matcher = pattern.matcher(s);
+		return matcher.find();
 	}
 }

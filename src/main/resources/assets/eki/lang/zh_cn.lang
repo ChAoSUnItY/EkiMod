@@ -1,4 +1,7 @@
 //zhengruilin
+//=====LANG INIT=====
+#PARSE_ESCAPES
+//===================
 //BLOCKINIT
 //STATION SECTION
 //station stuff
@@ -151,4 +154,4 @@ chat.type.text.eki.missingvalue=此票没有价值！
 chat.type.text.eki.missinganchor=请先选取一给锚点！
 chat.type.text.eki.anchorlinked=已绑定至锚点！
 chat.type.text.eki.rangefinder.result=三维空间距离：%d，平面空间距离：%d。
-chat.type.text.eki.rangefinder.getpos=成功绑定起始点至%d，%d，%d！
+chat.type.text.eki.rangefinder.getPos=成功绑定起始点至%d，%d，%d！

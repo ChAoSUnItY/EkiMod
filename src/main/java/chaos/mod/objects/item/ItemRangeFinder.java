@@ -2,7 +2,6 @@ package chaos.mod.objects.item;
 
 import java.util.List;
 
-import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
 import net.minecraft.client.util.ITooltipFlag;
@@ -56,7 +55,7 @@ public class ItemRangeFinder extends ItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		boolean hasTag = stack.hasTagCompound() && stack.getTagCompound().hasKey("startPos");
-		tooltip.add(new UtilTranslatable.UtilTCString(getUnlocalizedName() + ".tooltip", hasTag ? stack.getTagCompound().getIntArray("startPos")[0] : null,
+		tooltip.add(new UtilTCString(getUnlocalizedName() + ".tooltip", hasTag ? stack.getTagCompound().getIntArray("startPos")[0] : null,
 				hasTag ? stack.getTagCompound().getIntArray("startPos")[1] : null, hasTag ? stack.getTagCompound().getIntArray("startPos")[2] : null).applyFormat(TextFormatting.GRAY)
 						.getFormattedText());
 	}

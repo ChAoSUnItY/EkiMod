@@ -160,7 +160,7 @@ chat.type.text.eki.missingValue=此票沒有價值可言!
 chat.type.text.eki.missingAnchor=請先選取一個錨點!
 chat.type.text.eki.anchorLinked=已連結至錨點!
 chat.type.text.eki.rangefinder.result=三維空間距離：%d，平面空間距離：%d。
-chat.type.text.eki.rangefinder.getpos=成功綁定起始點至%d, %d, %d！
+chat.type.text.eki.rangefinder.getPos=成功綁定起始點至%d, %d, %d！
 
 
 //SYSTEM MESSAGES

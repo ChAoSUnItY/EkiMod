@@ -162,7 +162,7 @@ chat.type.text.eki.illegalAnchor=Anchor is invalid! Is it broken?
 chat.type.text.eki.missingAnchor=Please select an anchor first!
 chat.type.text.eki.anchorLinked=Connected to the anchor!
 chat.type.text.eki.rangefinder.result=3D distance is %d, surface distance is %d.
-chat.type.text.eki.rangefinder.getpos=Successfully bound to %d, %d, %d！
+chat.type.text.eki.rangefinder.getPos=Successfully bound to %d, %d, %d！
 
 //SYSTEM MESSAGES
 chat.type.text.eki.versioncheckValid=You are running on the latest version of Eki Mod!\nVersion >> %s
