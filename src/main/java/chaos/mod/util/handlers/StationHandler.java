@@ -34,6 +34,9 @@ public class StationHandler {
 
 		File[] files = location.listFiles();
 		for (int i = 0; i < files.length; i++) {
+			if (files[i].equals(getFile(Station.EXAMPLE))) {
+				continue;
+			}
 			register(files[i]);
 		}
 	}
@@ -46,7 +49,7 @@ public class StationHandler {
 
 			Station sta = new Station(new BlockPos(json.get("x").getAsInt(), json.get("y").getAsInt(), json.get("z").getAsInt()), json.get("name").getAsString());
 			stations.add(sta);
-			UtilLogger.info(sta.getName() + " - " + sta.getPos().toString() + " > Successfully Loaded!");
+			UtilLogger.info(sta.getName() + " - " + sta.getPosStringFormat() + " > Successfully Loaded!");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -126,7 +129,6 @@ public class StationHandler {
 	private void generateExampleStation() {
 		try {
 			save(Station.EXAMPLE);
-			stations.add(Station.EXAMPLE);
 			UtilLogger.info("Successfully generated example station!");
 		} catch (Exception e) {
 			UtilLogger.info("Failed to generate example station!");
@@ -135,7 +137,7 @@ public class StationHandler {
 	}
 
 	private File getFile(Station sta) {
-		return new File(location, sta.getName() + "(" + sta.getPosStringFormat() + ").json");
+		return new File(location, sta.getName() + sta.getPosStringFormat() + ".json");
 	}
 
 	private boolean match(Station sta, BlockPos pos) {

@@ -153,9 +153,9 @@ container.eki.anchor.button.confirm=Confirm
 container.eki.button.clear=Clear
 
 //TEXTS
-chat.type.text.eki.anchoredamounts=This anchor had been bound to %d ticket gates!
+chat.type.text.eki.anchoredamounts=This anchor had been bound to %d ticket gates / ticket vendors!
 chat.type.text.eki.setPos=Passed from %d, %d, %d!
-chat.type.text.eki.accessed=Exited from %d, %d, %d! Total Cost: %d, traveled for %d blocks!
+chat.type.text.eki.accessed=Exited from %d, %d, %d! Total Cost: %.2f, traveled for %.2f blocks!
 chat.type.text.eki.notEnoughValue=Can't exit! This ticket is worth %d, but it needs %d to exit.
 chat.type.text.eki.missingValue=This ticket is not valuable!
 chat.type.text.eki.illegalAnchor=Anchor is invalid! Is it broken?

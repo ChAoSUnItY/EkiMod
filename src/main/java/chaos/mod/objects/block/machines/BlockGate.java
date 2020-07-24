@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Random;
 
 import chaos.mod.Eki;
-import chaos.mod.Eki.EkiConfig;
 import chaos.mod.objects.block.base.BlockHasFace;
 import chaos.mod.objects.item.ItemTicket;
 import chaos.mod.objects.item.ItemWrench;
 import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.tileentity.TileEntityTicketGate;
 import chaos.mod.util.utils.UtilBlockPos;
+import chaos.mod.util.utils.UtilStationSystem;
 import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
@@ -85,11 +85,11 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 					NBTTagCompound tag = stack.getTagCompound();
 					if (facing == EnumFacing.UP || facing == state.getValue(FACING)) {
 						if (tag.hasKey("startPos")) {
-							int price = calculatePrice(tag.getIntArray("startPos"), UtilBlockPos.getIntArray(anchorPos));
+							double price = UtilStationSystem.calculatePrice(UtilBlockPos.getPos(tag.getIntArray("startPos")), anchorPos);
 							if (tag.getInteger("value") >= price) {
 								stack.shrink(1);
 								playerIn.sendMessage(new UtilTCString(TranslateType.CHAT, "accessed", anchorPos.getX(), anchorPos.getY(), anchorPos.getZ(), price,
-										calculateLength(stack, pos, worldIn)));
+										UtilStationSystem.calculateLength(UtilBlockPos.getPos(tag.getIntArray("startPos")), pos)));
 								open(playerIn, worldIn, pos, state);
 							} else {
 								playerIn.sendMessage(new UtilTCString(TranslateType.CHAT, "notenoughValue", tag.getInteger("value"), price).applyFormat(TextFormatting.RED));
@@ -157,17 +157,6 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] { FACING, OPEN });
-	}
-
-	public int calculatePrice(int[] startPos, int[] endPos) {
-		int p = (int) (Math.round(Math.sqrt(Math.pow(endPos[0] - startPos[0], 2) + Math.pow(endPos[1] - startPos[1], 2))) / 100) * EkiConfig.priceMultiplier;
-		return p;
-	}
-
-	public int calculateLength(ItemStack stack, BlockPos pos, World worldIn) {
-		TileEntityTicketGate te = (TileEntityTicketGate) worldIn.getTileEntity(pos);
-		int l = calculatePrice(stack.getTagCompound().getIntArray("startPos"), UtilBlockPos.getIntArray(te.getAnchor())) / 100;
-		return l;
 	}
 
 	public void open(EntityPlayer playerIn, World worldIn, BlockPos pos, IBlockState state) {

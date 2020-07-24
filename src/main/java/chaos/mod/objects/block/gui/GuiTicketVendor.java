@@ -5,11 +5,15 @@ import java.io.IOException;
 import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
 import chaos.mod.objects.block.container.ContainerTicketVendor;
+import chaos.mod.objects.block.gui.elements.GuiSimpleListBox;
 import chaos.mod.tileentity.TileEntityTicketVendor;
 import chaos.mod.util.Reference;
+import chaos.mod.util.data.station.Station;
 import chaos.mod.util.handlers.PacketHandler;
+import chaos.mod.util.handlers.StationHandler;
 import chaos.mod.util.network.PacketVendorSpawnItemWorker;
 import chaos.mod.util.network.PacketVendorWithdrawWorker;
+import chaos.mod.util.utils.UtilStationSystem;
 import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
@@ -22,8 +26,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.client.GuiScrollingList;
-import net.minecraftforge.fml.client.GuiSlotModList;
 import the_fireplace.grandeconomy.api.GrandEconomyApi;
 
 public class GuiTicketVendor extends GuiContainer {
@@ -40,7 +42,7 @@ public class GuiTicketVendor extends GuiContainer {
 	public GuiButton buttonProvide;
 	public GuiButton buttonClear;
 	public GuiButton buttonWithdraw;
-	//public  listStations;
+	public GuiSimpleListBox<Station> listStations;
 	public Container container;
 
 	public GuiTicketVendor(InventoryPlayer invPlayer, TileEntityTicketVendor te, EntityPlayer player) {
@@ -69,7 +71,7 @@ public class GuiTicketVendor extends GuiContainer {
 			buttonClear = new GuiButton(1, guiLeft + (baseX * 3) + 23, guiTop + baseY + 20, (baseWidthX / 2) - 10, (baseHeightY / 2) + 10,
 					new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
 		}
-		//listStations = new 
+		listStations = new GuiSimpleListBox<Station>(guiLeft + xSize, guiTop, width / 4 - 20, ySize, StationHandler.INSTANCE.getStations());
 		buttonList.add(buttonProvide);
 		buttonList.add(buttonClear);
 		text.setFocused(true);
@@ -88,6 +90,7 @@ public class GuiTicketVendor extends GuiContainer {
 		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		text.drawTextBox();
+		listStations.draw(mouseX, mouseY, fontRenderer);
 		renderHoveredToolTip(mouseX, mouseY);
 	}
 
@@ -111,6 +114,11 @@ public class GuiTicketVendor extends GuiContainer {
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 		text.mouseClicked(mouseX, mouseY, mouseButton);
+		listStations.mouseClicked(mouseX, mouseY, mouseButton);
+		// predict price and enter to the textfield
+		if (listStations.selectedIndex != -1) {
+			text.setText("" + UtilStationSystem.calculatePrice(te.getAnchor(), ((Station) listStations.getRaws().get(listStations.selectedIndex)).getPos()));
+		}
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 	}
 
@@ -158,6 +166,12 @@ public class GuiTicketVendor extends GuiContainer {
 	}
 
 	@Override
+	protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
+		listStations.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+		super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+	}
+
+	@Override
 	public void updateScreen() {
 		text.updateCursorCounter();
 		super.updateScreen();
@@ -166,7 +180,7 @@ public class GuiTicketVendor extends GuiContainer {
 	private void tryVendingTicket() {
 		int price;
 		try {
-			price = Integer.parseInt(text.getText());
+			price = (int) Double.parseDouble(text.getText());
 		} catch (NumberFormatException e) {
 			state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.failed", text.getText()).applyFormat(TextFormatting.RED).getFormattedText();
 			updateScreen();

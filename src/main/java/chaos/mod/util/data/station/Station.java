@@ -2,7 +2,7 @@ package chaos.mod.util.data.station;
 
 import net.minecraft.util.math.BlockPos;
 
-public class Station {
+public class Station extends DataForm {
 	public static final Station EXAMPLE = new Station(new BlockPos(1, 1, 1), "TEST_STATION");
 	private BlockPos pos;
 	private String name;
@@ -26,7 +26,12 @@ public class Station {
 		return sta.getPos().equals(pos) && sta.getName().equals(name);
 	}
 
+	@Override
+	public String getData() {
+		return name + " - " + getPosStringFormat();
+	}
+	
 	public String getPosStringFormat() {
-		return pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
+		return "(" + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ")";
 	}
 }

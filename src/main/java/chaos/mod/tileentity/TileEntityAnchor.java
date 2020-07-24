@@ -52,7 +52,7 @@ public class TileEntityAnchor extends TileEntityBase {
 
 	public void resetAllGate() {
 		for (BlockPos p : gatesPos) {
-			TileEntityTicketGate teTG = (TileEntityTicketGate) world.getTileEntity(p);
+			TileEntityRegistrable teTG = (TileEntityRegistrable) world.getTileEntity(p);
 			teTG.reset();
 		}
 	}

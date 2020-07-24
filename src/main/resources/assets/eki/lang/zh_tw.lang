@@ -152,9 +152,9 @@ container.eki.anchor.button.confirm=確認
 container.eki.button.clear=清除
 
 //TEXTS
-chat.type.text.eki.anchorAmount=該錨點已連接 %d 個票閘!
+chat.type.text.eki.anchorAmount=該錨點已連接 %d 個票閘/售票機!
 chat.type.text.eki.setPos=已從 %d, %d, %d 進站!
-chat.type.text.eki.accessed=已從 %d, %d, %d 出站! 共花費了 %d, 行經了 %d 格!
+chat.type.text.eki.accessed=已從 %d, %d, %d 出站! 共花費了 %.2f, 行經了 %.2f 格!
 chat.type.text.eki.notEnoughValue=無法出站! 票價僅值 %d, 需要 %d.
 chat.type.text.eki.missingValue=此票沒有價值可言!
 chat.type.text.eki.missingAnchor=請先選取一個錨點!

@@ -145,7 +145,7 @@ container.eki.button.clear=清除
 //TEXTS
 chat.type.text.eki.anchoredamounts=该锚点已连接 %d 给闸机！
 chat.type.text.eki.setpos=已从 %d，%d，%d 进站！
-chat.type.text.eki.accessed=已从 %d, %d, %d 出站！共花费了%d,经过了%d格！
+chat.type.text.eki.accessed=已从 %d, %d, %d 出站！共花费了%.2f,经过了%.2f格！
 chat.type.text.eki.notenoughvalue=无法出站！车票额%d，但需要%d。
 chat.type.text.eki.missingvalue=此票没有价值！
 chat.type.text.eki.missinganchor=请先选取一给锚点！

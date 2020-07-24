@@ -4,29 +4,29 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import the_fireplace.grandeconomy.api.GrandEconomyApi;
 
-public class TileEntityTicketVendor extends TileEntityBase {
-	private long money;
-	
-	public void addMoney(long money) {
+public class TileEntityTicketVendor extends TileEntityRegistrable {
+	private double money;
+
+	public void addMoney(double money) {
 		this.money += money;
 		markDirty();
 	}
 
-	public void removeMoney(long money) {
+	public void removeMoney(double money) {
 		this.money -= money;
 		markDirty();
 	}
-	
-	public void setMoney(long money) {
+
+	public void setMoney(double money) {
 		this.money = money;
 		markDirty();
 	}
 
-	public long getMoney() {
+	public double getMoney() {
 		return this.money;
 	}
-	
-	public void withdrawMoney(EntityPlayer player, long money) {
+
+	public void withdrawMoney(EntityPlayer player, double money) {
 		if (money >= this.money) {
 			GrandEconomyApi.addToBalance(player.getGameProfile().getId(), (float) this.money, true);
 			setMoney(0);
@@ -38,7 +38,7 @@ public class TileEntityTicketVendor extends TileEntityBase {
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		compound.setLong("money", this.money);
+		compound.setDouble("money", this.money);
 		return super.writeToNBT(compound);
 	}
 
