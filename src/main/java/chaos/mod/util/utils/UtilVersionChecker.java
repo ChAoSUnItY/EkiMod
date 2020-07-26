@@ -12,11 +12,11 @@ import chaos.mod.util.Reference;
 
 public class UtilVersionChecker {
 	private static final UtilVersionChecker VC = new UtilVersionChecker();
-	
+
 	public static UtilVersionChecker get() {
 		return VC;
 	}
-	
+
 	public boolean isLatestVersion() {
 		String latestVersion = worker();
 		return latestVersion.equals(Reference.VERSION);

@@ -15,26 +15,30 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityAnchor extends TileEntityBase {
 	public List<BlockPos> gatesPos;
-	
+
 	public TileEntityAnchor() {
 		gatesPos = Lists.newArrayList();
 	}
-	
+
 	public void setValid(String name) {
 		StationCreatedEvent event = new StationCreatedEvent(pos, name, world);
 		MinecraftForge.EVENT_BUS.post(event);
 	}
-	
+
 	public boolean isValidStation() {
 		return StationHandler.INSTANCE.isExist(pos);
 	}
-	
+
 	public Station getStation() {
-		return StationHandler.INSTANCE.getStation(pos);
+		if (StationHandler.INSTANCE.isExist(pos))
+			return StationHandler.INSTANCE.getStation(pos);
+		return new Station(pos, "");
 	}
-	
+
 	public boolean removeStation() {
-		return StationHandler.INSTANCE.tryRemoveStation(pos);
+		if (StationHandler.INSTANCE.isExist(pos))
+			return StationHandler.INSTANCE.tryRemoveStation(pos);
+		return false;
 	}
 
 	public void addGate(BlockPos pos) {

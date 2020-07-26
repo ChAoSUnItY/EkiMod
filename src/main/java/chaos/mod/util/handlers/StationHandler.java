@@ -36,13 +36,11 @@ public class StationHandler {
 		UtilLogger.info("=======================================");
 		UtilLogger.info("Init Stations......");
 		for (int i = 0; i < files.length; i++) {
-			if (files[i].equals(getFile(Station.EXAMPLE))) {
-				continue;
-			}
 			register(files[i], i);
 		}
-		UtilLogger.info("Successfully init all actual stations!");
+		UtilLogger.info("Successfully init " + (files.length - 1) + " stations!");
 		UtilLogger.info("=======================================");
+		stations.forEach(sta -> UtilLogger.info(sta.getData()));
 	}
 
 	private void register(File file, int index) {
@@ -52,6 +50,8 @@ public class StationHandler {
 			JsonObject json = (JsonObject) obj;
 
 			Station sta = new Station(new BlockPos(json.get("x").getAsInt(), json.get("y").getAsInt(), json.get("z").getAsInt()), json.get("name").getAsString());
+			if (sta.equals(Station.EXAMPLE))
+				return;
 			stations.add(sta);
 			UtilLogger.info(sta.getName() + " - " + sta.getPosStringFormat() + " > (" + index + "/" + (location.listFiles().length - 1) + ")");
 		} catch (IOException e) {
@@ -111,7 +111,12 @@ public class StationHandler {
 				e.printStackTrace();
 			}
 		}
-		generateExampleStation();
+		stations.clear();
+	}
+	
+	public void reload(World world) {
+		saveAll();
+		init(world);
 	}
 
 	private void save(Station sta) throws IOException {

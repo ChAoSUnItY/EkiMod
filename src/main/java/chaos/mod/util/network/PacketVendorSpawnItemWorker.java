@@ -25,25 +25,25 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 	private int price;
 
 	public PacketVendorSpawnItemWorker() {
-		this.messageValid = false;
+		messageValid = false;
 	}
 
 	public PacketVendorSpawnItemWorker(BlockPos pos, int price) {
 		this.pos = pos;
 		this.price = price;
-		this.messageValid = true;
+		messageValid = true;
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
-		this.price = buf.readInt();
-		this.messageValid = true;
+		pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
+		price = buf.readInt();
+		messageValid = true;
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-		if (!this.messageValid)
+		if (!messageValid)
 			return;
 		buf.writeInt(pos.getX());
 		buf.writeInt(pos.getY());

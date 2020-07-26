@@ -1,12 +1,16 @@
 package chaos.mod.objects.block.gui;
 
 import java.io.IOException;
+import java.util.List;
+
+import com.google.common.collect.Lists;
 
 import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
 import chaos.mod.objects.block.container.ContainerTicketVendor;
 import chaos.mod.objects.block.gui.elements.GuiSimpleListBox;
 import chaos.mod.tileentity.TileEntityTicketVendor;
+import chaos.mod.tileentity.TileEntityTicketVendor.SortType;
 import chaos.mod.util.Reference;
 import chaos.mod.util.data.station.Station;
 import chaos.mod.util.handlers.PacketHandler;
@@ -32,6 +36,7 @@ public class GuiTicketVendor extends GuiContainer {
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MODID, "textures/gui/container/ticket_vendor.png");
 	private TileEntityTicketVendor te;
 	private EntityPlayer player;
+	private SortType type;
 	protected int baseX = 21;
 	protected int baseY = 32;
 	protected int baseWidthX = 105;
@@ -42,6 +47,7 @@ public class GuiTicketVendor extends GuiContainer {
 	public GuiButton buttonProvide;
 	public GuiButton buttonClear;
 	public GuiButton buttonWithdraw;
+	public GuiButton buttonSort;
 	public GuiSimpleListBox<Station> listStations;
 	public Container container;
 
@@ -50,6 +56,7 @@ public class GuiTicketVendor extends GuiContainer {
 
 		this.te = te;
 		this.player = player;
+		this.type = SortType.NF;
 		state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.waiting").applyFormat(TextFormatting.GRAY).getFormattedText();
 		container = new ContainerTicketVendor(invPlayer, te, player);
 	}
@@ -59,21 +66,20 @@ public class GuiTicketVendor extends GuiContainer {
 		super.initGui();
 		text = new GuiTextField(0, fontRenderer, guiLeft + baseX + 1, guiTop + baseY, baseWidthX, baseHeightY);
 		if (Eki.isApiModLoaded) {
-			buttonProvide = new GuiButton(0, guiLeft + 21, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10,
-					new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.provide").getFormattedText());
-			buttonWithdraw = new GuiButton(1, guiLeft + 58, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10,
-					new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.withdraw").getFormattedText());
-			buttonClear = new GuiButton(2, guiLeft + 95, guiTop + baseY + 20, (baseWidthX / 3), (baseHeightY / 2) + 10, new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
+			buttonProvide = new GuiButton(0, guiLeft + 23, guiTop + 52, 35, 20, new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.provide").getFormattedText());
+			buttonWithdraw = new GuiButton(1, guiLeft + 58, guiTop + 52, 45, 20, new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.withdraw").getFormattedText());
+			buttonClear = new GuiButton(2, guiLeft + 103, guiTop + 52, 35, 20, new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
 			buttonList.add(buttonWithdraw);
 		} else {
-			buttonProvide = new GuiButton(0, guiLeft + baseX, guiTop + baseY + 20, (baseWidthX / 2) - 10, (baseHeightY / 2) + 10,
+			buttonProvide = new GuiButton(0, guiLeft + baseX, guiTop + baseY + 20, (baseWidthX / 2) - 10, 20,
 					new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.provide").getFormattedText());
-			buttonClear = new GuiButton(1, guiLeft + (baseX * 3) + 23, guiTop + baseY + 20, (baseWidthX / 2) - 10, (baseHeightY / 2) + 10,
-					new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
+			buttonClear = new GuiButton(1, guiLeft + (baseX * 3) + 23, guiTop + baseY + 20, (baseWidthX / 2) - 10, 20, new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
 		}
-		listStations = new GuiSimpleListBox<Station>(guiLeft + xSize, guiTop, width / 4 - 20, ySize, StationHandler.INSTANCE.getStations());
+		buttonSort = new GuiButton(3, guiLeft + xSize, guiTop - 20, 40, 20, type.getName());
+		listStations = new GuiSimpleListBox<Station>(guiLeft + xSize, guiTop + 10, ySize - 20, UtilStationSystem.sortByFarNF(te.getAnchor(), StationHandler.INSTANCE.getStations()), mc);
 		buttonList.add(buttonProvide);
 		buttonList.add(buttonClear);
+		buttonList.add(buttonSort);
 		text.setFocused(true);
 		text.setCanLoseFocus(true);
 		text.setText(new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.text.default").getFormattedText());
@@ -87,6 +93,7 @@ public class GuiTicketVendor extends GuiContainer {
 		}
 		buttonProvide.drawButton(mc, mouseX, mouseY, partialTicks);
 		buttonClear.drawButton(mc, mouseX, mouseY, partialTicks);
+		buttonSort.drawButton(mc, mouseX, mouseY, partialTicks);
 		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		text.drawTextBox();
@@ -136,11 +143,12 @@ public class GuiTicketVendor extends GuiContainer {
 				} else {
 					state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.permission").applyFormat(TextFormatting.RED).getFormattedText();
 				}
-				updateScreen();
 				break;
 			case 2:
 				resetText();
 				break;
+			case 3:
+				nextType();
 			default:
 				break;
 			}
@@ -153,10 +161,35 @@ public class GuiTicketVendor extends GuiContainer {
 			case 1:
 				resetText();
 				break;
+			case 3:
+				nextType();
+				break;
 			default:
 				break;
 			}
 		}
+		updateScreen();
+	}
+
+	private void nextType() {
+		type = SortType.TYPES[(type.ordinal() + 1) % 3];
+		buttonSort.displayString = type.getName();
+		List<Station> stations = StationHandler.INSTANCE.getStations();
+		List<Station> cache = Lists.newArrayList();
+		switch (type) {
+		case NF:
+			cache = UtilStationSystem.sortByFarNF(te.getPos(), stations);
+			break;
+		case FN:
+			cache = UtilStationSystem.sortByFarFN(te.getPos(), stations);
+			break;
+		case NAME:
+			cache = UtilStationSystem.sortByName(stations);
+			break;
+		default:
+			break;
+		}
+		listStations.reloadList(cache);
 	}
 
 	@Override

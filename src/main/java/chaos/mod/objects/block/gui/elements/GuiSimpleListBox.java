@@ -1,10 +1,12 @@
 package chaos.mod.objects.block.gui.elements;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.google.common.collect.Lists;
 
 import chaos.mod.util.data.station.DataForm;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 
@@ -14,86 +16,100 @@ import net.minecraft.client.gui.Gui;
  * @author Noto
  */
 public class GuiSimpleListBox<T extends DataForm> extends Gui {
-	public int locationX;
-	public int locationY;
-	public int width;
-	public int height;
+	public int x;
+	public int y;
+	public int w;
+	public int h;
 	protected boolean isEnable = true;
 	private List<String> items = Lists.newArrayList();
 	private List<? extends DataForm> raws;
 	public int selectedIndex = -1;
 	private int scrollLevel;
 	private boolean scrollBerClicked;
-
-	public GuiSimpleListBox(int x, int y, int w, int h) {
-		this.locationX = x;
-		this.locationY = y;
-		this.width = w;
-		this.height = h;
-	}
+	private boolean shouldDrawBackground;
 
 	public GuiSimpleListBox(int x, int y, int w, int h, List<? extends DataForm> list) {
-		this.locationX = x;
-		this.locationY = y;
-		this.width = w;
-		this.height = h;
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+
 		for (int i = 0; i < list.size(); i++) {
-			this.items.add(list.get(i).getData());
+			items.add(list.get(i).getData());
 		}
+
 		raws = Lists.newArrayList(list.iterator());
+		shouldDrawBackground = true;
+	}
+
+	public GuiSimpleListBox(int x, int y, int h, List<? extends DataForm> list, Minecraft mc) {
+		this.x = x;
+		this.y = y;
+		this.h = h;
+
+		list.forEach(d -> items.add(d.getData()));
+		List<Integer> cache = Lists.newArrayList();
+
+		for (int i = 0; i < items.size(); i++) {
+			cache.add(mc.fontRenderer.getStringWidth(items.get(i)));
+		}
+
+		w = Collections.max(cache) + 5;
+
+		raws = Lists.newArrayList(list.iterator());
+		shouldDrawBackground = true;
 	}
 
 	public void draw(int mouseX, int mouseY, FontRenderer fontRenderer) {
-		drawRect(this.locationX, this.locationY, this.locationX + this.width, this.locationY + this.height, -2139062144);
-		int itemMax = this.height / 12;
+		if (shouldDrawBackground)
+			drawRect(x, y, x + w, y + h, -2139062144);
+		int itemMax = h / 12;
 		int itemCount = 0;
-		if (this.items.size() > 0 && this.selectedIndex != -1 && this.scrollLevel <= this.selectedIndex && itemMax + this.scrollLevel > this.selectedIndex) {
-			drawRect(this.locationX + 2, this.locationY + this.selectedIndex * 12 - this.scrollLevel * 12 + 2, this.locationX + this.width - 14, this.locationY + this.selectedIndex * 12
-					- this.scrollLevel * 12 + 2 + 12, -2134851392);
+		if (items.size() > 0 && selectedIndex != -1 && scrollLevel <= selectedIndex && itemMax + scrollLevel > selectedIndex) {
+			drawRect(x + 2, y + selectedIndex * 12 - scrollLevel * 12 + 2, x + w - 14, y + selectedIndex * 12 - scrollLevel * 12 + 2 + 12, -2134851392);
 		}
-		for (int i = this.scrollLevel; i < itemMax + this.scrollLevel;) {
-			if (this.items.size() > i) {
-				fontRenderer.drawStringWithShadow(this.items.get(i), 4 + this.locationX, itemCount * 12 + this.locationY + 4, 16777215);
+		for (int i = scrollLevel; i < itemMax + scrollLevel;) {
+			if (items.size() > i) {
+				fontRenderer.drawStringWithShadow(items.get(i), 4 + x, itemCount * 12 + y + 4, 16777215);
 				itemCount++;
 			}
 			i++;
 		}
-		if (this.height / 12 < this.items.size()) {
-			drawRect(this.locationX + this.width - 12, this.locationY, this.locationX + this.width, this.locationY + 12, -1061109632);
-			drawRect(this.locationX + this.width - 12, this.locationY + 12, this.locationX + this.width, this.locationY + this.height - 12, -2134851392);
-			drawRect(this.locationX + this.width - 12, this.locationY + this.height - 12, this.locationX + this.width, this.locationY + this.height, -1061109632);
-			int top = this.locationY + 12 + 2;
-			int bottom = this.locationY + this.height - 12 - 2;
-			int size = Math.max(1, (bottom - top) / (this.items.size() - itemMax + 1));
-			if (this.scrollLevel == this.items.size() - itemMax) {
-				drawRect(this.locationX + this.width - 10, this.locationY + this.height - 12 - size - 2, this.locationX + this.width - 2, this.locationY + this.height - 14, -1061109632);
+		if (h / 12 < items.size()) {
+			drawRect(x + w - 12, y, x + w, y + 12, -1061109632);
+			drawRect(x + w - 12, y + 12, x + w, y + h - 12, -2134851392);
+			drawRect(x + w - 12, y + h - 12, x + w, y + h, -1061109632);
+			int top = y + 12 + 2;
+			int bottom = y + h - 12 - 2;
+			int size = Math.max(1, (bottom - top) / (items.size() - itemMax + 1));
+			if (scrollLevel == items.size() - itemMax) {
+				drawRect(x + w - 10, y + h - 12 - size - 2, x + w - 2, y + h - 14, -1061109632);
 			} else {
-				drawRect(this.locationX + this.width - 10, top + size * this.scrollLevel, this.locationX + this.width - 2, top + size + size * this.scrollLevel, -1061109632);
+				drawRect(x + w - 10, top + size * scrollLevel, x + w - 2, top + size + size * scrollLevel, -1061109632);
 			}
 		}
 	}
 
 	public void mouseClicked(int mouseX, int mouseY, int button) {
-		if (button == 0 && this.items.size() > 0 && this.isEnable) {
-			if (this.height / 12 < this.items.size())
-				if (this.locationX + this.width - 12 <= mouseX && this.locationY <= mouseY && this.locationX + this.width >= mouseX && this.locationY + 12 >= mouseY) {
-					this.scrollLevel = Math.max(0, this.scrollLevel - 1);
-				} else if (this.locationX + this.width - 12 <= mouseX && this.locationY + this.height - 12 <= mouseY && this.locationX + this.width >= mouseX
-						&& this.locationY + this.height >= mouseY) {
-					this.scrollLevel = Math.min(this.items.size() - this.height / 12, this.scrollLevel + 1);
-				} else if (this.locationX + this.width - 12 <= mouseX && this.locationY + 12 <= mouseY && this.locationX + this.width >= mouseX && this.locationY + this.height - 12 >= mouseY) {
-					int top = this.locationY + 12;
-					int bottom = this.locationY + this.height - 12;
-					int size = (bottom - top) / (this.items.size() - this.height / 12 + 1);
-					int sel = (mouseY - this.locationY - 12) / size;
-					this.scrollLevel = sel;
-					this.scrollBerClicked = true;
+		if (button == 0 && items.size() > 0 && isEnable) {
+			if (h / 12 < items.size())
+				if (x + w - 12 <= mouseX && y <= mouseY && x + w >= mouseX && y + 12 >= mouseY) {
+					scrollLevel = Math.max(0, scrollLevel - 1);
+				} else if (x + w - 12 <= mouseX && y + h - 12 <= mouseY && x + w >= mouseX && y + h >= mouseY) {
+					scrollLevel = Math.min(items.size() - h / 12, scrollLevel + 1);
+				} else if (x + w - 12 <= mouseX && y + 12 <= mouseY && x + w >= mouseX && y + h - 12 >= mouseY) {
+					int top = y + 12;
+					int bottom = y + h - 12;
+					int size = (bottom - top) / (items.size() - h / 12 + 1);
+					int sel = (mouseY - y - 12) / size;
+					scrollLevel = sel;
+					scrollBerClicked = true;
 				}
-			if (this.locationX <= mouseX && this.locationY <= mouseY && this.locationX + this.width - 12 >= mouseX && this.locationY + this.height >= mouseY) {
-				int sel = (mouseY - this.locationY - 2) / 12 + this.scrollLevel;
-				if (sel > -1 && sel < this.items.size())
-					if (this.selectedIndex != sel) {
-						this.selectedIndex = sel;
+			if (x <= mouseX && y <= mouseY && x + w - 12 >= mouseX && y + h >= mouseY) {
+				int sel = (mouseY - y - 2) / 12 + scrollLevel;
+				if (sel > -1 && sel < items.size())
+					if (selectedIndex != sel) {
+						selectedIndex = sel;
 						selectChanged();
 					}
 			}
@@ -101,49 +117,50 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 	}
 
 	public void mouseClickMove(int mouseX, int mouseY, int button, long time) {
-		if (button == 0 && this.scrollBerClicked && this.isEnable) {
-			int top = this.locationY + 12;
-			int bottom = this.locationY + this.height - 12;
-			int size = (bottom - top) / (this.items.size() - this.height / 12 + 1);
-			int sel = (mouseY - this.locationY - 12) / size;
-			this.scrollLevel = Math.min(this.items.size() - this.height / 12, Math.max(0, sel));
+		if (button == 0 && scrollBerClicked && isEnable) {
+			int top = y + 12;
+			int bottom = y + h - 12;
+			int size = (bottom - top) / (items.size() - h / 12 + 1);
+			int sel = (mouseY - y - 12) / size;
+			scrollLevel = Math.min(items.size() - h / 12, Math.max(0, sel));
 		}
 	}
 
 	public void mouseMovedOrUp(int mouseX, int mouseY, int mode) {
-		this.scrollBerClicked = false;
+		scrollBerClicked = false;
 	}
 
 	public void selectChanged() {
 	}
 
 	public void setSelectedIndex(int par1) {
-		this.selectedIndex = par1;
+		selectedIndex = par1;
 		selectChanged();
 	}
 
 	public String getText() {
-		if (this.selectedIndex != -1 && this.selectedIndex < this.items.size()) {
-			String str = this.items.get(this.selectedIndex);
+		if (selectedIndex != -1 && selectedIndex < items.size()) {
+			String str = items.get(selectedIndex);
 			return (str == null) ? "" : str;
 		}
 		return "";
 	}
 
 	public void onResize(int width, int height) {
-		this.width = width;
-		this.height = height;
+		w = width;
+		h = height;
 	}
 
-	public void reloadList(List<T> list) {
-		this.items.clear();
+	public void reloadList(List<? extends DataForm> list) {
+		items.clear();
 		for (int i = 0; i < list.size(); i++) {
-			this.items.add(list.get(i).toString());
+			items.add(list.get(i).getData());
 		}
+		raws = Lists.newArrayList(list.iterator());
 	}
 
 	public boolean onTheMouse(int mouseX, int mouseY) {
-		return (mouseX >= this.locationX && mouseY >= this.locationY && this.locationX + this.width >= mouseX && this.locationY + this.height >= mouseY);
+		return (mouseX >= x && mouseY >= y && x + w >= mouseX && y + h >= mouseY);
 	}
 
 	public List<String> getItems() {
@@ -152,5 +169,16 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 
 	public List<? extends DataForm> getRaws() {
 		return raws;
+	}
+
+	public void setDatas(List<? extends DataForm> datas) {
+		for (int i = 0; i < datas.size(); i++) {
+			items.add(datas.get(i).getData());
+		}
+		raws = Lists.newArrayList(datas.iterator());
+	}
+
+	public void shouldDrawBackground(boolean bool) {
+		shouldDrawBackground = bool;
 	}
 }

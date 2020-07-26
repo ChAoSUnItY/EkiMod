@@ -2,10 +2,15 @@ package chaos.mod.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.IStringSerializable;
 import the_fireplace.grandeconomy.api.GrandEconomyApi;
 
 public class TileEntityTicketVendor extends TileEntityRegistrable {
 	private double money;
+
+	public TileEntityTicketVendor() {
+		money = 0;
+	}
 
 	public void addMoney(double money) {
 		this.money += money;
@@ -23,7 +28,7 @@ public class TileEntityTicketVendor extends TileEntityRegistrable {
 	}
 
 	public double getMoney() {
-		return this.money;
+		return money;
 	}
 
 	public void withdrawMoney(EntityPlayer player, double money) {
@@ -38,17 +43,35 @@ public class TileEntityTicketVendor extends TileEntityRegistrable {
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		compound.setDouble("money", this.money);
+		compound.setDouble("money", money);
 		return super.writeToNBT(compound);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.money = compound.getLong("money");
+		money = compound.getDouble("money");
+
 	}
 
 	public boolean isUsableByPlayer(EntityPlayer playerIn) {
-		return this.world.getTileEntity(this.pos) == this;
+		return world.getTileEntity(pos) == this;
+	}
+
+	public enum SortType implements IStringSerializable {
+		NF("NF"), FN("FN"), NAME("Name");
+
+		private String name;
+
+		public static final SortType[] TYPES = values();
+
+		SortType(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
 	}
 }

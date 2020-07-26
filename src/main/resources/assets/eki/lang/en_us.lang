@@ -148,12 +148,13 @@ container.eki.ticket_vendor.button.provide=Ticket
 container.eki.ticket_vendor.button.withdraw=Withdraw
 container.eki.ticket_vendor.text.default=Insert value.
 container.eki.anchor.station.name=Sta. Name:
-container.eki.anchor.text=Insert Station Name
+container.eki.anchor.text=Insert Name
+container.eki.anchor.desc=Anchor is a block to establish a station, it will only become a valid station once it registered. Can use wrench to bind ticket gate or ticket vendor to the anchor.
 container.eki.anchor.button.confirm=Confirm
 container.eki.button.clear=Clear
 
 //TEXTS
-chat.type.text.eki.anchoredamounts=This anchor had been bound to %d ticket gates / ticket vendors!
+chat.type.text.eki.anchoredAmount=This anchor had been bound to %d ticket gates / ticket vendors!
 chat.type.text.eki.setPos=Passed from %d, %d, %d!
 chat.type.text.eki.accessed=Exited from %d, %d, %d! Total Cost: %.2f, traveled for %.2f blocks!
 chat.type.text.eki.notEnoughValue=Can't exit! This ticket is worth %d, but it needs %d to exit.
@@ -163,6 +164,9 @@ chat.type.text.eki.missingAnchor=Please select an anchor first!
 chat.type.text.eki.anchorLinked=Connected to the anchor!
 chat.type.text.eki.rangefinder.result=3D distance is %d, surface distance is %d.
 chat.type.text.eki.rangefinder.getPos=Successfully bound to %d, %d, %d！
+
+//COMMANDS
+chat.type.text.eki.command.stations.error.illegalType=Unknown type for sorting , type /stations help to get info.
 
 //SYSTEM MESSAGES
 chat.type.text.eki.versioncheckValid=You are running on the latest version of Eki Mod!\nVersion >> %s

@@ -3,8 +3,8 @@ package chaos.mod.objects.block.subblocks;
 import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockVariantBase;
 import chaos.mod.util.handlers.EnumHandler.TesseraEnumWallEnum;
-import chaos.mod.util.interfaces.IHasModel;
 import chaos.mod.util.interfaces.IMetaName;
+import chaos.mod.util.interfaces.IModelRegister;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -18,9 +18,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockTessera extends BlockVariantBase implements IHasModel, IMetaName {
-	public static final PropertyEnum<TesseraEnumWallEnum> VARIANT = PropertyEnum.<TesseraEnumWallEnum>create(
-			"variant", TesseraEnumWallEnum.class);
+public class BlockTessera extends BlockVariantBase implements IModelRegister, IMetaName {
+	public static final PropertyEnum<TesseraEnumWallEnum> VARIANT = PropertyEnum.<TesseraEnumWallEnum>create("variant", TesseraEnumWallEnum.class);
 	private final String name;
 
 	public BlockTessera(String name) {
@@ -45,8 +44,7 @@ public class BlockTessera extends BlockVariantBase implements IHasModel, IMetaNa
 	}
 
 	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
-			EntityPlayer player) {
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		return new ItemStack(Item.getItemFromBlock(this), 1, getMetaFromState(world.getBlockState(pos)));
 	}
 
@@ -70,8 +68,7 @@ public class BlockTessera extends BlockVariantBase implements IHasModel, IMetaNa
 	@Override
 	public void registerModels() {
 		for (int i = 0; i < TesseraEnumWallEnum.values().length; i++) {
-			Eki.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), i,
-					name + "_" + TesseraEnumWallEnum.values()[i].getName(), "inventory");
+			Eki.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), i, name + "_" + TesseraEnumWallEnum.values()[i].getName(), "inventory");
 		}
 	}
 }

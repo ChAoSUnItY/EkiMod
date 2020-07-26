@@ -2,6 +2,8 @@ package chaos.mod.objects.item;
 
 import java.util.List;
 
+import chaos.mod.util.utils.UtilBlockPos;
+import chaos.mod.util.utils.UtilStationSystem;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
 import net.minecraft.client.util.ITooltipFlag;
@@ -33,16 +35,14 @@ public class ItemRangeFinder extends ItemBase {
 					stack.setTagCompound(nbt);
 					return EnumActionResult.SUCCESS;
 				}
-				int[] startPos = stack.getTagCompound().getIntArray("startPos");
-				int[] endPos = new int[] { pos.getX(), pos.getY(), pos.getZ() };
-				int ThreeDimLength = (int) Math.round(Math.sqrt(Math.pow(endPos[0] - startPos[0], 2) + Math.pow(endPos[1] - startPos[1], 2) + Math.pow(endPos[2] - startPos[2], 2)));
-				int TwoDimLength = (int) Math.round(Math.sqrt(Math.pow(endPos[0] - startPos[0], 2) + Math.pow(endPos[2] - startPos[2], 2)));
+				BlockPos targetPos = UtilBlockPos.getPos(stack.getTagCompound().getIntArray("startPos"));
+				int ThreeDimLength = (int) pos.getDistance(targetPos.getX(), targetPos.getY(), targetPos.getZ());
+				int TwoDimLength = (int) UtilStationSystem.calculateLength(pos, targetPos);
 				player.sendMessage(new UtilTCString(TranslateType.CHAT, "rangefinder.result", ThreeDimLength, TwoDimLength).applyFormat(TextFormatting.WHITE));
 				return EnumActionResult.SUCCESS;
 			} else {
-				int[] startPos = new int[] { pos.getX(), pos.getY(), pos.getZ() };
 				NBTTagCompound nbt = new NBTTagCompound();
-				nbt.setIntArray("startPos", startPos);
+				nbt.setIntArray("startPos", UtilBlockPos.getIntArray(pos));
 				stack.setTagCompound(nbt);
 				player.sendMessage(new UtilTCString(TranslateType.CHAT, "rangefinder.getPos", pos.getX(), pos.getY(), pos.getZ()).applyFormat(TextFormatting.GREEN));
 				return EnumActionResult.SUCCESS;

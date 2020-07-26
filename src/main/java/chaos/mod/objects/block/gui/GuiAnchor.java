@@ -1,8 +1,6 @@
 package chaos.mod.objects.block.gui;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import chaos.mod.init.BlockInit;
 import chaos.mod.tileentity.TileEntityAnchor;
@@ -39,8 +37,8 @@ public class GuiAnchor extends GuiScreen {
 		x = width / 2 - 90;
 		y = height / 2 - 100;
 		text = new GuiTextField(0, fontRenderer, x + 70, y + 50, 100, 15);
-		buttonClear = new GuiButton(0, x + 70, y + 70, 45, 15, new UtilTranslatable(TranslateType.CONTAINER, "button.clear").getFormattedText());
-		buttonConfirm = new GuiButton(1, x + 125, y + 70, 45, 15, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.confirm").getFormattedText());
+		buttonClear = new GuiButton(0, x + 70, y + 70, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "button.clear").getFormattedText());
+		buttonConfirm = new GuiButton(1, x + 125, y + 70, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.confirm").getFormattedText());
 		if (te.isValidStation()) {
 			buttonClear.enabled = false;
 			buttonConfirm.enabled = false;
@@ -77,10 +75,9 @@ public class GuiAnchor extends GuiScreen {
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		// draw string
 		fontRenderer.drawString(BlockInit.ANCHOR.getLocalizedName(), (x + 176 / 2) - (fontRenderer.getStringWidth(BlockInit.ANCHOR.getLocalizedName()) / 2), y + 8, 4210752);
-		fontRenderer.drawString(new UtilTCString(TranslateType.CONTAINER, "anchor.station.name").getFormattedText(), x + 70, y + 20, 4210752);
-		if (te.isValidStation()) {
-			fontRenderer.drawString(te.getStation().getName(), x + 70, y + 28, 4210752);
-		}
+		fontRenderer.drawSplitString(new UtilTCString(TranslateType.CONTAINER, "anchor.station.name").getFormattedText() + " " + (te.isValidStation() ? te.getStation().getName() : ""), x + 70, y
+				+ 20, 106, 4210752);
+		fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "anchor.desc").getFormattedText(), x + 5, y + 90, 166, 4210752);
 	}
 
 	@Override
@@ -90,7 +87,8 @@ public class GuiAnchor extends GuiScreen {
 			resetText();
 			break;
 		case 1:
-			if (text.getText().isEmpty() || text.getText().equalsIgnoreCase(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText()) || isIllegalName(text.getText())) {
+			if (text.getText().isEmpty() || text.getText().equalsIgnoreCase(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText())) {
+				System.out.println("illegal");
 				return;
 			}
 			PacketHandler.INSTANCE.sendToServer(new PacketAnchorCreateStationWorker(text.getText(), te.getPos()));
@@ -135,11 +133,5 @@ public class GuiAnchor extends GuiScreen {
 		text.setText("");
 		text.setFocused(true);
 		updateScreen();
-	}
-
-	private boolean isIllegalName(String s) {
-		Pattern pattern = Pattern.compile("[~#@*+%{}<>\\[\\]|\"\\_^]");
-		Matcher matcher = pattern.matcher(s);
-		return matcher.find();
 	}
 }

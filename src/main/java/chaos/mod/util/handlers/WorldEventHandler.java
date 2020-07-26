@@ -11,7 +11,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.ClickEvent.Action;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -29,11 +28,6 @@ public class WorldEventHandler {
 			EntityPlayer player = (EntityPlayer) event.getEntity();
 			player.sendMessage(s);
 		}
-	}
-	
-	@SubscribeEvent(priority = EventPriority.HIGH)
-	public static void tryForceSave(WorldEvent.Unload event) {
-		StationHandler.INSTANCE.saveAll();
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
