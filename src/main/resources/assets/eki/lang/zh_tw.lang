@@ -165,6 +165,7 @@ chat.type.text.eki.rangefinder.getPos=成功綁定起始點至%d, %d, %d！
 
 //COMMANDS
 chat.type.text.eki.command.stations.error.illegalType=未知的排序種類，輸入/stations help以獲得更多資訊。
+chat.type.text.eki.command.stations.help=NF -> 由近至遠\nFN -> 由遠至近\n NAME -> 由名稱
 
 //SYSTEM MESSAGES
 chat.type.text.eki.versioncheckValid=你正運行Eki Mod最新版本!\n版本 >> %s

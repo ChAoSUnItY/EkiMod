@@ -167,6 +167,7 @@ chat.type.text.eki.rangefinder.getPos=Successfully bound to %d, %d, %d！
 
 //COMMANDS
 chat.type.text.eki.command.stations.error.illegalType=Unknown type for sorting , type /stations help to get info.
+chat.type.text.eki.command.stations.help=NF -> Near to far\nFN -> Far to near\n NAME -> By name
 
 //SYSTEM MESSAGES
 chat.type.text.eki.versioncheckValid=You are running on the latest version of Eki Mod!\nVersion >> %s

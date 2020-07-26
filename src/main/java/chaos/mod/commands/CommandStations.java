@@ -9,6 +9,7 @@ import chaos.mod.tileentity.TileEntityTicketVendor.SortType;
 import chaos.mod.util.data.station.Station;
 import chaos.mod.util.handlers.StationHandler;
 import chaos.mod.util.utils.UtilStationSystem;
+import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
 import net.minecraft.command.CommandBase;
@@ -53,6 +54,9 @@ public class CommandStations extends CommandBase {
 		if (args.length < 1) {
 			stations.forEach(sta -> sender.sendMessage(new UtilTCString(sta.getData())));
 		} else if (args.length == 1) {
+			if (args[0].equalsIgnoreCase("help")) {
+				sender.sendMessage(new UtilTranslatable(TranslateType.CHAT, "command.stations.help"));
+			}
 			for (int i = 0; i < parseInt(args[0], 1, stations.size()); i++) {
 				sender.sendMessage(new UtilTCString(stations.get(i).getData()));
 			}
@@ -75,7 +79,7 @@ public class CommandStations extends CommandBase {
 					sender.sendMessage(new UtilTCString(stations.get(i).getData()));
 				}
 			} catch (Exception e) {
-				sender.sendMessage(new UtilTCString(TranslateType.CHAT, "command.stations.error.illegalType").applyFormat(TextFormatting.RED));
+				sender.sendMessage(new UtilTranslatable(TranslateType.CHAT, "command.stations.error.illegalType").applyFormat(TextFormatting.RED));
 			}
 		}
 		sender.sendMessage(new UtilTCString("============================="));
