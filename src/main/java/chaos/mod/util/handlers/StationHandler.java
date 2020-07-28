@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.List;
 
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -113,7 +115,7 @@ public class StationHandler {
 		}
 		stations.clear();
 	}
-	
+
 	public void reload(World world) {
 		saveAll();
 		init(world);
@@ -122,14 +124,18 @@ public class StationHandler {
 	private void save(Station sta) throws IOException {
 		BlockPos pos = sta.getPos();
 
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
 		JsonObject object = new JsonObject();
 		object.addProperty("name", sta.getName());
 		object.addProperty("x", pos.getX());
 		object.addProperty("y", pos.getY());
 		object.addProperty("z", pos.getZ());
 
+		JsonParser parser = new JsonParser();
+
 		try (FileWriter writer = new FileWriter(getFile(sta))) {
-			writer.write(object.toString());
+			writer.write(gson.toJson(parser.parse(object.toString())));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
