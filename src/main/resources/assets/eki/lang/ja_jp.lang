@@ -137,7 +137,7 @@ tile.eki.anchor.warning.tooltip=バインドされた場合はこのブロック
 
 
 //GUIS
-container.eki.ticket_vendor.state.success=発券しました！
+container.eki.ticket_vendor.state.success=発券しました！残高：%d
 container.eki.ticket_vendor.state.shortage=残高が不足しています：%d
 container.eki.ticket_vendor.state.failed=%s は有効な金額ではありません
 container.eki.ticket_vendor.state.illegal=%s が発券機に無効な金額を入力しました
