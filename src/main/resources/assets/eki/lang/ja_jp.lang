@@ -19,14 +19,10 @@ tile.eki.platform_edge_opf.name=高いホーム縁端
 tile.eki.platform_edge_with_guide_brick_opf.name=高いホーム縁端滑り止めブロック
 tile.eki.platform_edge_with_guide_brick_and_line_opf.name=高いホーム縁端滑り止めブロック (端線あり)
 tile.eki.platform_edge_with_line_opf.name=高いホーム縁端 (端線あり)
-tile.eki.platform_asphalt_with_guide_brick_opf.name=高い黄色い点字ブロックアスファルト
-tile.eki.platform_edge_with_line_and_light_off_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)
+tile.eki.platform_edge_with_line_and_light_off_opf.name=高い黄色い点字ブロックアスファルト
 tile.eki.platform_edge_with_line_and_light_on_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)　(点)
-//station pillars
-tile.eki.station_pillar_base.name=駅の柱 (ベース)
-tile.eki.station_pillar_center.name=駅の柱 (中)
-tile.eki.station_pillar_top.name=駅の柱 (トップ)
-tile.eki.station_pillar_base_with_fire_extinguisher_in.name=消火器の柱 (ベース)
+//decorations
+tile.eki.wooden_bench.name=木のベンチ
 //beams
 tile.eki.panel_beam_with_cross_black.name=モニター柱と桁 (黒)
 tile.eki.panel_beam_with_cross_white.name=モニター柱と桁 (白)
@@ -38,6 +34,11 @@ tile.eki.panel_beam_black.name=モニター柱 (黒)
 tile.eki.panel_beam_white.name=モニター柱 (白)
 tile.eki.beam_black.name=桁 (黒)
 tile.eki.beam_white.name=桁 (白)
+//station pillars
+tile.eki.station_pillar_base.name=駅舎柱 (ベース)
+tile.eki.station_pillar_center.name=駅舎柱 (中)
+tile.eki.station_pillar_top.name=駅舎柱 (トップ)
+tile.eki.station_pillar_base_with_fire_extinguisher_in.name=駅舎柱 (消火器ありのベース)
 //BLOCKS
 //blocks
 tile.eki.retaining_wall.name=擁壁
@@ -68,6 +69,22 @@ tile.eki.enamel_wall_top_purple.name=エナメル壁 (紫色のトップ)
 tile.eki.enamel_wall_top_red.name=エナメル壁 (赤色のトップ)
 tile.eki.enamel_wall_top_yellow.name=エナメル壁 (黄色のトップ)
 tile.eki.enamel_wall_top_white.name=エナメル壁 (白色のトップ)
+tile.eki.tessera_black_dull.name=タイル (暗黒色)
+tile.eki.tessera_cerulean_smooth.name=タイル (紺碧色)
+tile.eki.tessera_cerulean.name=タイル (スムーズ紺碧色)
+tile.eki.tessera_blue_slate.name=タイル (スレートブルー)
+tile.eki.tessera_blue_teal.name=タイル (青緑色)
+tile.eki.tessera_brown_tortilla.name=タイル (トルティーヤブラウン)
+tile.eki.tessera_gray_dove.name=タイル (灰色)
+tile.eki.tessera_gray_fossil.name=タイル(ダブグレー)
+tile.eki.tessera_gray.name=タイル (化石灰)
+tile.eki.tessera_green_fern.name=タイル (シダグリーン)
+tile.eki.tessera_green_lime.name=タイル (ライムグリーン)
+tile.eki.tessera_orange_fire.name=タイル (ファイアオレンジ)
+tile.eki.tessera_purple_heather.name=タイル (ヘザーパープル)
+tile.eki.tessera_red_rose.name=タイル (赤色)
+tile.eki.tessera_red.name=タイル (ローズレッド)
+tile.eki.tessera_yellow.name=タイル (黄色)
 //stairs
 tile.eki.architectural_concrete_stairs.name=打放しコンクリートの階段
 tile.eki.concrete_stairs.name=コンクリートの階段
@@ -100,9 +117,57 @@ tile.eki.wall_neon_light.name=ウォールネオンライト
 //ITEMINIT
 //TOOLS
 item.eki.wrench.name=レンチ
-item.eki.wrench.tooltip=調整ツール (作用なし)
-
+item.eki.wrench.withouttag.tooltip=アンカーを改札にバインドするためのツール。
+item.eki.wrench.withtag.tooltip=アンカーブロックをロックに設定するツール。%d, %d, %dに設定します。
+item.eki.ticket.name=きっぷ
+item.eki.ticket.tooltip=残高は %d 。 :)
+item.eki.rangefinder.name=距離計
+item.eki.rangefinder.tooltip=始点：%d, %d, %d.
 
 itemGroup.eki.block=駅ブロック
 itemGroup.eki.station=駅装飾
-itemGroup.eki.lights=駅照明
+itemGroup.eki.misc=駅その他
+
+//TILEENTITYS
+tile.eki.ticket_vendor.name=券売機
+tile.eki.ticket_gate.name=改札
+tile.eki.anchor.name=アンカー
+tile.eki.anchor.tooltip=改札をバインドするためのブロック。
+tile.eki.anchor.warning.tooltip=バインドされた場合はこのブロックを破壊するはいい考えではありません……
+
+
+//GUIS
+container.eki.ticket_vendor.state.success=発券しました！残高：%d
+container.eki.ticket_vendor.state.shortage=残高が不足しています：%d
+container.eki.ticket_vendor.state.failed=%s は有効な金額ではありません
+container.eki.ticket_vendor.state.illegal=%s が発券機に無効な金額を入力しました
+container.eki.ticket_vendor.state.waiting=お待ちください......
+container.eki.ticket_vendor.state.withdraw=引き出しました！
+container.eki.ticket_vendor.state.permission=権限のためにアクセスできない
+container.eki.ticket_vendor.button.provide=発券
+container.eki.ticket_vendor.button.withdraw=引き出す
+container.eki.ticket_vendor.text.default=金高を入力してください
+container.eki.anchor.station.name=駅名：
+container.eki.anchor.text=名前を入力してください
+container.eki.anchor.desc=アンカーは、駅の基準ポイントとして使用されるブロックであり、駅を登録した後でのみ機能を実行できます。 レンチを使用して、改札や券売機にバインドできます。
+container.eki.anchor.button.confirm=確認
+container.eki.button.clear=削除
+
+//TEXTS
+chat.type.text.eki.anchorAmount=このアンカーは %d 改札機にバインドされていました！
+chat.type.text.eki.setpos=%d, %d, %d から通過しました！
+chat.type.text.eki.accessed=%d, %d, %d を終了しました！総費用：%d、%dブロックを移動しました！
+chat.type.text.eki.notenoughvalue=駅を出ることができません！残高は%d、%dが必要です。
+chat.type.text.eki.missingvalue=この切符は価値がありません！
+chat.type.text.eki.missinganchor=アンカーブロックを選択してください！
+chat.type.text.eki.anchorlinked=アンカーにバインドしました！
+chat.type.text.eki.rangefinder.result=立体距離：%d，平面距離：%d。
+chat.type.text.eki.rangefinder.getpos=始点を%d、%d、%dにバインドしました！
+
+//COMMANDS
+chat.type.text.eki.command.stations.error.illegalType=未知のソート順です。，/stations help でコマンドの一覧を確認してください
+chat.type.text.eki.command.stations.help=NF -> 距離が近い順\nFN -> 距離が遠い順\n NAME -> 名前順
+
+//SYSTEM MESSAGES
+chat.type.text.eki.versioncheckValid=Eki Modの最新バージョンを実行しています!\nバージョン >> %s
+chat.type.text.eki.versioncheckInvalid=このバージョンのEki Modのサポートは終了しました。今すぐアップデートしてください！\nこちらをクリックしてページを開きます。\nこのバージョン >> %s\n最新バージョン >> %s
