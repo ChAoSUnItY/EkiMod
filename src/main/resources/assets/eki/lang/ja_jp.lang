@@ -137,15 +137,15 @@ tile.eki.anchor.warning.tooltip=バインドされた場合はこのブロック
 
 
 //GUIS
-container.eki.ticket_vendor.state.success=発券しました！
+container.eki.ticket_vendor.state.success=発券しました！残高：%d
 container.eki.ticket_vendor.state.shortage=残高が不足しています：%d
 container.eki.ticket_vendor.state.failed=%s は有効な金額ではありません
 container.eki.ticket_vendor.state.illegal=%s が発券機に無効な金額を入力しました
 container.eki.ticket_vendor.state.waiting=お待ちください......
-container.eki.ticket_vendor.state.withdraw=発券
-container.eki.ticket_vendor.state.permission=削除
-container.eki.ticket_vendor.button.provide=出票
-container.eki.ticket_vendor.button.withdraw=提款
+container.eki.ticket_vendor.state.withdraw=引き出しました！
+container.eki.ticket_vendor.state.permission=権限のためにアクセスできない
+container.eki.ticket_vendor.button.provide=発券
+container.eki.ticket_vendor.button.withdraw=引き出す
 container.eki.ticket_vendor.text.default=金高を入力してください
 container.eki.anchor.station.name=駅名：
 container.eki.anchor.text=名前を入力してください
