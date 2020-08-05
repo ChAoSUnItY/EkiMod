@@ -54,7 +54,8 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 			cache.add(mc.fontRenderer.getStringWidth(items.get(i)));
 		}
 
-		w = Collections.max(cache) + 5;
+		if (!cache.isEmpty())
+			w = Collections.max(cache) + 5;
 
 		raws = Lists.newArrayList(list.iterator());
 		shouldDrawBackground = true;

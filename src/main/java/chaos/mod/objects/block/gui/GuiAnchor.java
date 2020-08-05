@@ -5,9 +5,10 @@ import java.io.IOException;
 import chaos.mod.init.BlockInit;
 import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.util.Reference;
+import chaos.mod.util.data.station.Station;
 import chaos.mod.util.handlers.PacketHandler;
 import chaos.mod.util.handlers.StationHandler;
-import chaos.mod.util.network.PacketAnchorCreateStationWorker;
+import chaos.mod.util.network.PacketAddStationWorker;
 import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
@@ -91,7 +92,7 @@ public class GuiAnchor extends GuiScreen {
 				System.out.println("illegal");
 				return;
 			}
-			PacketHandler.INSTANCE.sendToServer(new PacketAnchorCreateStationWorker(text.getText(), te.getPos()));
+			PacketHandler.INSTANCE.sendToServer(new PacketAddStationWorker(new Station(text.getText(), te.getPos())));
 			buttonClear.enabled = false;
 			buttonConfirm.enabled = false;
 			text.setEnabled(false);

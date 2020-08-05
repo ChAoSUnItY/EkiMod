@@ -46,7 +46,7 @@ public class Eki {
 		}
 	};
 
-	@Instance
+	@Instance("eki")
 	public static Eki instance;
 
 	@SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.SERVER)

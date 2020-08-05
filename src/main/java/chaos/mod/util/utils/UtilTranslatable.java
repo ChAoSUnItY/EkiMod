@@ -1,15 +1,16 @@
 package chaos.mod.util.utils;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 
 /***
  * Lazy Translate.
  */
+@SuppressWarnings("deprecation")
 public class UtilTranslatable extends TextComponentTranslation {
 	public UtilTranslatable(TranslateType type, String key, Object... args) {
 		super(type.getName() + ".eki." + key, args);
@@ -53,7 +54,7 @@ public class UtilTranslatable extends TextComponentTranslation {
 	}
 
 	public static TextComponentString getTextComponentString(TranslateType type, String key, Object... args) {
-		return new TextComponentString(I18n.format(type.getName() + ".eki." + key, args));
+		return new TextComponentString(I18n.translateToLocalFormatted(type.getName() + ".eki." + key, args));
 	}
 
 	public static String getEki(String s) {
@@ -62,11 +63,11 @@ public class UtilTranslatable extends TextComponentTranslation {
 
 	public static class UtilTCString extends TextComponentString {
 		public UtilTCString(TranslateType type, String key, Object... args) {
-			super(I18n.format(type.getName() + ".eki." + key, args));
+			super(I18n.translateToLocalFormatted(type.getName() + ".eki." + key, args));
 		}
-		
+
 		public UtilTCString(String key, Object... args) {
-			super(I18n.format(key, args));
+			super(I18n.translateToLocalFormatted(key, args));
 		}
 
 		public UtilTCString applyFormat(TextFormatting color) {
@@ -97,14 +98,14 @@ public class UtilTranslatable extends TextComponentTranslation {
 			}
 			return this;
 		}
-		
-		public UtilTCString applyFormats(TextFormatting... colors) {
-		      for(TextFormatting textformatting : colors) {
-		          this.applyFormat(textformatting);
-		       }
 
-		       return this;
-		    }
+		public UtilTCString applyFormats(TextFormatting... colors) {
+			for (TextFormatting textformatting : colors) {
+				this.applyFormat(textformatting);
+			}
+
+			return this;
+		}
 	}
 
 	public enum TranslateType implements IStringSerializable {

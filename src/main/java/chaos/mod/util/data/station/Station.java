@@ -11,6 +11,10 @@ public class Station extends DataForm {
 		this.pos = pos;
 		this.name = name;
 	}
+	
+	public Station(String name, BlockPos pos) {
+		this(pos, name);
+	}
 
 	public String getName() {
 		return name;

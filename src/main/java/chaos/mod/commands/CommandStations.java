@@ -29,7 +29,8 @@ public class CommandStations extends CommandBase {
 
 	@Override
 	public String getUsage(ICommandSender sender) {
-		return "/stations [<number of stations to display>)] [<NF|FN|Name>]";
+		return new UtilTranslatable(TranslateType.CHAT, "command.stations.usage").getFormattedText();
+		// return "/stations [<number of stations to display>)] [<NF|FN|Name>]";
 	}
 
 	@Override
