@@ -22,7 +22,7 @@ public class GuiHandler implements IGuiHandler {
 		case Reference.GUITICKETVENDOR:
 			return new ContainerTicketVendor(player.inventory, (TileEntityTicketVendor) te, player);
 		case Reference.GUIANCHOR:
-			return new ContainerScreen();
+			return new ContainerScreen((TileEntityAnchor) te);
 		default:
 			return null;
 		}

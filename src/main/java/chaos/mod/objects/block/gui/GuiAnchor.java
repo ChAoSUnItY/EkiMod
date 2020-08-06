@@ -3,6 +3,7 @@ package chaos.mod.objects.block.gui;
 import java.io.IOException;
 
 import chaos.mod.init.BlockInit;
+import chaos.mod.objects.block.gui.elements.GuiSimpleListBox;
 import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.util.Reference;
 import chaos.mod.util.data.station.Station;
@@ -24,8 +25,12 @@ public class GuiAnchor extends GuiScreen {
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MODID, "textures/gui/anchor.png");
 	private TileEntityAnchor te;
 	private GuiTextField text;
+	private GuiTextField OPtext;
+	private GuiSimpleListBox lines;
 	private GuiButton buttonClear;
 	private GuiButton buttonConfirm;
+	private GuiButton buttonSetOp;
+	private GuiButton buttonAddLine;
 	private int x;
 	private int y;
 
@@ -39,8 +44,12 @@ public class GuiAnchor extends GuiScreen {
 		x = width / 2 - 90;
 		y = height / 2 - 100;
 		text = new GuiTextField(0, fontRenderer, x + 70, y + 50, 100, 15);
+		OPtext = new GuiTextField(1, fontRenderer, x + 177, y, 100, 15);
+		lines = new GuiSimpleListBox(x + 177, y + 79, 100, 87, StationHandler.INSTANCE.getStation(te.getPos()).getLines());
 		buttonClear = new GuiButton(0, x + 70, y + 70, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "button.clear").getFormattedText());
 		buttonConfirm = new GuiButton(1, x + 125, y + 70, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.confirm").getFormattedText());
+		buttonSetOp = new GuiButton(2, x + 177, y + 18, 100, 20, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.setOP").getFormattedText());
+		buttonAddLine = new GuiButton(3, x + 177, y + 41, 100, 20, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.addLine").getFormattedText());
 		if (te.isValidStation()) {
 			buttonClear.enabled = false;
 			buttonConfirm.enabled = false;
@@ -48,6 +57,8 @@ public class GuiAnchor extends GuiScreen {
 			text.setFocused(false);
 			text.setEnabled(false);
 		} else {
+			buttonSetOp.enabled = false;
+			buttonAddLine.enabled = false;
 			text.setFocused(true);
 			text.setCanLoseFocus(true);
 			text.setText(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText());
@@ -55,6 +66,8 @@ public class GuiAnchor extends GuiScreen {
 		}
 		buttonList.add(buttonClear);
 		buttonList.add(buttonConfirm);
+		buttonList.add(buttonSetOp);
+		buttonList.add(buttonAddLine);
 	}
 
 	@Override
@@ -74,12 +87,14 @@ public class GuiAnchor extends GuiScreen {
 		RenderHelper.enableStandardItemLighting();
 		// draw element
 		text.drawTextBox();
+		OPtext.drawTextBox();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		// draw string
 		fontRenderer.drawString(BlockInit.ANCHOR.getLocalizedName(), (x + 176 / 2) - (fontRenderer.getStringWidth(BlockInit.ANCHOR.getLocalizedName()) / 2), y + 8, 4210752);
 		fontRenderer.drawSplitString(new UtilTCString(TranslateType.CONTAINER, "anchor.station.name").getFormattedText() + " " + (te.isValidStation() ? te.getStation().getName() : ""), x + 70, y
 				+ 20, 106, 4210752);
 		fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "anchor.desc").getFormattedText(), x + 5, y + 90, 166, 4210752);
+		lines.draw(mouseX, mouseY, fontRenderer);
 	}
 
 	@Override
@@ -108,7 +123,14 @@ public class GuiAnchor extends GuiScreen {
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 		text.mouseClicked(mouseX, mouseY, mouseButton);
+		lines.mouseClicked(mouseX, mouseY, mouseButton);
 		super.mouseClicked(mouseX, mouseY, mouseButton);
+	}
+
+	@Override
+	protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
+		lines.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+		super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
 	}
 
 	@Override
