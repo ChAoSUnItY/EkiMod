@@ -43,15 +43,13 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event) {
 		for (Item item : ItemInit.ITEMS) {
-			if (item instanceof IModelRegister) {
+			if (item instanceof IModelRegister)
 				((IModelRegister) item).registerModels();
-			}
 		}
 
 		for (Block block : BlockInit.BLOCKS) {
-			if (block instanceof IModelRegister) {
+			if (block instanceof IModelRegister)
 				((IModelRegister) block).registerModels();
-			}
 		}
 	}
 

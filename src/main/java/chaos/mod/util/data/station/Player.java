@@ -45,6 +45,11 @@ public class Player extends DataForm {
 	}
 
 	@Override
+	public String[] toStringArray() {
+		return new String[] { name, uuid.toString() };
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		return ((Player) obj).getUuid() == uuid;
 	}

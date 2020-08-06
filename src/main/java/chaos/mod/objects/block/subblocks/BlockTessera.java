@@ -2,8 +2,6 @@ package chaos.mod.objects.block.subblocks;
 
 import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockVariantBase;
-import chaos.mod.util.handlers.EnumHandler.TesseraEnumWallEnum;
-import chaos.mod.util.interfaces.IMetaName;
 import chaos.mod.util.interfaces.IModelRegister;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -13,24 +11,23 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockTessera extends BlockVariantBase implements IModelRegister, IMetaName {
+public class BlockTessera extends BlockVariantBase implements IModelRegister {
 	public static final PropertyEnum<TesseraEnumWallEnum> VARIANT = PropertyEnum.<TesseraEnumWallEnum>create("variant", TesseraEnumWallEnum.class);
-	private final String name;
 
 	public BlockTessera(String name) {
 		super(name);
-		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, TesseraEnumWallEnum.BLACK_DULL));
-		this.name = name;
+		setDefaultState(blockState.getBaseState().withProperty(VARIANT, TesseraEnumWallEnum.BLACK_DULL));
 	}
 
 	@Override
 	public int damageDropped(IBlockState state) {
-		return ((TesseraEnumWallEnum) state.getValue(VARIANT)).getMeta();
+		return state.getValue(VARIANT).getMeta();
 	}
 
 	@Override
@@ -40,7 +37,7 @@ public class BlockTessera extends BlockVariantBase implements IModelRegister, IM
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((TesseraEnumWallEnum) state.getValue(VARIANT)).getMeta();
+		return state.getValue(VARIANT).getMeta();
 	}
 
 	@Override
@@ -69,6 +66,45 @@ public class BlockTessera extends BlockVariantBase implements IModelRegister, IM
 	public void registerModels() {
 		for (int i = 0; i < TesseraEnumWallEnum.values().length; i++) {
 			Eki.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), i, name + "_" + TesseraEnumWallEnum.values()[i].getName(), "inventory");
+		}
+	}
+
+	public static enum TesseraEnumWallEnum implements IStringSerializable {
+		BLACK_DULL("black_dull", 0), CERULEAN_SMOOTH("cerulean_smooth", 1), CERULEAN("cerulean", 2), BLUE_SLATE("blue_slate", 3), BLUE_TEAL("blue_teal", 4), BROWN_TORTILLA("brown_tortilla", 5),
+		GRAY_DOVE("gray_dove", 6), GRAY_FOSSIL("gray_fossil", 7), GRAY("gray", 8), GREEN_FERN("green_fern", 9), GREEN_LIME("green_lime", 10), ORANGE_FIRE("orange_fire", 11),
+		PURPLE_HEATHER("purple_heather", 12), RED_ROSE("red_rose", 13), RED("red", 14), YELLOW("yellow", 15);
+
+		private static final TesseraEnumWallEnum[] META_LOOKUP = new TesseraEnumWallEnum[values().length];
+		private String name;
+		private int meta;
+
+		private TesseraEnumWallEnum(String name, int meta) {
+			this.name = name;
+			this.meta = meta;
+		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
+
+		public int getMeta() {
+			return meta;
+		}
+
+		@Override
+		public String toString() {
+			return getName();
+		}
+
+		public static TesseraEnumWallEnum byMetadata(int meta) {
+			return META_LOOKUP[meta];
+		}
+
+		static {
+			for (TesseraEnumWallEnum type : values()) {
+				META_LOOKUP[type.getMeta()] = type;
+			}
 		}
 	}
 }

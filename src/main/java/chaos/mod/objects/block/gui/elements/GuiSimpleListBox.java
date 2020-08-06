@@ -15,7 +15,7 @@ import net.minecraft.client.gui.Gui;
  * 
  * @author Noto
  */
-public class GuiSimpleListBox<T extends DataForm> extends Gui {
+public class GuiSimpleListBox extends Gui {
 	public int x;
 	public int y;
 	public int w;
@@ -26,7 +26,7 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 	public int selectedIndex = -1;
 	private int scrollLevel;
 	private boolean scrollBerClicked;
-	private boolean shouldDrawBackground;
+	private boolean shouldDrawBackground = true;
 
 	public GuiSimpleListBox(int x, int y, int w, int h, List<? extends DataForm> list) {
 		this.x = x;
@@ -39,7 +39,6 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 		}
 
 		raws = Lists.newArrayList(list.iterator());
-		shouldDrawBackground = true;
 	}
 
 	public GuiSimpleListBox(int x, int y, int h, List<? extends DataForm> list, Minecraft mc) {
@@ -58,7 +57,6 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 			w = Collections.max(cache) + 5;
 
 		raws = Lists.newArrayList(list.iterator());
-		shouldDrawBackground = true;
 	}
 
 	public void draw(int mouseX, int mouseY, FontRenderer fontRenderer) {

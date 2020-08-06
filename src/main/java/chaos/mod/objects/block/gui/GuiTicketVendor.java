@@ -48,7 +48,7 @@ public class GuiTicketVendor extends GuiContainer {
 	public GuiButton buttonClear;
 	public GuiButton buttonWithdraw;
 	public GuiButton buttonSort;
-	public GuiSimpleListBox<Station> listStations;
+	public GuiSimpleListBox listStations;
 	public Container container;
 
 	public GuiTicketVendor(InventoryPlayer invPlayer, TileEntityTicketVendor te, EntityPlayer player) {
@@ -76,7 +76,7 @@ public class GuiTicketVendor extends GuiContainer {
 			buttonClear = new GuiButton(1, guiLeft + (baseX * 3) + 23, guiTop + baseY + 20, (baseWidthX / 2) - 10, 20, new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
 		}
 		buttonSort = new GuiButton(3, guiLeft + xSize, guiTop - 20, 40, 20, type.getName());
-		listStations = new GuiSimpleListBox<Station>(guiLeft + xSize, guiTop + 10, ySize - 20, UtilStationSystem.sortByFarNF(te.getAnchor(), StationHandler.INSTANCE.getStations()), mc);
+		listStations = new GuiSimpleListBox(guiLeft + xSize, guiTop + 10, ySize - 20, UtilStationSystem.sortByFarNF(te.getAnchor(), StationHandler.INSTANCE.getStations()), mc);
 		buttonList.add(buttonProvide);
 		buttonList.add(buttonClear);
 		buttonList.add(buttonSort);

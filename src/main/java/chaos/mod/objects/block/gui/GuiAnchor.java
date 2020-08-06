@@ -26,7 +26,8 @@ public class GuiAnchor extends GuiScreen {
 	private GuiTextField text;
 	private GuiButton buttonClear;
 	private GuiButton buttonConfirm;
-	private int x, y;
+	private int x;
+	private int y;
 
 	public GuiAnchor(TileEntityAnchor te) {
 		this.te = te;

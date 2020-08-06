@@ -11,7 +11,7 @@ public class Station extends DataForm {
 		this.pos = pos;
 		this.name = name;
 	}
-	
+
 	public Station(String name, BlockPos pos) {
 		this(pos, name);
 	}
@@ -34,7 +34,12 @@ public class Station extends DataForm {
 	public String getData() {
 		return name + " - " + getPosStringFormat();
 	}
-	
+
+	@Override
+	public String[] toStringArray() {
+		return new String[] { name, getPosStringFormat() };
+	}
+
 	public String getPosStringFormat() {
 		return "(" + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ")";
 	}

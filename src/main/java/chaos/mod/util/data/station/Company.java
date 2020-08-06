@@ -102,4 +102,8 @@ public class Company extends DataForm {
 		return null;
 	}
 
+	@Override
+	public String[] toStringArray() {
+		return null;
+	}
 }
