@@ -56,7 +56,7 @@ public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		// reset gates' bound
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TileEntityAnchor) {
+		if (worldIn.isRemote && te instanceof TileEntityAnchor) {
 			TileEntityAnchor teA = (TileEntityAnchor) te;
 			teA.resetAllGate();
 			// remove station if exist

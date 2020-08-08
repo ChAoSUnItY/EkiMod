@@ -6,12 +6,10 @@ public class Station extends DataForm {
 	public static final Station EXAMPLE = new Station(new BlockPos(1, 1, 1), "TEST_STATION");
 	private BlockPos pos;
 	private String name;
-	private String operator;
 
 	public Station(BlockPos pos, String name) {
 		this.pos = pos;
 		this.name = name;
-		operator = "";
 	}
 
 	public Station(String name, BlockPos pos) {
@@ -24,14 +22,6 @@ public class Station extends DataForm {
 
 	public BlockPos getPos() {
 		return pos;
-	}
-
-	public String getOperator() {
-		return operator;
-	}
-
-	public void setOperator(String operator) {
-		this.operator = operator;
 	}
 
 	@Override

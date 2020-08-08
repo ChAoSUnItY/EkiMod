@@ -4,7 +4,6 @@ import chaos.mod.Eki;
 import chaos.mod.commands.CommandForceSaveStations;
 import chaos.mod.commands.CommandNametagDisplay;
 import chaos.mod.commands.CommandStations;
-import chaos.mod.commands.CommandTeleportStation;
 import chaos.mod.init.BlockInit;
 import chaos.mod.init.ItemInit;
 import chaos.mod.util.Reference;
@@ -71,7 +70,6 @@ public class RegistryHandler {
 		event.registerServerCommand(new CommandNametagDisplay());
 		event.registerServerCommand(new CommandForceSaveStations());
 		event.registerServerCommand(new CommandStations());
-		event.registerServerCommand(new CommandTeleportStation());
 		StationHandler.INSTANCE.init(event.getServer().getEntityWorld());
 	}
 

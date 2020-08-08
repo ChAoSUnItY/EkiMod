@@ -34,7 +34,9 @@ public class GuiSimpleListBox extends Gui {
 		this.w = w;
 		this.h = h;
 
-		list.forEach(d -> items.add(d.getData()));
+		for (int i = 0; i < list.size(); i++) {
+			items.add(list.get(i).getData());
+		}
 
 		raws = Lists.newArrayList(list.iterator());
 	}
@@ -47,7 +49,9 @@ public class GuiSimpleListBox extends Gui {
 		list.forEach(d -> items.add(d.getData()));
 		List<Integer> cache = Lists.newArrayList();
 
-		items.forEach(i -> cache.add(mc.fontRenderer.getStringWidth(i)));
+		for (int i = 0; i < items.size(); i++) {
+			cache.add(mc.fontRenderer.getStringWidth(items.get(i)));
+		}
 
 		if (!cache.isEmpty())
 			w = Collections.max(cache) + 5;
@@ -148,7 +152,9 @@ public class GuiSimpleListBox extends Gui {
 
 	public void reloadList(List<? extends DataForm> list) {
 		items.clear();
-		list.forEach(d -> items.add(d.getData()));
+		for (int i = 0; i < list.size(); i++) {
+			items.add(list.get(i).getData());
+		}
 		raws = Lists.newArrayList(list.iterator());
 	}
 

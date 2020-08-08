@@ -26,6 +26,8 @@ public class WorldEventHandler {
 		event.player.sendMessage(s);
 
 		// init station handler
-		PacketHandler.INSTANCE.sendTo(new PacketInitStationHandlerWorker(StationHandler.INSTANCE.getStations()), (EntityPlayerMP) event.player);
+		if (event.player.isServerWorld()) {
+			PacketHandler.INSTANCE.sendTo(new PacketInitStationHandlerWorker(StationHandler.INSTANCE.getStations()), (EntityPlayerMP) event.player);
+		}
 	}
 }

@@ -53,9 +53,6 @@ public class PacketNoticeStationChangedWorker implements IMessage {
 		}
 
 		void processMessage(PacketNoticeStationChangedWorker message, MessageContext ctx) {
-			if (StationHandler.INSTANCE.isExist(message.station.getPos()))
-				return;
-			
 			if (message.add) {
 				StationHandler.INSTANCE.addNewStation(message.station);
 			} else {

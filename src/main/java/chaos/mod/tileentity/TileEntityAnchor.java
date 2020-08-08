@@ -7,7 +7,6 @@ import com.google.common.collect.Lists;
 import chaos.mod.util.data.station.Station;
 import chaos.mod.util.handlers.StationHandler;
 import chaos.mod.util.utils.UtilBlockPos;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.math.BlockPos;
@@ -76,9 +75,5 @@ public class TileEntityAnchor extends TileEntityBase {
 			NBTTagCompound tag = list.getCompoundTagAt(i);
 			gatesPos.add(UtilBlockPos.getPos(tag.getIntArray("gate")));
 		}
-	}
-
-	public boolean isUsableByPlayer(EntityPlayer player) {
-		return player.getPosition().getDistance(pos.getX(), pos.getY(), pos.getZ()) < 16;
 	}
 }

@@ -7,24 +7,24 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 
 public class ContainerTicketVendor extends Container {
-	private TileEntityTicketVendor te;
+	private TileEntityTicketVendor tileEnitity;
 
-	public ContainerTicketVendor(InventoryPlayer invPlayer, TileEntityTicketVendor te, EntityPlayer player) {
-		this.te = te;
+	public ContainerTicketVendor(InventoryPlayer invPlayer, TileEntityTicketVendor tileEntity, EntityPlayer player) {
+		this.tileEnitity = tileEntity;
 
 		for (int y = 0; y < 3; y++) {
 			for (int x = 0; x < 9; x++) {
-				addSlotToContainer(new Slot(invPlayer, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
+				this.addSlotToContainer(new Slot(invPlayer, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
 			}
 		}
 
 		for (int x = 0; x < 9; x++) {
-			addSlotToContainer(new Slot(invPlayer, x, 8 + x * 18, 142));
+			this.addSlotToContainer(new Slot(invPlayer, x, 8 + x * 18, 142));
 		}
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return te.isUsableByPlayer(playerIn);
+		return this.tileEnitity.isUsableByPlayer(playerIn);
 	}
 }
