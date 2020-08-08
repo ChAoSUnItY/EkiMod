@@ -136,12 +136,12 @@ tile.eki.anchor.tooltip=用來標記為車站中心的方塊。
 tile.eki.anchor.warning.tooltip=在已綁定的情況下打掉這個方塊並不是個好主意......
 
 //GUIS
-container.eki.ticket_vendor.state.success=出票成功！金額：%d
+container.eki.ticket_vendor.state.success=出票成功!金額：%d
 container.eki.ticket_vendor.state.shortage=您身上的餘額不足：%d
 container.eki.ticket_vendor.state.failed=%s 並不是一個有效金額數目
 container.eki.ticket_vendor.state.illegal=%s 玩家在售票機內輸入了無效的金額數目
 container.eki.ticket_vendor.state.waiting=等待中......
-container.eki.ticket_vendor.state.withdraw=提款成功！
+container.eki.ticket_vendor.state.withdraw=提款成功!
 container.eki.ticket_vendor.state.permission=權限不足
 container.eki.ticket_vendor.button.provide=出票
 container.eki.ticket_vendor.button.withdraw=提款
@@ -161,7 +161,8 @@ chat.type.text.eki.missingValue=此票沒有價值可言!
 chat.type.text.eki.missingAnchor=請先選取一個錨點!
 chat.type.text.eki.anchorLinked=已連結至錨點!
 chat.type.text.eki.rangefinder.result=三維空間距離：%d，平面空間距離：%d。
-chat.type.text.eki.rangefinder.getPos=成功綁定起始點至%d, %d, %d！
+chat.type.text.eki.rangefinder.getPos=成功綁定起始點至%d, %d, %d!
+chat.type.text.eki.desync=資料不完整!請重新加入。
 
 //COMMANDS
 chat.type.text.eki.command.stations.error.illegalType=未知的排序種類，輸入/stations help以獲得更多資訊。

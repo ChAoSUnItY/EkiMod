@@ -22,40 +22,83 @@ import net.minecraft.world.storage.SaveHandler;
 public class StationHandler {
 	public static final StationHandler INSTANCE = new StationHandler();
 	private static List<Station> stations;
-	private File location;
+	// private static List<Company> companies;
+	private File locationSta;
+	// private File locationCom;
 
 	public void init(World world) {
 		stations = Lists.newArrayList();
+		// companies = Lists.newArrayList();
 		scanAll(getWorldDir(world));
 	}
 
-	private void scanAll(File path) {
-		location = new File(path, "eki-stations");
-		location.mkdirs();
-		generateExampleStation();
-
-		File[] files = location.listFiles();
-		UtilLogger.info("=======================================");
-		UtilLogger.info("Init Stations......");
-		for (int i = 0; i < files.length; i++) {
-			register(files[i], i);
-		}
-		UtilLogger.info("Successfully init " + (files.length - 1) + " stations!");
-		UtilLogger.info("=======================================");
-		stations.forEach(sta -> UtilLogger.info(sta.getData()));
+	public void init(List<Station> stations) {
+		StationHandler.stations = stations;
+		// StationHandler.companies = companies;
 	}
 
-	private void register(File file, int index) {
+	private void scanAll(File path) {
+		locationSta = new File(path, "eki-stations");
+		locationSta.mkdirs();
+		generateExampleStation();
+
+		File[] staFile = locationSta.listFiles();
+		UtilLogger.info("=======================================");
+		UtilLogger.info("Init Stations......");
+		for (int i = 0; i < staFile.length; i++) {
+			register(staFile[i], i, RegisterType.STA);
+		}
+		UtilLogger.info("Successfully init " + (staFile.length - 1) + " stations!");
+		UtilLogger.info("=======================================");
+
+		/*
+		 * locationCom = new File(path, "eki-companies"); locationCom.mkdirs();
+		 * generateExampleCompany();
+		 * 
+		 * File[] comFile = locationCom.listFiles();
+		 * UtilLogger.info("=======================================");
+		 * UtilLogger.info("Init Companies......"); for (int i = 0; i < comFile.length;
+		 * i++) { register(comFile[i], i, RegisterType.COM); }
+		 * UtilLogger.info("Successfully init " + (comFile.length - 1) + " companies!");
+		 * UtilLogger.info("=======================================");
+		 */
+	}
+
+	private void register(File file, int index, RegisterType type) {
 		JsonParser parser = new JsonParser();
 		try (FileReader reader = new FileReader(file)) {
 			Object obj = parser.parse(reader);
 			JsonObject json = (JsonObject) obj;
 
-			Station sta = new Station(new BlockPos(json.get("x").getAsInt(), json.get("y").getAsInt(), json.get("z").getAsInt()), json.get("name").getAsString());
-			if (sta.equals(Station.EXAMPLE))
-				return;
-			stations.add(sta);
-			UtilLogger.info(sta.getName() + " - " + sta.getPosStringFormat() + " > (" + index + "/" + (location.listFiles().length - 1) + ")");
+			switch (type) {
+			case STA:
+				Station sta = new Station(new BlockPos(json.get("x").getAsInt(), json.get("y").getAsInt(), json.get("z").getAsInt()), json.get("name").getAsString());
+				if (!json.get("operator").isJsonNull() || !json.get("operator").getAsString().isEmpty()) {
+					sta.setOperator(json.get("operator").getAsString());
+				} else {
+					sta.setOperator("");
+				}
+				if (sta.equals(Station.EXAMPLE))
+					return;
+				stations.add(sta);
+				UtilLogger.info(sta.getName() + " - " + sta.getPosStringFormat() + " > (" + index + "/" + (locationSta.listFiles().length - 1) + ")");
+				break;
+			/*
+			 * case COM: JsonArray arrOwner = json.get("owner").getAsJsonArray(); JsonArray
+			 * arrStaff = json.get("staff").getAsJsonArray(); List<Player> staff =
+			 * Lists.newArrayList(); for (int i = 0; i < arrStaff.size(); i++) { JsonArray
+			 * arrStaffDetail = arrStaff.get(i).getAsJsonArray(); staff.add(new
+			 * Player(arrStaffDetail.get(0).getAsString(),
+			 * arrStaffDetail.get(1).getAsString())); } Company com = new
+			 * Company(json.get("name").getAsString(), new
+			 * Player(arrOwner.get(0).getAsString(), arrOwner.get(1).getAsString()), staff);
+			 * if (com.equals(Company.EXAMPLE)) return; companies.add(com);
+			 * UtilLogger.info(com.getName() + " - Owned by : " + com.getOwner().getName() +
+			 * " > (" + index + "/" + (locationCom.listFiles().length - 1) + ")"); break;
+			 */
+			default:
+				break;
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -72,9 +115,18 @@ public class StationHandler {
 		return false;
 	}
 
+	/*
+	 * public boolean isExist(UUID uuid) { for (Company com : companies) { if
+	 * (com.getOwner().getUuid().equals(uuid)) { return true; } } return false; }
+	 */
+
 	public void addNewStation(Station sta) {
 		stations.add(sta);
 	}
+
+	/*
+	 * public void addNewCompany(Company com) { companies.add(com); }
+	 */
 
 	public boolean tryRemoveStation(BlockPos pos) {
 		for (int i = 0; i < stations.size(); i++) {
@@ -92,6 +144,18 @@ public class StationHandler {
 		return false;
 	}
 
+	/*
+	 * public boolean tryRemoveCompany(UUID uuid, String name, boolean isAdmin) { if
+	 * (isAdmin && name != null) { for (int i = 0; i < companies.size(); i++) { if
+	 * (match(companies.get(i), name)) { companies.remove(i); try { File file =
+	 * getFile(companies.get(i)); file.delete(); } catch (Exception e) {
+	 * e.printStackTrace(); } return true; } } } if (!(uuid == null)) { for (int i =
+	 * 0; i < companies.size(); i++) { if (match(companies.get(i), uuid)) {
+	 * companies.remove(i); try { File file = getFile(companies.get(i));
+	 * file.delete(); } catch (Exception e) { e.printStackTrace(); } return true; }
+	 * } } return false; }
+	 */
+
 	public Station getStation(BlockPos pos) {
 		for (Station sta : stations) {
 			if (match(sta, pos)) {
@@ -101,9 +165,38 @@ public class StationHandler {
 		return Station.EXAMPLE;
 	}
 
+	public Station getStation(String name) {
+		for (Station sta : stations) {
+			if (match(sta, name)) {
+				return sta;
+			}
+		}
+		return Station.EXAMPLE;
+	}
+
+	/*
+	 * public Company getCompany(UUID uuid, String name) { if (uuid == null) { for
+	 * (Company com : companies) { if (match(com, name)) { return com; } } } else if
+	 * (name == null) { for (Company com : companies) { if (match(com, uuid)) {
+	 * return com; } } } return Company.EXAMPLE; }
+	 */
+
 	public List<Station> getStations() {
 		return Lists.newArrayList(stations.iterator());
 	}
+
+	public List<String> getStationsName() {
+		List<String> s = Lists.newArrayList();
+		for (Station sta : stations) {
+			s.add(sta.getName());
+		}
+		return s;
+	}
+
+	/*
+	 * public List<Company> getCompanies() { return
+	 * Lists.newArrayList(companies.iterator()); }
+	 */
 
 	public void saveAll() {
 		for (Station sta : stations) {
@@ -114,6 +207,10 @@ public class StationHandler {
 			}
 		}
 		stations.clear();
+		/*
+		 * for (Company com : companies) { try { save(com); } catch (IOException e) {
+		 * e.printStackTrace(); } } companies.clear();
+		 */
 	}
 
 	public void reload(World world) {
@@ -131,6 +228,11 @@ public class StationHandler {
 		object.addProperty("x", pos.getX());
 		object.addProperty("y", pos.getY());
 		object.addProperty("z", pos.getZ());
+		if (!sta.getOperator().isEmpty()) {
+			object.addProperty("operator", sta.getOperator());
+		} else {
+			object.addProperty("operator", "");
+		}
 
 		JsonParser parser = new JsonParser();
 
@@ -140,6 +242,21 @@ public class StationHandler {
 			e.printStackTrace();
 		}
 	}
+
+	/*
+	 * private void save(Company com) throws IOException { Gson gson = new
+	 * GsonBuilder().setPrettyPrinting().create();
+	 * 
+	 * JsonObject object = new JsonObject(); object.addProperty("name",
+	 * com.getName()); object.add("owner", com.getOwner().getJsonArray());
+	 * object.add("staff", com.staffGetJsonArray());
+	 * 
+	 * JsonParser parser = new JsonParser();
+	 * 
+	 * try (FileWriter writer = new FileWriter(getFile(com))) {
+	 * writer.write(gson.toJson(parser.parse(object.toString()))); } catch
+	 * (IOException e) { e.printStackTrace(); } }
+	 */
 
 	private void generateExampleStation() {
 		try {
@@ -151,18 +268,46 @@ public class StationHandler {
 		}
 	}
 
+	/*
+	 * private void generateExampleCompany() { try { save(Company.EXAMPLE);
+	 * UtilLogger.info("Successfully generated example company!"); } catch
+	 * (Exception e) { UtilLogger.info("Failed to generate example company!");
+	 * e.printStackTrace(); } }
+	 */
+
 	private File getFile(Station sta) {
-		return new File(location, sta.getName() + sta.getPosStringFormat() + ".json");
+		return new File(locationSta, sta.getName() + sta.getPosStringFormat() + ".json");
 	}
+
+	/*
+	 * private File getFile(Company com) { return new File(locationCom,
+	 * com.getName() + "-" + com.getOwner().getName() + ".json"); }
+	 */
 
 	private boolean match(Station sta, BlockPos pos) {
 		return sta.getPos().equals(pos);
 	}
+
+	private boolean match(Station sta, String name) {
+		return sta.getName().equalsIgnoreCase(name);
+	}
+
+	/*
+	 * private boolean match(Company com, UUID uuid) { return
+	 * com.getOwner().getUuid().equals(uuid); }
+	 * 
+	 * private boolean match(Company com, String name) { return
+	 * com.getName().equals(name); }
+	 */
 
 	private File getWorldDir(World world) {
 		ISaveHandler handler = world.getSaveHandler();
 		if (!(handler instanceof SaveHandler))
 			return null;
 		return handler.getWorldDirectory();
+	}
+
+	public enum RegisterType {
+		STA, COM;
 	}
 }

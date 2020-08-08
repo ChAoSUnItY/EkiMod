@@ -164,6 +164,7 @@ chat.type.text.eki.missingAnchor=Please select an anchor first!
 chat.type.text.eki.anchorLinked=Connected to the anchor!
 chat.type.text.eki.rangefinder.result=3D distance is %d, surface distance is %d.
 chat.type.text.eki.rangefinder.getPos=Successfully bound to %d, %d, %d！
+chat.type.text.eki.desync=Desynced! Please rejoin.
 
 //COMMANDS
 chat.type.text.eki.command.stations.error.illegalType=Unknown type for sorting , type /stations help to get info.

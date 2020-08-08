@@ -15,7 +15,7 @@ import net.minecraft.client.gui.Gui;
  * 
  * @author Noto
  */
-public class GuiSimpleListBox<T extends DataForm> extends Gui {
+public class GuiSimpleListBox extends Gui {
 	public int x;
 	public int y;
 	public int w;
@@ -26,7 +26,7 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 	public int selectedIndex = -1;
 	private int scrollLevel;
 	private boolean scrollBerClicked;
-	private boolean shouldDrawBackground;
+	private boolean shouldDrawBackground = true;
 
 	public GuiSimpleListBox(int x, int y, int w, int h, List<? extends DataForm> list) {
 		this.x = x;
@@ -34,12 +34,9 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 		this.w = w;
 		this.h = h;
 
-		for (int i = 0; i < list.size(); i++) {
-			items.add(list.get(i).getData());
-		}
+		list.forEach(d -> items.add(d.getData()));
 
 		raws = Lists.newArrayList(list.iterator());
-		shouldDrawBackground = true;
 	}
 
 	public GuiSimpleListBox(int x, int y, int h, List<? extends DataForm> list, Minecraft mc) {
@@ -50,14 +47,12 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 		list.forEach(d -> items.add(d.getData()));
 		List<Integer> cache = Lists.newArrayList();
 
-		for (int i = 0; i < items.size(); i++) {
-			cache.add(mc.fontRenderer.getStringWidth(items.get(i)));
-		}
+		items.forEach(i -> cache.add(mc.fontRenderer.getStringWidth(i)));
 
-		w = Collections.max(cache) + 5;
+		if (!cache.isEmpty())
+			w = Collections.max(cache) + 5;
 
 		raws = Lists.newArrayList(list.iterator());
-		shouldDrawBackground = true;
 	}
 
 	public void draw(int mouseX, int mouseY, FontRenderer fontRenderer) {
@@ -153,9 +148,7 @@ public class GuiSimpleListBox<T extends DataForm> extends Gui {
 
 	public void reloadList(List<? extends DataForm> list) {
 		items.clear();
-		for (int i = 0; i < list.size(); i++) {
-			items.add(list.get(i).getData());
-		}
+		list.forEach(d -> items.add(d.getData()));
 		raws = Lists.newArrayList(list.iterator());
 	}
 

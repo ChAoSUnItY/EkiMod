@@ -5,9 +5,10 @@ import java.io.IOException;
 import chaos.mod.init.BlockInit;
 import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.util.Reference;
+import chaos.mod.util.data.station.Station;
 import chaos.mod.util.handlers.PacketHandler;
 import chaos.mod.util.handlers.StationHandler;
-import chaos.mod.util.network.PacketAnchorCreateStationWorker;
+import chaos.mod.util.network.PacketAddStationWorker;
 import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
@@ -22,10 +23,13 @@ import net.minecraft.util.ResourceLocation;
 public class GuiAnchor extends GuiScreen {
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MODID, "textures/gui/anchor.png");
 	private TileEntityAnchor te;
-	private GuiTextField text;
+	private GuiTextField nameText;
+	private GuiTextField operatorText;
 	private GuiButton buttonClear;
 	private GuiButton buttonConfirm;
-	private int x, y;
+	private GuiButton buttonSetOp;
+	private int x;
+	private int y;
 
 	public GuiAnchor(TileEntityAnchor te) {
 		this.te = te;
@@ -36,23 +40,27 @@ public class GuiAnchor extends GuiScreen {
 		super.initGui();
 		x = width / 2 - 90;
 		y = height / 2 - 100;
-		text = new GuiTextField(0, fontRenderer, x + 70, y + 50, 100, 15);
+		nameText = new GuiTextField(0, fontRenderer, x + 70, y + 50, 100, 15);
+		operatorText = new GuiTextField(1, fontRenderer, x + 177, y, 100, 15);
 		buttonClear = new GuiButton(0, x + 70, y + 70, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "button.clear").getFormattedText());
 		buttonConfirm = new GuiButton(1, x + 125, y + 70, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.confirm").getFormattedText());
+		buttonSetOp = new GuiButton(2, x + 177, y + 18, 100, 20, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.setOP").getFormattedText());
 		if (te.isValidStation()) {
 			buttonClear.enabled = false;
 			buttonConfirm.enabled = false;
-			text.setText(StationHandler.INSTANCE.getStation(te.getPos()).getName());
-			text.setFocused(false);
-			text.setEnabled(false);
+			nameText.setText(StationHandler.INSTANCE.getStation(te.getPos()).getName());
+			nameText.setFocused(false);
+			nameText.setEnabled(false);
 		} else {
-			text.setFocused(true);
-			text.setCanLoseFocus(true);
-			text.setText(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText());
-			text.setMaxStringLength(100);
+			buttonSetOp.enabled = false;
+			nameText.setFocused(true);
+			nameText.setCanLoseFocus(true);
+			nameText.setText(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getUnformattedText());
+			nameText.setMaxStringLength(100);
 		}
 		buttonList.add(buttonClear);
 		buttonList.add(buttonConfirm);
+		buttonList.add(buttonSetOp);
 	}
 
 	@Override
@@ -71,7 +79,8 @@ public class GuiAnchor extends GuiScreen {
 		GlStateManager.scale(msize, msize, msize);
 		RenderHelper.enableStandardItemLighting();
 		// draw element
-		text.drawTextBox();
+		nameText.drawTextBox();
+		operatorText.drawTextBox();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		// draw string
 		fontRenderer.drawString(BlockInit.ANCHOR.getLocalizedName(), (x + 176 / 2) - (fontRenderer.getStringWidth(BlockInit.ANCHOR.getLocalizedName()) / 2), y + 8, 4210752);
@@ -84,19 +93,23 @@ public class GuiAnchor extends GuiScreen {
 	protected void actionPerformed(GuiButton button) throws IOException {
 		switch (button.id) {
 		case 0:
-			resetText();
+			resetText(nameText);
 			break;
 		case 1:
-			if (text.getText().isEmpty() || text.getText().equalsIgnoreCase(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText())) {
-				System.out.println("illegal");
+			if (nameText.getText().isEmpty() || nameText.getText().equalsIgnoreCase(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText())) {
 				return;
 			}
-			PacketHandler.INSTANCE.sendToServer(new PacketAnchorCreateStationWorker(text.getText(), te.getPos()));
+			PacketHandler.INSTANCE.sendToServer(new PacketAddStationWorker(new Station(nameText.getText(), te.getPos())));
 			buttonClear.enabled = false;
 			buttonConfirm.enabled = false;
-			text.setEnabled(false);
-			text.setFocused(false);
+			nameText.setEnabled(false);
+			nameText.setFocused(false);
 			break;
+		case 2:
+			if (operatorText.getText().isEmpty())
+				return;
+			// PacketHandler
+			operatorText.setFocused(false);
 		default:
 			break;
 		}
@@ -105,22 +118,30 @@ public class GuiAnchor extends GuiScreen {
 
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-		text.mouseClicked(mouseX, mouseY, mouseButton);
+		nameText.mouseClicked(mouseX, mouseY, mouseButton);
+		operatorText.mouseClicked(mouseX, mouseY, mouseButton);
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 	}
 
 	@Override
+	protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
+		super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+	}
+
+	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
-		if (!text.isFocused() && (keyCode == 1 || mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))) {
+		if (!nameText.isFocused() && (keyCode == 1 || mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))) {
 			mc.player.closeScreen();
 		}
 		super.keyTyped(typedChar, keyCode);
-		text.textboxKeyTyped(typedChar, keyCode);
+		nameText.textboxKeyTyped(typedChar, keyCode);
+		operatorText.textboxKeyTyped(typedChar, keyCode);
 	}
 
 	@Override
 	public void updateScreen() {
-		text.updateCursorCounter();
+		nameText.updateCursorCounter();
+		operatorText.updateCursorCounter();
 		super.updateScreen();
 	}
 
@@ -129,7 +150,7 @@ public class GuiAnchor extends GuiScreen {
 		return false;
 	}
 
-	private void resetText() {
+	private void resetText(GuiTextField text) {
 		text.setText("");
 		text.setFocused(true);
 		updateScreen();

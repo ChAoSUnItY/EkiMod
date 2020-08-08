@@ -11,11 +11,7 @@ import org.apache.commons.io.IOUtils;
 import chaos.mod.util.Reference;
 
 public class UtilVersionChecker {
-	private static final UtilVersionChecker VC = new UtilVersionChecker();
-
-	public static UtilVersionChecker get() {
-		return VC;
-	}
+	public static final UtilVersionChecker INSTANCE = new UtilVersionChecker();
 
 	public boolean isLatestVersion() {
 		String latestVersion = worker();

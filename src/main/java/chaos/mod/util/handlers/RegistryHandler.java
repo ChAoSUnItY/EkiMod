@@ -4,6 +4,7 @@ import chaos.mod.Eki;
 import chaos.mod.commands.CommandForceSaveStations;
 import chaos.mod.commands.CommandNametagDisplay;
 import chaos.mod.commands.CommandStations;
+import chaos.mod.commands.CommandTeleportStation;
 import chaos.mod.init.BlockInit;
 import chaos.mod.init.ItemInit;
 import chaos.mod.util.Reference;
@@ -37,21 +38,19 @@ public class RegistryHandler {
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));
 		TileEntityHandler.registerTileEntities();
-		TileEntityHandler.registerTESRs();
+		Eki.proxy.registerTESRs();
 	}
 
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event) {
 		for (Item item : ItemInit.ITEMS) {
-			if (item instanceof IModelRegister) {
+			if (item instanceof IModelRegister)
 				((IModelRegister) item).registerModels();
-			}
 		}
 
 		for (Block block : BlockInit.BLOCKS) {
-			if (block instanceof IModelRegister) {
+			if (block instanceof IModelRegister)
 				((IModelRegister) block).registerModels();
-			}
 		}
 	}
 
@@ -72,6 +71,7 @@ public class RegistryHandler {
 		event.registerServerCommand(new CommandNametagDisplay());
 		event.registerServerCommand(new CommandForceSaveStations());
 		event.registerServerCommand(new CommandStations());
+		event.registerServerCommand(new CommandTeleportStation());
 		StationHandler.INSTANCE.init(event.getServer().getEntityWorld());
 	}
 
