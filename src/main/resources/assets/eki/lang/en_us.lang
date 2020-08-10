@@ -114,6 +114,7 @@ tile.eki.grille_light_white.name=Grille Light (White)
 tile.eki.grille_light_black.name=Grille Light (Black)
 tile.eki.tunnel_light.name=Tunnel Light
 tile.eki.wall_neon_light.name=Wall Neon Light
+tile.eki.pillar_lamp.name=Pillar Lamp
 
 //ITEMINIT
 //TOOLS
@@ -124,6 +125,7 @@ item.eki.ticket.name=Ticket
 item.eki.ticket.tooltip=Worth %d dollars. :)
 item.eki.rangefinder.name=Rangefinder
 item.eki.rangefinder.tooltip=Start position : %d, %d, %d.
+item.eki.station_manager.name=Station Manager
 
 itemGroup.eki.block=Eki Block
 itemGroup.eki.station=Eki Station
@@ -164,8 +166,10 @@ container.eki.special_class=Special Class Sta.
 container.eki.first_class=First Class Sta.
 container.eki.second_class=Second Class Sta.
 container.eki.third_class=Third Class Sta.
-container.eki.simple_class=Simple Sta.
-container.eki.staffless_class=Staffless Sta.
+container.eki.simple=Simple Sta.
+container.eki.staffless=Staffless Sta.
+container.eki.signal=Signal Sta.
+container.eki.non=Non Class Sta.
 
 //TEXTS
 chat.type.text.eki.anchoredAmount=This anchor had been bound to %d ticket gates / ticket vendors!

@@ -45,7 +45,8 @@ public class GuiMainPage extends GuiScreen {
 		super.initGui();
 		x = width / 2 - 74;
 		y = height / 2 - 128;
-		stations = new GuiSimpleListBox(x + 10, y + 50, 127, 100, UtilStationSystem.sortByFarNF(pos, StationHandler.INSTANCE.getStations())).setTextColor(0x267F00);
+		stations = new GuiSimpleListBox(x + 5, y + 50, 137, 100, UtilStationSystem.sortByFarNF(pos, StationHandler.INSTANCE.getStations())).setTextColor(0x267F00);
+		getCorrectType();
 		sortButton = new GuiButton(0, x + 10, y + 153, 45, 20, TextFormatting.DARK_GREEN + type.getName());
 		inspectButton = new GuiButton(1, x + 92, y + 153, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "manager.button.inspect").applyFormat(TextFormatting.DARK_GREEN).getFormattedText());
 		buttonList.add(sortButton);
@@ -59,7 +60,7 @@ public class GuiMainPage extends GuiScreen {
 		mc.getTextureManager().bindTexture(TEXTURES);
 		drawTexturedModalRect(x, y, 0, 0, 147, 256);
 		super.drawScreen(mouseX, mouseY, partialTicks);
-		fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "manager.intro").getFormattedText(), x + 10, y + 10, 143, 0x267F00);
+		fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "manager.intro").getFormattedText(), x + 10, y + 10, 132, 0x267F00);
 		stations.draw(mouseX, mouseY, fontRenderer);
 	}
 
@@ -86,6 +87,25 @@ public class GuiMainPage extends GuiScreen {
 			break;
 		}
 		updateScreen();
+	}
+
+	private void getCorrectType() {
+		List<Station> stas = StationHandler.INSTANCE.getStations();
+		List<Station> cache = Lists.newArrayList();
+		switch (type) {
+		case NF:
+			cache = UtilStationSystem.sortByFarNF(pos, stas);
+			break;
+		case FN:
+			cache = UtilStationSystem.sortByFarFN(pos, stas);
+			break;
+		case NAME:
+			cache = UtilStationSystem.sortByName(stas);
+			break;
+		default:
+			break;
+		}
+		stations.reloadList(cache);
 	}
 
 	private void nextType() {

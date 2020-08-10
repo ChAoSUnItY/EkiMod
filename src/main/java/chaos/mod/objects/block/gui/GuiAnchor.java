@@ -53,7 +53,7 @@ public class GuiAnchor extends GuiScreen {
 		buttonClearB = new GuiButton(2, x + 177, y + 18, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "button.clear").getFormattedText());
 		buttonInsert = new GuiButton(3, x + 225, y + 18, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.insert").getFormattedText());
 		buttonConfirm = new GuiButton(1, x + 125, y + 70, 45, 20, new UtilTranslatable(TranslateType.CONTAINER, "anchor.button.confirm").getFormattedText());
-		staLvlList = new GuiSimpleListBox(x - 105, y + 1, 104, 75, EnumStationLevel.getDataFormTranslatedTexts());
+		staLvlList = new GuiSimpleListBox(x - 105, y + 1, 104, 99, EnumStationLevel.getDataFormTranslatedTexts());
 		playerList = new GuiSimpleListBox(x + 177, y + 41, 100, 125,
 				mc.isSingleplayer() ? Lists.newArrayList() : UtilDataForm.toDataForm(UtilDataForm.getPlayersName(mc.getConnection().getPlayerInfoMap())));
 		if (te.isValidStation()) {
@@ -120,10 +120,10 @@ public class GuiAnchor extends GuiScreen {
 			resetText(nameText);
 			break;
 		case 1:
-			if (nameText.getText().isEmpty() || nameText.getText().equalsIgnoreCase(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText()) || OPText.getText().isEmpty()
-					|| staLvlList.selectedIndex <= -1)
+			if (nameText.getText().isEmpty() || nameText.getText().equalsIgnoreCase(new UtilTranslatable(TranslateType.CONTAINER, "anchor.text").getFormattedText()))
 				return;
-			PacketHandler.INSTANCE.sendToServer(new PacketAddStationWorker(new Station(nameText.getText(), te.getPos(), OPText.getText(), EnumStationLevel.byMetadata(staLvlList.selectedIndex))));
+			PacketHandler.INSTANCE.sendToServer(new PacketAddStationWorker(
+					new Station(nameText.getText(), te.getPos(), OPText.getText(), staLvlList.selectedIndex == -1 ? EnumStationLevel.NON : EnumStationLevel.byMetadata(staLvlList.selectedIndex))));
 			buttonClearA.enabled = false;
 			nameText.setEnabled(false);
 			nameText.setFocused(false);

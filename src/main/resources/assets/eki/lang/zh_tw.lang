@@ -113,6 +113,7 @@ tile.eki.grille_light_white.name=格柵燈 (白色)
 tile.eki.grille_light_black.name=格柵燈 (黑色)
 tile.eki.tunnel_light.name=隧道內用燈
 tile.eki.wall_neon_light.name=牆上霓虹燈
+tile.eki.pillar_lamp.name=燈柱
 
 //ITEMINIT
 //TOOLS
@@ -122,7 +123,8 @@ item.eki.wrench.withtag.tooltip=用來綁定錨點至票閘的工具，已綁定
 item.eki.ticket.name=車票
 item.eki.ticket.tooltip=值 %d 元。 :)
 item.eki.rangefinder.name=測距儀
-item.eki.rangefinder.tooltip=起始位置：%d, %d, %d.
+item.eki.rangefinder.tooltip=起始位置：%d, %d, %d。
+item.eki.station_manager.name=車站監控儀
 
 itemGroup.eki.block=Eki 方塊
 itemGroup.eki.station=Eki 車站
@@ -162,8 +164,10 @@ container.eki.special_class=特等站
 container.eki.first_class=一等站
 container.eki.second_class=二等站
 container.eki.third_class=三等站
-container.eki.simple_class=簡易站
-container.eki.staffless_class=招呼站
+container.eki.simple=簡易站
+container.eki.staffless=招呼站
+container.eki.signal=號誌站
+container.eki.non=未列級
 
 //TEXTS
 chat.type.text.eki.anchorAmount=該錨點已連接 %d 個票閘/售票機!

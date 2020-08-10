@@ -12,7 +12,7 @@ import net.minecraft.util.IStringSerializable;
 
 public enum EnumStationLevel implements IStringSerializable {
 	SPECIAL("Special Class", "special_class", 0), FIRST("First Class", "first_class", 1), SECOND("Second Class", "second_class", 2), THRID("Third Class", "third_class", 3),
-	SIMPLE("Simple Class", "simple_class", 4), STAFFLESS("Staffless", "staffless_class", 5);
+	SIMPLE("Simple", "simple", 4), STAFFLESS("Staffless", "staffless", 5), SIGNAL("Signal", "signal", 6), NON("Non", "non", 7);
 
 	private static final EnumStationLevel[] META_LOOKUP = new EnumStationLevel[values().length];
 	private static final List<UtilTranslatable> TEXT_LIST = Lists.newArrayList();
