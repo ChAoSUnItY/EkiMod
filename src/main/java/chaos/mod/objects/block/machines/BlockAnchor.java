@@ -12,6 +12,8 @@ import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +30,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 	public BlockAnchor(String name) {
-		super(name, Eki.STATION);
+		super(name, Eki.STATION, Material.IRON);
+		setSoundType(SoundType.METAL);
 	}
 
 	@Override
@@ -37,17 +40,16 @@ public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 		ItemStack stack = playerIn.getHeldItem(hand);
 		if (te instanceof TileEntityAnchor) {
 			TileEntityAnchor teA = (TileEntityAnchor) te;
-			if (!worldIn.isRemote) {
-				if (stack.getItem() instanceof ItemWrench) {
-					NBTTagCompound nbt = new NBTTagCompound();
-					nbt.setIntArray("pos", UtilBlockPos.getIntArray(pos));
-					stack.setTagCompound(nbt);
+			if (stack.getItem() instanceof ItemWrench) {
+				NBTTagCompound nbt = new NBTTagCompound();
+				nbt.setIntArray("pos", UtilBlockPos.getIntArray(pos));
+				stack.setTagCompound(nbt);
+				if (worldIn.isRemote)
 					playerIn.sendMessage(new UtilTCString(TranslateType.CHAT, "anchorAmount", teA.gatesPos.size()).applyFormat(TextFormatting.WHITE));
-					return true;
-				} else {
-					playerIn.openGui(Eki.instance, Reference.GUIANCHOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
-				}
+			} else {
+				playerIn.openGui(Eki.instance, Reference.GUIANCHOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			}
+			return true;
 		}
 		return false;
 	}
@@ -56,7 +58,7 @@ public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		// reset gates' bound
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (worldIn.isRemote && te instanceof TileEntityAnchor) {
+		if (te instanceof TileEntityAnchor) {
 			TileEntityAnchor teA = (TileEntityAnchor) te;
 			teA.resetAllGate();
 			// remove station if exist

@@ -14,7 +14,9 @@ public class RenderAnchor extends TileEntitySpecialRenderer<TileEntityAnchor> {
 		Minecraft mc = Minecraft.getMinecraft();
 		if (te.getStation().getName() != null && !te.getStation().getName().isEmpty() && !mc.gameSettings.hideGUI && EkiConfig.nametagDisplay) {
 			setLightmapDisabled(true);
-			drawNameplate(te, te.getStation().getName(), x, y, z, 36);
+			drawNameplate(te, te.getStation().getOperator(), x, y , z, 36);
+			drawNameplate(te, te.getStation().getName(), x, y + 0.2, z, 36);
+			drawNameplate(te, te.getStation().getLvl().getFormattedText(), x, y + 0.4, z, 36);
 			setLightmapDisabled(false);
 		}
 	}

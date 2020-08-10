@@ -27,6 +27,7 @@ public class GuiSimpleListBox extends Gui {
 	private int scrollLevel;
 	private boolean scrollBerClicked;
 	private boolean shouldDrawBackground = true;
+	private int color = 16777215;
 
 	public GuiSimpleListBox(int x, int y, int w, int h, List<? extends DataForm> list) {
 		this.x = x;
@@ -54,7 +55,7 @@ public class GuiSimpleListBox extends Gui {
 		}
 
 		if (!cache.isEmpty())
-			w = Collections.max(cache) + 5;
+			w = Collections.max(cache) + 20;
 
 		raws = Lists.newArrayList(list.iterator());
 	}
@@ -69,7 +70,7 @@ public class GuiSimpleListBox extends Gui {
 		}
 		for (int i = scrollLevel; i < itemMax + scrollLevel;) {
 			if (items.size() > i) {
-				fontRenderer.drawStringWithShadow(items.get(i), 4 + x, itemCount * 12 + y + 4, 16777215);
+				fontRenderer.drawStringWithShadow(items.get(i), 4 + x, itemCount * 12 + y + 4, color);
 				itemCount++;
 			}
 			i++;
@@ -145,9 +146,9 @@ public class GuiSimpleListBox extends Gui {
 		return "";
 	}
 
-	public void onResize(int width, int height) {
-		w = width;
-		h = height;
+	public GuiSimpleListBox setTextColor(int color) {
+		this.color = color;
+		return this;
 	}
 
 	public void reloadList(List<? extends DataForm> list) {

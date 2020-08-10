@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import chaos.mod.Eki;
-import chaos.mod.objects.block.base.BlockHasFace;
+import chaos.mod.objects.block.base.BlockFourFace;
 import chaos.mod.objects.item.ItemTicket;
 import chaos.mod.objects.item.ItemWrench;
 import chaos.mod.tileentity.TileEntityAnchor;
@@ -15,6 +15,8 @@ import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -38,14 +40,15 @@ import net.minecraft.world.World;
  * Warning ! This block is missing some logical, to ensure the entire system
  * works fine, you should check every single message from console!
  */
-public class BlockGate extends BlockHasFace implements ITileEntityProvider {
+public class BlockGate extends BlockFourFace implements ITileEntityProvider {
 	public static final AxisAlignedBB GATE_CLOSED_AABB = new AxisAlignedBB(0, 0, 0, 1, 1.5, 1);
 	public static final PropertyBool OPEN = PropertyBool.create("open");
 
 	public BlockGate(String name) {
-		super(name, Eki.STATION, false);
+		super(name, Eki.STATION, Material.IRON, false);
 
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, false));
+		setSoundType(SoundType.METAL);
+		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, false));
 	}
 
 	@Override
@@ -161,7 +164,7 @@ public class BlockGate extends BlockHasFace implements ITileEntityProvider {
 
 	public void open(EntityPlayer playerIn, World worldIn, BlockPos pos, IBlockState state) {
 		worldIn.setBlockState(pos, state.withProperty(OPEN, true));
-		worldIn.scheduleBlockUpdate(pos, this, this.tickRate(worldIn), 5);
+		worldIn.scheduleBlockUpdate(pos, this, tickRate(worldIn), 5);
 		worldIn.playSound(null, pos, SoundEvents.BLOCK_IRON_DOOR_OPEN, SoundCategory.BLOCKS, 1, 1);
 	}
 

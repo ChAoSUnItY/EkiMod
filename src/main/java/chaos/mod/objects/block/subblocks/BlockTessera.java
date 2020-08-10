@@ -1,5 +1,7 @@
 package chaos.mod.objects.block.subblocks;
 
+import com.google.common.collect.Lists;
+
 import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockVariantBase;
 import chaos.mod.util.interfaces.IModelRegister;
@@ -64,9 +66,8 @@ public class BlockTessera extends BlockVariantBase implements IModelRegister {
 
 	@Override
 	public void registerModels() {
-		for (int i = 0; i < TesseraEnumWallEnum.values().length; i++) {
-			Eki.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), i, name + "_" + TesseraEnumWallEnum.values()[i].getName(), "inventory");
-		}
+		Lists.newArrayList(TesseraEnumWallEnum.META_LOOKUP)
+				.forEach(val -> Eki.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), val.getMeta(), name + "_" + TesseraEnumWallEnum.values()[val.getMeta()].getName(), "inventory"));
 	}
 
 	public static enum TesseraEnumWallEnum implements IStringSerializable {

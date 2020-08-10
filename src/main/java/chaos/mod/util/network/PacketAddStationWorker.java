@@ -47,9 +47,12 @@ public class PacketAddStationWorker implements IMessage {
 		}
 
 		void processMessage(PacketAddStationWorker message, MessageContext ctx) {
-			System.out.println("here");
-			StationHandler.INSTANCE.addNewStation(message.station);
-			PacketHandler.INSTANCE.sendToAll(new PacketNoticeStationChangedWorker(message.station, true));
+			if (StationHandler.INSTANCE.replaceStation(message.station)) {
+				PacketHandler.INSTANCE.sendToAll(new PacketNoticeStationChangedWorker(message.station, true));
+			} else {
+				StationHandler.INSTANCE.addNewStation(message.station);
+				PacketHandler.INSTANCE.sendToAll(new PacketNoticeStationChangedWorker(message.station, false));
+			}
 		}
 	}
 }

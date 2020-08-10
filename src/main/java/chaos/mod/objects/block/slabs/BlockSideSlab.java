@@ -3,7 +3,8 @@ package chaos.mod.objects.block.slabs;
 import java.util.List;
 
 import chaos.mod.Eki;
-import chaos.mod.objects.block.base.BlockHasFace;
+import chaos.mod.objects.block.base.BlockBase;
+import chaos.mod.objects.block.base.BlockFourFace;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -12,9 +13,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSideSlab extends BlockHasFace {
-	public BlockSideSlab(String name) {
-		super(name, Eki.BLOCK, false);
+public class BlockSideSlab extends BlockFourFace {
+	public BlockSideSlab(String name, BlockBase heritageBlock) {
+		super(name, Eki.BLOCK, heritageBlock.getMaterial(), false);
 	}
 
 	@Override

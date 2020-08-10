@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
+import chaos.mod.util.data.station.EnumStationLevel;
 import chaos.mod.util.data.station.Station;
 import chaos.mod.util.handlers.StationHandler;
 import chaos.mod.util.utils.UtilBlockPos;
@@ -25,7 +26,7 @@ public class TileEntityAnchor extends TileEntityBase {
 	public Station getStation() {
 		if (StationHandler.INSTANCE.isExist(pos))
 			return StationHandler.INSTANCE.getStation(pos);
-		return new Station(pos, "");
+		return new Station(pos, "", "", EnumStationLevel.STAFFLESS);
 	}
 
 	public boolean removeStation() {
@@ -57,11 +58,11 @@ public class TileEntityAnchor extends TileEntityBase {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		NBTTagList list = new NBTTagList();
-		for (BlockPos p : gatesPos) {
+		gatesPos.forEach(p -> {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setIntArray("gate", UtilBlockPos.getIntArray(p));
 			list.appendTag(tag);
-		}
+		});
 		compound.setTag("anchorOBJ", list);
 		return super.writeToNBT(compound);
 	}

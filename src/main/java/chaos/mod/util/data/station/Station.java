@@ -3,17 +3,27 @@ package chaos.mod.util.data.station;
 import net.minecraft.util.math.BlockPos;
 
 public class Station extends DataForm {
-	public static final Station EXAMPLE = new Station(new BlockPos(1, 1, 1), "TEST_STATION");
+	public static final Station EXAMPLE = new Station(new BlockPos(1, 1, 1), "TEST_STATION", "ChAoS_UnItY", EnumStationLevel.STAFFLESS);
 	private BlockPos pos;
 	private String name;
+	private EnumStationLevel lvl;
+	private String operator;
 
-	public Station(BlockPos pos, String name) {
+	public Station(BlockPos pos, String name, String operator, EnumStationLevel lvl) {
 		this.pos = pos;
 		this.name = name;
+		this.operator = operator;
+		this.lvl = lvl;
 	}
 
-	public Station(String name, BlockPos pos) {
-		this(pos, name);
+	/**
+	 * For bytebuf order.
+	 * 
+	 * @param name
+	 * @param pos
+	 */
+	public Station(String name, BlockPos pos, String operator, EnumStationLevel lvl) {
+		this(pos, name, operator, lvl);
 	}
 
 	public String getName() {
@@ -22,6 +32,14 @@ public class Station extends DataForm {
 
 	public BlockPos getPos() {
 		return pos;
+	}
+
+	public EnumStationLevel getLvl() {
+		return lvl;
+	}
+
+	public String getOperator() {
+		return operator;
 	}
 
 	@Override

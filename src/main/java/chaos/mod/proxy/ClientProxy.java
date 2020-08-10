@@ -1,7 +1,9 @@
 package chaos.mod.proxy;
 
+import chaos.mod.objects.block.gui.stationManager.GuiMainPage;
 import chaos.mod.util.Reference;
 import chaos.mod.util.handlers.RenderHandler;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -18,5 +20,9 @@ public class ClientProxy extends ServerProxy {
 
 	public void registerTESRs() {
 		RenderHandler.registerTESRs();
+	}
+
+	public void displayManager() {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiMainPage(Minecraft.getMinecraft().player.getPosition(), null));
 	}
 }

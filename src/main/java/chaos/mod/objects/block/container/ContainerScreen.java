@@ -8,5 +8,5 @@ public class ContainerScreen extends Container {
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return !playerIn.isSpectator();
 	}
-	
+
 }

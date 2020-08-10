@@ -22,6 +22,10 @@ public class ServerProxy {
 
 	}
 
+	public void displayManager() {
+
+	}
+
 	public void registerItemRenderer(Item item, int meta, String id) {
 
 	}

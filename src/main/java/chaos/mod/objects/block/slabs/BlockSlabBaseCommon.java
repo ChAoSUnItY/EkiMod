@@ -22,10 +22,10 @@ public class BlockSlabBaseCommon extends BlockSlab {
 		setUnlocalizedName(UtilTranslatable.getEki(name));
 		setCreativeTab(Eki.BLOCK);
 		setRegistryName(name);
-		useNeighborBrightness = !this.isDouble();
+		useNeighborBrightness = !isDouble();
 
-		IBlockState state = this.blockState.getBaseState().withProperty(VARIANT, Variant.DEFAULT);
-		if (!this.isDouble())
+		IBlockState state = blockState.getBaseState().withProperty(VARIANT, Variant.DEFAULT);
+		if (!isDouble())
 			state = state.withProperty(HALF, EnumBlockHalf.BOTTOM);
 		setDefaultState(state);
 
@@ -33,55 +33,51 @@ public class BlockSlabBaseCommon extends BlockSlab {
 
 		BlockInit.BLOCKS.add(this);
 	}
-	
+
 	@Override
-	public IBlockState getStateFromMeta(int meta) 
-	{
-		IBlockState state = this.blockState.getBaseState().withProperty(VARIANT, Variant.DEFAULT);
-		if(!this.isDouble()) state = state.withProperty(HALF, ((meta&8) != 0) ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
+	public IBlockState getStateFromMeta(int meta) {
+		IBlockState state = blockState.getBaseState().withProperty(VARIANT, Variant.DEFAULT);
+		if (!isDouble())
+			state = state.withProperty(HALF, ((meta & 8) != 0) ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
 		return state;
 	}
-	
+
 	@Override
-	public int getMetaFromState(IBlockState state) 
-	{
+	public int getMetaFromState(IBlockState state) {
 		int meta = 0;
-		if(!this.isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP) meta |= 8;
+		if (!isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP)
+			meta |= 8;
 		return meta;
 	}
-	
+
 	@Override
-	protected BlockStateContainer createBlockState() 
-	{
-		if(!this.isDouble()) return new BlockStateContainer(this, new IProperty[] {VARIANT,HALF});
-		else return new BlockStateContainer(this, new IProperty[] {VARIANT});
+	protected BlockStateContainer createBlockState() {
+		if (!isDouble())
+			return new BlockStateContainer(this, new IProperty[] { VARIANT, HALF });
+		else
+			return new BlockStateContainer(this, new IProperty[] { VARIANT });
 	}
-	
+
 	@Override
-	public String getUnlocalizedName(int meta) 
-	{
+	public String getUnlocalizedName(int meta) {
 		return super.getUnlocalizedName();
 	}
-	
+
 	@Override
-	public IProperty<?> getVariantProperty()
-	{
+	public IProperty<?> getVariantProperty() {
 		return VARIANT;
 	}
-	
+
 	@Override
-	public Comparable<?> getTypeForItem(ItemStack stack) 
-	{
+	public Comparable<?> getTypeForItem(ItemStack stack) {
 		return Variant.DEFAULT;
 	}
-	
-	public static enum Variant implements IStringSerializable
-	{
+
+	public static enum Variant implements IStringSerializable {
 		DEFAULT;
-		
+
 		@Override
-		public String getName()
-		{
+		public String getName() {
 			return "default";
 		}
 	}
@@ -91,4 +87,3 @@ public class BlockSlabBaseCommon extends BlockSlab {
 		return false;
 	}
 }
-

@@ -45,25 +45,38 @@ four = {
 # Block model should base on north side.
 six = {
     "variants": {
-        "axis=y": {
+        "facing=up": {
             "model": "eki:"+name
         },
-        "axis=z": {
+        "facing=down": {
             "model": "eki:"+name,
+            "x": 180
+        },
+        "facing=east": {
+            "model": "eki:"+name,
+            "y": 90,
             "x": 90
         },
-        "axis=x": {
+        "facing=south": {
             "model": "eki:"+name,
-            "x": 90,
-            "y": 90
+            "y": 180,
+            "x": 90
         },
-        "axis=none": {
-            "model": "eki:"+name
+        "facing=west": {
+            "model": "eki:"+name,
+            "y": 270,
+            "x": 90
+        },
+        "facing=north": {
+            "model": "eki:"+name,
+            "y": 0,
+            "x": 90
         }
     }
 }
 
-# For stairs, should pass original block registry name since this already transform into stair registry name, ie: "eki:" + name + _"[(inner)/(outer)]_stairs"
+
+# For stairs, should pass original block registry name since this already transform into stair registry name, ie: "eki:" + name + "_[(inner)/(outer)]_stairs"
 stair = {
     "variants": {
         "facing=east,half=bottom,shape=straight": {

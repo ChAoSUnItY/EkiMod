@@ -147,10 +147,23 @@ container.eki.ticket_vendor.button.provide=出票
 container.eki.ticket_vendor.button.withdraw=提款
 container.eki.ticket_vendor.text.default=請輸入數字
 container.eki.anchor.station.name=站名：
-container.eki.anchor.text=請輸入名稱
+container.eki.anchor.station.class=車站等級：
+container.eki.anchor.text=請輸入站名
 container.eki.anchor.desc=錨點是用來作為車站基準點的方塊，在註冊車站後錨點才能發揮其功用。可用扳手向票閘或售票機進行綁定。
+container.eki.anchor.button.insert=插入
 container.eki.anchor.button.confirm=確認
 container.eki.button.clear=清除
+container.eki.manager.intro=歡迎使用車站監控儀！從下方點選任一車站來檢視他們的狀態：
+container.eki.manager.button.inspect=檢視
+container.eki.manager.button.back=返回
+
+//STATION LVL
+container.eki.special_class=特等站
+container.eki.first_class=一等站
+container.eki.second_class=二等站
+container.eki.third_class=三等站
+container.eki.simple_class=簡易站
+container.eki.staffless_class=招呼站
 
 //TEXTS
 chat.type.text.eki.anchorAmount=該錨點已連接 %d 個票閘/售票機!
@@ -158,6 +171,7 @@ chat.type.text.eki.setPos=已從 %d, %d, %d 進站!
 chat.type.text.eki.accessed=已從 %d, %d, %d 出站! 共花費了 %.2f, 行經了 %.2f 格!
 chat.type.text.eki.notEnoughValue=無法出站! 票價僅值 %d, 需要 %d.
 chat.type.text.eki.missingValue=此票沒有價值可言!
+chat.type.text.eki.illegalAnchor=未知錨點。可能已經被破壞了？
 chat.type.text.eki.missingAnchor=請先選取一個錨點!
 chat.type.text.eki.anchorLinked=已連結至錨點!
 chat.type.text.eki.rangefinder.result=三維空間距離：%d，平面空間距離：%d。

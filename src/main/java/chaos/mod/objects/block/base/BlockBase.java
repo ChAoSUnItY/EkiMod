@@ -11,8 +11,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 
 public class BlockBase extends Block implements IModelRegister {
-	public BlockBase(String name, CreativeTabs tab) {
-		super(Material.ROCK);
+	protected boolean passable = false;
+	protected boolean transluent = false;
+	
+	public BlockBase(String name, CreativeTabs tab, Material material) {
+		super(material);
 		constructor(name, tab);
 	}
 
@@ -25,5 +28,9 @@ public class BlockBase extends Block implements IModelRegister {
 
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+	}
+
+	public Material getMaterial() {
+		return blockMaterial;
 	}
 }

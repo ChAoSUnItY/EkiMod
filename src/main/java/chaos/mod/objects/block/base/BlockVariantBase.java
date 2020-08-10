@@ -13,7 +13,9 @@ import net.minecraft.item.ItemStack;
 
 public class BlockVariantBase extends Block implements IMetaName, IModelRegister {
 	protected final String name;
-
+	protected boolean passable = false;
+	protected boolean transluent = false;
+	
 	public BlockVariantBase(String name) {
 		super(Material.ROCK);
 		setUnlocalizedName(UtilTranslatable.getEki(name));

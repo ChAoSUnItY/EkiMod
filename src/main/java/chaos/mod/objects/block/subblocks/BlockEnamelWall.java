@@ -1,5 +1,7 @@
 package chaos.mod.objects.block.subblocks;
 
+import com.google.common.collect.Lists;
+
 import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockVariantBase;
 import net.minecraft.block.properties.IProperty;
@@ -63,9 +65,8 @@ public class BlockEnamelWall extends BlockVariantBase {
 
 	@Override
 	public void registerModels() {
-		for (int i = 0; i < EnamelWallEnumWallType.values().length; i++) {
-			Eki.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), i, name + "_" + EnamelWallEnumWallType.values()[i].getName(), "inventory");
-		}
+		Lists.newArrayList(EnamelWallEnumWallType.META_LOOKUP)
+				.forEach(val -> Eki.proxy.registerVariantsRnderer(Item.getItemFromBlock(this), val.getMeta(), name + "_" + EnamelWallEnumWallType.values()[val.getMeta()].getName(), "inventory"));
 	}
 
 	public static enum EnamelWallEnumWallType implements IStringSerializable {

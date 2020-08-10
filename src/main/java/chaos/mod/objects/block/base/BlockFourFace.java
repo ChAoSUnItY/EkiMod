@@ -1,6 +1,7 @@
 package chaos.mod.objects.block.base;
 
 import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockFaceShape;
@@ -16,13 +17,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockHasFace extends BlockBase {
+public class BlockFourFace extends BlockBase {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public final boolean isOpaqueCube;
 
-	public BlockHasFace(String name, CreativeTabs tab, boolean isOpaqueCube) {
-		super(name, tab);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+	public BlockFourFace(String name, CreativeTabs tab, Material material, boolean isOpaqueCube) {
+		super(name, tab, material);
+		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.isOpaqueCube = isOpaqueCube;
 	}
 
@@ -35,7 +36,7 @@ public class BlockHasFace extends BlockBase {
 	public boolean isFullCube(IBlockState state) {
 		return isOpaqueCube ? true : false;
 	}
-	
+
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return isOpaqueCube ? BlockFaceShape.SOLID : BlockFaceShape.UNDEFINED;
@@ -43,7 +44,7 @@ public class BlockHasFace extends BlockBase {
 
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		this.setDefaultFacing(worldIn, pos, state);
+		setDefaultFacing(worldIn, pos, state);
 	}
 
 	private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
@@ -69,9 +70,8 @@ public class BlockHasFace extends BlockBase {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer) {
-		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class BlockHasFace extends BlockBase {
 			enumfacing = EnumFacing.NORTH;
 		}
 
-		return this.getDefaultState().withProperty(FACING, enumfacing);
+		return getDefaultState().withProperty(FACING, enumfacing);
 	}
 
 	@Override
@@ -106,8 +106,7 @@ public class BlockHasFace extends BlockBase {
 	}
 
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
-			ItemStack stack) {
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 	}
 }

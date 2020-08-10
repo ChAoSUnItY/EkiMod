@@ -79,7 +79,8 @@ public class GuiTicketVendor extends GuiContainer {
 		listStations = new GuiSimpleListBox(guiLeft + xSize, guiTop + 10, ySize - 20, UtilStationSystem.sortByFarNF(te.getAnchor(), StationHandler.INSTANCE.getStations()), mc);
 		buttonList.add(buttonProvide);
 		buttonList.add(buttonClear);
-		buttonList.add(buttonSort);
+		if (!StationHandler.INSTANCE.getStations().isEmpty())
+			buttonList.add(buttonSort);
 		text.setFocused(true);
 		text.setCanLoseFocus(true);
 		text.setText(new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.text.default").getFormattedText());
@@ -91,9 +92,6 @@ public class GuiTicketVendor extends GuiContainer {
 		if (Eki.isApiModLoaded) {
 			buttonWithdraw.drawButton(mc, mouseX, mouseY, partialTicks);
 		}
-		buttonProvide.drawButton(mc, mouseX, mouseY, partialTicks);
-		buttonClear.drawButton(mc, mouseX, mouseY, partialTicks);
-		buttonSort.drawButton(mc, mouseX, mouseY, partialTicks);
 		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		text.drawTextBox();

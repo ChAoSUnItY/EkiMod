@@ -1,7 +1,7 @@
 package chaos.mod.objects.block.machines;
 
 import chaos.mod.Eki;
-import chaos.mod.objects.block.base.BlockHasFace;
+import chaos.mod.objects.block.base.BlockFourFace;
 import chaos.mod.objects.item.ItemWrench;
 import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.tileentity.TileEntityTicketVendor;
@@ -10,6 +10,8 @@ import chaos.mod.util.utils.UtilBlockPos;
 import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -20,22 +22,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class BlockVendor extends BlockHasFace implements ITileEntityProvider {
+public class BlockVendor extends BlockFourFace implements ITileEntityProvider {
 	public BlockVendor(String name) {
-		super(name, Eki.STATION, false);
+		super(name, Eki.STATION, Material.CIRCUITS, false);
+		setSoundType(SoundType.METAL);
 	}
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		ItemStack stack = playerIn.getHeldItem(hand);
-		if (!worldIn.isRemote && te instanceof TileEntityTicketVendor) {
+		boolean isRemote = worldIn.isRemote;
+		if (te instanceof TileEntityTicketVendor) {
 			TileEntityTicketVendor teTV = (TileEntityTicketVendor) te;
 			if (stack.getItem() instanceof ItemWrench) {
 				if (stack.hasTagCompound()) {
 					BlockPos targetPos = UtilBlockPos.getPos(stack.getTagCompound().getIntArray("pos"));
 					TileEntity te2 = worldIn.getTileEntity(targetPos);
-					System.out.println(targetPos);
 					if (te2 instanceof TileEntityAnchor) {
 						TileEntityAnchor teA = (TileEntityAnchor) te2;
 						if (teTV.isSame(targetPos))
@@ -50,21 +53,25 @@ public class BlockVendor extends BlockHasFace implements ITileEntityProvider {
 							teTV.setAnchor(targetPos);
 							teA.addGate(pos);
 						}
-						playerIn.sendMessage(new UtilTranslatable(TranslateType.CHAT, "anchorLinked").applyFormat(TextFormatting.GREEN));
+						if (isRemote)
+							playerIn.sendMessage(new UtilTranslatable(TranslateType.CHAT, "anchorLinked").applyFormat(TextFormatting.GREEN));
 					} else {
-						playerIn.sendMessage(new UtilTranslatable(TranslateType.CHAT, "illegalAnchor").applyFormat(TextFormatting.RED));
+						if (isRemote)
+							playerIn.sendMessage(new UtilTranslatable(TranslateType.CHAT, "illegalAnchor").applyFormat(TextFormatting.RED));
 					}
 				} else {
-					playerIn.sendMessage(new UtilTranslatable(TranslateType.CHAT, "missingAnchor").applyFormat(TextFormatting.RED));
+					if (isRemote)
+						playerIn.sendMessage(new UtilTranslatable(TranslateType.CHAT, "missingAnchor").applyFormat(TextFormatting.RED));
 				}
+				return true;
+			} else {
+				playerIn.openGui(Eki.instance, Reference.GUITICKETVENDOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				return true;
 			}
-		} else {
-			playerIn.openGui(Eki.instance, Reference.GUITICKETVENDOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
-			return true;
 		}
 		return false;
 	}
-	
+
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		TileEntity te = worldIn.getTileEntity(pos);

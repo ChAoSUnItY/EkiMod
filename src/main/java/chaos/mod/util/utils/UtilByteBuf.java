@@ -1,6 +1,6 @@
 package chaos.mod.util.utils;
 
-import chaos.mod.util.data.station.Player;
+import chaos.mod.util.data.station.EnumStationLevel;
 import chaos.mod.util.data.station.Station;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.BlockPos;
@@ -16,11 +16,8 @@ public class UtilByteBuf {
 	public static void writeStation(ByteBuf buf, Station station) {
 		ByteBufUtils.writeUTF8String(buf, station.getName());
 		writePos(buf, station.getPos());
-	}
-
-	public static void writePlayer(ByteBuf buf, Player player) {
-		ByteBufUtils.writeUTF8String(buf, player.getName());
-		ByteBufUtils.writeUTF8String(buf, player.getUuid().toString());
+		ByteBufUtils.writeUTF8String(buf, station.getOperator());
+		buf.writeInt(station.getLvl().getStationLevel());
 	}
 
 	public static BlockPos readPos(ByteBuf buf) {
@@ -28,10 +25,6 @@ public class UtilByteBuf {
 	}
 
 	public static Station readStation(ByteBuf buf) {
-		return new Station(ByteBufUtils.readUTF8String(buf), readPos(buf));
-	}
-
-	public static Player readPlayer(ByteBuf buf) {
-		return new Player(ByteBufUtils.readUTF8String(buf), ByteBufUtils.readUTF8String(buf));
+		return new Station(ByteBufUtils.readUTF8String(buf), readPos(buf), ByteBufUtils.readUTF8String(buf), EnumStationLevel.byMetadata(buf.readInt()));
 	}
 }

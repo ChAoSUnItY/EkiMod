@@ -16,8 +16,8 @@ public class UtilTranslatable extends TextComponentTranslation {
 		super(type.getName() + ".eki." + key, args);
 	}
 
-	public UtilTranslatable(TranslateType type, String keys) {
-		super(type.getName() + ".eki." + keys);
+	public UtilTranslatable(TranslateType type, String key) {
+		super(type.getName() + ".eki." + key);
 	}
 
 	public UtilTranslatable(String key) {

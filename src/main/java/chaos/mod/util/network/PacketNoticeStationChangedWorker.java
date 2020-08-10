@@ -3,8 +3,6 @@ package chaos.mod.util.network;
 import chaos.mod.util.data.station.Station;
 import chaos.mod.util.handlers.StationHandler;
 import chaos.mod.util.utils.UtilByteBuf;
-import chaos.mod.util.utils.UtilTranslatable;
-import chaos.mod.util.utils.UtilTranslatable.TranslateType;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -15,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketNoticeStationChangedWorker implements IMessage {
 	private Station station;
-	private boolean add;
+	private boolean replace;
 
 	private boolean messageValid;
 
@@ -23,9 +21,9 @@ public class PacketNoticeStationChangedWorker implements IMessage {
 		messageValid = false;
 	}
 
-	public PacketNoticeStationChangedWorker(Station station, boolean add) {
+	public PacketNoticeStationChangedWorker(Station station, boolean replace) {
 		this.station = station;
-		this.add = add;
+		this.replace = replace;
 
 		messageValid = true;
 	}
@@ -33,13 +31,13 @@ public class PacketNoticeStationChangedWorker implements IMessage {
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		station = UtilByteBuf.readStation(buf);
-		add = buf.readBoolean();
+		replace = buf.readBoolean();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
 		UtilByteBuf.writeStation(buf, station);
-		buf.writeBoolean(add);
+		buf.writeBoolean(replace);
 	}
 
 	public static class Handler implements IMessageHandler<PacketNoticeStationChangedWorker, IMessage> {
@@ -53,12 +51,13 @@ public class PacketNoticeStationChangedWorker implements IMessage {
 		}
 
 		void processMessage(PacketNoticeStationChangedWorker message, MessageContext ctx) {
-			if (message.add) {
-				StationHandler.INSTANCE.addNewStation(message.station);
+			if (message.replace) {
+				StationHandler.INSTANCE.replaceStation(message.station);
 			} else {
-				if (!StationHandler.INSTANCE.tryRemoveStation(message.station.getPos())) {
-					Minecraft.getMinecraft().player.sendMessage(new UtilTranslatable(TranslateType.CHAT, "desync"));
-				}
+				if (Minecraft.getMinecraft().isSingleplayer())
+					return;
+
+				StationHandler.INSTANCE.addNewStation(message.station);
 			}
 		}
 	}
