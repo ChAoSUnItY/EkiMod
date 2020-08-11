@@ -1,6 +1,7 @@
 package chaos.mod.util.handlers;
 
 import chaos.mod.util.network.PacketAddStationWorker;
+import chaos.mod.util.network.PacketBarbedWireSizeChangedWorker;
 import chaos.mod.util.network.PacketInitStationHandlerWorker;
 import chaos.mod.util.network.PacketNoticeStationChangedWorker;
 import chaos.mod.util.network.PacketVendorSpawnItemWorker;
@@ -27,5 +28,7 @@ public class PacketHandler {
 		INSTANCE.registerMessage(PacketAddStationWorker.Handler.class, PacketAddStationWorker.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PacketInitStationHandlerWorker.Handler.class, PacketInitStationHandlerWorker.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(PacketNoticeStationChangedWorker.Handler.class, PacketNoticeStationChangedWorker.class, nextID(), Side.CLIENT);
+
+		INSTANCE.registerMessage(PacketBarbedWireSizeChangedWorker.Handler.class, PacketBarbedWireSizeChangedWorker.class, nextID(), Side.SERVER);
 	}
 }

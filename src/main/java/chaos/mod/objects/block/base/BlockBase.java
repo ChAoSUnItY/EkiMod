@@ -27,7 +27,7 @@ public class BlockBase extends Block implements IModelRegister {
 		setResistance(20);
 
 		BlockInit.BLOCKS.add(this);
-		ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+		ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
 	}
 
 	public Material getMaterial() {

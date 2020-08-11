@@ -12,6 +12,8 @@ import chaos.mod.objects.block.base.BlockBase;
 import chaos.mod.objects.block.base.BlockFourFace;
 import chaos.mod.objects.block.base.BlockLights.BlockFourFaceLights;
 import chaos.mod.objects.block.base.BlockLights.BlockSixFaceLights;
+import chaos.mod.objects.block.fence.BlockBarbedWires;
+import chaos.mod.objects.block.fence.BlockBarbedWires.BarbedWireType;
 import chaos.mod.objects.block.machines.BlockAnchor;
 import chaos.mod.objects.block.machines.BlockGate;
 import chaos.mod.objects.block.machines.BlockVendor;
@@ -101,8 +103,11 @@ public class BlockInit {
 
 	public static final Block BEAM_WHITE = new BlockFourFace("beam_white", STA, Material.IRON, false);
 	// barbed wire
-	public static final Block BARBED_WIRE_FENCE = new BlockFourFace("barbed_wire_fence", STA, Material.IRON, false);
+	public static final Block BARBED_WIRES_FENCE = new BlockBarbedWires("barbed_wires_fence", BarbedWireType.FENCE);
 
+	public static final Block BARBED_WIRES_BASE = new BlockBarbedWires("barbed_wires_base", BarbedWireType.BASE);
+
+	public static final Block BARBED_WIRES_TOP = new BlockBarbedWires("barbed_wires_top", BarbedWireType.TOP);
 	// BLOCK SECTION
 	// blocks
 	public static final Block RETAINING_WALL = new BlockFourFace("retaining_wall", BLOCK, Material.ROCK, false);

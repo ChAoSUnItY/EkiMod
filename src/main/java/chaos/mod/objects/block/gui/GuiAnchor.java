@@ -93,21 +93,18 @@ public class GuiAnchor extends GuiScreen {
 		itemRender.renderItemAndEffectIntoGUI(new ItemStack(BlockInit.ANCHOR), Math.round(x / size) + 5, Math.round(y / size) + 2);
 		GlStateManager.scale(msize, msize, msize);
 		RenderHelper.enableStandardItemLighting();
+		RenderHelper.enableGUIStandardItemLighting();
+		super.drawScreen(mouseX, mouseY, partialTicks);
 		// draw element
 		nameText.drawTextBox();
 		OPText.drawTextBox();
-		super.drawScreen(mouseX, mouseY, partialTicks);
 		// draw string
-		try {
-			fontRenderer.drawString(BlockInit.ANCHOR.getLocalizedName(), (x + 176 / 2) - (fontRenderer.getStringWidth(BlockInit.ANCHOR.getLocalizedName()) / 2), y + 8, 4210752);
-			fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "anchor.station.name").getFormattedText() + (te.isValidStation() ? te.getStation().getName() : ""), x + 70, y
-					+ 20, 106, 4210752);
-			fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "anchor.station.class").getFormattedText()
-					+ (te.isValidStation() ? StationHandler.INSTANCE.getStation(te.getPos()).getLvl().getFormattedText() : ""), x + 5, y + 55, 66, 4210752);
-			fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "anchor.desc").getFormattedText(), x + 5, y + 93, 166, 4210752);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		fontRenderer.drawString(BlockInit.ANCHOR.getLocalizedName(), (x + 176 / 2) - (fontRenderer.getStringWidth(BlockInit.ANCHOR.getLocalizedName()) / 2), y + 8, 4210752);
+		fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "anchor.station.name").getFormattedText() + (te.isValidStation() ? te.getStation().getName() : ""), x + 70, y
+				+ 20, 106, 4210752);
+		fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "anchor.station.class").getFormattedText()
+				+ (te.isValidStation() ? StationHandler.INSTANCE.getStation(te.getPos()).getLvl().getFormattedText() : ""), x + 5, y + 55, 66, 4210752);
+		fontRenderer.drawSplitString(new UtilTranslatable(TranslateType.CONTAINER, "anchor.desc").getFormattedText(), x + 5, y + 93, 166, 4210752);
 		// draw list
 		playerList.draw(mouseX, mouseY, fontRenderer);
 		staLvlList.draw(mouseX, mouseY, fontRenderer);
@@ -165,9 +162,8 @@ public class GuiAnchor extends GuiScreen {
 
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
-		if (!nameText.isFocused() && !OPText.isFocused() && (keyCode == 1 || mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))) {
+		if (!nameText.isFocused() && !OPText.isFocused() && (keyCode == 1 || mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)))
 			mc.player.closeScreen();
-		}
 		super.keyTyped(typedChar, keyCode);
 		nameText.textboxKeyTyped(typedChar, keyCode);
 		OPText.textboxKeyTyped(typedChar, keyCode);

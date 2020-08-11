@@ -1,0 +1,152 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"2": "eki:blocks/architectural_concrete",
+		"3": "eki:blocks/barbed_wire",
+		"particle": "eki:blocks/architectural_concrete"
+	},
+	"elements": [
+		{
+			"name": "Cube",
+			"from": [0, 32, 7.5],
+			"to": [16, 42, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 10], "texture": "#3"},
+				"east": {"uv": [0, 0, 1, 10], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 10], "texture": "#3"},
+				"west": {"uv": [0, 0, 1, 10], "texture": "#3"},
+				"up": {"uv": [0, 0, 16, 1], "texture": "#3"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Cube",
+			"from": [0, 9, 7.5],
+			"to": [16, 17, 8.5],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, 25, -31]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 8], "texture": "#3"},
+				"east": {"uv": [0, 0, 1, 8], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 8], "texture": "#3"},
+				"west": {"uv": [0, 0, 1, 8], "texture": "#3"},
+				"up": {"uv": [0, 0, 16, 1], "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 1], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Cube",
+			"from": [0, 9, 7.5],
+			"to": [16, 17, 8.5],
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 26, 47]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 8], "texture": "#3"},
+				"east": {"uv": [0, 0, 1, 8], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 8], "texture": "#3"},
+				"west": {"uv": [0, 0, 1, 8], "texture": "#3"},
+				"up": {"uv": [0, 0, 16, 1], "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 1], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Cube",
+			"from": [0, 9, 7.5],
+			"to": [16, 15, 7.6],
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 28, 47]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 6], "texture": "#3"},
+				"east": {"uv": [0, 0, 0.1, 6], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 6], "texture": "#3"},
+				"west": {"uv": [0, 0, 0.1, 6], "texture": "#3"},
+				"up": {"uv": [0, 0, 16, 0.1], "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 0.1], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Cube",
+			"from": [0, 9, 7.5],
+			"to": [16, 15, 7.6],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, 29, -32]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 6], "texture": "#3"},
+				"east": {"uv": [0, 0, 0.1, 6], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 6], "texture": "#3"},
+				"west": {"uv": [0, 0, 0.1, 6], "texture": "#3"},
+				"up": {"uv": [0, 0, 16, 0.1], "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 0.1], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Cube",
+			"from": [0, 0, 7],
+			"to": [16, 6, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 6], "texture": "#2"},
+				"east": {"uv": [0, 0, 2, 6], "texture": "#2"},
+				"south": {"uv": [0, 0, 16, 6], "texture": "#2"},
+				"west": {"uv": [0, 0, 2, 6], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#2"},
+				"down": {"uv": [0, 0, 16, 2], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Cube",
+			"from": [0, 16, 7.5],
+			"to": [16, 32, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"east": {"uv": [0, 0, 1, 16], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"west": {"uv": [0, 0, 1, 16], "texture": "#3"},
+				"up": {"uv": [0, 0, 0, 0], "texture": "#3"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Cube",
+			"from": [0, 6, 7.5],
+			"to": [16, 16, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 10], "texture": "#3"},
+				"east": {"uv": [0, 0, 1, 10], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 10], "texture": "#3"},
+				"west": {"uv": [0, 0, 1, 10], "texture": "#3"},
+				"up": {"uv": [0, 0, 0, 0], "texture": "#3"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#2"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 315, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 315, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 52, 0],
+			"translation": [0, -7, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"head": {
+			"rotation": [0, 180, 0]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0]
+		}
+	},
+	"groups": [
+		{
+			"name": "barbed_wires_set",
+			"origin": [8, 8, 8],
+			"children": [0, 1, 2, 3, 4, 5, 6, 7]
+		}
+	]
+}
