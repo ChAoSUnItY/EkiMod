@@ -1,5 +1,6 @@
 package chaos.mod.proxy;
 
+import chaos.mod.tileentity.TileEntityAnchor;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,6 +25,10 @@ public class ServerProxy {
 
 	public void displayManager() {
 
+	}
+	
+	public void displayAnchor(TileEntityAnchor te) {
+		
 	}
 
 	public void registerItemRenderer(Item item, int meta, String id) {

@@ -6,7 +6,6 @@ import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockBase;
 import chaos.mod.objects.item.ItemWrench;
 import chaos.mod.tileentity.TileEntityAnchor;
-import chaos.mod.util.Reference;
 import chaos.mod.util.utils.UtilBlockPos;
 import chaos.mod.util.utils.UtilTranslatable;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
@@ -47,7 +46,7 @@ public class BlockAnchor extends BlockBase implements ITileEntityProvider {
 				if (worldIn.isRemote)
 					playerIn.sendMessage(new UtilTCString(TranslateType.CHAT, "anchorAmount", teA.gatesPos.size()).applyFormat(TextFormatting.WHITE));
 			} else {
-				playerIn.openGui(Eki.instance, Reference.GUIANCHOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				Eki.proxy.displayAnchor(teA);
 			}
 			return true;
 		}

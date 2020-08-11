@@ -1,10 +1,7 @@
 package chaos.mod.util.handlers;
 
-import chaos.mod.objects.block.container.ContainerScreen;
 import chaos.mod.objects.block.container.ContainerTicketVendor;
-import chaos.mod.objects.block.gui.GuiAnchor;
 import chaos.mod.objects.block.gui.GuiTicketVendor;
-import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.tileentity.TileEntityTicketVendor;
 import chaos.mod.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,8 +18,6 @@ public class GuiHandler implements IGuiHandler {
 		switch (ID) {
 		case Reference.GUITICKETVENDOR:
 			return new ContainerTicketVendor(player.inventory, (TileEntityTicketVendor) te, player);
-		case Reference.GUIANCHOR:
-			return new ContainerScreen();
 		default:
 			return null;
 		}
@@ -35,8 +30,6 @@ public class GuiHandler implements IGuiHandler {
 		switch (ID) {
 		case Reference.GUITICKETVENDOR:
 			return new GuiTicketVendor(player.inventory, (TileEntityTicketVendor) te, player);
-		case Reference.GUIANCHOR:
-			return new GuiAnchor((TileEntityAnchor) te);
 		default:
 			return null;
 		}

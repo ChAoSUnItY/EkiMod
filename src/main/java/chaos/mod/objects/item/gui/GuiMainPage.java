@@ -1,4 +1,4 @@
-package chaos.mod.objects.block.gui.stationManager;
+package chaos.mod.objects.item.gui;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,6 +1,8 @@
 package chaos.mod.proxy;
 
-import chaos.mod.objects.block.gui.stationManager.GuiMainPage;
+import chaos.mod.objects.block.gui.GuiAnchor;
+import chaos.mod.objects.item.gui.GuiMainPage;
+import chaos.mod.tileentity.TileEntityAnchor;
 import chaos.mod.util.Reference;
 import chaos.mod.util.handlers.RenderHandler;
 import net.minecraft.client.Minecraft;
@@ -24,5 +26,9 @@ public class ClientProxy extends ServerProxy {
 
 	public void displayManager() {
 		Minecraft.getMinecraft().displayGuiScreen(new GuiMainPage(Minecraft.getMinecraft().player.getPosition(), null));
+	}
+	
+	public void displayAnchor(TileEntityAnchor te) {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiAnchor(te));
 	}
 }

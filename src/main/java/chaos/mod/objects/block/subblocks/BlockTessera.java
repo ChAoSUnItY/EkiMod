@@ -34,7 +34,7 @@ public class BlockTessera extends BlockVariantBase implements IModelRegister {
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(VARIANT, TesseraEnumWallEnum.byMetadata(meta));
+		return getDefaultState().withProperty(VARIANT, TesseraEnumWallEnum.byMetadata(meta));
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class BlockTessera extends BlockVariantBase implements IModelRegister {
 
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		for (TesseraEnumWallEnum variant : TesseraEnumWallEnum.values()) {
+		for (TesseraEnumWallEnum variant : TesseraEnumWallEnum.META_LOOKUP) {
 			items.add(new ItemStack(this, 1, variant.getMeta()));
 		}
 	}
@@ -75,7 +75,7 @@ public class BlockTessera extends BlockVariantBase implements IModelRegister {
 		GRAY_DOVE("gray_dove", 6), GRAY_FOSSIL("gray_fossil", 7), GRAY("gray", 8), GREEN_FERN("green_fern", 9), GREEN_LIME("green_lime", 10), ORANGE_FIRE("orange_fire", 11),
 		PURPLE_HEATHER("purple_heather", 12), RED_ROSE("red_rose", 13), RED("red", 14), YELLOW("yellow", 15);
 
-		private static final TesseraEnumWallEnum[] META_LOOKUP = new TesseraEnumWallEnum[values().length];
+		private static final TesseraEnumWallEnum[] META_LOOKUP = values();
 		private String name;
 		private int meta;
 
@@ -100,12 +100,6 @@ public class BlockTessera extends BlockVariantBase implements IModelRegister {
 
 		public static TesseraEnumWallEnum byMetadata(int meta) {
 			return META_LOOKUP[meta];
-		}
-
-		static {
-			for (TesseraEnumWallEnum type : values()) {
-				META_LOOKUP[type.getMeta()] = type;
-			}
 		}
 	}
 }

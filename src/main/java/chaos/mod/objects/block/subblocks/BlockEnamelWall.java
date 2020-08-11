@@ -23,7 +23,7 @@ public class BlockEnamelWall extends BlockVariantBase {
 
 	public BlockEnamelWall(String name) {
 		super(name);
-		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnamelWallEnumWallType.BLUE));
+		setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnamelWallEnumWallType.BLUE));
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class BlockEnamelWall extends BlockVariantBase {
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(VARIANT, EnamelWallEnumWallType.byMetadata(meta));
+		return getDefaultState().withProperty(VARIANT, EnamelWallEnumWallType.byMetadata(meta));
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class BlockEnamelWall extends BlockVariantBase {
 
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		for (EnamelWallEnumWallType variant : EnamelWallEnumWallType.values()) {
+		for (EnamelWallEnumWallType variant : EnamelWallEnumWallType.META_LOOKUP) {
 			items.add(new ItemStack(this, 1, variant.getMeta()));
 		}
 	}
@@ -72,7 +72,7 @@ public class BlockEnamelWall extends BlockVariantBase {
 	public static enum EnamelWallEnumWallType implements IStringSerializable {
 		BLUE("blue", 0), GREEN("green", 1), CYAN("cyan", 2), PURPLE("purple", 3), RED("red", 4), YELLOW("yellow", 5), WHITE("white", 6);
 
-		private static final EnamelWallEnumWallType[] META_LOOKUP = new EnamelWallEnumWallType[values().length];
+		private static final EnamelWallEnumWallType[] META_LOOKUP = values();
 		private String name;
 		private int meta;
 
@@ -97,12 +97,6 @@ public class BlockEnamelWall extends BlockVariantBase {
 
 		public static EnamelWallEnumWallType byMetadata(int meta) {
 			return META_LOOKUP[meta];
-		}
-
-		static {
-			for (EnamelWallEnumWallType type : values()) {
-				META_LOOKUP[type.getMeta()] = type;
-			}
 		}
 	}
 }

@@ -1,6 +1,6 @@
 package chaos.mod.util.data.station;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,8 +14,8 @@ public enum EnumStationLevel implements IStringSerializable {
 	SPECIAL("Special Class", "special_class", 0), FIRST("First Class", "first_class", 1), SECOND("Second Class", "second_class", 2), THRID("Third Class", "third_class", 3),
 	SIMPLE("Simple", "simple", 4), STAFFLESS("Staffless", "staffless", 5), SIGNAL("Signal", "signal", 6), NON("Non", "non", 7);
 
-	private static final EnumStationLevel[] META_LOOKUP = new EnumStationLevel[values().length];
-	private static final List<UtilTranslatable> TEXT_LIST = Lists.newArrayList();
+	private static final EnumStationLevel[] META_LOOKUP = values();
+	private static final List<UtilTranslatable> TEXT_LIST = Arrays.stream(values()).map(v -> new UtilTranslatable(TranslateType.CONTAINER, v.getUnformatted())).collect(Collectors.toList());
 	private String s;
 	private String unformatted;
 	private int lvl;
@@ -52,17 +52,10 @@ public enum EnumStationLevel implements IStringSerializable {
 	}
 
 	public static List<StringDataForm> getDataFormTranslatedTexts() {
-		return new ArrayList<StringDataForm>(getTranslatedTexts().stream().map(text -> new StringDataForm(text.getFormattedText())).collect(Collectors.toList()));
+		return getTranslatedTexts().stream().map(text -> new StringDataForm(text.getFormattedText())).collect(Collectors.toList());
 	}
 
 	public static EnumStationLevel byMetadata(int meta) {
 		return META_LOOKUP[meta];
-	}
-
-	static {
-		for (EnumStationLevel type : values()) {
-			META_LOOKUP[type.getStationLevel()] = type;
-			TEXT_LIST.add(new UtilTranslatable(TranslateType.CONTAINER, type.getUnformatted()));
-		}
 	}
 }
