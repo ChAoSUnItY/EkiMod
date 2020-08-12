@@ -23,7 +23,7 @@ public class BlockFourFace extends BlockBase {
 
 	public BlockFourFace(String name, CreativeTabs tab, Material material, boolean isOpaqueCube) {
 		super(name, tab, material);
-		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.isOpaqueCube = isOpaqueCube;
 	}
 

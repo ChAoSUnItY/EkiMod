@@ -30,9 +30,9 @@ public class GuiBarbedWireSetConfig extends GuiScreen {
 	@Override
 	public void initGui() {
 		super.initGui();
-		x = width / 2 - 50;
+		x = width / 2 - 25;
 		y = height / 2 - 10;
-		size = stack.getTagCompound().getInteger("size");
+		size = stack.getTagCompound().getInteger("size") + 2;
 		buttonDecrease = new GuiButton(0, x, y, 10, 10, "«");
 		buttonIncrease = new GuiButton(1, x + 40, y, 10, 10, "»");
 		buttonList.add(buttonDecrease);
@@ -57,6 +57,8 @@ public class GuiBarbedWireSetConfig extends GuiScreen {
 			size--;
 			break;
 		case 1:
+			if (size == 256)
+				return;
 			size++;
 			break;
 		default:
@@ -74,7 +76,7 @@ public class GuiBarbedWireSetConfig extends GuiScreen {
 
 	@Override
 	public void onGuiClosed() {
-		PacketHandler.INSTANCE.sendToServer(new PacketBarbedWireSizeChangedWorker(player.getPersistentID(), hand, size));
+		PacketHandler.INSTANCE.sendToServer(new PacketBarbedWireSizeChangedWorker(player.getPersistentID(), hand, size - 2));
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,6 +15,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockSixFace extends BlockBase implements IModelRegister {
@@ -24,6 +26,21 @@ public class BlockSixFace extends BlockBase implements IModelRegister {
 		super(name, tab, material);
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.isOpaqueCube = isOpaqueCube;
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return isOpaqueCube ? true : false;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return isOpaqueCube ? true : false;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return isOpaqueCube ? BlockFaceShape.SOLID : BlockFaceShape.UNDEFINED;
 	}
 
 	@Override

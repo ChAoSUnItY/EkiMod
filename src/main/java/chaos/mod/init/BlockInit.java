@@ -27,7 +27,11 @@ import chaos.mod.objects.block.subblocks.BlockTessera;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 
 public class BlockInit {
 	// DEFINE SECTION
@@ -186,9 +190,23 @@ public class BlockInit {
 
 	public static final Block GRILLE_LIGHT_BLACK = new BlockFourFaceLights("grille_light_black", 1F, Material.GLASS, false, false);
 
+	public static final Block EMBEDDED_GRILLE_LIGHT_WHITE = new BlockFourFaceLights("embedded_grille_light_white", 1F, Material.GLASS, true, false) {
+		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+			return new AxisAlignedBB(0F, 0.9375F, 0F, 1F, 1F, 1F);
+		};
+	};
+
+	public static final Block EMBEDDED_GRILLE_LIGHT_BLACK = new BlockFourFaceLights("embedded_grille_light_black", 1F, Material.GLASS, true, false) {
+		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+			return new AxisAlignedBB(0F, 0.9375F, 0F, 1F, 1F, 1F);
+		};
+	};
+
 	public static final Block TUNNEL_LIGHT = new BlockFourFaceLights("tunnel_light", 7 / 15F, Material.GLASS, true, true);
 
 	public static final Block WALL_NEON_LIGHT = new BlockFourFaceLights("wall_neon_light", 1F, Material.GLASS, true, true);
 
 	public static final Block PILLAR_LAMP = new BlockSixFaceLights("pillar_lamp", 1F, Material.GLASS, false, false);
+	
+	public static final Block FLOOD_LIGHT = new BlockSixFaceLights("flood_light", 1F, Material.GLASS, false, false);
 }
