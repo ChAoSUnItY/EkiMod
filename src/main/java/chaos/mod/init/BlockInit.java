@@ -29,6 +29,7 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -207,6 +208,11 @@ public class BlockInit {
 	public static final Block WALL_NEON_LIGHT = new BlockFourFaceLights("wall_neon_light", 1F, Material.GLASS, true, true);
 
 	public static final Block PILLAR_LAMP = new BlockSixFaceLights("pillar_lamp", 1F, Material.GLASS, false, false);
-	
-	public static final Block FLOOD_LIGHT = new BlockSixFaceLights("flood_light", 1F, Material.GLASS, false, false);
+
+	public static final Block FLOOD_LIGHT = new BlockSixFaceLights("flood_light", 1F, Material.GLASS, false, false) {
+		public boolean canBeConnectedTo(IBlockAccess world, BlockPos pos, EnumFacing facing) {
+			EnumFacing face = world.getBlockState(pos).getValue(FACING);
+			return (face == EnumFacing.UP || face == EnumFacing.DOWN) ? false : true;
+		};
+	};
 }
