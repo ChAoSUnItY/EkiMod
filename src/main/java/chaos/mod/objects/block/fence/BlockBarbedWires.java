@@ -40,6 +40,9 @@ public class BlockBarbedWires extends BlockFourFace {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack stack = playerIn.getHeldItem(hand);
 		EnumFacing face = state.getValue(FACING);
+		if (facing == EnumFacing.UP)
+			return false;
+		
 		if (stack.getItem() instanceof ItemBlock) {
 			ItemBlock itemblk = (ItemBlock) stack.getItem();
 			if (itemblk.getBlock() instanceof BlockBarbedWires && getType() == BarbedWireType.BASE) {
@@ -51,12 +54,13 @@ public class BlockBarbedWires extends BlockFourFace {
 							worldIn.setBlockState(pos, BlockInit.BARBED_WIRES_FENCE.getDefaultState().withProperty(FACING, face), 2);
 							worldIn.setBlockState(pos.offset(EnumFacing.UP), BlockInit.BARBED_WIRES_TOP.getDefaultState().withProperty(FACING, face), 2);
 							worldIn.playSound(null, pos, SoundEvents.BLOCK_METAL_PLACE, SoundCategory.BLOCKS, 1F, 1F);
+							return true;
 						} else {
 							pos = pos.offset(EnumFacing.UP);
 							continue;
 						}
 					}
-					return true;
+					return false;
 				}
 			}
 		}

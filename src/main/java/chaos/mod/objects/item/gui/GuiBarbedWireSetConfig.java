@@ -33,8 +33,8 @@ public class GuiBarbedWireSetConfig extends GuiScreen {
 		x = width / 2 - 25;
 		y = height / 2 - 10;
 		size = stack.getTagCompound().getInteger("size") + 2;
-		buttonDecrease = new GuiButton(0, x, y, 10, 10, "«");
-		buttonIncrease = new GuiButton(1, x + 40, y, 10, 10, "»");
+		buttonDecrease = new GuiButton(0, x, y, 10, 10, "<");
+		buttonIncrease = new GuiButton(1, x + 40, y, 10, 10, ">");
 		buttonList.add(buttonDecrease);
 		buttonList.add(buttonIncrease);
 	}
@@ -52,7 +52,7 @@ public class GuiBarbedWireSetConfig extends GuiScreen {
 	protected void actionPerformed(GuiButton button) throws IOException {
 		switch (button.id) {
 		case 0:
-			if (size == 1)
+			if (size == 3)
 				return;
 			size--;
 			break;

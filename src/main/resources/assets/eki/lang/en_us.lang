@@ -40,6 +40,10 @@ tile.eki.panel_beam_black.name=Panel Beam (Black)
 tile.eki.panel_beam_white.name=Panel Beam (White)
 tile.eki.beam_black.name=Beam (Black)
 tile.eki.beam_white.name=Beam (White)
+//barbed wires
+tile.eki.barbed_wires_fence.name=Barbed Wires Fence
+tile.eki.barbed_wires_base.name=Barbed Wires Base
+tile.eki.barbed_wires_top.name=Barbed Wires Top
 //BLOCKS
 //blocks
 tile.eki.retaining_wall.name=Retaining Wall
@@ -112,9 +116,12 @@ tile.eki.station_stairs_gentle_bot.name=Station Stairs Gentle (Bottom)
 //LIGHT SECTION
 tile.eki.grille_light_white.name=Grille Light (White)
 tile.eki.grille_light_black.name=Grille Light (Black)
+tile.eki.embedded_grille_light_white.name=Embedded Grille Light (White)
+tile.eki.embedded_grille_light_black.name=Embedded Grille Light (Black)
 tile.eki.tunnel_light.name=Tunnel Light
 tile.eki.wall_neon_light.name=Wall Neon Light
 tile.eki.pillar_lamp.name=Pillar Lamp
+tile.eki.flood_light.name=Flood Light
 
 //ITEMINIT
 //TOOLS
@@ -126,6 +133,7 @@ item.eki.ticket.tooltip=Worth %d dollars. :)
 item.eki.rangefinder.name=Rangefinder
 item.eki.rangefinder.tooltip=Start position : %d, %d, %d.
 item.eki.station_manager.name=Station Manager
+item.eki.barbed_wires_set.name=Barbed Wires Bundle Pack
 
 itemGroup.eki.block=Eki Block
 itemGroup.eki.station=Eki Station

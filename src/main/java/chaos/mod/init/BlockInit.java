@@ -107,7 +107,7 @@ public class BlockInit {
 	public static final Block BEAM_BLACK = new BlockFourFace("beam_black", STA, Material.IRON, false);
 
 	public static final Block BEAM_WHITE = new BlockFourFace("beam_white", STA, Material.IRON, false);
-	// barbed wire
+	// barbed wires
 	public static final Block BARBED_WIRES_FENCE = new BlockBarbedWires("barbed_wires_fence", BarbedWireType.FENCE);
 
 	public static final Block BARBED_WIRES_BASE = new BlockBarbedWires("barbed_wires_base", BarbedWireType.BASE);
@@ -182,6 +182,10 @@ public class BlockInit {
 	public static final Block ASPHALT_SIDE_SLAB = new BlockSideSlab("asphalt_side_slab", (BlockBase) ASPHALT);
 	// custom stairs
 	public static final Block STATION_STAIRS = new BlockCustomStair("station_stairs", 1);
+	
+	public static final Block STATION_STAIRS_LEFT = new BlockCustomStair("station_stairs_left", 4);
+	
+	public static final Block STATION_STAIRS_RIGHT = new BlockCustomStair("station_stairs_right", 5);
 
 	public static final Block STATION_STAIRS_GENTLE_BOT = new BlockCustomStair("station_stairs_gentle_bot", 2);
 

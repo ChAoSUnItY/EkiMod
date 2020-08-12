@@ -39,6 +39,10 @@ tile.eki.station_pillar_base.name=車站柱子 (底部)
 tile.eki.station_pillar_center.name=車站柱子 (中間)
 tile.eki.station_pillar_top.name=車站柱子 (頂部)
 tile.eki.station_pillar_base_with_fire_extinguisher_in.name=車站柱子 (底部含滅火器)
+//barbed wires
+tile.eki.barbed_wires_fence.name=有刺鐵絲網
+tile.eki.barbed_wires_base.name=有刺鐵絲網底座
+tile.eki.barbed_wires_top.name=有刺鐵絲網頂部
 //BLOCKS
 //blocks
 tile.eki.retaining_wall.name=擋土牆
@@ -111,9 +115,12 @@ tile.eki.station_stairs_gentle_bot.name=車站緩階梯 (下半部)
 //LIGHT SECTION
 tile.eki.grille_light_white.name=格柵燈 (白色)
 tile.eki.grille_light_black.name=格柵燈 (黑色)
+tile.eki.embedded_grille_light_white.name=嵌入式格柵燈 (白色)
+tile.eki.embedded_grille_light_black.name=嵌入式格柵燈 (黑色)
 tile.eki.tunnel_light.name=隧道內用燈
 tile.eki.wall_neon_light.name=牆上霓虹燈
 tile.eki.pillar_lamp.name=燈柱
+tile.eki.flood_light.name=泛光燈
 
 //ITEMINIT
 //TOOLS
@@ -125,6 +132,7 @@ item.eki.ticket.tooltip=值 %d 元。 :)
 item.eki.rangefinder.name=測距儀
 item.eki.rangefinder.tooltip=起始位置：%d, %d, %d。
 item.eki.station_manager.name=車站監控儀
+item.eki.barbed_wires_set.name=有刺鐵絲網組合包
 
 itemGroup.eki.block=Eki 方塊
 itemGroup.eki.station=Eki 車站

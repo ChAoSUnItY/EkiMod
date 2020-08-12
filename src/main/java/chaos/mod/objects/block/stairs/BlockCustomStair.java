@@ -19,6 +19,8 @@ public class BlockCustomStair extends BlockFourFace {
 	public static final AxisAlignedBB STAIR_EAST_TOP_AABB = new AxisAlignedBB(0, 0, 0, 0.5D, 1, 1);
 	public static final AxisAlignedBB STAIR_SOUTH_TOP_AABB = new AxisAlignedBB(0, 0, 0, 1, 1, 0.5D);
 	public static final AxisAlignedBB STAIR_WEST_TOP_AABB = new AxisAlignedBB(0.5D, 0, 0, 1, 1, 1);
+	
+	public static final AxisAlignedBB STAIR_NORTH_LEFT = new AxisAlignedBB(0F, 0F, 0F, 1F, 1F, 1F);
 	public final int type; // 1 Stands for Full one ,2 Stands for Bottom one, 3 Stands for Top one.
 
 	public BlockCustomStair(String name, int type) {
@@ -41,6 +43,12 @@ public class BlockCustomStair extends BlockFourFace {
 			case 3:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
 				break;
+			case 4:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_NORTH_TOP_AABB);
+			case 5:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_NORTH_TOP_AABB);
 			default:
 				break;
 			}
@@ -56,6 +64,14 @@ public class BlockCustomStair extends BlockFourFace {
 				break;
 			case 3:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
+				break;
+			case 4:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_SOUTH_TOP_AABB);
+				break;
+			case 5:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_SOUTH_TOP_AABB);
 				break;
 			default:
 				break;
@@ -73,6 +89,14 @@ public class BlockCustomStair extends BlockFourFace {
 			case 3:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
 				break;
+			case 4:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_EAST_TOP_AABB);
+				break;
+			case 5:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_EAST_TOP_AABB);
+				break;
 			default:
 				break;
 			}
@@ -88,6 +112,14 @@ public class BlockCustomStair extends BlockFourFace {
 				break;
 			case 3:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
+				break;
+			case 4:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_WEST_TOP_AABB);
+				break;
+			case 5:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_WEST_TOP_AABB);
 				break;
 			default:
 				break;
