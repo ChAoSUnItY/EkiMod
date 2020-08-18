@@ -1,8 +1,8 @@
-//zhengruilin
+//zrll
 //=====LANG INIT=====
 #PARSE_ESCAPES
 //===================
-//BLOCKINIT
+//BLOCKSINIT
 //STATION SECTION
 //station stuff
 tile.eki.handrail.name=扶手
@@ -19,10 +19,16 @@ tile.eki.platform_edge_opf.name=增高的站台边缘
 tile.eki.platform_edge_with_guide_brick_opf.name=增高的站台边缘（含盲道）
 tile.eki.platform_edge_with_guide_brick_and_line_opf.name=增高的站台边缘（含盲道和安全线）
 tile.eki.platform_edge_with_line_opf.name=增高的站台边缘（含安全线）
+tile.eki.platform_asphalt_with_guide_brick_opf.name=增高的站台边缘（含安全线，沥青）
 tile.eki.platform_edge_with_line_and_light_off_opf.name=增高的站台边缘（含盲道，安全线和指示灯）
 tile.eki.platform_edge_with_line_and_light_on_opf.name=增高的站台边缘（含盲道，安全线和开启的指示灯）
 //decorations
 tile.eki.wooden_bench.name=木椅
+//station pillars
+tile.eki.station_pillar_base.name=车站柱子（底部）
+tile.eki.station_pillar_center.name=车站柱子（中间）
+tile.eki.station_pillar_top.name=车站柱子（顶部）
+tile.eki.station_pillar_base_with_fire_extinguisher_in.name=车站柱子（含灭火器，底部）
 //beams
 tile.eki.panel_beam_with_cross_black.name=屏幕支架（含梁，黑色）
 tile.eki.panel_beam_with_cross_white.name=屏幕支架（含梁，白色）
@@ -34,11 +40,10 @@ tile.eki.panel_beam_black.name=屏幕支架（白色）
 tile.eki.panel_beam_white.name=屏幕支架（白色）
 tile.eki.beam_black.name=横梁（黑色）
 tile.eki.beam_white.name=横梁（白色）
-//station pillars
-tile.eki.station_pillar_base.name=车站柱子（底部）
-tile.eki.station_pillar_center.name=车站柱子（中间）
-tile.eki.station_pillar_top.name=车站柱子（顶部）
-tile.eki.station_pillar_base_with_fire_extinguisher_in.name=车站柱子（含灭火器，底部）
+//barbed wires
+tile.eki.barbed_wires_fence.name=带刺铁丝网（中部）
+tile.eki.barbed_wires_base.name=带刺铁丝网（底座）
+tile.eki.barbed_wires_top.name=带刺铁丝网（顶部）
 //BLOCKS
 //blocks
 tile.eki.retaining_wall.name=挡土墙
@@ -111,8 +116,12 @@ tile.eki.station_stairs_gentle_bot.name=车站缓楼梯（底部）
 //LIGHT SECTION
 tile.eki.grille_light_white.name=格柵灯 (白色)
 tile.eki.grille_light_black.name=格柵灯 (黑色)
-tile.eki.tunnel_light.name=灯
+tile.eki.embedded_grille_light_white.name=嵌入式栅格灯（白色）
+tile.eki.embedded_grille_light_black.name=嵌入式栅格灯（黑色）
+tile.eki.tunnel_light.name=隧道灯
 tile.eki.wall_neon_light.name=霓虹灯
+tile.eki.pillar_lamp.name=灯柱
+tile.eki.flood_light.name=泛光灯
 
 //ITEMINIT
 //TOOLS
@@ -123,6 +132,8 @@ item.eki.ticket.name=车票
 item.eki.ticket.tooltip=%d元的车票:)
 item.eki.rangefinder.name=测距离
 item.eki.rangefinder.tooltip=起始位置：%d，%d，%d。
+item.eki.station_manager.name=车站管理器
+item.eki.barbed_wires_set.name=带刺铁丝网组合包
 
 itemGroup.eki.block=Eki 方块
 itemGroup.eki.station=Eki 车站
@@ -138,20 +149,52 @@ tile.eki.anchor.warning.tooltip=在已绑定的情況下打掉这个方块并不
 //GUIS
 container.eki.ticket_vendor.state.success=购票成功！金额：%d
 container.eki.ticket_vendor.state.shortage=您身上的余额无法购买%d元的票
-container.eki.ticket_vendor.state.failed=%s 不是一个有效金额数目
+container.eki.ticket_vendor.state.failed=%s 不是一个有效的金额数目
 container.eki.ticket_vendor.state.illegal=%s 玩家在售票机内输入了无效的金额数目
 container.eki.ticket_vendor.state.waiting=等待中......
-container.eki.ticket_vendor.button.provide=购票
-container.eki.ticket_vendor.text.default=请输入入数字
+container.eki.ticket_vendor.state.withdraw=取款成功!
+container.eki.ticket_vendor.state.permission=权限不足
+container.eki.ticket_vendor.button.provide=买票
+container.eki.ticket_vendor.button.withdraw=取款
+container.eki.ticket_vendor.text.default=请输入数字
+container.eki.anchor.station.name=站名：
+container.eki.anchor.station.class=车站等级：
+container.eki.anchor.text=请输入站名
+container.eki.anchor.desc=锚点是用来作为车站基准点的方块，在注册车站后锚点才能发挥作用。可用扳手向闸机或售票机进行绑定。
+container.eki.anchor.button.insert=插入
+container.eki.anchor.button.confirm=确认
 container.eki.button.clear=清除
+container.eki.manager.intro=欢迎使用车站管理器！从下方选任意车站来检查他们的状态：
+container.eki.manager.button.inspect=检查
+container.eki.manager.button.back=返回
+
+//STATION LVL
+container.eki.special_class=特等站
+container.eki.first_class=一等站
+container.eki.second_class=二等站
+container.eki.third_class=三等站
+container.eki.simple=简易站
+container.eki.staffless=自助车站
+container.eki.signal=信号站
+container.eki.non=未分级站
 
 //TEXTS
-chat.type.text.eki.anchoredamounts=该锚点已连接 %d 给闸机！
-chat.type.text.eki.setpos=已从 %d，%d，%d 进站！
-chat.type.text.eki.accessed=已从 %d, %d, %d 出站！共花费了%.2f,经过了%.2f格！
-chat.type.text.eki.notenoughvalue=无法出站！车票额%d，但需要%d。
-chat.type.text.eki.missingvalue=此票没有价值！
-chat.type.text.eki.missinganchor=请先选取一给锚点！
-chat.type.text.eki.anchorlinked=已绑定至锚点！
+chat.type.text.eki.anchorAmount=该锚点已连接 %d 个闸机/售票机！
+chat.type.text.eki.setPos=已从 %d, %d, %d 进站！
+chat.type.text.eki.accessed=已从 %d, %d, %d 出站! 共花费了 %.2f，经过了 %.2f 格！
+chat.type.text.eki.notEnoughValue=无法出站！车票价值 %d，需要 %d。
+chat.type.text.eki.missingValue=此车票没有价值！
+chat.type.text.eki.illegalAnchor=未知锚点。可能因为已经被破坏了。
+chat.type.text.eki.missingAnchor=请先选取一个锚点！
+chat.type.text.eki.anchorLinked=已连接至锚点！
 chat.type.text.eki.rangefinder.result=三维空间距离：%d，平面空间距离：%d。
-chat.type.text.eki.rangefinder.getPos=成功绑定起始点至%d，%d，%d！
+chat.type.text.eki.rangefinder.getPos=成功绑定起始点至%d, %d, %d！
+chat.type.text.eki.desync=资料不完整！请重新加入。
+
+//COMMANDS
+chat.type.text.eki.command.stations.error.illegalType=未知的排序种类，输入/stations help以获得更多帮助。
+chat.type.text.eki.command.stations.help=NF -> 由近至远\nFN -> 由远至近\n NAME -> 由名称
+
+//SYSTEM MESSAGES
+chat.type.text.eki.versioncheckValid=你正运行Eki Mod最新版本！\n版本 >> %s
+chat.type.text.eki.versioncheckInvalid=你的Eki Mod已经过时！快去更新吧！\n点击这里来打开模组页面。运行 >> %s\n最新版本 >> %s
