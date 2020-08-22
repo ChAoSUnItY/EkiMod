@@ -1,13 +1,13 @@
-//GukkyGukz
-//=====LANG INIT=====
+#GukkyGukz
+#=====LANG INIT=====
 #PARSE_ESCAPES
-//===================
-//BLOCKSINIT
-//STATION SECTION
-//station stuff
+#===================
+#BLOCKSINIT
+#STATION SECTION
+#station stuff
 tile.eki.handrail.name=手すり
 tile.eki.handrail_corner.name=手すりコーナー
-//platforms 
+#platforms 
 tile.eki.platform_edge.name=ホーム縁端
 tile.eki.platform_edge_with_guide_brick.name=ホーム縁端滑り止めブロック
 tile.eki.platform_edge_with_guide_brick_and_line.name=ホーム縁端滑り止めブロック (端線あり)
@@ -21,9 +21,9 @@ tile.eki.platform_edge_with_guide_brick_and_line_opf.name=高いホーム縁端�
 tile.eki.platform_edge_with_line_opf.name=高いホーム縁端 (端線あり)
 tile.eki.platform_edge_with_line_and_light_off_opf.name=高い黄色い点字ブロックアスファルト
 tile.eki.platform_edge_with_line_and_light_on_opf.name=高いホーム縁端滑り止めブロック (端線スレッドラインあり)　(点)
-//decorations
+#decorations
 tile.eki.wooden_bench.name=木のベンチ
-//beams
+#beams
 tile.eki.panel_beam_with_cross_black.name=モニター柱と桁 (黒)
 tile.eki.panel_beam_with_cross_white.name=モニター柱と桁 (白)
 tile.eki.bending_beam_white.name=曲げ桁 (白)
@@ -34,13 +34,13 @@ tile.eki.panel_beam_black.name=モニター柱 (黒)
 tile.eki.panel_beam_white.name=モニター柱 (白)
 tile.eki.beam_black.name=桁 (黒)
 tile.eki.beam_white.name=桁 (白)
-//station pillars
+#station pillars
 tile.eki.station_pillar_base.name=駅舎柱 (ベース)
 tile.eki.station_pillar_center.name=駅舎柱 (中)
 tile.eki.station_pillar_top.name=駅舎柱 (トップ)
 tile.eki.station_pillar_base_with_fire_extinguisher_in.name=駅舎柱 (消火器ありのベース)
-//BLOCKS
-//blocks
+#BLOCKS
+#blocks
 tile.eki.retaining_wall.name=擁壁
 tile.eki.retaining_wall_corner.name=擁壁コーナー
 tile.eki.architectural_concrete.name=打放しコンクリート
@@ -85,37 +85,37 @@ tile.eki.tessera_purple_heather.name=タイル (ヘザーパープル)
 tile.eki.tessera_red_rose.name=タイル (赤色)
 tile.eki.tessera_red.name=タイル (ローズレッド)
 tile.eki.tessera_yellow.name=タイル (黄色)
-//stairs
+#stairs
 tile.eki.architectural_concrete_stairs.name=打放しコンクリートの階段
 tile.eki.concrete_stairs.name=コンクリートの階段
 tile.eki.nichogake_stairs.name=二丁掛の階段
 tile.eki.washed_granolithic_finish_stairs.name=人造石洗出しの階段
 tile.eki.asphalt_stairs.name=アスファルトの階段
-//slabs
+#slabs
 tile.eki.architectural_concrete_slab_half.name=打放しコンクリートのハーフブロック
 tile.eki.concrete_slab_half.name=コンクリートのハーフブロック
 tile.eki.nichogake_slab_half.name=二丁掛のハーフブロック
 tile.eki.washed_granolithic_finish_slab_half.name=人造石洗出しのハーフブロック
 tile.eki.asphalt_slab_half.name=アスファルトのハーフブロック
-//side slabs
+#side slabs
 tile.eki.retaining_wall_side_slab.name=擁壁のサイドブロック
 tile.eki.architectural_concrete_side_slab.name=打放しコンクリートのサイドブロック
 tile.eki.concrete_side_slab.name=コンクリートのサイドブロック
 tile.eki.nichogake_side_slab.name=二丁掛のサイドブロック
 tile.eki.washed_granolithic_finish_side_slab.name=人造石洗出しのサイドブロック
 tile.eki.asphalt_side_slab.name=アスファルトのサイドブロック
-//custom stairs
+#custom stairs
 tile.eki.station_stairs.name=駅の階段
 tile.eki.station_stairs_gentle_top.name=駅の階段ハーフブロック (トップ)
 tile.eki.station_stairs_gentle_bot.name=駅の階段ハーフブロック (ベース)
-//LIGHT SECTION
+#LIGHT SECTION
 tile.eki.grille_light_white.name=グリルライト (白)
 tile.eki.grille_light_black.name=グリルライト (黒)
 tile.eki.tunnel_light.name=トンネル照明
 tile.eki.wall_neon_light.name=ウォールネオンライト
 
-//ITEMINIT
-//TOOLS
+#ITEMINIT
+#TOOLS
 item.eki.wrench.name=レンチ
 item.eki.wrench.withouttag.tooltip=アンカーを改札にバインドするためのツール。
 item.eki.wrench.withtag.tooltip=アンカーブロックをロックに設定するツール。%d, %d, %dに設定します。
@@ -128,7 +128,7 @@ itemGroup.eki.block=駅ブロック
 itemGroup.eki.station=駅装飾
 itemGroup.eki.misc=駅その他
 
-//TILEENTITYS
+#TILEENTITYS
 tile.eki.ticket_vendor.name=券売機
 tile.eki.ticket_gate.name=改札
 tile.eki.anchor.name=アンカー
@@ -136,7 +136,7 @@ tile.eki.anchor.tooltip=改札をバインドするためのブロック。
 tile.eki.anchor.warning.tooltip=バインドされた場合はこのブロックを破壊するはいい考えではありません……
 
 
-//GUIS
+#GUIS
 container.eki.ticket_vendor.state.success=発券しました！残高：%d
 container.eki.ticket_vendor.state.shortage=残高が不足しています：%d
 container.eki.ticket_vendor.state.failed=%s は有効な金額ではありません
@@ -153,7 +153,7 @@ container.eki.anchor.desc=アンカーは、駅の基準ポイントとして使
 container.eki.anchor.button.confirm=確認
 container.eki.button.clear=削除
 
-//TEXTS
+#TEXTS
 chat.type.text.eki.anchorAmount=このアンカーは %d 改札機にバインドされていました！
 chat.type.text.eki.setpos=%d, %d, %d から通過しました！
 chat.type.text.eki.accessed=%d, %d, %d を終了しました！総費用：%d、%dブロックを移動しました！
@@ -164,10 +164,10 @@ chat.type.text.eki.anchorlinked=アンカーにバインドしました！
 chat.type.text.eki.rangefinder.result=立体距離：%d，平面距離：%d。
 chat.type.text.eki.rangefinder.getpos=始点を%d、%d、%dにバインドしました！
 
-//COMMANDS
+#COMMANDS
 chat.type.text.eki.command.stations.error.illegalType=未知のソート順です。，/stations help でコマンドの一覧を確認してください
 chat.type.text.eki.command.stations.help=NF -> 距離が近い順\nFN -> 距離が遠い順\n NAME -> 名前順
 
-//SYSTEM MESSAGES
+#SYSTEM MESSAGES
 chat.type.text.eki.versioncheckValid=Eki Modの最新バージョンを実行しています!\nバージョン >> %s
 chat.type.text.eki.versioncheckInvalid=このバージョンのEki Modのサポートは終了しました。今すぐアップデートしてください！\nこちらをクリックしてページを開きます。\nこのバージョン >> %s\n最新バージョン >> %s

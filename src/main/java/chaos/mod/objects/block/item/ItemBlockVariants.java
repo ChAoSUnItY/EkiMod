@@ -19,6 +19,6 @@ public class ItemBlockVariants extends ItemBlock {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + "_" + ((IMetaName) block).getSpecialName(stack);
+		return String.format("%s_%s", super.getUnlocalizedName(), ((IMetaName) block).getSpecialName(stack));
 	}
 }

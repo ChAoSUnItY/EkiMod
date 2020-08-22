@@ -88,33 +88,29 @@ public class BlockPlatformEdgeOPF extends BlockFourFace {
 
 	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		if (!worldIn.isRemote && lightable) {
-			if (isOn && !worldIn.isBlockPowered(pos)) {
+		if (!worldIn.isRemote && lightable)
+			if (isOn && !worldIn.isBlockPowered(pos))
 				worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF.getDefaultState().withProperty(FACING, state.getValue(FACING)), 2);
-			} else if (!isOn && worldIn.isBlockPowered(pos)) {
+			else if (!isOn && worldIn.isBlockPowered(pos)) {
 				worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, state.getValue(FACING)), 2);
 			}
-		}
 	}
 
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-		if (!worldIn.isRemote && lightable) {
-			if (isOn && !worldIn.isBlockPowered(pos)) {
+		if (!worldIn.isRemote && lightable)
+			if (isOn && !worldIn.isBlockPowered(pos))
 				worldIn.scheduleUpdate(pos, this, 4);
-			} else if (!isOn && worldIn.isBlockPowered(pos)) {
+			else if (!isOn && worldIn.isBlockPowered(pos)) {
 				worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_ON_OPF.getDefaultState().withProperty(FACING, state.getValue(FACING)), 2);
 			}
-		}
 	}
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		if (!worldIn.isRemote && lightable) {
-			if (isOn && !worldIn.isBlockPowered(pos)) {
+		if (!worldIn.isRemote && lightable)
+			if (isOn && !worldIn.isBlockPowered(pos))
 				worldIn.setBlockState(pos, BlockInit.PLATFORM_EDGE_WITH_LINE_AND_LIGHT_OFF_OPF.getDefaultState().withProperty(FACING, state.getValue(FACING)), 2);
-			}
-		}
 	}
 
 	@Override

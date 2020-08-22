@@ -22,6 +22,8 @@ import chaos.mod.objects.block.slabs.BlockSlabDoubleBaseCommon;
 import chaos.mod.objects.block.slabs.BlockSlabHalfBaseCommon;
 import chaos.mod.objects.block.stairs.BlockCustomStair;
 import chaos.mod.objects.block.stairs.BlockStairsCommon;
+import chaos.mod.objects.block.stairs.BlockCustomStair.StairHandRailType;
+import chaos.mod.objects.block.stairs.BlockCustomStair.StairType;
 import chaos.mod.objects.block.subblocks.BlockEnamelWall;
 import chaos.mod.objects.block.subblocks.BlockTessera;
 import net.minecraft.block.Block;
@@ -181,15 +183,23 @@ public class BlockInit {
 
 	public static final Block ASPHALT_SIDE_SLAB = new BlockSideSlab("asphalt_side_slab", (BlockBase) ASPHALT);
 	// custom stairs
-	public static final Block STATION_STAIRS = new BlockCustomStair("station_stairs", 1);
-	
-	public static final Block STATION_STAIRS_LEFT = new BlockCustomStair("station_stairs_left", 4);
-	
-	public static final Block STATION_STAIRS_RIGHT = new BlockCustomStair("station_stairs_right", 5);
+	public static final Block STATION_STAIRS = new BlockCustomStair("station_stairs", StairType.NORMAL, StairHandRailType.NON);
 
-	public static final Block STATION_STAIRS_GENTLE_BOT = new BlockCustomStair("station_stairs_gentle_bot", 2);
+	//public static final Block STATION_STAIRS_LEFT = new BlockCustomStair("station_stairs_left", StairType.NORMAL, StairHandRailType.LEFT);
 
-	public static final Block STATION_STAIRS_GENTLE_TOP = new BlockCustomStair("station_stairs_gentle_top", 3);
+	//public static final Block STATION_STAIRS_RIGHT = new BlockCustomStair("station_stairs_right", StairType.NORMAL, StairHandRailType.RIGHT);
+
+	public static final Block STATION_STAIRS_GENTLE_BOT = new BlockCustomStair("station_stairs_gentle_bot", StairType.GENTLE_BOT, StairHandRailType.NON);
+
+	//public static final Block STATION_STAIRS_GENTLE_BOT_LEFT = new BlockCustomStair("station_stairs_gentle_bot_left", StairType.GENTLE_BOT, StairHandRailType.LEFT);
+
+	//public static final Block STATION_STAIRS_GENTLE_BOT_RIGHT = new BlockCustomStair("station_stairs_gentle_bot_right", StairType.GENTLE_BOT, StairHandRailType.RIGHT);
+
+	public static final Block STATION_STAIRS_GENTLE_TOP = new BlockCustomStair("station_stairs_gentle_top", StairType.GENTLE_TOP, StairHandRailType.NON);
+
+	//public static final Block STATION_STAIRS_GENTLE_TOP_LEFT = new BlockCustomStair("station_stairs_gentle_top_left", StairType.GENTLE_TOP, StairHandRailType.LEFT);
+
+	//public static final Block STATION_STAIRS_GENTLE_TOP_RIGHT = new BlockCustomStair("station_stairs_gentle_top_right", StairType.GENTLE_TOP, StairHandRailType.RIGHT);
 	// LIGHT SECTION
 	public static final Block GRILLE_LIGHT_WHITE = new BlockFourFaceLights("grille_light_white", 1F, Material.GLASS, false, false);
 

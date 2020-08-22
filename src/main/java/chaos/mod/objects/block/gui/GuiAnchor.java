@@ -130,13 +130,12 @@ public class GuiAnchor extends GuiScreen {
 			resetText(OPText);
 			break;
 		case 3:
-			if (playerList.selectedIndex != -1) {
-				if (OPText.getText().isEmpty()) {
+			if (playerList.selectedIndex != -1)
+				if (OPText.getText().isEmpty())
 					OPText.setText(playerList.getText());
-				} else {
-					OPText.setText(OPText.getText() + ", " + playerList.getText());
+				else {
+					OPText.setText(String.format("%s, %s", OPText.getText(), playerList.getText()));
 				}
-			}
 			break;
 		default:
 			break;

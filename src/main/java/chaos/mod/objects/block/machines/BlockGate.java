@@ -58,20 +58,19 @@ public class BlockGate extends BlockFourFace implements ITileEntityProvider {
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		if (!worldIn.isRemote) {
+		if (!worldIn.isRemote)
 			if (state.getValue(OPEN)) {
 				worldIn.setBlockState(pos, state.withProperty(OPEN, false), 3);
 				worldIn.markBlockRangeForRenderUpdate(pos, pos);
 				worldIn.playSound(null, pos, SoundEvents.BLOCK_IRON_DOOR_CLOSE, SoundCategory.BLOCKS, 1, 1);
 			}
-		}
 	}
 
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean isActualState) {
-		if (state.getValue(OPEN)) {
+		if (state.getValue(OPEN))
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, NULL_AABB);
-		} else {
+		else {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, GATE_CLOSED_AABB);
 		}
 	}

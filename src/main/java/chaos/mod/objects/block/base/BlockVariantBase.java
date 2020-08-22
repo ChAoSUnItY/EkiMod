@@ -15,7 +15,7 @@ public class BlockVariantBase extends Block implements IMetaName, IModelRegister
 	protected final String name;
 	protected boolean passable = false;
 	protected boolean transluent = false;
-	
+
 	public BlockVariantBase(String name) {
 		super(Material.ROCK);
 		setUnlocalizedName(UtilTranslatable.getEki(name));
@@ -30,10 +30,5 @@ public class BlockVariantBase extends Block implements IMetaName, IModelRegister
 	@Override
 	public String getSpecialName(ItemStack stack) {
 		return null;
-	}
-
-	@Override
-	public void registerModels() {
-		IModelRegister.super.registerModels();
 	}
 }

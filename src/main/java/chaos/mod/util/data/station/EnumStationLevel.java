@@ -48,7 +48,7 @@ public enum EnumStationLevel implements IStringSerializable {
 	}
 
 	public static List<UtilTranslatable> getTranslatedTexts() {
-		return Lists.newArrayList(TEXT_LIST.iterator());
+		return Lists.newArrayList(TEXT_LIST);
 	}
 
 	public static List<StringDataForm> getDataFormTranslatedTexts() {

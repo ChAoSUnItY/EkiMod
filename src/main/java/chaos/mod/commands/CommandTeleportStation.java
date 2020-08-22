@@ -58,7 +58,6 @@ public class CommandTeleportStation extends CommandBase {
 				pos = securePos;
 				break;
 			}
-			System.out.println(securePos.toString());
 		}
 		getCommandSenderAsPlayer(sender).setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ());
 	}

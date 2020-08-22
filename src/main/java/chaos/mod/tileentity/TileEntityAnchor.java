@@ -40,12 +40,12 @@ public class TileEntityAnchor extends TileEntityBase {
 	}
 
 	public void deleteGate(BlockPos pos) {
-		for (int i = 0; i < gatesPos.size(); i++) {
+		for (int i = 0; i < gatesPos.size(); i++)
 			if (gatesPos.get(i).equals(pos)) {
 				gatesPos.remove(i);
 				return;
 			}
-		}
+
 	}
 
 	public void resetAllGate() {

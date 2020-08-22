@@ -1,13 +1,13 @@
-//ChAoS_UnItY , GukkyGukz
-//=====LANG INIT=====
+#ChAoS_UnItY , GukkyGukz
+#=====LANG INIT=====
 #PARSE_ESCAPES
-//===================
-//BLOCKSINIT
-//STATION SECTION
-//station stuff
+#===================
+#BLOCKSINIT
+#STATION SECTION
+#station stuff
 tile.eki.handrail.name=Handrail
 tile.eki.handrail_corner.name=Handrail Corner
-//platforms
+#platforms
 tile.eki.platform_edge.name=Platform Edge
 tile.eki.platform_edge_with_guide_brick.name=Platform Edge With Guide Brick
 tile.eki.platform_edge_with_guide_brick_and_line.name=Platform Edge with Guide Brick and Line
@@ -22,14 +22,14 @@ tile.eki.platform_edge_with_line_opf.name=Elevated Platform Edge with Line
 tile.eki.platform_asphalt_with_guide_brick_opf.name=Elevated Platform Brick with Line (Asphalt)
 tile.eki.platform_edge_with_line_and_light_off_opf.name=Elevated Platform Edge with Line and Light
 tile.eki.platform_edge_with_line_and_light_on_opf.name=Elevated Platform Edge with Line and Light (On)
-//decorations
+#decorations
 tile.eki.wooden_bench.name=Wooden Bench
-//station pillars
+#station pillars
 tile.eki.station_pillar_base.name=Station Pillar Base
 tile.eki.station_pillar_center.name=Station Pillar Center
 tile.eki.station_pillar_top.name=Station Pillar Top
 tile.eki.station_pillar_base_with_fire_extinguisher_in.name=Station Pillar Base with Fire Extinguisher
-//beams
+#beams
 tile.eki.panel_beam_with_cross_black.name=Panel Beam with Cross (Black)
 tile.eki.panel_beam_with_cross_white.name=Panel Beam with Cross (White)
 tile.eki.bending_beam_white.name=Bending Beam (White)
@@ -40,12 +40,12 @@ tile.eki.panel_beam_black.name=Panel Beam (Black)
 tile.eki.panel_beam_white.name=Panel Beam (White)
 tile.eki.beam_black.name=Beam (Black)
 tile.eki.beam_white.name=Beam (White)
-//barbed wires
+#barbed wires
 tile.eki.barbed_wires_fence.name=Barbed Wires Fence
 tile.eki.barbed_wires_base.name=Barbed Wires Base
 tile.eki.barbed_wires_top.name=Barbed Wires Top
-//BLOCKS
-//blocks
+#BLOCKS
+#blocks
 tile.eki.retaining_wall.name=Retaining Wall
 tile.eki.retaining_wall_corner.name=Retaining Wall Corner
 tile.eki.architectural_concrete.name=Architectural Concrete
@@ -90,30 +90,30 @@ tile.eki.tessera_purple_heather.name=Mosaic Tessera (Purple Heather)
 tile.eki.tessera_red_rose.name=Mosaic Tessera (Red)
 tile.eki.tessera_red.name=Mosaic Tessera (Rose Red)
 tile.eki.tessera_yellow.name=Mosaic Tessera (Yellow)
-//stairs
+#stairs
 tile.eki.architectural_concrete_stairs.name=Architectural Concrete Stairs
 tile.eki.concrete_stairs.name=Concrete Stairs
 tile.eki.nichogake_stairs.name=Nichogake Stairs
 tile.eki.washed_granolithic_finish_stairs.name=Washed Granolithic Finish Stairs
 tile.eki.asphalt_stairs.name=Asphalt Stairs
-//slabs
+#slabs
 tile.eki.architectural_concrete_slab_half.name=Architectural Concrete Slab
 tile.eki.concrete_slab_half.name=Concrete Slab
 tile.eki.nichogake_slab_half.name=Nichogake Slab
 tile.eki.washed_granolithic_finish_slab_half.name=Washed Granolithic Finish Slab
 tile.eki.asphalt_slab_half.name=Asphalt Slab
-//side slabs
+#side slabs
 tile.eki.retaining_wall_side_slab.name=Retaining Wall Side Slab
 tile.eki.architectural_concrete_side_slab.name=Architectural Concrete Side Slab
 tile.eki.concrete_side_slab.name=Concrete Side Slab
 tile.eki.nichogake_side_slab.name=Nichogake Side Slab
 tile.eki.washed_granolithic_finish_side_slab.name=Washed Granolithic Finish Side Slab
 tile.eki.asphalt_side_slab.name=Asphalt Side Slab
-//custom stairs
+#custom stairs
 tile.eki.station_stairs.name=Station Stairs
 tile.eki.station_stairs_gentle_top.name=Station Stairs Gentle (Top)
 tile.eki.station_stairs_gentle_bot.name=Station Stairs Gentle (Bottom)
-//LIGHT SECTION
+#LIGHT SECTION
 tile.eki.grille_light_white.name=Grille Light (White)
 tile.eki.grille_light_black.name=Grille Light (Black)
 tile.eki.embedded_grille_light_white.name=Embedded Grille Light (White)
@@ -123,8 +123,8 @@ tile.eki.wall_neon_light.name=Wall Neon Light
 tile.eki.pillar_lamp.name=Pillar Lamp
 tile.eki.flood_light.name=Flood Light
 
-//ITEMINIT
-//TOOLS
+#ITEMINIT
+#TOOLS
 item.eki.wrench.name=Wrench
 item.eki.wrench.withouttag.tooltip=A tool to bind anchor to ticket gate.
 item.eki.wrench.withtag.tooltip=A tool to bind anchor to ticket gate. This tool has been bound to %d, %d, %d.
@@ -139,14 +139,14 @@ itemGroup.eki.block=Eki Block
 itemGroup.eki.station=Eki Station
 itemGroup.eki.misc= Eki Misc
 
-//TILEENTITYS
+#TILEENTITYS
 tile.eki.ticket_vendor.name=Ticket vendor
 tile.eki.ticket_gate.name=Ticket gate
 tile.eki.anchor.name=Anchor
 tile.eki.anchor.tooltip=A block use to bind ticket gates.
 tile.eki.anchor.warning.tooltip=Breaking this block that had been bound to gates is not a clever way to reset......
 
-//GUIS
+#GUIS
 container.eki.ticket_vendor.state.success=Successfully ticketed!
 container.eki.ticket_vendor.state.shortage=Balance is shortage!
 container.eki.ticket_vendor.state.failed=%s is invalid for value!
@@ -169,7 +169,7 @@ container.eki.manager.button.inspect=Inspect
 container.eki.manager.button.back=Back
 
 
-//STATION LVL
+#STATION LVL
 container.eki.special_class=Special Class Sta.
 container.eki.first_class=First Class Sta.
 container.eki.second_class=Second Class Sta.
@@ -179,7 +179,7 @@ container.eki.staffless=Staffless Sta.
 container.eki.signal=Signal Sta.
 container.eki.non=Non Class Sta.
 
-//TEXTS
+#TEXTS
 chat.type.text.eki.anchoredAmount=This anchor had been bound to %d ticket gates / ticket vendors!
 chat.type.text.eki.setPos=Passed from %d, %d, %d!
 chat.type.text.eki.accessed=Exited from %d, %d, %d! Total Cost: %.2f, traveled for %.2f blocks!
@@ -192,10 +192,10 @@ chat.type.text.eki.rangefinder.result=3D distance is %d, surface distance is %d.
 chat.type.text.eki.rangefinder.getPos=Successfully bound to %d, %d, %d！
 chat.type.text.eki.desync=Desynced! Please rejoin.
 
-//COMMANDS
+#COMMANDS
 chat.type.text.eki.command.stations.error.illegalType=Unknown type for sorting , type /stations help to get info.
 chat.type.text.eki.command.stations.help=NF -> Near to far\nFN -> Far to near\n NAME -> By name
 
-//SYSTEM MESSAGES
+#SYSTEM MESSAGES
 chat.type.text.eki.versioncheckValid=You are running on the latest version of Eki Mod!\nVersion >> %s
 chat.type.text.eki.versioncheckInvalid=Your Eki Mod is out of date! Go update!\nClick this message to open mod page.\nNow Running >> %s\nLatest Version >> %s

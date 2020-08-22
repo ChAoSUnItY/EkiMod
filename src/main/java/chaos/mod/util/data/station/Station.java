@@ -50,15 +50,15 @@ public class Station extends DataForm {
 
 	@Override
 	public String getData() {
-		return name + " - " + getPosStringFormat();
+		return String.format("%s - %s", name, getPosStringFormat());
+	}
+
+	public String getPosStringFormat() {
+		return String.format("(%d,%d,%d)", pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override
 	public String[] toStringArray() {
-		return new String[] { name, getPosStringFormat() };
-	}
-
-	public String getPosStringFormat() {
-		return "(" + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ")";
+		return null;
 	}
 }

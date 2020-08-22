@@ -1,13 +1,13 @@
-//zrll
-//=====LANG INIT=====
+#zrll
+#=====LANG INIT=====
 #PARSE_ESCAPES
-//===================
-//BLOCKSINIT
-//STATION SECTION
-//station stuff
+#===================
+#BLOCKSINIT
+#STATION SECTION
+#station stuff
 tile.eki.handrail.name=扶手
 tile.eki.handrail_corner.name=扶手拐角
-//platforms
+#platforms
 tile.eki.platform_edge.name=站台边缘
 tile.eki.platform_edge_with_guide_brick.name=站台边缘（含盲道）
 tile.eki.platform_edge_with_guide_brick_and_line.name=站台边缘（含盲道和安全线）
@@ -22,14 +22,14 @@ tile.eki.platform_edge_with_line_opf.name=增高的站台边缘（含安全线�
 tile.eki.platform_asphalt_with_guide_brick_opf.name=增高的站台边缘（含安全线，沥青）
 tile.eki.platform_edge_with_line_and_light_off_opf.name=增高的站台边缘（含盲道，安全线和指示灯）
 tile.eki.platform_edge_with_line_and_light_on_opf.name=增高的站台边缘（含盲道，安全线和开启的指示灯）
-//decorations
+#decorations
 tile.eki.wooden_bench.name=木椅
-//station pillars
+#station pillars
 tile.eki.station_pillar_base.name=车站柱子（底部）
 tile.eki.station_pillar_center.name=车站柱子（中间）
 tile.eki.station_pillar_top.name=车站柱子（顶部）
 tile.eki.station_pillar_base_with_fire_extinguisher_in.name=车站柱子（含灭火器，底部）
-//beams
+#beams
 tile.eki.panel_beam_with_cross_black.name=屏幕支架（含梁，黑色）
 tile.eki.panel_beam_with_cross_white.name=屏幕支架（含梁，白色）
 tile.eki.bending_beam_white.name=弯曲支架（白色）
@@ -40,12 +40,12 @@ tile.eki.panel_beam_black.name=屏幕支架（白色）
 tile.eki.panel_beam_white.name=屏幕支架（白色）
 tile.eki.beam_black.name=横梁（黑色）
 tile.eki.beam_white.name=横梁（白色）
-//barbed wires
+#barbed wires
 tile.eki.barbed_wires_fence.name=带刺铁丝网（中部）
 tile.eki.barbed_wires_base.name=带刺铁丝网（底座）
 tile.eki.barbed_wires_top.name=带刺铁丝网（顶部）
-//BLOCKS
-//blocks
+#BLOCKS
+#blocks
 tile.eki.retaining_wall.name=挡土墙
 tile.eki.retaining_wall_corner.name=挡土墙拐角
 tile.eki.architectural_concrete.name=清水混凝土
@@ -90,30 +90,30 @@ tile.eki.tessera_purple_heather.name=纸皮石（石南紫）
 tile.eki.tessera_red_rose.name=纸皮石（红色）
 tile.eki.tessera_red.name=纸皮石（玫瑰红）
 tile.eki.tessera_yellow.name=纸皮石（黄色）
-//stairs
+#stairs
 tile.eki.architectural_concrete_stairs.name=清水混凝土楼梯
 tile.eki.concrete_stairs.name=混凝土楼梯
 tile.eki.nichogake_stairs.name=砖楼梯
 tile.eki.washed_granolithic_finish_stairs.name=石子楼梯
 tile.eki.asphalt_stairs.name=沥青楼梯
-//slabs
+#slabs
 tile.eki.architectural_concrete_slab_half.name=清水混凝土台阶
 tile.eki.concrete_slab_half.name=混凝土台阶
 tile.eki.nichogake_slab_half.name=砖台阶
 tile.eki.washed_granolithic_finish_slab_half.name=石子台阶
 tile.eki.asphalt_slab_half.name=沥青台阶
-//side slabs
+#side slabs
 tile.eki.retaining_wall_side_slab.name=挡土墙垂直台阶
 tile.eki.architectural_concrete_side_slab.name=清水混凝土垂直台阶
 tile.eki.concrete_side_slab.name=混凝土垂直台阶
 tile.eki.nichogake_side_slab.name=砖垂直台阶
 tile.eki.washed_granolithic_finish_side_slab.name=石子垂直台阶
 tile.eki.asphalt_side_slab.name=沥青垂直台阶
-//custom stairs
+#custom stairs
 tile.eki.station_stairs.name=车站楼梯
 tile.eki.station_stairs_gentle_top.name=车站缓楼梯（上部）
 tile.eki.station_stairs_gentle_bot.name=车站缓楼梯（底部）
-//LIGHT SECTION
+#LIGHT SECTION
 tile.eki.grille_light_white.name=格柵灯 (白色)
 tile.eki.grille_light_black.name=格柵灯 (黑色)
 tile.eki.embedded_grille_light_white.name=嵌入式栅格灯（白色）
@@ -123,8 +123,8 @@ tile.eki.wall_neon_light.name=霓虹灯
 tile.eki.pillar_lamp.name=灯柱
 tile.eki.flood_light.name=泛光灯
 
-//ITEMINIT
-//TOOLS
+#ITEMINIT
+#TOOLS
 item.eki.wrench.name=扳手
 item.eki.wrench.withouttag.tooltip=用来绑定锚点和闸机。
 item.eki.wrench.withtag.tooltip=已选择%d，%d，%d的锚点。
@@ -139,14 +139,14 @@ itemGroup.eki.block=Eki 方块
 itemGroup.eki.station=Eki 车站
 itemGroup.eki.misc=Eki 杂项
 
-//TILEENTITYS
+#TILEENTITYS
 tile.eki.ticket_vendor.name=售票机
 tile.eki.ticket_gate.name=闸机
 tile.eki.anchor.name=锚点
 tile.eki.anchor.tooltip=用来标记这站中心的方块。
 tile.eki.anchor.warning.tooltip=在已绑定的情況下打掉这个方块并不是个好主意......
 
-//GUIS
+#GUIS
 container.eki.ticket_vendor.state.success=购票成功！金额：%d
 container.eki.ticket_vendor.state.shortage=您身上的余额无法购买%d元的票
 container.eki.ticket_vendor.state.failed=%s 不是一个有效的金额数目
@@ -168,7 +168,7 @@ container.eki.manager.intro=欢迎使用车站管理器！从下方选任意车�
 container.eki.manager.button.inspect=检查
 container.eki.manager.button.back=返回
 
-//STATION LVL
+#STATION LVL
 container.eki.special_class=特等站
 container.eki.first_class=一等站
 container.eki.second_class=二等站
@@ -178,7 +178,7 @@ container.eki.staffless=自助车站
 container.eki.signal=信号站
 container.eki.non=未分级站
 
-//TEXTS
+#TEXTS
 chat.type.text.eki.anchorAmount=该锚点已连接 %d 个闸机/售票机！
 chat.type.text.eki.setPos=已从 %d, %d, %d 进站！
 chat.type.text.eki.accessed=已从 %d, %d, %d 出站! 共花费了 %.2f，经过了 %.2f 格！
@@ -191,10 +191,10 @@ chat.type.text.eki.rangefinder.result=三维空间距离：%d，平面空间距�
 chat.type.text.eki.rangefinder.getPos=成功绑定起始点至%d, %d, %d！
 chat.type.text.eki.desync=资料不完整！请重新加入。
 
-//COMMANDS
+#COMMANDS
 chat.type.text.eki.command.stations.error.illegalType=未知的排序种类，输入/stations help以获得更多帮助。
 chat.type.text.eki.command.stations.help=NF -> 由近至远\nFN -> 由远至近\n NAME -> 由名称
 
-//SYSTEM MESSAGES
+#SYSTEM MESSAGES
 chat.type.text.eki.versioncheckValid=你正运行Eki Mod最新版本！\n版本 >> %s
 chat.type.text.eki.versioncheckInvalid=你的Eki Mod已经过时！快去更新吧！\n点击这里来打开模组页面。运行 >> %s\n最新版本 >> %s

@@ -48,9 +48,8 @@ public class BlockEnamelWall extends BlockVariantBase {
 
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		for (EnamelWallEnumWallType variant : EnamelWallEnumWallType.META_LOOKUP) {
+		for (EnamelWallEnumWallType variant : EnamelWallEnumWallType.META_LOOKUP)
 			items.add(new ItemStack(this, 1, variant.getMeta()));
-		}
 	}
 
 	@Override

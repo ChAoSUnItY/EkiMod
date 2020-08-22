@@ -49,9 +49,8 @@ public class BlockTessera extends BlockVariantBase implements IModelRegister {
 
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		for (TesseraEnumWallEnum variant : TesseraEnumWallEnum.META_LOOKUP) {
+		for (TesseraEnumWallEnum variant : TesseraEnumWallEnum.META_LOOKUP)
 			items.add(new ItemStack(this, 1, variant.getMeta()));
-		}
 	}
 
 	@Override

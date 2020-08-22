@@ -89,9 +89,8 @@ public class GuiTicketVendor extends GuiContainer {
 
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-		if (Eki.isApiModLoaded) {
+		if (Eki.isApiModLoaded)
 			buttonWithdraw.drawButton(mc, mouseX, mouseY, partialTicks);
-		}
 		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		text.drawTextBox();
@@ -104,9 +103,8 @@ public class GuiTicketVendor extends GuiContainer {
 		fontRenderer.drawString(BlockInit.TICKET_VENDOR.getLocalizedName(), (xSize / 2 - fontRenderer.getStringWidth(BlockInit.TICKET_VENDOR.getLocalizedName()) / 2), 8, 4210752);
 		fontRenderer.drawString(new UtilTranslatable("container.inventory").getFormattedText(), 8, ySize - 93, 4210752);
 		fontRenderer.drawString(state, xSize / 2 - fontRenderer.getStringWidth(state) / 2, 20, 16711680);
-		if (warning != null) {
+		if (warning != null)
 			fontRenderer.drawString(warning, 8, ySize - 113, 16711680);
-		}
 	}
 
 	@Override
@@ -121,9 +119,8 @@ public class GuiTicketVendor extends GuiContainer {
 		text.mouseClicked(mouseX, mouseY, mouseButton);
 		listStations.mouseClicked(mouseX, mouseY, mouseButton);
 		// predict price and enter to the textfield
-		if (listStations.selectedIndex != -1) {
-			text.setText("" + UtilStationSystem.calculatePrice(te.getAnchor(), ((Station) listStations.getRaws().get(listStations.selectedIndex)).getPos()));
-		}
+		if (listStations.selectedIndex != -1)
+			text.setText(String.format("%.2f", UtilStationSystem.calculatePrice(te.getAnchor(), ((Station) listStations.getRaws().get(listStations.selectedIndex)).getPos())));
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 	}
 
@@ -217,14 +214,14 @@ public class GuiTicketVendor extends GuiContainer {
 			updateScreen();
 			return;
 		}
-		this.state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.success", price).applyFormat(TextFormatting.GREEN).getFormattedText();
+		state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.success", price).applyFormat(TextFormatting.GREEN).getFormattedText();
 		if (price <= 0) {
 			state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.shortage", price).applyFormat(TextFormatting.RED).getFormattedText();
 			return;
 		} else if (Eki.isApiModLoaded) {
-			if ((int) GrandEconomyApi.getBalance(player.getUniqueID(), true) >= price) {
+			if ((int) GrandEconomyApi.getBalance(player.getUniqueID(), true) >= price)
 				GrandEconomyApi.takeFromBalance(player.getUniqueID(), price, true);
-			} else {
+			else {
 				state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.shortage", price).applyFormat(TextFormatting.RED).getFormattedText();
 				updateScreen();
 				return;

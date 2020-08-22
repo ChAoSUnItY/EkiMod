@@ -2,6 +2,7 @@ package chaos.mod.objects.block.gui.elements;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 
@@ -35,11 +36,9 @@ public class GuiSimpleListBox extends Gui {
 		this.w = w;
 		this.h = h;
 
-		for (int i = 0; i < list.size(); i++) {
-			items.add(list.get(i).getData());
-		}
+		list.forEach(d -> items.add(d.getData()));
 
-		raws = Lists.newArrayList(list.iterator());
+		raws = list;
 	}
 
 	public GuiSimpleListBox(int x, int y, int h, List<? extends DataForm> list, Minecraft mc) {
@@ -48,16 +47,12 @@ public class GuiSimpleListBox extends Gui {
 		this.h = h;
 
 		list.forEach(d -> items.add(d.getData()));
-		List<Integer> cache = Lists.newArrayList();
-
-		for (int i = 0; i < items.size(); i++) {
-			cache.add(mc.fontRenderer.getStringWidth(items.get(i)));
-		}
+		List<Integer> cache = items.stream().map(i -> mc.fontRenderer.getStringWidth(i)).collect(Collectors.toList());
 
 		if (!cache.isEmpty())
 			w = Collections.max(cache) + 20;
 
-		raws = Lists.newArrayList(list.iterator());
+		raws = list;
 	}
 
 	public void draw(int mouseX, int mouseY, FontRenderer fontRenderer) {
@@ -153,10 +148,8 @@ public class GuiSimpleListBox extends Gui {
 
 	public void reloadList(List<? extends DataForm> list) {
 		items.clear();
-		for (int i = 0; i < list.size(); i++) {
-			items.add(list.get(i).getData());
-		}
-		raws = Lists.newArrayList(list.iterator());
+		list.forEach(d -> items.add(d.getData()));
+		raws = list;
 	}
 
 	public boolean onTheMouse(int mouseX, int mouseY) {
@@ -172,10 +165,8 @@ public class GuiSimpleListBox extends Gui {
 	}
 
 	public void setDatas(List<? extends DataForm> datas) {
-		for (int i = 0; i < datas.size(); i++) {
-			items.add(datas.get(i).getData());
-		}
-		raws = Lists.newArrayList(datas.iterator());
+		datas.forEach(d -> items.add(d.getData()));
+		raws = datas;
 	}
 
 	public void shouldDrawBackground(boolean bool) {

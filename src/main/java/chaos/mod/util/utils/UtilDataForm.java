@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.mojang.authlib.GameProfile;
+
 import chaos.mod.util.data.station.DataForm;
 import chaos.mod.util.data.station.StringDataForm;
 import net.minecraft.client.network.NetworkPlayerInfo;
@@ -14,6 +16,6 @@ public class UtilDataForm {
 	}
 
 	public static List<String> getPlayersName(Collection<NetworkPlayerInfo> collection) {
-		return collection.stream().map(c -> new String(c.getGameProfile().getName())).collect(Collectors.toList());
+		return collection.stream().map(NetworkPlayerInfo::getGameProfile).map(GameProfile::getName).collect(Collectors.toList());
 	}
 }

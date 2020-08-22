@@ -19,107 +19,134 @@ public class BlockCustomStair extends BlockFourFace {
 	public static final AxisAlignedBB STAIR_EAST_TOP_AABB = new AxisAlignedBB(0, 0, 0, 0.5D, 1, 1);
 	public static final AxisAlignedBB STAIR_SOUTH_TOP_AABB = new AxisAlignedBB(0, 0, 0, 1, 1, 0.5D);
 	public static final AxisAlignedBB STAIR_WEST_TOP_AABB = new AxisAlignedBB(0.5D, 0, 0, 1, 1, 1);
-	
-	public static final AxisAlignedBB STAIR_NORTH_LEFT = new AxisAlignedBB(0F, 0F, 0F, 1F, 1F, 1F);
-	public final int type; // 1 Stands for Full one ,2 Stands for Bottom one, 3 Stands for Top one.
 
-	public BlockCustomStair(String name, int type) {
+	public static final AxisAlignedBB STAIR_N = new AxisAlignedBB(0F, 0F, 0F, 1F, 2F, 0.25F);
+	public static final AxisAlignedBB STAIR_S = new AxisAlignedBB(0F, 0F, 0.75F, 1F, 2F, 1F);
+	public static final AxisAlignedBB STAIR_E = new AxisAlignedBB(0.75F, 0F, 0F, 1F, 2F, 1F);
+	public static final AxisAlignedBB STAIR_W = new AxisAlignedBB(0F, 0F, 0F, 0.25F, 2F, 1F);
+	public final StairType stairType;
+	public final StairHandRailType stairHType;
+
+	public BlockCustomStair(String name, StairType Stype, StairHandRailType SHtype) {
 		super(name, Eki.STATION, Material.ROCK, false);
-		this.type = type;
+		stairType = Stype;
+		stairHType = SHtype;
 	}
 
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean isActualState) {
 		switch (state.getValue(BlockHorizontal.FACING)) {
 		case NORTH:
-			switch (type) {
-			case 1:
+			switch (stairType) {
+			case NORMAL:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_NORTH_TOP_AABB);
 				break;
-			case 2:
+			case GENTLE_BOT:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
 				break;
-			case 3:
+			case GENTLE_TOP:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
 				break;
-			case 4:
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_NORTH_TOP_AABB);
-			case 5:
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_NORTH_TOP_AABB);
+			default:
+				break;
+			}
+
+			switch (stairHType) {
+			case LEFT:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_E);
+				break;
+			case RIGHT:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_W);
+				break;
+			case NON:
+				break;
 			default:
 				break;
 			}
 			break;
 		case SOUTH:
-			switch (type) {
-			case 1:
+			switch (stairType) {
+			case NORMAL:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_SOUTH_TOP_AABB);
 				break;
-			case 2:
+			case GENTLE_BOT:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
 				break;
-			case 3:
+			case GENTLE_TOP:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
 				break;
-			case 4:
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_SOUTH_TOP_AABB);
+			default:
 				break;
-			case 5:
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_SOUTH_TOP_AABB);
+			}
+
+			switch (stairHType) {
+			case LEFT:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_W);
+				break;
+			case RIGHT:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_E);
+				break;
+			case NON:
 				break;
 			default:
 				break;
 			}
 			break;
 		case EAST:
-			switch (type) {
-			case 1:
+			switch (stairType) {
+			case NORMAL:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_EAST_TOP_AABB);
 				break;
-			case 2:
+			case GENTLE_BOT:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
 				break;
-			case 3:
+			case GENTLE_TOP:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
 				break;
-			case 4:
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_EAST_TOP_AABB);
+			default:
 				break;
-			case 5:
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_EAST_TOP_AABB);
+			}
+
+			switch (stairHType) {
+			case LEFT:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_S);
+				break;
+			case RIGHT:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_N);
+				break;
+			case NON:
 				break;
 			default:
 				break;
 			}
 			break;
 		case WEST:
-			switch (type) {
-			case 1:
+			switch (stairType) {
+			case NORMAL:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_WEST_TOP_AABB);
 				break;
-			case 2:
+			case GENTLE_BOT:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
 				break;
-			case 3:
+			case GENTLE_TOP:
 				addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
 				break;
-			case 4:
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_WEST_TOP_AABB);
+			default:
 				break;
-			case 5:
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_BASE_AABB);
-				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_WEST_TOP_AABB);
+			}
+
+			switch (stairHType) {
+			case LEFT:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_N);
+				break;
+			case RIGHT:
+				addCollisionBoxToList(pos, entityBox, collidingBoxes, STAIR_S);
+				break;
+			case NON:
 				break;
 			default:
 				break;
@@ -132,16 +159,18 @@ public class BlockCustomStair extends BlockFourFace {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		switch (type) {
-		case 1:
-			return FULL_BLOCK_AABB;
-		case 2:
+		if (stairType == StairType.GENTLE_BOT)
 			return STAIR_BASE_AABB;
-		case 3:
+		else {
 			return FULL_BLOCK_AABB;
-		default:
-			return FULL_BLOCK_AABB;
-
 		}
+	}
+
+	public enum StairType {
+		NORMAL, GENTLE_BOT, GENTLE_TOP
+	}
+
+	public enum StairHandRailType {
+		LEFT, RIGHT, NON;
 	}
 }

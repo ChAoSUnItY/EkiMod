@@ -33,9 +33,9 @@ public class GuiMainPage extends GuiScreen {
 
 	public GuiMainPage(BlockPos pos, SortType type) {
 		this.pos = pos;
-		if (type == null) {
+		if (type == null)
 			this.type = SortType.NF;
-		} else {
+		else {
 			this.type = type;
 		}
 	}
@@ -66,9 +66,8 @@ public class GuiMainPage extends GuiScreen {
 
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
-		if (keyCode == 1 || mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)) {
+		if (keyCode == 1 || mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
 			mc.player.closeScreen();
-		}
 		super.keyTyped(typedChar, keyCode);
 	}
 

@@ -42,7 +42,7 @@ public class BlockBarbedWires extends BlockFourFace {
 		EnumFacing face = state.getValue(FACING);
 		if (facing == EnumFacing.UP)
 			return false;
-		
+
 		if (stack.getItem() instanceof ItemBlock) {
 			ItemBlock itemblk = (ItemBlock) stack.getItem();
 			if (itemblk.getBlock() instanceof BlockBarbedWires && getType() == BarbedWireType.BASE) {
@@ -70,9 +70,9 @@ public class BlockBarbedWires extends BlockFourFace {
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		EnumFacing face = state.getValue(FACING);
-		if (face == EnumFacing.NORTH || face == EnumFacing.SOUTH) {
+		if (face == EnumFacing.NORTH || face == EnumFacing.SOUTH)
 			return boxes[0];
-		} else {
+		else {
 			return boxes[1];
 		}
 	}
@@ -80,9 +80,9 @@ public class BlockBarbedWires extends BlockFourFace {
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean isActualState) {
 		EnumFacing face = state.getValue(FACING);
-		if (face == EnumFacing.NORTH || face == EnumFacing.SOUTH) {
+		if (face == EnumFacing.NORTH || face == EnumFacing.SOUTH)
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, boxes[0]);
-		} else {
+		else {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, boxes[1]);
 		}
 	}

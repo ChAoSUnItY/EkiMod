@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
@@ -45,7 +46,7 @@ public class StationHandler {
 		for (int i = 0; i < staFile.length; i++) {
 			register(staFile[i], i);
 		}
-		UtilLogger.info("Successfully init " + (staFile.length - 1) + " stations!");
+		UtilLogger.info(String.format("Successfully init %d stations!", staFile.length - 1));
 		UtilLogger.info("=======================================");
 	}
 
@@ -59,7 +60,7 @@ public class StationHandler {
 			if (sta.equals(Station.EXAMPLE))
 				return;
 			stations.add(sta);
-			UtilLogger.info(sta.getName() + " - " + sta.getPosStringFormat() + " > (" + index + "/" + (locationSta.listFiles().length - 1) + ")");
+			UtilLogger.info(String.format("%s - %s > (%d/%d)", sta.getName(), sta.getPosStringFormat(), index - 1, locationSta.listFiles().length - 1));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -69,9 +70,9 @@ public class StationHandler {
 
 	public boolean isExist(BlockPos pos) {
 		for (Station sta : stations) {
-			if (sta.getPos().equals(pos)) {
+			if (sta.getPos().equals(pos))
 				return true;
-			}
+
 		}
 		return false;
 	}
@@ -81,7 +82,7 @@ public class StationHandler {
 	}
 
 	public boolean tryRemoveStation(BlockPos pos) {
-		for (int i = 0; i < stations.size(); i++) {
+		for (int i = 0; i < stations.size(); i++)
 			if (match(stations.get(i), pos)) {
 				try {
 					File file = getFile(stations.get(i));
@@ -92,56 +93,52 @@ public class StationHandler {
 				stations.remove(i);
 				return true;
 			}
-		}
+
 		return false;
 	}
 
 	public boolean replaceStation(Station newSta) {
-		for (int i = 0; i < stations.size(); i++) {
+		for (int i = 0; i < stations.size(); i++)
 			if (match(stations.get(i), newSta.getPos())) {
 				stations.set(i, newSta);
 				return true;
 			}
-		}
+
 		return false;
 	}
 
 	public Station getStation(BlockPos pos) {
-		for (Station sta : stations) {
+		for (Station sta : stations)
 			if (match(sta, pos))
 				return sta;
 
-		}
 		return Station.EXAMPLE;
 	}
 
 	public Station getStation(String name) {
-		for (Station sta : stations) {
+		for (Station sta : stations)
 			if (match(sta, name))
 				return sta;
 
-		}
 		return Station.EXAMPLE;
 	}
 
 	public List<Station> getStations() {
-		return Lists.newArrayList(stations.iterator());
+		return Lists.newArrayList(stations);
 	}
 
 	public List<String> getStationsName() {
-		List<String> s = Lists.newArrayList();
-		stations.forEach(sta -> s.add(sta.getName()));
-		return s;
+		return stations.stream().map(Station::getName).collect(Collectors.toList());
 	}
 
 	public void saveAll() {
-		for (Station sta : stations) {
+		for (Station sta : stations)
 			try {
 				save(sta);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+
 		stations.clear();
 	}
 
@@ -183,7 +180,7 @@ public class StationHandler {
 	}
 
 	private File getFile(Station sta) {
-		return new File(locationSta, sta.getName() + sta.getPosStringFormat() + ".json");
+		return new File(locationSta, String.format("%s.json", sta.getName() + sta.getPosStringFormat()));
 	}
 
 	private boolean match(Station sta, BlockPos pos) {
