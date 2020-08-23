@@ -84,7 +84,7 @@ public class EkiApi {
 				failCount++;
 				UtilLogger.info(String.format("Fail to replace a station, given position is %s", sta[i].toString()));
 			}
-		return !(failCount == sta.length);
+		return failCount != sta.length;
 	}
 
 	/***
@@ -103,7 +103,7 @@ public class EkiApi {
 				failCount++;
 				UtilLogger.info(String.format("Fail to remove a station, given position is %s", pos[i].toString()));
 			}
-		return !(failCount == pos.length);
+		return failCount != pos.length;
 	}
 
 	/***
