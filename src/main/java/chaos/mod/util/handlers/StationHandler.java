@@ -69,11 +69,9 @@ public class StationHandler {
 	}
 
 	public boolean isExist(BlockPos pos) {
-		for (Station sta : stations) {
+		for (Station sta : stations)
 			if (sta.getPos().equals(pos))
 				return true;
-
-		}
 		return false;
 	}
 
@@ -103,7 +101,6 @@ public class StationHandler {
 				stations.set(i, newSta);
 				return true;
 			}
-
 		return false;
 	}
 
@@ -111,15 +108,13 @@ public class StationHandler {
 		for (Station sta : stations)
 			if (match(sta, pos))
 				return sta;
-
 		return Station.EXAMPLE;
 	}
 
-	public Station getStation(String name) {
+	public Station getStation(String name, boolean sensitive) {
 		for (Station sta : stations)
-			if (match(sta, name))
+			if (match(sta, name, sensitive))
 				return sta;
-
 		return Station.EXAMPLE;
 	}
 
@@ -138,7 +133,6 @@ public class StationHandler {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		stations.clear();
 	}
 
@@ -187,8 +181,8 @@ public class StationHandler {
 		return sta.getPos().equals(pos);
 	}
 
-	private boolean match(Station sta, String name) {
-		return sta.getName().equals(name);
+	private boolean match(Station sta, String name, boolean sensitive) {
+		return sensitive ? sta.getName().equals(name) : sta.getName().equalsIgnoreCase(name);
 	}
 
 	private File getWorldDir(World world) {

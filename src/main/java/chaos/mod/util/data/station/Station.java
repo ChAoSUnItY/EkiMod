@@ -18,9 +18,6 @@ public class Station extends DataForm {
 
 	/**
 	 * For bytebuf order.
-	 * 
-	 * @param name
-	 * @param pos
 	 */
 	public Station(String name, BlockPos pos, String operator, EnumStationLevel lvl) {
 		this(pos, name, operator, lvl);

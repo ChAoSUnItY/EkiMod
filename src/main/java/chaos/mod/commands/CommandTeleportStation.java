@@ -49,7 +49,7 @@ public class CommandTeleportStation extends CommandBase {
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if (args.length < 1)
 			return;
-		Station sta = StationHandler.INSTANCE.getStation(args[0]);
+		Station sta = StationHandler.INSTANCE.getStation(args[0], true);
 		if (sta.equals(Station.EXAMPLE))
 			return;
 		BlockPos pos = sta.getPos();
