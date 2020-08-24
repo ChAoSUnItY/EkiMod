@@ -11,12 +11,8 @@ import org.apache.commons.io.IOUtils;
 import chaos.mod.util.Reference;
 
 public class UtilVersionChecker {
-	private static final UtilVersionChecker VC = new UtilVersionChecker();
-	
-	public static UtilVersionChecker get() {
-		return VC;
-	}
-	
+	public static final UtilVersionChecker INSTANCE = new UtilVersionChecker();
+
 	public boolean isLatestVersion() {
 		String latestVersion = worker();
 		return latestVersion.equals(Reference.VERSION);
@@ -30,7 +26,7 @@ public class UtilVersionChecker {
 		InputStream in = null;
 		String latestVersion = null;
 		try {
-			in = new URL("https://raw.githubusercontent.com/KyleLin921021/EkiMod/master/src/main/resources/assets/eki/misc/version").openStream();
+			in = new URL("https://raw.githubusercontent.com/KyleLin921021/EkiMod/1.10.2/src/main/resources/assets/eki/misc/version").openStream();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

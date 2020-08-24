@@ -3,15 +3,16 @@ package chaos.mod.objects.block;
 import java.util.List;
 
 import chaos.mod.Eki;
-import chaos.mod.objects.block.base.BlockHasFace;
+import chaos.mod.objects.block.base.BlockFourFace;
 import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockHandRail extends BlockHasFace {
+public class BlockHandRail extends BlockFourFace {
 	public static final AxisAlignedBB HAND_RAIL_NORTH_AABB = new AxisAlignedBB(0, 0, 0.625D, 1, 1.5D, 1);
 	public static final AxisAlignedBB HAND_RAIL_NORTH_CORNER_AABB = new AxisAlignedBB(0, 0, 0, 0.375D, 1.5D, 0.625D);
 	public static final AxisAlignedBB HAND_RAIL_EAST_AABB = new AxisAlignedBB(0, 0, 0, 0.375D, 1.5D, 1);
@@ -23,7 +24,7 @@ public class BlockHandRail extends BlockHasFace {
 	public final int type; // 1 Stands for Normal one, 2 Stands for Corner one
 
 	public BlockHandRail(String name, int type) {
-		super(name, Eki.STATION, false);
+		super(name, Eki.STATION, Material.IRON, false);
 		this.type = type;
 	}
 

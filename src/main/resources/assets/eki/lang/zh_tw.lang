@@ -1,0 +1,199 @@
+#ChAoS_UnItY
+#=====LANG INIT=====
+#PARSE_ESCAPES
+#===================
+#BLOCKINIT
+#STATION SECTION
+#station stuff
+tile.eki.handrail.name=扶手
+tile.eki.handrail_corner.name=扶手轉角
+#platforms
+tile.eki.platform_edge.name=月台邊
+tile.eki.platform_edge_with_guide_brick.name=月台邊含導盲磚
+tile.eki.platform_edge_with_guide_brick_and_line.name=月台邊含導盲磚和標線
+tile.eki.platform_edge_with_line.name=月台邊含標線
+tile.eki.platform_asphalt_with_guide_brick.name=月台磚含標線 (瀝青)
+tile.eki.platform_edge_with_line_and_light_off.name=月台邊含標線和列車警示燈
+tile.eki.platform_edge_with_line_and_light_on.name=月台邊含標線和列車警示燈 (開啟)
+tile.eki.platform_edge_opf.name=月台邊加高
+tile.eki.platform_edge_with_guide_brick_opf.name=月台邊加高含導盲磚
+tile.eki.platform_edge_with_guide_brick_and_line_opf.name=月台邊加高含導盲磚和標線
+tile.eki.platform_edge_with_line_opf.name=月台邊加高含標線
+tile.eki.platform_edge_with_line_and_light_off_opf.name=月台邊加高含標線和列車警示燈
+tile.eki.platform_edge_with_line_and_light_on_opf.name=月台邊加高含標線和列車警示燈 (開啟)
+#decorations
+tile.eki.wooden_bench.name=木椅
+#beams
+tile.eki.panel_beam_with_cross_black.name=螢幕支架含樑 (黑色)
+tile.eki.panel_beam_with_cross_white.name=螢幕支架含樑 (白色)
+tile.eki.bending_beam_white.name=彎曲支架 (白色)
+tile.eki.bending_beam_black.name=彎曲支架 (黑色)
+tile.eki.support_beam_white.name=支撐架樑 (白色)
+tile.eki.support_beam_black.name=支撐架樑 (黑色)
+tile.eki.panel_beam_black.name=螢幕支架 (黑色)
+tile.eki.panel_beam_white.name=螢幕支架 (白色)
+tile.eki.beam_black.name=橫樑 (黑色)
+tile.eki.beam_white.name=橫樑 (白色)
+#station pillars
+tile.eki.station_pillar_base.name=車站柱子 (底部)
+tile.eki.station_pillar_center.name=車站柱子 (中間)
+tile.eki.station_pillar_top.name=車站柱子 (頂部)
+tile.eki.station_pillar_base_with_fire_extinguisher_in.name=車站柱子 (底部含滅火器)
+#barbed wires
+tile.eki.barbed_wires_fence.name=有刺鐵絲網
+tile.eki.barbed_wires_base.name=有刺鐵絲網底座
+tile.eki.barbed_wires_top.name=有刺鐵絲網頂部
+#BLOCKS
+#blocks
+tile.eki.retaining_wall.name=擋土牆
+tile.eki.retaining_wall_corner.name=擋土牆轉角
+tile.eki.architectural_concrete.name=清水混凝土
+tile.eki.concrete.name=混凝土
+tile.eki.nichogake.name=二丁磚
+tile.eki.washed_granolithic_finish.name=洗石子
+tile.eki.asphalt.name=瀝青
+tile.eki.enamel_wall_bot_blue.name=搪瓷牆 (藍色底部)
+tile.eki.enamel_wall_bot_green.name=搪瓷牆 (綠色底部)
+tile.eki.enamel_wall_bot_cyan.name=搪瓷牆 (青色底部)
+tile.eki.enamel_wall_bot_purple.name=搪瓷牆 (紫色底部)
+tile.eki.enamel_wall_bot_red.name=搪瓷牆 (紅色底部)
+tile.eki.enamel_wall_bot_yellow.name=搪瓷牆 (黃色底部)
+tile.eki.enamel_wall_bot_white.name=搪瓷牆 (白色底部)
+tile.eki.enamel_wall_s_blue.name=搪瓷牆 (藍色含條紋)
+tile.eki.enamel_wall_s_green.name=搪瓷牆 (綠色含條紋)
+tile.eki.enamel_wall_s_cyan.name=搪瓷牆 (青色含條紋)
+tile.eki.enamel_wall_s_purple.name=搪瓷牆 (紫色含條紋)
+tile.eki.enamel_wall_s_red.name=搪瓷牆 (紅色含條紋)
+tile.eki.enamel_wall_s_yellow.name=搪瓷牆 (黃色含條紋)
+tile.eki.enamel_wall_s_white.name=搪瓷牆 (白色含條紋)
+tile.eki.enamel_wall_top_blue.name=搪瓷牆 (藍色頂部)
+tile.eki.enamel_wall_top_green.name=搪瓷牆 (綠色頂部)
+tile.eki.enamel_wall_top_cyan.name=搪瓷牆 (青色頂部)
+tile.eki.enamel_wall_top_purple.name=搪瓷牆 (紫色頂部)
+tile.eki.enamel_wall_top_red.name=搪瓷牆 (紅色頂部)
+tile.eki.enamel_wall_top_yellow.name=搪瓷牆 (黃色頂部)
+tile.eki.enamel_wall_top_white.name=搪瓷牆 (白色頂部)
+tile.eki.tessera_black_dull.name=紙皮石 (深黑色)
+tile.eki.tessera_cerulean_smooth.name=紙皮石 (蔚藍色)
+tile.eki.tessera_cerulean.name=紙皮石 (平滑蔚藍色)
+tile.eki.tessera_blue_slate.name=紙皮石 (石板藍)
+tile.eki.tessera_blue_teal.name=紙皮石 (藍綠色)
+tile.eki.tessera_brown_tortilla.name=紙皮石 (玉米餅棕色)
+tile.eki.tessera_gray_dove.name=紙皮石 (灰色)
+tile.eki.tessera_gray_fossil.name=紙皮石 (鴿子灰色)
+tile.eki.tessera_gray.name=紙皮石 (化石灰)
+tile.eki.tessera_green_fern.name=紙皮石 (蕨綠色)
+tile.eki.tessera_green_lime.name=紙皮石 (檸檬綠)
+tile.eki.tessera_orange_fire.name=紙皮石 (火橙色)
+tile.eki.tessera_purple_heather.name=紙皮石 (石南紫)
+tile.eki.tessera_red_rose.name=紙皮石 (紅色)
+tile.eki.tessera_red.name=紙皮石 (玫瑰紅)
+tile.eki.tessera_yellow.name=紙皮石 (黃色)
+#stairs
+tile.eki.architectural_concrete_stairs.name=清水混凝土階梯
+tile.eki.concrete_stairs.name=混凝土階梯
+tile.eki.nichogake_stairs.name=二丁磚階梯
+tile.eki.washed_granolithic_finish_stairs.name=洗石子階梯
+tile.eki.asphalt_stairs.name=瀝青階梯
+#slabs
+tile.eki.architectural_concrete_slab_half.name=清水混凝土半磚
+tile.eki.concrete_slab_half.name=混凝土半磚
+tile.eki.nichogake_slab_half.name=二丁磚半磚
+tile.eki.washed_granolithic_finish_slab_half.name=洗石子半磚
+tile.eki.asphalt_slab_half.name=瀝青半磚
+#side slabs
+tile.eki.retaining_wall_side_slab.name=擋土牆垂直半磚
+tile.eki.architectural_concrete_side_slab.name=清水混凝土垂直半磚
+tile.eki.concrete_side_slab.name=混凝土垂直半磚
+tile.eki.nichogake_side_slab.name=二丁磚垂直半磚
+tile.eki.washed_granolithic_finish_side_slab.name=洗石子垂直半磚
+tile.eki.asphalt_side_slab.name=瀝青垂直半磚
+#custom stairs
+tile.eki.station_stairs.name=車站階梯
+tile.eki.station_stairs_gentle_top.name=車站緩階梯 (上半部)
+tile.eki.station_stairs_gentle_bot.name=車站緩階梯 (下半部)
+#LIGHT SECTION
+tile.eki.grille_light_white.name=格柵燈 (白色)
+tile.eki.grille_light_black.name=格柵燈 (黑色)
+tile.eki.embedded_grille_light_white.name=嵌入式格柵燈 (白色)
+tile.eki.embedded_grille_light_black.name=嵌入式格柵燈 (黑色)
+tile.eki.tunnel_light.name=隧道內用燈
+tile.eki.wall_neon_light.name=牆上霓虹燈
+tile.eki.pillar_lamp.name=燈柱
+tile.eki.flood_light.name=泛光燈
+
+#ITEMINIT
+#TOOLS
+item.eki.wrench.name=扳手
+item.eki.wrench.withouttag.tooltip=用來綁定錨點至票閘的工具。
+item.eki.wrench.withtag.tooltip=用來綁定錨點至票閘的工具，已綁定至 %d, %d, %d。
+item.eki.ticket.name=車票
+item.eki.ticket.tooltip=值 %d 元。 :)
+item.eki.rangefinder.name=測距儀
+item.eki.rangefinder.tooltip=起始位置：%d, %d, %d。
+item.eki.station_manager.name=車站監控儀
+item.eki.barbed_wires_set.name=有刺鐵絲網組合包
+
+itemGroup.eki.block=Eki 方塊
+itemGroup.eki.station=Eki 車站
+itemGroup.eki.misc=Eki 雜項
+
+#TILEENTITYS
+tile.eki.ticket_vendor.name=售票機
+tile.eki.ticket_gate.name=票閘
+tile.eki.anchor.name=錨點
+tile.eki.anchor.tooltip=用來標記為車站中心的方塊。
+tile.eki.anchor.warning.tooltip=在已綁定的情況下打掉這個方塊並不是個好主意......
+
+#GUIS
+container.eki.ticket_vendor.state.success=出票成功!金額：%d
+container.eki.ticket_vendor.state.shortage=您身上的餘額不足：%d
+container.eki.ticket_vendor.state.failed=%s 並不是一個有效金額數目
+container.eki.ticket_vendor.state.illegal=%s 玩家在售票機內輸入了無效的金額數目
+container.eki.ticket_vendor.state.waiting=等待中......
+container.eki.ticket_vendor.state.withdraw=提款成功!
+container.eki.ticket_vendor.state.permission=權限不足
+container.eki.ticket_vendor.button.provide=出票
+container.eki.ticket_vendor.button.withdraw=提款
+container.eki.ticket_vendor.text.default=請輸入數字
+container.eki.anchor.station.name=站名：
+container.eki.anchor.station.class=車站等級：
+container.eki.anchor.text=請輸入站名
+container.eki.anchor.desc=錨點是用來作為車站基準點的方塊，在註冊車站後錨點才能發揮其功用。可用扳手向票閘或售票機進行綁定。
+container.eki.anchor.button.insert=插入
+container.eki.anchor.button.confirm=確認
+container.eki.button.clear=清除
+container.eki.manager.intro=歡迎使用車站監控儀！從下方點選任一車站來檢視他們的狀態：
+container.eki.manager.button.inspect=檢視
+container.eki.manager.button.back=返回
+
+#STATION LVL
+container.eki.special_class=特等站
+container.eki.first_class=一等站
+container.eki.second_class=二等站
+container.eki.third_class=三等站
+container.eki.simple=簡易站
+container.eki.staffless=招呼站
+container.eki.signal=號誌站
+container.eki.non=未列級
+
+#TEXTS
+chat.type.text.eki.anchorAmount=該錨點已連接 %d 個票閘/售票機!
+chat.type.text.eki.setPos=已從 %d, %d, %d 進站!
+chat.type.text.eki.accessed=已從 %d, %d, %d 出站! 共花費了 %.2f, 行經了 %.2f 格!
+chat.type.text.eki.notEnoughValue=無法出站! 票價僅值 %d, 需要 %d.
+chat.type.text.eki.missingValue=此票沒有價值可言!
+chat.type.text.eki.illegalAnchor=未知錨點。可能已經被破壞了？
+chat.type.text.eki.missingAnchor=請先選取一個錨點!
+chat.type.text.eki.anchorLinked=已連結至錨點!
+chat.type.text.eki.rangefinder.result=三維空間距離：%d，平面空間距離：%d。
+chat.type.text.eki.rangefinder.getPos=成功綁定起始點至%d, %d, %d!
+chat.type.text.eki.desync=資料不完整!請重新加入。
+
+#COMMANDS
+chat.type.text.eki.command.stations.error.illegalType=未知的排序種類，輸入/stations help以獲得更多資訊。
+chat.type.text.eki.command.stations.help=NF -> 由近至遠\nFN -> 由遠至近\n NAME -> 由名稱
+
+#SYSTEM MESSAGES
+chat.type.text.eki.versioncheckValid=你正運行Eki Mod最新版本!\n版本 >> %s
+chat.type.text.eki.versioncheckInvalid=你的Eki Mod已經不再支援! 快去更新吧!\n點擊這裡來打開模組頁面.\n正在運行 >> %s\n最新版本 >> %s

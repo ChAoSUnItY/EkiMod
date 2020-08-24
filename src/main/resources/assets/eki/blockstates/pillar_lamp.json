@@ -1,0 +1,31 @@
+{
+    "variants": {
+        "facing=down": {
+            "model": "eki:pillar_lamp", 
+            "x": 180
+        }, 
+        "facing=east": {
+            "model": "eki:pillar_lamp", 
+            "x": 90, 
+            "y": 90
+        }, 
+        "facing=north": {
+            "model": "eki:pillar_lamp", 
+            "x": 90, 
+            "y": 0
+        }, 
+        "facing=south": {
+            "model": "eki:pillar_lamp", 
+            "x": 90, 
+            "y": 180
+        }, 
+        "facing=up": {
+            "model": "eki:pillar_lamp"
+        }, 
+        "facing=west": {
+            "model": "eki:pillar_lamp", 
+            "x": 90, 
+            "y": 270
+        }
+    }
+}

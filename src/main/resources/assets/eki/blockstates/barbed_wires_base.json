@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=east": {
+            "model": "eki:barbed_wires_base", 
+            "y": 270
+        }, 
+        "facing=north": {
+            "model": "eki:barbed_wires_base", 
+            "y": 180
+        }, 
+        "facing=south": {
+            "model": "eki:barbed_wires_base"
+        }, 
+        "facing=west": {
+            "model": "eki:barbed_wires_base", 
+            "y": 90
+        }
+    }
+}

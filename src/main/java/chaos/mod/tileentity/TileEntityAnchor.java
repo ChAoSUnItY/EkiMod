@@ -1,68 +1,80 @@
 package chaos.mod.tileentity;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
+import chaos.mod.util.data.station.EnumStationLevel;
+import chaos.mod.util.data.station.Station;
+import chaos.mod.util.handlers.StationHandler;
+import chaos.mod.util.utils.UtilBlockPos;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.math.BlockPos;
 
-public class TileEntityAnchor extends TileEntity {
-	private int ANCHORED_GATES_AMOUNT;
+public class TileEntityAnchor extends TileEntityBase {
+	public List<BlockPos> gatesPos;
 
-	public void increaseAnchoredObjectsAmount() {
-		this.ANCHORED_GATES_AMOUNT++;
-		this.markDirty();
+	public TileEntityAnchor() {
+		gatesPos = Lists.newArrayList();
 	}
 
-	public void decreaseAnchoredObjectsAmount() {
-		this.ANCHORED_GATES_AMOUNT--;
-		this.markDirty();
+	public boolean isValidStation() {
+		return StationHandler.INSTANCE.isExist(pos);
 	}
 
-	public int getAnchoredObjectsAmount() {
-		return this.ANCHORED_GATES_AMOUNT;
+	public Station getStation() {
+		if (StationHandler.INSTANCE.isExist(pos))
+			return StationHandler.INSTANCE.getStation(pos);
+		return new Station(pos, "", "", EnumStationLevel.STAFFLESS);
+	}
+
+	public boolean removeStation() {
+		if (StationHandler.INSTANCE.isExist(pos))
+			return StationHandler.INSTANCE.tryRemoveStation(pos);
+		return false;
+	}
+
+	public void addGate(BlockPos pos) {
+		gatesPos.add(pos);
+	}
+
+	public void deleteGate(BlockPos pos) {
+		for (int i = 0; i < gatesPos.size(); i++)
+			if (gatesPos.get(i).equals(pos)) {
+				gatesPos.remove(i);
+				return;
+			}
+
+	}
+
+	public void resetAllGate() {
+		for (BlockPos p : gatesPos) {
+			TileEntityRegistrable teTG = (TileEntityRegistrable) worldObj.getTileEntity(p);
+			teTG.reset();
+		}
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		compound.setInteger("anchored_gates_amount", this.ANCHORED_GATES_AMOUNT);
+		NBTTagList list = new NBTTagList();
+		for (BlockPos p : gatesPos) {
+			NBTTagCompound tag = new NBTTagCompound();
+			tag.setIntArray("gate", UtilBlockPos.getIntArray(p));
+			list.appendTag(tag);
+		}
+		compound.setTag("anchorOBJ", list);
 		return super.writeToNBT(compound);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.ANCHORED_GATES_AMOUNT = compound.getInteger("anchored_gates_amount");
-	}
-
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		int metadata = getBlockMetadata();
-		return new SPacketUpdateTileEntity(this.pos, metadata, nbt);
-	}
-
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		this.readFromNBT(pkt.getNbtCompound());
-	}
-
-	@Override
-	public NBTTagCompound getUpdateTag() {
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		return nbt;
-	}
-
-	@Override
-	public void handleUpdateTag(NBTTagCompound tag) {
-		this.readFromNBT(tag);
-	}
-
-	@Override
-	public NBTTagCompound getTileData() {
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		return nbt;
+		NBTTagList list = compound.getTagList("anchorOBJ", 10);
+		gatesPos = Lists.newArrayList();
+		for (int i = 0; i < list.tagCount(); i++) {
+			NBTTagCompound tag = list.getCompoundTagAt(i);
+			gatesPos.add(UtilBlockPos.getPos(tag.getIntArray("gate")));
+		}
 	}
 }

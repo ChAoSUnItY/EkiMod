@@ -1,16 +1,17 @@
 package chaos.mod.util.network;
 
 import chaos.mod.init.ItemInit;
+import chaos.mod.tileentity.TileEntityTicketVendor;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -55,23 +56,33 @@ public class PacketVendorSpawnItemWorker implements IMessage {
 	}
 
 	public static class Handler implements IMessageHandler<PacketVendorSpawnItemWorker, IMessage> {
-
 		@Override
-		public IMessage onMessage(PacketVendorSpawnItemWorker message, MessageContext ctx) {
+		public IMessage onMessage(final PacketVendorSpawnItemWorker message, final MessageContext ctx) {
 			if (!message.messageValid && ctx.side != Side.SERVER)
 				return null;
-			ResourceLocation resourceLocation = new ResourceLocation("block.dispenser.launch");
-			TileEntity tileEntity = ctx.getServerHandler().playerEntity.getServerWorld().getTileEntity(message.pos);
+			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(new Runnable() {
+				@Override
+				public void run() {
+					processMessage(message, ctx);
+				}
+			});
+			return null;
+		}
+
+		void processMessage(PacketVendorSpawnItemWorker message, MessageContext ctx) {
+			TileEntity te = ctx.getServerHandler().playerEntity.getServerWorld().getTileEntity(message.pos);
 			World world = ctx.getServerHandler().playerEntity.getEntityWorld();
-			BlockPos pos = tileEntity.getPos();
+			BlockPos pos = te.getPos();
 			ItemStack ticket = new ItemStack(ItemInit.TICKET, 1);
 			NBTTagCompound nbt = new NBTTagCompound();
+
 			nbt.setInteger("value", message.price);
 			ticket.setTagCompound(nbt);
-			tileEntity.getWorld().spawnEntityInWorld(
-					new EntityItem(tileEntity.getWorld(), pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, ticket));
-			world.playSound(null, pos, SoundEvent.REGISTRY.getObject(resourceLocation), SoundCategory.BLOCKS, 1, 1);
-			return null;
+			if (!ctx.getServerHandler().playerEntity.inventory.addItemStackToInventory(ticket)) {
+				te.getWorld().spawnEntityInWorld(new EntityItem(te.getWorld(), pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, ticket));
+			}
+			((TileEntityTicketVendor) te).addMoney(message.price);
+			world.playSound(null, pos, SoundEvents.BLOCK_DISPENSER_LAUNCH, SoundCategory.BLOCKS, 1, 1);
 		}
 	}
 }

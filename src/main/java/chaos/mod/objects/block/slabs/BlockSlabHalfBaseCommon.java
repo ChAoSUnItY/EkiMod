@@ -2,12 +2,12 @@ package chaos.mod.objects.block.slabs;
 
 import chaos.mod.Eki;
 import chaos.mod.init.ItemInit;
-import chaos.mod.util.interfaces.IHasModel;
+import chaos.mod.util.interfaces.IModelRegister;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSlab;
 
-public class BlockSlabHalfBaseCommon extends BlockSlabBaseCommon implements IHasModel {
+public class BlockSlabHalfBaseCommon extends BlockSlabBaseCommon implements IModelRegister {
 	public BlockSlabHalfBaseCommon(String name, BlockSlab half, BlockSlab doubleSlab) {
 		super(name, half);
 

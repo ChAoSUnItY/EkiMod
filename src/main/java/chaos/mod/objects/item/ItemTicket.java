@@ -2,7 +2,7 @@ package chaos.mod.objects.item;
 
 import java.util.List;
 
-import net.minecraft.client.resources.I18n;
+import chaos.mod.util.utils.UtilTranslatable.UtilTCString;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -18,8 +18,7 @@ public class ItemTicket extends ItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		if (stack.hasTagCompound()) {
-			tooltip.add(TextFormatting.GRAY + I18n.format(getUnlocalizedName() + ".tooltip", stack.getTagCompound().getInteger("value")));
-		}
+		if (stack.hasTagCompound())
+			tooltip.add(new UtilTCString(getUnlocalizedName() + ".tooltip", stack.getTagCompound().getInteger("value")).applyFormat(TextFormatting.GRAY).getFormattedText());
 	}
 }
