@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[34,)"
+license="All rights reserved"
+issueTrackerURL="http://my.issue.tracker/"
+[[mods]]
+modId="eki"
+version="${file.jarVersion}"
+displayName="Eki Mod"
+updateJSONURL="http://myurl.me/"
+displayURL="http://example.com/"
+logoFile="examplemod.png"
+credits="Those old texture / model contributors from 1.12.2 eki mod"
+authors="ChAoS_UnItY"
+description='''
+A new generation station decoration mod!
+'''
+[[dependencies.eki]]
+    modId="forge"
+    mandatory=true
+    versionRange="[34,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.eki]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.3]"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.eki]]
+    modId="eki_lib"
+    mandatory=true
+    versionRange="(1.0.0, 2.0.0)"
+    ordering="NONE"
+    side="BOTH"
