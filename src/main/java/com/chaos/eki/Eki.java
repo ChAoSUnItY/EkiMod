@@ -1,5 +1,8 @@
 package com.chaos.eki;
 
+import com.chaos.eki.utils.handler.RegistryHandler;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,6 +23,9 @@ public class Eki {
 
     public Eki() {
         final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        RegistryHandler.ITEMS.register(bus);
+        RegistryHandler.BLOCKS.register(bus);
 
         bus.addListener(this::setup);
         bus.addListener(this::enqueueIMC);
@@ -44,4 +50,11 @@ public class Eki {
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
     }
+
+    public static final ItemGroup ekiItemGroup = new ItemGroup("eki") {
+        @Override
+        public ItemStack createIcon() {
+            return RegistryHandler.RETAINING_WALL_MULTI_BLOCK_ITEM.get().getDefaultInstance();
+        }
+    };
 }
