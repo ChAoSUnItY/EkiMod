@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "eki:block/nichogake_slab"
+    },
+    "type=top": {
+      "model": "eki:block/nichogake_slab_top"
+    },
+    "type=double": {
+      "model": "eki:block/nichogake"
+    }
+  }
+}

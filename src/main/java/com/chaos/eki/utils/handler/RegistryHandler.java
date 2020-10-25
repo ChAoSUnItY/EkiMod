@@ -31,9 +31,9 @@ public class RegistryHandler {
     public static final RegistryObject<SlabBlock> CONCRETE_SLAB = BLOCKS.register("concrete_slab",
             () -> new SlabBlock(DEFAULT_BLOCK_PROPERTIES));
     public static final RegistryObject<BuildingBaseBlock> ARCHITECTURAL_CONCRETE = BLOCKS.register("architectural_concrete", BuildingBaseBlock::new);
-    public static final RegistryObject<StairsBlock> ARCHITECTURAL_CONCRETE_STAIRS = BLOCKS.register("concrete_stairs",
+    public static final RegistryObject<StairsBlock> ARCHITECTURAL_CONCRETE_STAIRS = BLOCKS.register("architectural_concrete_stairs",
             () -> new StairsBlock(() -> ARCHITECTURAL_CONCRETE.get().getDefaultState(), DEFAULT_BLOCK_PROPERTIES));
-    public static final RegistryObject<SlabBlock> ARCHITECTURAL_CONCRETE_SLAB = BLOCKS.register("concrete_slab",
+    public static final RegistryObject<SlabBlock> ARCHITECTURAL_CONCRETE_SLAB = BLOCKS.register("architectural_concrete_slab",
             () -> new SlabBlock(DEFAULT_BLOCK_PROPERTIES));
     public static final RegistryObject<BuildingBaseBlock> ASPHALT = BLOCKS.register("asphalt", BuildingBaseBlock::new);
     public static final RegistryObject<StairsBlock> ASPHALT_STAIRS = BLOCKS.register("asphalt_stairs",

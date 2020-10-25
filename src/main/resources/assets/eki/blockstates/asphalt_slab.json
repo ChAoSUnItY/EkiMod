@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "eki:block/asphalt_slab"
+    },
+    "type=top": {
+      "model": "eki:block/asphalt_slab_top"
+    },
+    "type=double": {
+      "model": "eki:block/asphalt"
+    }
+  }
+}

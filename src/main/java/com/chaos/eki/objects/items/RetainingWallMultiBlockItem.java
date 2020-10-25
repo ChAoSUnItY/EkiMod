@@ -72,21 +72,18 @@ public class RetainingWallMultiBlockItem extends BlockItem {
     @Nonnull
     @Override
     protected boolean placeBlock(BlockItemUseContext context, BlockState state) {
-        Direction dir = context.getNearestLookingDirection();
         BlockPos pos = context.getPos();
-        DirectionProperty dirProp = HorizontalBaseBlock.FACING;
-        EnumProperty<RetainingWallMultiBlock.RetainingWallMultiBlockType> types = RetainingWallMultiBlock.TYPES;
-        BlockState newState = RegistryHandler.HUGE_RETAINING_WALL.get().getDefaultState().with(dirProp, context.getPlacementHorizontalFacing().getOpposite());
+        BlockState newState = RegistryHandler.HUGE_RETAINING_WALL.get().getDefaultState().with(HorizontalBaseBlock.FACING, context.getPlacementHorizontalFacing().getOpposite());
         World world = context.getWorld();
-        switch (dir) {
+        switch (context.getPlacementHorizontalFacing()) {
             case NORTH:
-                return setupMultiBlock(world, pos, newState, (p, x ,y) -> p.east(x).up(y));
+                return setupMultiBlock(world, pos, newState, (p, x, y) -> p.east(x).up(y));
             case SOUTH:
-                return setupMultiBlock(world, pos, newState, (p, x ,y) -> p.west(x).up(y));
+                return setupMultiBlock(world, pos, newState, (p, x, y) -> p.west(x).up(y));
             case EAST:
-                return setupMultiBlock(world, pos, newState, (p, x ,y) -> p.south(x).up(y));
+                return setupMultiBlock(world, pos, newState, (p, x, y) -> p.south(x).up(y));
             case WEST:
-                return  setupMultiBlock(world, pos, newState, (p, x ,y) -> p.north(x).up(y));
+                return setupMultiBlock(world, pos, newState, (p, x, y) -> p.north(x).up(y));
             default:
                 return false;
         }
@@ -98,7 +95,7 @@ public class RetainingWallMultiBlockItem extends BlockItem {
         for (int i = 0; i < 2; i++)
             for (int j = 0; j < 2; j++) {
                 BlockPos targetPos = posFunction.apply(pos, j, i);
-                if (world.isAirBlock(targetPos))
+                if (world.getBlockState(targetPos).getCollisionShape(world, targetPos).isEmpty() || world.getBlockState(targetPos).getBlockHardness(world, targetPos) == 0.0F)
                     flag = world.setBlockState(targetPos,
                             state.with(RetainingWallMultiBlock.TYPES, RetainingWallMultiBlock.RetainingWallMultiBlockType.VALUES[j + i * 2]));
             }
