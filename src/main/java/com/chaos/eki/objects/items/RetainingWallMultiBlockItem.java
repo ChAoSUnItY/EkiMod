@@ -99,7 +99,7 @@ public class RetainingWallMultiBlockItem extends BlockItem {
             for (int j = 0; j < 2; j++) {
                 BlockPos targetPos = posFunction.apply(pos, j, i);
                 if (world.isAirBlock(targetPos))
-                    flag = world.setBlockState(pos,
+                    flag = world.setBlockState(targetPos,
                             state.with(RetainingWallMultiBlock.TYPES, RetainingWallMultiBlock.RetainingWallMultiBlockType.VALUES[j + i * 2]));
             }
         return flag;

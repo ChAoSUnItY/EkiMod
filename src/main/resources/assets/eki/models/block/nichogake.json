@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "eki:blocks/nichogake",
+        "down": "eki:blocks/nichogake",
+        "up": "eki:blocks/nichogake",
+        "north": "eki:blocks/nichogake",
+        "east": "eki:blocks/nichogake",
+        "south": "eki:blocks/nichogake",
+        "west": "eki:blocks/nichogake"
+    }
+}
