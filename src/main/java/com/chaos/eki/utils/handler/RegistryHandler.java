@@ -2,14 +2,17 @@ package com.chaos.eki.utils.handler;
 
 import com.chaos.eki.Eki;
 import com.chaos.eki.objects.blocks.BuildingBaseBlock;
+import com.chaos.eki.objects.blocks.SideSlabBlock;
 import com.chaos.eki.objects.blocks.multiblock.RetainingWallMultiBlock;
+import com.chaos.eki.objects.blocks.multiblock.StationPlatformMultiBlock;
 import com.chaos.eki.objects.items.RetainingWallMultiBlockItem;
+import com.chaos.eki.objects.items.StationPlatformOPFMultiBlockItem;
 import com.chaos.eki_lib.objects.blocks.base.BaseBlock;
+import com.chaos.eki_lib.objects.blocks.base.HorizontalBaseBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -51,6 +54,39 @@ public class RegistryHandler {
     public static final RegistryObject<SlabBlock> WASHED_GRANOLITHIC_FINISH_SLAB = BLOCKS.register("washed_granolithic_finish_slab",
             () -> new SlabBlock(DEFAULT_BLOCK_PROPERTIES));
 
+    // platforms
+    public static final RegistryObject<StationPlatformMultiBlock> SP_COMMON = BLOCKS.register("platform_common",
+            () -> new StationPlatformMultiBlock(false));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_GUIDE_BRICK = BLOCKS.register("platform_guide_brick",
+            () -> new StationPlatformMultiBlock(false));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_GUIDE_BRICK_LINE = BLOCKS.register("platform_guide_brick_line",
+            () -> new StationPlatformMultiBlock(false));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_LINE = BLOCKS.register("platform_line",
+            () -> new StationPlatformMultiBlock(false));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_ASPHALT = BLOCKS.register("platform_asphalt",
+            () -> new StationPlatformMultiBlock(false));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_ON = BLOCKS.register("platform_on",
+            () -> new StationPlatformMultiBlock(false, true, true));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_OFF = BLOCKS.register("platform_off",
+            () -> new StationPlatformMultiBlock(false, true ,false));
+    // opf platforms
+    public static final RegistryObject<SideSlabBlock.PowerableSideSlab<HorizontalBaseBlock>> SP_OPF_BASE = BLOCKS.register("platform_opf_base",
+            () -> new SideSlabBlock.PowerableSideSlab(CONCRETE));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_COMMON_OPF = BLOCKS.register("platform_common_opf",
+            () -> new StationPlatformMultiBlock(true));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_GUIDE_BRICK_OPF = BLOCKS.register("platform_guide_brick_opf",
+            () -> new StationPlatformMultiBlock(true));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_GUIDE_BRICK_LINE_OPF = BLOCKS.register("platform_guide_brick_line_opf",
+            () -> new StationPlatformMultiBlock(true));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_LINE_OPF = BLOCKS.register("platform_line_opf",
+            () -> new StationPlatformMultiBlock(false));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_ASPHALT_OPF = BLOCKS.register("platform_asphalt_opf",
+            () -> new StationPlatformMultiBlock(true));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_ON_OPF = BLOCKS.register("platform_on_opf",
+            () -> new StationPlatformMultiBlock(true, true, true));
+    public static final RegistryObject<StationPlatformMultiBlock> SP_OFF_OPF = BLOCKS.register("platform_off_opf",
+            () -> new StationPlatformMultiBlock(true, true ,false));
+
     //BLOCKS ITEMS
     //public static final RegistryObject<BlockItem> RETAINING_WALL_ITEM = ITEMS.register("retaining_wall", () -> new BlockItem(RETAINING_WALL.get(), DEFAULT_PROPERTIES));
     //public static final RegistryObject<BlockItem> RETAINING_WALL_CORNER_ITEM = ITEMS.register("retaining_wall_corner", () -> new BlockItem(RETAINING_WALL_CORNER.get(), DEFAULT_PROPERTIES));
@@ -86,4 +122,34 @@ public class RegistryHandler {
             () -> new BlockItem(WASHED_GRANOLITHIC_FINISH_STAIRS.get(), DEFAULT_PROPERTIES));
     public static final RegistryObject<BlockItem> WASHED_GRANOLITHIC_FINISH_SLAB_ITEM = ITEMS.register("washed_granolithic_finish_slab",
             () -> new BlockItem(WASHED_GRANOLITHIC_FINISH_SLAB.get(), DEFAULT_PROPERTIES));
+    // platform default item
+    public static final RegistryObject<BlockItem> SP_COMMON_ITEM = ITEMS.register("platform_common",
+            () -> new BlockItem(SP_COMMON.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> SP_GUIDE_BRICK_ITEM = ITEMS.register("platform_guide_brick",
+            () -> new BlockItem(SP_GUIDE_BRICK.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> SP_GUIDE_BRICK_LINE_ITEM = ITEMS.register("platform_guide_brick_line",
+            () -> new BlockItem(SP_GUIDE_BRICK_LINE.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> SP_LINE_ITEM = ITEMS.register("platform_line",
+            () -> new BlockItem(SP_LINE.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> SP_ASPHALT_ITEM = ITEMS.register("platform_asphalt",
+            () -> new BlockItem(SP_ASPHALT.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> SP_ON_ITEM = ITEMS.register("platform_on",
+            () -> new BlockItem(SP_ON.get(), DEFAULT_PROPERTIES.group(null)));
+    public static final RegistryObject<BlockItem> SP_OFF_ITEM = ITEMS.register("platform_off",
+            () -> new BlockItem(SP_OFF.get(), DEFAULT_PROPERTIES.group(Eki.ekiItemGroup)));
+    // opf platform item
+    public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_COMMON_OPF_ITEM = ITEMS.register("platform_common_opf",
+            () -> new StationPlatformOPFMultiBlockItem(SP_COMMON_OPF.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_GUIDE_BRICK_OPF_ITEM = ITEMS.register("platform_guide_brick_opf",
+            () -> new StationPlatformOPFMultiBlockItem(SP_GUIDE_BRICK_OPF.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_GUIDE_BRICK_LINE_OPF_ITEM = ITEMS.register("platform_guide_brick_line_opf",
+            () -> new StationPlatformOPFMultiBlockItem(SP_GUIDE_BRICK_LINE_OPF.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_LINE_OPF_ITEM = ITEMS.register("platform_line_opf",
+            () -> new StationPlatformOPFMultiBlockItem(SP_LINE_OPF.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_ASPHALT_OPF_ITEM = ITEMS.register("platform_asphalt_opf",
+            () -> new StationPlatformOPFMultiBlockItem(SP_ASPHALT_OPF.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_ON_OPF_ITEM = ITEMS.register("platform_on_opf",
+            () -> new StationPlatformOPFMultiBlockItem(SP_ON_OPF.get(), DEFAULT_PROPERTIES.group(null)));
+    public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_OFF_OPF_ITEM = ITEMS.register("platform_off_opf",
+            () -> new StationPlatformOPFMultiBlockItem(SP_OFF_OPF.get(), DEFAULT_PROPERTIES.group(Eki.ekiItemGroup)));
 }

@@ -280,7 +280,7 @@ public class RetainingWallMultiBlock extends HorizontalBaseBlock {
         DL("down_left"), DR("down_right"), UL("up_left"), UR("up_right");
 
         public static final RetainingWallMultiBlockType[] VALUES = values();
-        public String name;
+        public final String name;
 
         RetainingWallMultiBlockType(String name) {
             this.name = name;

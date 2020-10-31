@@ -81,7 +81,7 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
 
-    compile fg.deobf("curse.maven:eki-lib:3092099")
+    compile fg.deobf("curse.maven:eki-lib:3097820")
 }
 
 jar {

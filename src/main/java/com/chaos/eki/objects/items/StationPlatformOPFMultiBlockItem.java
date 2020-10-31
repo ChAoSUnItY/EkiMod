@@ -1,8 +1,6 @@
 package com.chaos.eki.objects.items;
 
-import com.chaos.eki.objects.blocks.multiblock.RetainingWallMultiBlock;
 import com.chaos.eki.utils.handler.RegistryHandler;
-import com.chaos.eki.utils.util.TriFunction;
 import com.chaos.eki_lib.objects.blocks.base.HorizontalBaseBlock;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
@@ -14,14 +12,15 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class RetainingWallMultiBlockItem extends BlockItem {
-    public RetainingWallMultiBlockItem(Block blockIn, Properties builder) {
+public class StationPlatformOPFMultiBlockItem extends BlockItem {
+    public StationPlatformOPFMultiBlockItem(Block blockIn, Properties builder) {
         super(blockIn, builder);
     }
 
@@ -70,36 +69,11 @@ public class RetainingWallMultiBlockItem extends BlockItem {
     @Override
     protected boolean placeBlock(BlockItemUseContext context, BlockState state) {
         BlockPos pos = context.getPos();
-        BlockState newState = RegistryHandler.HUGE_RETAINING_WALL
-                .get()
-                .getDefaultState()
-                .with(HorizontalBaseBlock.FACING, context.getPlacementHorizontalFacing().getOpposite());
+        Direction dir = context.getPlacementHorizontalFacing().getOpposite();
+        BlockState newStateBase =
+                RegistryHandler.SP_OPF_BASE.get().getDefaultState().with(HorizontalBaseBlock.FACING, dir),
+                newStatePlatform = state.with(HorizontalBaseBlock.FACING, dir);
         World world = context.getWorld();
-        switch (context.getPlacementHorizontalFacing()) {
-            case NORTH:
-                return setupMultiBlock(world, pos, newState, (p, x, y) -> p.east(x).up(y));
-            case SOUTH:
-                return setupMultiBlock(world, pos, newState, (p, x, y) -> p.west(x).up(y));
-            case EAST:
-                return setupMultiBlock(world, pos, newState, (p, x, y) -> p.south(x).up(y));
-            case WEST:
-                return setupMultiBlock(world, pos, newState, (p, x, y) -> p.north(x).up(y));
-            default:
-                return false;
-        }
-    }
-
-    @Nonnull
-    private boolean setupMultiBlock(World world, BlockPos pos, BlockState state, TriFunction<BlockPos, Integer, Integer, BlockPos> posFunction) {
-        boolean flag = false;
-        for (int i = 0; i < 2; i++)
-            for (int j = 0; j < 2; j++) {
-                BlockPos targetPos = posFunction.apply(pos, j, i);
-                if (world.getBlockState(targetPos).getCollisionShape(world, targetPos).isEmpty() ||
-                        world.getBlockState(targetPos).getBlockHardness(world, targetPos) == 0.0F)
-                    flag = world.setBlockState(targetPos,
-                            state.with(RetainingWallMultiBlock.TYPES, RetainingWallMultiBlock.RetainingWallMultiBlockType.VALUES[j + i * 2]));
-            }
-        return flag;
+        return world.isAirBlock(pos.up()) ? world.setBlockState(pos, newStateBase, 11) && world.setBlockState(pos.up(), newStatePlatform, 11) : false;
     }
 }

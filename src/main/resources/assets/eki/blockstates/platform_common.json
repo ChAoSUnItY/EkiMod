@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model" : "eki:block/platform_common", "y" : 180},
+    "facing=west": { "model" : "eki:block/platform_common", "y" : 90 },
+    "facing=south": { "model" : "eki:block/platform_common"},
+    "facing=east": { "model" :"eki:block/platform_common", "y" : 270 }
+  }
+}

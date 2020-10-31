@@ -1,0 +1,7 @@
+{
+  "credit": "Model created by ChAoS_UnItY.",
+  "parent": "eki:block/side_slab",
+  "textures": {
+    "side": "eki:blocks/platform_side"
+  }
+}

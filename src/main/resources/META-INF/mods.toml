@@ -29,6 +29,6 @@ A new generation station decoration mod!
 [[dependencies.eki]]
     modId="eki_lib"
     mandatory=true
-    versionRange="[1.0.2]"
+    versionRange="[1.0.3]"
     ordering="NONE"
     side="BOTH"

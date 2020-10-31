@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model" : "eki:block/platform_asphalt_opf", "y" : 180},
+    "facing=west": { "model" : "eki:block/platform_asphalt_opf", "y" : 90 },
+    "facing=south": { "model" : "eki:block/platform_asphalt_opf"},
+    "facing=east": { "model" :"eki:block/platform_asphalt_opf", "y" : 270 }
+  }
+}

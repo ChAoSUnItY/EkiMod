@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,powered=false": { "model" : "eki:block/platform_opf_base", "y" : 180},
+    "facing=north,powered=true": { "model" : "eki:block/platform_opf_base", "y" : 180},
+    "facing=west,powered=false": { "model" : "eki:block/platform_opf_base", "y" : 90 },
+    "facing=west,powered=true": { "model" : "eki:block/platform_opf_base", "y" : 90 },
+    "facing=south,powered=false": { "model" : "eki:block/platform_opf_base"},
+    "facing=south,powered=true": { "model" : "eki:block/platform_opf_base"},
+    "facing=east,powered=false": { "model" :"eki:block/platform_opf_base", "y" : 270 },
+    "facing=east,powered=true": { "model" :"eki:block/platform_opf_base", "y" : 270 }
+  }
+}

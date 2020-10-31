@@ -1,0 +1,6 @@
+{
+    "parent": "eki:block/platform",
+    "textures": {
+        "top": "eki:blocks/platform_guide_brick_line"
+    }
+}
