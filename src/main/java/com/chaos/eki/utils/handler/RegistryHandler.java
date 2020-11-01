@@ -5,9 +5,10 @@ import com.chaos.eki.objects.blocks.BuildingBaseBlock;
 import com.chaos.eki.objects.blocks.SideSlabBlock;
 import com.chaos.eki.objects.blocks.multiblock.RetainingWallMultiBlock;
 import com.chaos.eki.objects.blocks.multiblock.StationPlatformMultiBlock;
+import com.chaos.eki.objects.blocks.subblock.EnamelWallPositionType;
+import com.chaos.eki.objects.blocks.subblock.EnamelWallType;
 import com.chaos.eki.objects.items.RetainingWallMultiBlockItem;
 import com.chaos.eki.objects.items.StationPlatformOPFMultiBlockItem;
-import com.chaos.eki_lib.objects.blocks.base.BaseBlock;
 import com.chaos.eki_lib.objects.blocks.base.HorizontalBaseBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -16,6 +17,8 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.stream.IntStream;
 
 public class RegistryHandler {
     public static final AbstractBlock.Properties DEFAULT_BLOCK_PROPERTIES = AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(5f);
@@ -68,7 +71,7 @@ public class RegistryHandler {
     public static final RegistryObject<StationPlatformMultiBlock> SP_ON = BLOCKS.register("platform_on",
             () -> new StationPlatformMultiBlock(false, true, true));
     public static final RegistryObject<StationPlatformMultiBlock> SP_OFF = BLOCKS.register("platform_off",
-            () -> new StationPlatformMultiBlock(false, true ,false));
+            () -> new StationPlatformMultiBlock(false, true, false));
     // opf platforms
     public static final RegistryObject<SideSlabBlock.PowerableSideSlab<HorizontalBaseBlock>> SP_OPF_BASE = BLOCKS.register("platform_opf_base",
             () -> new SideSlabBlock.PowerableSideSlab(CONCRETE));
@@ -85,7 +88,17 @@ public class RegistryHandler {
     public static final RegistryObject<StationPlatformMultiBlock> SP_ON_OPF = BLOCKS.register("platform_on_opf",
             () -> new StationPlatformMultiBlock(true, true, true));
     public static final RegistryObject<StationPlatformMultiBlock> SP_OFF_OPF = BLOCKS.register("platform_off_opf",
-            () -> new StationPlatformMultiBlock(true, true ,false));
+            () -> new StationPlatformMultiBlock(true, true, false));
+    // subblocks
+    public static final RegistryObject<BuildingBaseBlock>[] ENAMEL_WALLS = new RegistryObject[EnamelWallType.values.length * EnamelWallPositionType.values.length];
+
+    static {
+        IntStream.range(0, EnamelWallPositionType.values.length)
+                .forEach(i -> IntStream.range(0, EnamelWallType.values.length)
+                        .forEach(j ->
+                                ENAMEL_WALLS[i * EnamelWallType.values.length + j] =
+                                        BLOCKS.register("enamel_wall_" + EnamelWallType.values[j].getString() + "_" + EnamelWallPositionType.values[i].getString(), BuildingBaseBlock::new)));
+    }
 
     //BLOCKS ITEMS
     //public static final RegistryObject<BlockItem> RETAINING_WALL_ITEM = ITEMS.register("retaining_wall", () -> new BlockItem(RETAINING_WALL.get(), DEFAULT_PROPERTIES));
@@ -152,4 +165,15 @@ public class RegistryHandler {
             () -> new StationPlatformOPFMultiBlockItem(SP_ON_OPF.get(), DEFAULT_PROPERTIES.group(null)));
     public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_OFF_OPF_ITEM = ITEMS.register("platform_off_opf",
             () -> new StationPlatformOPFMultiBlockItem(SP_OFF_OPF.get(), DEFAULT_PROPERTIES.group(Eki.ekiItemGroup)));
+    // enamel walls
+    public static final RegistryObject<BlockItem>[] ENAMEL_WALL_ITEMS = new RegistryObject[EnamelWallType.values.length * EnamelWallPositionType.values.length];
+
+    static {
+        IntStream.range(0, EnamelWallPositionType.values.length)
+                .forEach(i -> IntStream.range(0, EnamelWallType.values.length)
+                        .forEach(j ->
+                                ENAMEL_WALL_ITEMS[i * EnamelWallType.values.length + j] =
+                                        ITEMS.register("enamel_wall_" + EnamelWallType.values[j].getString() + "_" + EnamelWallPositionType.values[i].getString(),
+                                                () -> new BlockItem(ENAMEL_WALLS[i * EnamelWallType.values.length + j].get(), DEFAULT_PROPERTIES))));
+    }
 }
