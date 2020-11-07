@@ -1,0 +1,89 @@
+{
+	"parent": "block/block",
+    "textures": {
+		"particle" : "eki:blocks/handrail",
+        "handrail": "eki:blocks/handrail",
+        "stair2": "eki:blocks/stair2",
+        "stair1": "eki:blocks/stair1"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "base",
+            "from": [ 0, 0, 0 ], 
+            "to": [ 16, 8, 16 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 16, 8 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 16, 8 ] },
+                "south": { "texture": "#handrail", "uv": [ 0, 0, 16, 8 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 16, 8 ] },
+                "up": { "texture": "#handrail", "uv": [ 0, 0, 16, 16 ] },
+                "down": { "texture": "#handrail", "uv": [ 0, 0, 16, 16 ] }
+            }
+        },
+        {
+            "name": "layer1_front",
+            "from": [ 0, 8, 8 ], 
+            "to": [ 16, 12, 16 ], 
+            "faces": {
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 8, 4 ] },
+                "south": { "texture": "#stair1", "uv": [ 0, 0, 16, 4 ], "rotation": 90 },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 8, 4 ] },
+                "up": { "texture": "#stair2", "uv": [ 1, 0, 16, 8 ], "rotation": 270 }
+            }
+        },
+        {
+            "name": "layer1_back",
+            "from": [ 0, 8, 0 ], 
+            "to": [ 16, 12, 8 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 16, 4 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 8, 4 ] },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 8, 4 ] }
+            }
+        },
+        {
+            "name": "layer2",
+            "from": [ 0, 12, 0 ], 
+            "to": [ 16, 16, 8 ], 
+            "faces": {
+                "north": { "texture": "#handrail", "uv": [ 0, 0, 16, 4 ] },
+                "east": { "texture": "#handrail", "uv": [ 0, 0, 8, 4 ] },
+                "south": { "texture": "#stair1", "uv": [ 0, 0, 16, 4 ], "rotation": 90 },
+                "west": { "texture": "#handrail", "uv": [ 0, 0, 8, 4 ] },
+                "up": { "texture": "#stair2", "uv": [ 1, 0, 16, 8 ], "rotation": 270 }
+            }
+        }
+    ]
+}

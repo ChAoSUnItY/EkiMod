@@ -15,20 +15,8 @@ description='''
 A new generation station decoration mod!
 '''
 [[dependencies.eki]]
-    modId="forge"
-    mandatory=true
-    versionRange="[34,)"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.eki]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.16.3]"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.eki]]
     modId="eki_lib"
     mandatory=true
-    versionRange="[1.0.3]"
+    versionRange="[1.0.7]"
     ordering="NONE"
     side="BOTH"

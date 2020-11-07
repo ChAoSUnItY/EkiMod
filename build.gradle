@@ -1,6 +1,8 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
+        maven {
+            url = 'https://files.minecraftforge.net/maven'
+        }
         jcenter()
         mavenCentral()
     }
@@ -70,9 +72,7 @@ minecraft {
 }
 
 repositories {
-    maven {
-        url = "https://www.cursemaven.com"
-    }
+    maven { url 'https://jitpack.io' }
     flatDir {
         dirs 'libs'
     }
@@ -81,7 +81,7 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
 
-    compile fg.deobf("curse.maven:eki-lib:3097820")
+    compile fg.deobf('com.github.ChAoSUnItY:EkiLib:v1.0.7')
 }
 
 jar {

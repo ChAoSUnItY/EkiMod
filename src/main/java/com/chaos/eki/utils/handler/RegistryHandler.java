@@ -5,24 +5,27 @@ import com.chaos.eki.objects.blocks.BuildingBaseBlock;
 import com.chaos.eki.objects.blocks.SideSlabBlock;
 import com.chaos.eki.objects.blocks.multiblock.RetainingWallMultiBlock;
 import com.chaos.eki.objects.blocks.multiblock.StationPlatformMultiBlock;
+import com.chaos.eki.objects.blocks.stairs.StationStairBlock;
 import com.chaos.eki.objects.blocks.subblock.EnamelWallPositionType;
 import com.chaos.eki.objects.blocks.subblock.EnamelWallType;
+import com.chaos.eki.objects.blocks.subblock.TesseraWallType;
 import com.chaos.eki.objects.items.RetainingWallMultiBlockItem;
 import com.chaos.eki.objects.items.StationPlatformOPFMultiBlockItem;
 import com.chaos.eki_lib.objects.blocks.base.HorizontalBaseBlock;
+import com.chaos.eki_lib.utils.util.registry.UtilSubblockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.stream.IntStream;
-
 public class RegistryHandler {
     public static final AbstractBlock.Properties DEFAULT_BLOCK_PROPERTIES = AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(5f);
-    public static final Item.Properties DEFAULT_PROPERTIES = com.chaos.eki_lib.utils.handlers.RegistryHandler.DEFAULT_ITEM_BLOCK_PROPERTIES.group(Eki.ekiItemGroup);
+    public static final Item.Properties DEFAULT_PROPERTIES = new Item.Properties().group(Eki.ekiItemGroup);
+    public static final UtilSubblockRegistry REGISTRY_HELPER = new UtilSubblockRegistry(BuildingBaseBlock::new, DEFAULT_PROPERTIES);
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Eki.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Eki.MOD_ID);
@@ -91,14 +94,11 @@ public class RegistryHandler {
             () -> new StationPlatformMultiBlock(true, true, false));
     // subblocks
     public static final RegistryObject<BuildingBaseBlock>[] ENAMEL_WALLS = new RegistryObject[EnamelWallType.values.length * EnamelWallPositionType.values.length];
-
-    static {
-        IntStream.range(0, EnamelWallPositionType.values.length)
-                .forEach(i -> IntStream.range(0, EnamelWallType.values.length)
-                        .forEach(j ->
-                                ENAMEL_WALLS[i * EnamelWallType.values.length + j] =
-                                        BLOCKS.register("enamel_wall_" + EnamelWallType.values[j].getString() + "_" + EnamelWallPositionType.values[i].getString(), BuildingBaseBlock::new)));
-    }
+    public static final RegistryObject<BuildingBaseBlock>[] TESSERA = new RegistryObject[TesseraWallType.values.length];
+    // station stairs
+    public static final RegistryObject<StationStairBlock> STATION_STAIR = BLOCKS.register("station_stairs", () -> new StationStairBlock(0));
+    public static final RegistryObject<StationStairBlock> STATION_STAIR_GB = BLOCKS.register("station_stairs_gentle_bottom", () -> new StationStairBlock(1));
+    public static final RegistryObject<StationStairBlock> STATION_STAIR_GT = BLOCKS.register("station_stairs_gentle_top", () -> new StationStairBlock(2));
 
     //BLOCKS ITEMS
     //public static final RegistryObject<BlockItem> RETAINING_WALL_ITEM = ITEMS.register("retaining_wall", () -> new BlockItem(RETAINING_WALL.get(), DEFAULT_PROPERTIES));
@@ -165,15 +165,38 @@ public class RegistryHandler {
             () -> new StationPlatformOPFMultiBlockItem(SP_ON_OPF.get(), DEFAULT_PROPERTIES.group(null)));
     public static final RegistryObject<StationPlatformOPFMultiBlockItem> SP_OFF_OPF_ITEM = ITEMS.register("platform_off_opf",
             () -> new StationPlatformOPFMultiBlockItem(SP_OFF_OPF.get(), DEFAULT_PROPERTIES.group(Eki.ekiItemGroup)));
-    // enamel walls
+    // subblock
     public static final RegistryObject<BlockItem>[] ENAMEL_WALL_ITEMS = new RegistryObject[EnamelWallType.values.length * EnamelWallPositionType.values.length];
+    public static final RegistryObject<BlockItem>[] TESSERA_ITEMS = new RegistryObject[TesseraWallType.values.length];
+    // station stairs
+    public static final RegistryObject<BlockItem> STATION_STAIR_ITEM = ITEMS.register("station_stairs",
+            () -> new BlockItem(STATION_STAIR.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> STATION_STAIR_GB_ITEM = ITEMS.register("station_stairs_gentle_bottom",
+            () -> new BlockItem(STATION_STAIR_GB.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> STATION_STAIR_GT_ITEM = ITEMS.register("station_stairs_gentle_top",
+            () -> new BlockItem(STATION_STAIR_GT.get(), DEFAULT_PROPERTIES));
 
     static {
-        IntStream.range(0, EnamelWallPositionType.values.length)
-                .forEach(i -> IntStream.range(0, EnamelWallType.values.length)
-                        .forEach(j ->
-                                ENAMEL_WALL_ITEMS[i * EnamelWallType.values.length + j] =
-                                        ITEMS.register("enamel_wall_" + EnamelWallType.values[j].getString() + "_" + EnamelWallPositionType.values[i].getString(),
-                                                () -> new BlockItem(ENAMEL_WALLS[i * EnamelWallType.values.length + j].get(), DEFAULT_PROPERTIES))));
+        REGISTRY_HELPER.registerSubblocksWithTwoEnum(
+                ENAMEL_WALLS,
+                BLOCKS,
+                ENAMEL_WALL_ITEMS,
+                ITEMS,
+                "enamel_wall",
+                EnamelWallType.class,
+                EnamelWallPositionType.class);
+
+        REGISTRY_HELPER.registerSubblocksWithOneEnum(
+                TESSERA,
+                BLOCKS,
+                TESSERA_ITEMS,
+                ITEMS,
+                "tessera",
+                TesseraWallType.class);
+    }
+
+    public static void register(IEventBus bus) {
+        BLOCKS.register(bus);
+        ITEMS.register(bus);
     }
 }

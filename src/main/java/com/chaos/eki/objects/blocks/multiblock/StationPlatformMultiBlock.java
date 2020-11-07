@@ -61,7 +61,7 @@ public class StationPlatformMultiBlock extends HorizontalBaseBlock {
     }
 
     public StationPlatformMultiBlock(boolean isOPF, boolean lightable, boolean isOn) {
-        super(AbstractBlock.Properties.from(RegistryHandler.CONCRETE.get()).setLightLevel((state) ->
+        super(AbstractBlock.Properties.from(RegistryHandler.ARCHITECTURAL_CONCRETE.get()).setLightLevel((state) ->
                 isOn ? 12 : 0));
         this.type = isOPF ? PlatformType.OPF_FLOOR : PlatformType.NON_OPF_FLOOR;
         this.lightable = lightable;

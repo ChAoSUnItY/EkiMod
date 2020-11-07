@@ -24,8 +24,7 @@ public class Eki {
     public Eki() {
         final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        RegistryHandler.ITEMS.register(bus);
-        RegistryHandler.BLOCKS.register(bus);
+        RegistryHandler.register(bus);
 
         bus.addListener(this::setup);
         bus.addListener(this::enqueueIMC);
