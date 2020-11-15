@@ -1,23 +1,17 @@
 package com.chaos.eki.objects.blocks.multiblock;
 
-import com.chaos.eki.objects.blocks.SideSlabBlock;
 import com.chaos.eki.utils.handler.RegistryHandler;
 import com.chaos.eki_lib.objects.blocks.base.HorizontalBaseBlock;
 import com.chaos.eki_lib.utils.util.voxel_shapes.HorizontalVoxelShapes;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.RedstoneDiodeBlock;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
@@ -61,7 +55,7 @@ public class StationPlatformMultiBlock extends HorizontalBaseBlock {
     }
 
     public StationPlatformMultiBlock(boolean isOPF, boolean lightable, boolean isOn) {
-        super(AbstractBlock.Properties.from(RegistryHandler.ARCHITECTURAL_CONCRETE.get()).setLightLevel((state) ->
+        super(AbstractBlock.Properties.from(RegistryHandler.CONCRETE_COL.getBaseBlock().getBlock().get()).setLightLevel((state) ->
                 isOn ? 12 : 0));
         this.type = isOPF ? PlatformType.OPF_FLOOR : PlatformType.NON_OPF_FLOOR;
         this.lightable = lightable;

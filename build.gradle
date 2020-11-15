@@ -81,7 +81,7 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
 
-    compile fg.deobf('com.github.ChAoSUnItY:EkiLib:v1.0.7')
+    compile fg.deobf('com.github.ChAoSUnItY:EkiLib:1.0.12')
 }
 
 jar {

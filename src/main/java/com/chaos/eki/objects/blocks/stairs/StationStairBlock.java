@@ -43,7 +43,7 @@ public class StationStairBlock extends HorizontalBaseBlock {
     public final int type;
 
     public StationStairBlock(int type) {
-        super(AbstractBlock.Properties.from(RegistryHandler.CONCRETE.get()));
+        super(AbstractBlock.Properties.from(RegistryHandler.CONCRETE_COL.getBaseBlock().getBlock().get()));
         this.type = type;
     }
 
