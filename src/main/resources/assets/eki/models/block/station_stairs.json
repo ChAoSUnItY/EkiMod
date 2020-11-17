@@ -1,8 +1,8 @@
 {
 	"parent": "block/block",
     "textures": {
-		"particle": "eki:blocks/handrail",
-        "handrail": "eki:blocks/handrail",
+		"particle": "eki:blocks/concrete",
+        "handrail": "eki:blocks/concrete",
         "stair2": "eki:blocks/stair2",
         "stair1": "eki:blocks/stair1"
     },

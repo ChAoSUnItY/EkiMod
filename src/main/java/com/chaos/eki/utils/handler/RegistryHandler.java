@@ -2,6 +2,7 @@ package com.chaos.eki.utils.handler;
 
 import com.chaos.eki.Eki;
 import com.chaos.eki.objects.blocks.BuildingBaseBlock;
+import com.chaos.eki.objects.blocks.HandrailBlock;
 import com.chaos.eki.objects.blocks.PowerableSideSlab;
 import com.chaos.eki.objects.blocks.multiblock.RetainingWallMultiBlock;
 import com.chaos.eki.objects.blocks.multiblock.StationPlatformMultiBlock;
@@ -90,6 +91,8 @@ public class RegistryHandler {
     public static final RegistryObject<StationStairBlock> STATION_STAIR = BLOCKS.register("station_stairs", () -> new StationStairBlock(0));
     public static final RegistryObject<StationStairBlock> STATION_STAIR_GB = BLOCKS.register("station_stairs_gentle_bottom", () -> new StationStairBlock(1));
     public static final RegistryObject<StationStairBlock> STATION_STAIR_GT = BLOCKS.register("station_stairs_gentle_top", () -> new StationStairBlock(2));
+    // handrail
+    public static final RegistryObject<HandrailBlock> HANDRAIL = BLOCKS.register("handrail", HandrailBlock::new);
 
     //BLOCKS ITEMS
     //public static final RegistryObject<BlockItem> RETAINING_WALL_ITEM = ITEMS.register("retaining_wall", () -> new BlockItem(RETAINING_WALL.get(), DEFAULT_PROPERTIES));
@@ -136,6 +139,9 @@ public class RegistryHandler {
             () -> new BlockItem(STATION_STAIR_GB.get(), DEFAULT_PROPERTIES));
     public static final RegistryObject<BlockItem> STATION_STAIR_GT_ITEM = ITEMS.register("station_stairs_gentle_top",
             () -> new BlockItem(STATION_STAIR_GT.get(), DEFAULT_PROPERTIES));
+    // handrail
+    public static final RegistryObject<BlockItem> HANDRAIL_ITEM = ITEMS.register("handrail",
+            () -> new BlockItem(HANDRAIL.get(), DEFAULT_PROPERTIES));
 
     static {
         REGISTRY_HELPER.registerSubblocksWithTwoEnum(
