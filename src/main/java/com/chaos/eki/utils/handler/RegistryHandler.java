@@ -9,6 +9,7 @@ import com.chaos.eki.objects.blocks.multiblock.StationPlatformMultiBlock;
 import com.chaos.eki.objects.blocks.stairs.StationStairBlock;
 import com.chaos.eki.objects.blocks.subblock.EnamelWallPositionType;
 import com.chaos.eki.objects.blocks.subblock.EnamelWallType;
+import com.chaos.eki.objects.blocks.subblock.StationPillarType;
 import com.chaos.eki.objects.blocks.subblock.TesseraWallType;
 import com.chaos.eki.objects.items.RetainingWallMultiBlockItem;
 import com.chaos.eki.objects.items.StationPlatformOPFMultiBlockItem;
@@ -93,6 +94,10 @@ public class RegistryHandler {
     public static final RegistryObject<StationStairBlock> STATION_STAIR_GT = BLOCKS.register("station_stairs_gentle_top", () -> new StationStairBlock(2));
     // handrail
     public static final RegistryObject<HandrailBlock> HANDRAIL = BLOCKS.register("handrail", HandrailBlock::new);
+    // pillars
+    public static final RegistryObject<BuildingBaseBlock>[] STATION_PILLARS = new RegistryObject[StationPillarType.values.length];
+    public static final RegistryObject<HorizontalBaseBlock> STATION_PILLAR_FE = BLOCKS.register("station_pillar_with_fire_extinguisher",
+            () -> new HorizontalBaseBlock(AbstractBlock.Properties.from(STATION_PILLARS[0].get())));
 
     //BLOCKS ITEMS
     //public static final RegistryObject<BlockItem> RETAINING_WALL_ITEM = ITEMS.register("retaining_wall", () -> new BlockItem(RETAINING_WALL.get(), DEFAULT_PROPERTIES));
@@ -142,6 +147,10 @@ public class RegistryHandler {
     // handrail
     public static final RegistryObject<BlockItem> HANDRAIL_ITEM = ITEMS.register("handrail",
             () -> new BlockItem(HANDRAIL.get(), DEFAULT_PROPERTIES));
+    // pillars
+    public static final RegistryObject<BlockItem>[] STATION_PILLAR_ITEMS = new RegistryObject[StationPillarType.values.length];
+    public static final RegistryObject<BlockItem> STATION_PILLAR_FE_ITEM = ITEMS.register("station_pillar_with_fire_extinguisher",
+            () -> new BlockItem(STATION_PILLAR_FE.get(), DEFAULT_PROPERTIES));
 
     static {
         REGISTRY_HELPER.registerSubblocksWithTwoEnum(
@@ -160,6 +169,14 @@ public class RegistryHandler {
                 ITEMS,
                 "tessera",
                 TesseraWallType.class);
+
+        REGISTRY_HELPER.registerSubblocksWithOneEnum(
+                STATION_PILLARS,
+                BLOCKS,
+                STATION_PILLAR_ITEMS,
+                ITEMS,
+                "station_pillar",
+                StationPillarType.class);
     }
 
     public static void register(IEventBus bus) {
