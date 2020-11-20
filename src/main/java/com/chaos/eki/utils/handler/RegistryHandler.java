@@ -93,11 +93,12 @@ public class RegistryHandler {
     public static final RegistryObject<StationStairBlock> STATION_STAIR_GB = BLOCKS.register("station_stairs_gentle_bottom", () -> new StationStairBlock(1));
     public static final RegistryObject<StationStairBlock> STATION_STAIR_GT = BLOCKS.register("station_stairs_gentle_top", () -> new StationStairBlock(2));
     // handrail
-    public static final RegistryObject<HandrailBlock> HANDRAIL = BLOCKS.register("handrail", HandrailBlock::new);
+    public static final RegistryObject<HandrailBlock> HANDRAIL = BLOCKS.register("handrail",
+            () -> new HandrailBlock(() -> CONCRETE_COL.getBaseBlock().getBlock().get().getDefaultState(), DEFAULT_BLOCK_PROPERTIES));
     // pillars
     public static final RegistryObject<BuildingBaseBlock>[] STATION_PILLARS = new RegistryObject[StationPillarType.values.length];
     public static final RegistryObject<HorizontalBaseBlock> STATION_PILLAR_FE = BLOCKS.register("station_pillar_with_fire_extinguisher",
-            () -> new HorizontalBaseBlock(AbstractBlock.Properties.from(STATION_PILLARS[0].get())));
+            () -> new HorizontalBaseBlock(AbstractBlock.Properties.from(CONCRETE_COL.getBaseBlock().getBlock().get())));
 
     //BLOCKS ITEMS
     //public static final RegistryObject<BlockItem> RETAINING_WALL_ITEM = ITEMS.register("retaining_wall", () -> new BlockItem(RETAINING_WALL.get(), DEFAULT_PROPERTIES));
