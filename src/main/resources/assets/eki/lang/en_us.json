@@ -118,6 +118,10 @@
 
   "itemGroup.eki": "Eki",
 
+  "_comment": "TEXTS",
+  "chat.type.text.eki.rangefinder.result": "3D distance is %d, surface distance is %d.",
+  "chat.type.text.eki.rangefinder.getPos": "Successfully bound to %d, %d, %d！",
+
   "_comment": "SYSTEM MESSAGES",
   "chat.type.text.eki.versioncheckValid": "You are running on the latest version of Eki Mod!\\nVersion >> %s",
   "chat.type.text.eki.versioncheckInvalid": "Your Eki Mod is out of date! Go update!\\nClick this message to open mod page.\\nNow Running >> %s\\nLatest Version >> %s"
