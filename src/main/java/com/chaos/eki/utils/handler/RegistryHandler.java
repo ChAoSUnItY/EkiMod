@@ -1,24 +1,24 @@
 package com.chaos.eki.utils.handler;
 
 import com.chaos.eki.Eki;
-import com.chaos.eki.objects.blocks.BuildingBaseBlock;
-import com.chaos.eki.objects.blocks.HandrailBlock;
-import com.chaos.eki.objects.blocks.PowerableSideSlab;
+import com.chaos.eki.objects.blocks.*;
+import com.chaos.eki.objects.blocks.multiblock.BarbedWireMultiBlock;
+import com.chaos.eki.objects.blocks.multiblock.RetainingWallLadderMultiBlock;
 import com.chaos.eki.objects.blocks.multiblock.RetainingWallMultiBlock;
 import com.chaos.eki.objects.blocks.multiblock.StationPlatformMultiBlock;
 import com.chaos.eki.objects.blocks.stairs.StationStairBlock;
-import com.chaos.eki.objects.blocks.subblock.EnamelWallPositionType;
-import com.chaos.eki.objects.blocks.subblock.EnamelWallType;
-import com.chaos.eki.objects.blocks.subblock.StationPillarType;
-import com.chaos.eki.objects.blocks.subblock.TesseraWallType;
-import com.chaos.eki.objects.items.RetainingWallMultiBlockItem;
-import com.chaos.eki.objects.items.StationPlatformOPFMultiBlockItem;
+import com.chaos.eki.objects.blocks.subblock.*;
+import com.chaos.eki.objects.items.*;
 import com.chaos.eki_lib.objects.blocks.base.HorizontalBaseBlock;
+import com.chaos.eki_lib.objects.blocks.base.LightableBlock;
 import com.chaos.eki_lib.utils.util.registry.RegistryCollection;
 import com.chaos.eki_lib.utils.util.registry.UtilSubblockRegistry;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -28,15 +28,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class RegistryHandler {
     public static final AbstractBlock.Properties DEFAULT_BLOCK_PROPERTIES = AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(5f);
     public static final Item.Properties DEFAULT_PROPERTIES = new Item.Properties().group(Eki.ekiItemGroup);
-    public static final UtilSubblockRegistry REGISTRY_HELPER = new UtilSubblockRegistry(BuildingBaseBlock::new, DEFAULT_PROPERTIES);
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Eki.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Eki.MOD_ID);
 
     //BLOCKS
-    //public static final RegistryObject<RetainingWallBlock> RETAINING_WALL = BLOCKS.register("retaining_wall", () -> new RetainingWallBlock(RetainingWallBlock.WallType.STRAIGHT));
-    //public static final RegistryObject<RetainingWallBlock> RETAINING_WALL_CORNER = BLOCKS.register("retaining_wall_corner", () -> new RetainingWallBlock(RetainingWallBlock.WallType.CORNER));
-    public static final RegistryObject<RetainingWallMultiBlock> HUGE_RETAINING_WALL = BLOCKS.register("huge_retaining_wall", RetainingWallMultiBlock::new);
+    public static final RegistryObject<RetainingWallMultiBlock> HUGE_RETAINING_WALL = BLOCKS.register("retaining_wall", RetainingWallMultiBlock::new);
+    public static final RegistryObject<RetainingWallLadderMultiBlock> HUGE_RETAINING_WALL_LADDER = BLOCKS.register("retaining_wall_ladder", RetainingWallLadderMultiBlock::new);
     public static final RegistryCollection<BuildingBaseBlock> CONCRETE_COL = RegistryCollection
             .create("concrete", DEFAULT_BLOCK_PROPERTIES, Eki.ekiItemGroup)
             .init(BuildingBaseBlock::new, BLOCKS, ITEMS);
@@ -99,12 +97,24 @@ public class RegistryHandler {
     public static final RegistryObject<BuildingBaseBlock>[] STATION_PILLARS = new RegistryObject[StationPillarType.values.length];
     public static final RegistryObject<HorizontalBaseBlock> STATION_PILLAR_FE = BLOCKS.register("station_pillar_with_fire_extinguisher",
             () -> new HorizontalBaseBlock(AbstractBlock.Properties.from(CONCRETE_COL.getBaseBlock().getBlock().get())));
+    //lights
+    public static final RegistryObject<LightableBlock.LightableHorizontalBlock>[] GRILLE_LIGHTS = new RegistryObject[2];
+    public static final RegistryObject<LightableBlock.LightableHorizontalBlock>[] EMBEDDED_GRILLE_LIGHTS = new RegistryObject[2];
+    public static final RegistryObject<LightableBlock.LightableHorizontalBlock> TUNNEL_LIGHT = BLOCKS.register("tunnel_light",
+            () -> new WallLightableBlock(7));
+    public static final RegistryObject<LightableBlock.LightableHorizontalBlock> WALL_NEON_LIGHT = BLOCKS.register("wall_neon_light",
+            () -> new WallLightableBlock(15));
+    public static final RegistryObject<LightableBlock.LightableDirectionalBlock> PILLAR_LAMP = BLOCKS.register("pillar_lamp",
+            () -> new LightableBlock.LightableDirectionalBlock(DEFAULT_BLOCK_PROPERTIES, 15));
+    public static final RegistryObject<LightableBlock.LightableDirectionalBlock> FLOOD_LIGHT = BLOCKS.register("flood_light", FloodLightBlock::new);
+    //barbed wire
+    public static final RegistryObject<BarbedWireMultiBlock> BARBED_WIRE = BLOCKS.register("barbed_wire", BarbedWireMultiBlock::new);
 
     //BLOCKS ITEMS
-    //public static final RegistryObject<BlockItem> RETAINING_WALL_ITEM = ITEMS.register("retaining_wall", () -> new BlockItem(RETAINING_WALL.get(), DEFAULT_PROPERTIES));
-    //public static final RegistryObject<BlockItem> RETAINING_WALL_CORNER_ITEM = ITEMS.register("retaining_wall_corner", () -> new BlockItem(RETAINING_WALL_CORNER.get(), DEFAULT_PROPERTIES));
-    public static final RegistryObject<RetainingWallMultiBlockItem> RETAINING_WALL_MULTI_BLOCK_ITEM = ITEMS.register("huge_retaining_wall",
+    public static final RegistryObject<RetainingWallMultiBlockItem> RETAINING_WALL_MULTI_BLOCK_ITEM = ITEMS.register("retaining_wall",
             () -> new RetainingWallMultiBlockItem(HUGE_RETAINING_WALL.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<RetainingWallLadderMultiBlockItem> RETAINING_WALL_LADDER_MULTI_BLOCK_ITEM = ITEMS.register("retaining_wall_ladder",
+            () -> new RetainingWallLadderMultiBlockItem(HUGE_RETAINING_WALL_LADDER.get(), DEFAULT_PROPERTIES));
     // platform default item
     public static final RegistryObject<BlockItem> SP_COMMON_ITEM = ITEMS.register("platform_common",
             () -> new BlockItem(SP_COMMON.get(), DEFAULT_PROPERTIES));
@@ -152,9 +162,27 @@ public class RegistryHandler {
     public static final RegistryObject<BlockItem>[] STATION_PILLAR_ITEMS = new RegistryObject[StationPillarType.values.length];
     public static final RegistryObject<BlockItem> STATION_PILLAR_FE_ITEM = ITEMS.register("station_pillar_with_fire_extinguisher",
             () -> new BlockItem(STATION_PILLAR_FE.get(), DEFAULT_PROPERTIES));
+    //lights
+    public static final RegistryObject<BlockItem>[] GRILLE_ITEMS = new RegistryObject[TesseraWallType.values.length];
+    public static final RegistryObject<BlockItem>[] EMBEDDED_GRILLE_ITEMS = new RegistryObject[TesseraWallType.values.length];
+    public static final RegistryObject<BlockItem> TUNNEL_LIGHT_ITEM = ITEMS.register("tunnel_light",
+            () -> new BlockItem(TUNNEL_LIGHT.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> WALL_NEON_LIGHT_ITEM = ITEMS.register("wall_neon_light",
+            () -> new BlockItem(WALL_NEON_LIGHT.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> PILLAR_LAMP_ITEM = ITEMS.register("pillar_lamp",
+            () -> new BlockItem(PILLAR_LAMP.get(), DEFAULT_PROPERTIES));
+    public static final RegistryObject<BlockItem> FLOOD_LIGHT_ITEM = ITEMS.register("flood_light",
+            () -> new BlockItem(FLOOD_LIGHT.get(), DEFAULT_PROPERTIES));
+    //barbed wire
+    public static final RegistryObject<BarbedWireMultiBlockItem> BARBED_WIRE_BUNDLE_ITEM = ITEMS.register("barbed_wire_set",
+            () -> new BarbedWireMultiBlockItem(BARBED_WIRE.get(), DEFAULT_PROPERTIES));
+
+    //ITEMS
+    public static final RegistryObject<RangeFinderItem> RANGE_FINDER = ITEMS.register("rangefinder", RangeFinderItem::new);
 
     static {
-        REGISTRY_HELPER.registerSubblocksWithTwoEnum(
+        final UtilSubblockRegistry usrBuilding = new UtilSubblockRegistry(BuildingBaseBlock::new, DEFAULT_PROPERTIES);
+        usrBuilding.registerSubblocksWithTwoEnum(
                 ENAMEL_WALLS,
                 BLOCKS,
                 ENAMEL_WALL_ITEMS,
@@ -163,7 +191,7 @@ public class RegistryHandler {
                 EnamelWallType.class,
                 EnamelWallPositionType.class);
 
-        REGISTRY_HELPER.registerSubblocksWithOneEnum(
+        usrBuilding.registerSubblocksWithOneEnum(
                 TESSERA,
                 BLOCKS,
                 TESSERA_ITEMS,
@@ -171,13 +199,31 @@ public class RegistryHandler {
                 "tessera",
                 TesseraWallType.class);
 
-        REGISTRY_HELPER.registerSubblocksWithOneEnum(
+        usrBuilding.registerSubblocksWithOneEnum(
                 STATION_PILLARS,
                 BLOCKS,
                 STATION_PILLAR_ITEMS,
                 ITEMS,
                 "station_pillar",
                 StationPillarType.class);
+
+        final UtilSubblockRegistry usrHorizontalLightable = new UtilSubblockRegistry(() -> new LightableBlock.LightableHorizontalBlock(DEFAULT_BLOCK_PROPERTIES, 1), DEFAULT_PROPERTIES);
+
+        usrHorizontalLightable.registerSubblocksWithOneEnum(
+                GRILLE_LIGHTS,
+                BLOCKS,
+                GRILLE_ITEMS,
+                ITEMS,
+                "grille_light",
+                BaseColorType.class);
+
+        usrHorizontalLightable.registerSubblocksWithOneEnum(
+                EMBEDDED_GRILLE_LIGHTS,
+                BLOCKS,
+                EMBEDDED_GRILLE_ITEMS,
+                ITEMS,
+                "embedded_grille_light",
+                BaseColorType.class);
     }
 
     public static void register(IEventBus bus) {

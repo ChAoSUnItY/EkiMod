@@ -1,0 +1,8 @@
+{
+    "variants":{
+    	"facing=north": { "model" : "eki:block/tunnel_light", "y" : 180},
+    	"facing=west": { "model" : "eki:block/tunnel_light", "y" : 90 },
+    	"facing=south": { "model" : "eki:block/tunnel_light"},
+    	"facing=east": { "model" :"eki:block/tunnel_light", "y" : 270 }
+    }
+}

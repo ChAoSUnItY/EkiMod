@@ -20,50 +20,9 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class RetainingWallMultiBlockItem extends BlockItem {
+public class RetainingWallMultiBlockItem extends MultiBlockItemBase {
     public RetainingWallMultiBlockItem(Block blockIn, Properties builder) {
         super(blockIn, builder);
-    }
-
-    @Override
-    public ActionResultType tryPlace(BlockItemUseContext context) {
-        if (!context.canPlace()) {
-            return ActionResultType.FAIL;
-        } else {
-            BlockItemUseContext ctx = this.getBlockItemUseContext(context);
-            if (ctx == null) {
-                return ActionResultType.FAIL;
-            } else {
-                BlockState blockstate = this.getStateForPlacement(ctx);
-                if (blockstate == null) {
-                    return ActionResultType.FAIL;
-                } else if (!this.placeBlock(ctx, blockstate)) {
-                    return ActionResultType.FAIL;
-                } else {
-                    BlockPos blockpos = ctx.getPos();
-                    World world = ctx.getWorld();
-                    PlayerEntity playerentity = ctx.getPlayer();
-                    ItemStack itemstack = ctx.getItem();
-                    BlockState state = world.getBlockState(blockpos);
-                    Block block = state.getBlock();
-                    if (block == blockstate.getBlock()) {
-                        this.onBlockPlaced(blockpos, world, playerentity, itemstack, state);
-                        block.onBlockPlacedBy(world, blockpos, state, playerentity, itemstack);
-                        if (playerentity instanceof ServerPlayerEntity) {
-                            CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayerEntity) playerentity, blockpos, itemstack);
-                        }
-                    }
-
-                    SoundType soundtype = state.getSoundType(world, blockpos, context.getPlayer());
-                    world.playSound(playerentity, blockpos, this.getPlaceSound(state, world, blockpos, context.getPlayer()), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-                    if (playerentity == null || !playerentity.abilities.isCreativeMode) {
-                        itemstack.shrink(1);
-                    }
-
-                    return ActionResultType.func_233537_a_(world.isRemote);
-                }
-            }
-        }
     }
 
     @Nonnull
@@ -97,7 +56,7 @@ public class RetainingWallMultiBlockItem extends BlockItem {
                 BlockPos targetPos = posFunction.apply(pos, j, i);
                 if (world.getBlockState(targetPos).getCollisionShape(world, targetPos).isEmpty() ||
                         world.getBlockState(targetPos).getBlockHardness(world, targetPos) == 0.0F)
-                    flag = world.setBlockState(targetPos,
+                    flag |= world.setBlockState(targetPos,
                             state.with(RetainingWallMultiBlock.TYPES, RetainingWallMultiBlock.RetainingWallMultiBlockType.VALUES[j + i * 2]));
             }
         return flag;
