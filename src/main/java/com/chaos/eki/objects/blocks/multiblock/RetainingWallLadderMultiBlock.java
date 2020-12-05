@@ -70,7 +70,7 @@ public class RetainingWallLadderMultiBlock extends HorizontalBaseBlock {
         super.onReplaced(state, worldIn, pos, newState, isMoving);
         if (state.get(TYPES) == RetainingWallLadderType.DOWN && worldIn.getBlockState(pos.up()).getBlock() instanceof RetainingWallLadderMultiBlock)
             worldIn.removeBlock(pos.up(), false);
-        else
+        else if (state.get(TYPES) == RetainingWallLadderType.UP && worldIn.getBlockState(pos.down()).getBlock() instanceof RetainingWallLadderMultiBlock)
             worldIn.removeBlock(pos.down(), false);
     }
 

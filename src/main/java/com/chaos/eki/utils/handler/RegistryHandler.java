@@ -18,8 +18,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.IBlockReader;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -105,7 +108,7 @@ public class RegistryHandler {
     public static final RegistryObject<LightableBlock.LightableHorizontalBlock> WALL_NEON_LIGHT = BLOCKS.register("wall_neon_light",
             () -> new WallLightableBlock(15));
     public static final RegistryObject<LightableBlock.LightableDirectionalBlock> PILLAR_LAMP = BLOCKS.register("pillar_lamp",
-            () -> new LightableBlock.LightableDirectionalBlock(DEFAULT_BLOCK_PROPERTIES, 15));
+            () -> new LightableBlock.LightableDirectionalBlock(AbstractBlock.Properties.create(Material.GLASS), 15));
     public static final RegistryObject<LightableBlock.LightableDirectionalBlock> FLOOD_LIGHT = BLOCKS.register("flood_light", FloodLightBlock::new);
     //barbed wire
     public static final RegistryObject<BarbedWireMultiBlock> BARBED_WIRE = BLOCKS.register("barbed_wire", BarbedWireMultiBlock::new);
@@ -207,7 +210,13 @@ public class RegistryHandler {
                 "station_pillar",
                 StationPillarType.class);
 
-        final UtilSubblockRegistry usrHorizontalLightable = new UtilSubblockRegistry(() -> new LightableBlock.LightableHorizontalBlock(DEFAULT_BLOCK_PROPERTIES, 1), DEFAULT_PROPERTIES);
+        final UtilSubblockRegistry usrHorizontalLightable = new UtilSubblockRegistry(
+                () -> new LightableBlock.LightableHorizontalBlock(AbstractBlock.Properties.create(Material.REDSTONE_LIGHT), 15) {
+                    @Override
+                    public VoxelShape getRenderShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
+                        return VoxelShapes.empty();
+                    }
+                }, DEFAULT_PROPERTIES);
 
         usrHorizontalLightable.registerSubblocksWithOneEnum(
                 GRILLE_LIGHTS,
