@@ -1,0 +1,7 @@
+{
+    "parent": "eki:block/side_slabs",
+    "textures": {
+        "side": "eki:blocks/architectural_concrete",
+        "visible": "eki:blocks/architectural_concrete"
+    }
+}

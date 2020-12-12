@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "eki:block/concrete_slab"
+    },
+    "type=top": {
+      "model": "eki:block/concrete_slab_top"
+    },
+    "type=double": {
+      "model": "eki:block/concrete"
+    }
+  }
+}

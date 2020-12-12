@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "eki:blocks/concrete",
+        "down": "eki:blocks/concrete",
+        "up": "eki:blocks/concrete",
+        "north": "eki:blocks/concrete",
+        "east": "eki:blocks/concrete",
+        "south": "eki:blocks/concrete",
+        "west": "eki:blocks/concrete"
+    }
+}

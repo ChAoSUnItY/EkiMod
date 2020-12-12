@@ -1,0 +1,27 @@
+{
+    "variants": {
+        "facing=down": {
+            "model": "eki:block/flood_light"
+        }, 
+        "facing=east": {
+            "model": "eki:block/flood_light_side",
+            "y": 270
+        }, 
+        "facing=north": {
+            "model": "eki:block/flood_light_side",
+            "y": 180
+        }, 
+        "facing=south": {
+            "model": "eki:block/flood_light_side",
+            "y": 0
+        }, 
+        "facing=up": {
+            "model": "eki:block/flood_light",
+			"x": 180
+        }, 
+        "facing=west": {
+            "model": "eki:block/flood_light_side",
+            "y": 90
+        }
+    }
+}

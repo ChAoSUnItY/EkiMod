@@ -1,0 +1,94 @@
+{
+	"credit": "Model created by ChAoS_UnItY.",
+	"textures": {
+		"0": "eki:blocks/retaining_wall_side",
+		"1": "eki:blocks/concrete",
+		"particle": "eki:blocks/retaining_wall_side"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 8],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 8, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 8, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 8], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 8], "texture": "#1"}
+			}
+		},
+		{
+			"from": [0, 3, 9],
+			"to": [16, 19.75, 11],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 11, 17]},
+			"faces": {
+				"north": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"east": {"uv": [0, 0, 1.5, 16], "texture": "#0"},
+				"south": {"uv": [0, 8, 8, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 1.5, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 0, 8],
+			"to": [16, 1.5, 15.53],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 21.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 1.5], "texture": "#1"},
+				"east": {"uv": [0, 0, 7.53, 1.5], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 1.5], "texture": "#1"},
+				"west": {"uv": [0, 0, 7.53, 1.5], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 7.53], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 7.53], "texture": "#1"}
+			}
+		},
+		{
+			"from": [0, 3, 11],
+			"to": [3, 20, 12],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 11, 18]},
+			"faces": {
+				"north": {"uv": [0, 0, 3, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 1, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 3, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 1, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 3, 1], "texture": "#1"},
+				"down": {"uv": [0, 0, 3, 1], "texture": "#1"}
+			}
+		},
+		{
+			"from": [0, 1.5, 8],
+			"to": [16, 6.75, 12.27],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9.5, 16]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 5.25], "texture": "#1"},
+				"east": {"uv": [0, 0, 4.27, 5.25], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 5.25], "texture": "#1"},
+				"west": {"uv": [0, 0, 4.27, 5.25], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 4.27], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 4.27], "texture": "#1"}
+			}
+		},
+		{
+			"from": [0, 6.5, 8],
+			"to": [16, 11.75, 10.2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.5, 16]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 5.25], "texture": "#1"},
+				"east": {"uv": [0, 0, 2.2, 5.25], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 5.25], "texture": "#1"},
+				"west": {"uv": [0, 0, 2.2, 5.25], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 2.2], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 2.2], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "VoxelShapes",
+			"origin": [8, 8, 8],
+			"children": [0, 1, 2, 3, 4, 5]
+		}
+	]
+}

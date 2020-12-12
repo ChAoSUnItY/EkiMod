@@ -1,0 +1,9 @@
+{
+    "parent": "block/slab",
+    "textures":
+    {
+        "bottom": "eki:blocks/asphalt",
+        "top": "eki:blocks/asphalt",
+        "side": "eki:blocks/asphalt"
+    }
+}

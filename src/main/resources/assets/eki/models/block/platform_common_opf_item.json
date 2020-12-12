@@ -1,0 +1,6 @@
+{
+    "parent": "eki:block/platform_opf_item",
+    "textures": {
+        "top": "eki:blocks/platform_common"
+    }
+}

@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "facing=north,type=bottom": {
+      "model": "eki:block/barbed_wire_bottom",
+      "y": 180
+    },
+    "facing=north,type=center": {
+      "model": "eki:block/barbed_wire_center",
+      "y": 180
+    },
+    "facing=north,type=top": {
+      "model": "eki:block/barbed_wire_top",
+      "y": 180
+    },
+    "facing=west,type=bottom": {
+      "model": "eki:block/barbed_wire_bottom",
+      "y": 90
+    },
+    "facing=west,type=center": {
+      "model": "eki:block/barbed_wire_center",
+      "y": 90
+    },
+    "facing=west,type=top": {
+      "model": "eki:block/barbed_wire_top",
+      "y": 90
+    },
+    "facing=south,type=bottom": {
+      "model": "eki:block/barbed_wire_bottom"
+    },
+    "facing=south,type=center": {
+      "model": "eki:block/barbed_wire_center"
+    },
+    "facing=south,type=top": {
+      "model": "eki:block/barbed_wire_top"
+    },
+    "facing=east,type=bottom": {
+      "model": "eki:block/barbed_wire_bottom",
+      "y": 270
+    },
+    "facing=east,type=center": {
+      "model": "eki:block/barbed_wire_center",
+      "y": 270
+    },
+    "facing=east,type=top": {
+      "model": "eki:block/barbed_wire_top",
+      "y": 270
+    }
+  }
+}

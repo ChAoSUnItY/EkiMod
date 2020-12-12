@@ -1,0 +1,110 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+		"particle": "eki:blocks/barbed_wire",
+        "barbed_wire": "eki:blocks/barbed_wire"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Cube",
+            "from": [ 0, 0, 7.5 ], 
+            "to": [ 16, 10, 8.5 ], 
+            "faces": {
+                "north": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 10 ] },
+                "east": { "texture": "#barbed_wire", "uv": [ 0, 0, 1, 10 ] },
+                "south": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 10 ] },
+                "west": { "texture": "#barbed_wire", "uv": [ 0, 0, 1, 10 ] },
+                "up": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 1 ] },
+                "down": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 0, 9, 7.5 ], 
+            "to": [ 16, 17, 8.5 ], 
+            "rotation": { "origin": [ 8, 9, 8 ], "axis": "x", "angle": -45.0 },
+            "faces": {
+                "north": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 8 ] },
+                "east": { "texture": "#barbed_wire", "uv": [ 0, 0, 1, 8 ] },
+                "south": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 8 ] },
+                "west": { "texture": "#barbed_wire", "uv": [ 0, 0, 1, 8 ] },
+                "up": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 1 ] },
+                "down": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 0, 9, 7.5 ], 
+            "to": [ 16, 17, 8.5 ], 
+            "rotation": { "origin": [ 8, 9, 8 ], "axis": "x", "angle": 45.0 },
+            "faces": {
+                "north": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 8 ] },
+                "east": { "texture": "#barbed_wire", "uv": [ 0, 0, 1, 8 ] },
+                "south": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 8 ] },
+                "west": { "texture": "#barbed_wire", "uv": [ 0, 0, 1, 8 ] },
+                "up": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 1 ] },
+                "down": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 0, 9, 7.5 ], 
+            "to": [ 16, 15, 7.6 ], 
+            "rotation": { "origin": [ 8, 12, 8 ], "axis": "x", "angle": 45.0 },
+            "faces": {
+                "north": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 6 ] },
+                "east": { "texture": "#barbed_wire", "uv": [ 0, 0, 0.1, 6 ] },
+                "south": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 6 ] },
+                "west": { "texture": "#barbed_wire", "uv": [ 0, 0, 0.1, 6 ] },
+                "up": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 0.1 ] },
+                "down": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 0.1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 0, 9, 7.5 ], 
+            "to": [ 16, 15, 7.6 ], 
+            "rotation": { "origin": [ 8, 12, 8 ], "axis": "x", "angle": -45.0 },
+            "faces": {
+                "north": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 6 ] },
+                "east": { "texture": "#barbed_wire", "uv": [ 0, 0, 0.1, 6 ] },
+                "south": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 6 ] },
+                "west": { "texture": "#barbed_wire", "uv": [ 0, 0, 0.1, 6 ] },
+                "up": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 0.1 ] },
+                "down": { "texture": "#barbed_wire", "uv": [ 0, 0, 16, 0.1 ] }
+            }
+        }
+    ]
+}
