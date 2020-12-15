@@ -86,5 +86,8 @@ public class Eki {
 
 		@Config.Comment("Flag to decide should display nametag on valid stations or not.")
 		public static boolean nametagDisplay = true;
+
+		@Config.Comment("HotFix Here - 1.3.3 //TODO: FIX THE ACTUAL URL, BUT THIS FEATURE IS UNDER DISCUSSION WHETHER TURN TO DEPRECATED FEATURE OR KEEP UPDATING")
+		public static boolean versionCheck = false;
 	}
 }

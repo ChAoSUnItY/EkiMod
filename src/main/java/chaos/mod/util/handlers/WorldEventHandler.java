@@ -1,5 +1,6 @@
 package chaos.mod.util.handlers;
 
+import chaos.mod.Eki;
 import chaos.mod.util.Reference;
 import chaos.mod.util.network.PacketInitStationHandlerWorker;
 import chaos.mod.util.utils.UtilTranslatable.TranslateType;
@@ -18,12 +19,14 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 public class WorldEventHandler {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onLogging(PlayerLoggedInEvent event) {
-		boolean isLatest = UtilVersionChecker.INSTANCE.isLatestVersion();
-		UtilTCString s = isLatest ? new UtilTCString(TranslateType.CHAT, "versioncheckValid", Reference.VERSION).applyFormats(TextFormatting.GREEN, TextFormatting.BOLD)
-				: new UtilTCString(TranslateType.CHAT, "versioncheckInvalid", Reference.VERSION, UtilVersionChecker.INSTANCE.getLatestVersion()).applyFormats(TextFormatting.RED, TextFormatting.BOLD);
-		if (!isLatest)
-			s.getStyle().setClickEvent(new ClickEvent(Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/eki-mod/files"));
-		event.player.sendMessage(s);
+		if (Eki.EkiConfig.versionCheck) {
+			boolean isLatest = UtilVersionChecker.INSTANCE.isLatestVersion();
+			UtilTCString s = isLatest ? new UtilTCString(TranslateType.CHAT, "versioncheckValid", Reference.VERSION).applyFormats(TextFormatting.GREEN, TextFormatting.BOLD)
+					: new UtilTCString(TranslateType.CHAT, "versioncheckInvalid", Reference.VERSION, UtilVersionChecker.INSTANCE.getLatestVersion()).applyFormats(TextFormatting.RED, TextFormatting.BOLD);
+			if (!isLatest)
+				s.getStyle().setClickEvent(new ClickEvent(Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/eki-mod/files"));
+			event.player.sendMessage(s);
+		}
 
 		// init station handler
 		if (event.player.isServerWorld()) {
