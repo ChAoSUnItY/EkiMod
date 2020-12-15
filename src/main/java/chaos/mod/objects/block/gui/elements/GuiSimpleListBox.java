@@ -2,7 +2,6 @@ package chaos.mod.objects.block.gui.elements;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 
