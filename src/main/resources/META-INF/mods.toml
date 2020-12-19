@@ -4,7 +4,7 @@ license="MIT"
 issueTrackerURL="https://github.com/ChAoSUnItY/EkiLib/issues"
 [[mods]]
 modId="eki"
-version="2.0.1"
+version="2.0.2"
 displayName="Eki Mod"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/eki-mod"
 logoFile="Eki_Logo.png"
@@ -16,6 +16,6 @@ A new generation station decoration mod!
 [[dependencies.eki]]
     modId="eki_lib"
     mandatory=true
-    versionRange="[1.0.17]"
+    versionRange="1.0.18"
     ordering="NONE"
     side="BOTH"
