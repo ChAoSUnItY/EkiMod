@@ -43,7 +43,7 @@ public class RangeFinderItem extends Item {
                 player.sendMessage(new TranslationTextComponent("chat.type.text.eki.rangefinder.result", ThreeDimLength, TwoDimLength).mergeStyle(TextFormatting.WHITE), null);
             } else {
                 CompoundNBT nbt = new CompoundNBT();
-                nbt.putIntArray(PRESERVED_STARTPOS, UtilStationConverter.toINTarray(pos));
+                nbt.putIntArray(PRESERVED_STARTPOS, UtilStationConverter.toIntegerArray(pos));
                 stack.setTag(nbt);
                 assert player != null;
                 player.sendMessage(new TranslationTextComponent("chat.type.text.eki.rangefinder.getPos", pos.getX(), pos.getY(), pos.getZ()).mergeStyle(TextFormatting.GREEN), null);
