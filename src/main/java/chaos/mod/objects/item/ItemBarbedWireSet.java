@@ -2,7 +2,7 @@ package chaos.mod.objects.item;
 
 import chaos.mod.Eki;
 import chaos.mod.init.BlockInit;
-import chaos.mod.objects.block.base.BlockFourFace;
+import chaos.mod.objects.block.base.BlockHorizontalBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
@@ -74,13 +74,13 @@ public class ItemBarbedWireSet extends ItemBase {
 	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, IBlockState newState) {
 		BlockPos p = pos;
 		EnumFacing facing = player.getHorizontalFacing().getOpposite();
-		world.setBlockState(p, BlockInit.BARBED_WIRES_BASE.getDefaultState().withProperty(BlockFourFace.FACING, facing), 2);
+		world.setBlockState(p, BlockInit.BARBED_WIRES_BASE.getDefaultState().withProperty(BlockHorizontalBase.FACING, facing), 2);
 		p = p.offset(EnumFacing.UP);
 		for (int i = 0; i < stack.getTagCompound().getInteger("size"); i++) {
-			world.setBlockState(p, BlockInit.BARBED_WIRES_FENCE.getDefaultState().withProperty(BlockFourFace.FACING, facing), 2);
+			world.setBlockState(p, BlockInit.BARBED_WIRES_FENCE.getDefaultState().withProperty(BlockHorizontalBase.FACING, facing), 2);
 			p = p.offset(EnumFacing.UP);
 		}
-		world.setBlockState(p, BlockInit.BARBED_WIRES_TOP.getDefaultState().withProperty(BlockFourFace.FACING, facing), 2);
+		world.setBlockState(p, BlockInit.BARBED_WIRES_TOP.getDefaultState().withProperty(BlockHorizontalBase.FACING, facing), 2);
 		return true;
 	}
 }

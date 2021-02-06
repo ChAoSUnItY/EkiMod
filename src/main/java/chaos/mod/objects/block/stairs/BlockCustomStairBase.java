@@ -3,8 +3,7 @@ package chaos.mod.objects.block.stairs;
 import java.util.List;
 
 import chaos.mod.Eki;
-import chaos.mod.objects.block.base.BlockFourFace;
-import net.minecraft.block.BlockHorizontal;
+import chaos.mod.objects.block.base.BlockHorizontalBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -13,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockCustomStair extends BlockFourFace {
+public class BlockCustomStairBase extends BlockHorizontalBase {
 	public static final AxisAlignedBB STAIR_BASE_AABB = new AxisAlignedBB(0, 0, 0, 1, 0.5D, 1);
 	public static final AxisAlignedBB STAIR_NORTH_TOP_AABB = new AxisAlignedBB(0, 0.5D, 0.5D, 1, 1, 1);
 	public static final AxisAlignedBB STAIR_EAST_TOP_AABB = new AxisAlignedBB(0, 0, 0, 0.5D, 1, 1);
@@ -27,7 +26,7 @@ public class BlockCustomStair extends BlockFourFace {
 	public final StairType stairType;
 	public final StairHandRailType stairHType;
 
-	public BlockCustomStair(String name, StairType Stype, StairHandRailType SHtype) {
+	public BlockCustomStairBase(String name, StairType Stype, StairHandRailType SHtype) {
 		super(name, Eki.STATION, Material.ROCK, false);
 		stairType = Stype;
 		stairHType = SHtype;
@@ -35,7 +34,7 @@ public class BlockCustomStair extends BlockFourFace {
 
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean isActualState) {
-		switch (state.getValue(BlockHorizontal.FACING)) {
+		switch (state.getValue(net.minecraft.block.BlockHorizontal.FACING)) {
 		case NORTH:
 			switch (stairType) {
 			case NORMAL:

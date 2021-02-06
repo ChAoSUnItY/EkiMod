@@ -65,7 +65,7 @@ public class GuiTicketVendor extends GuiContainer {
 	public void initGui() {
 		super.initGui();
 		text = new GuiTextField(0, fontRenderer, guiLeft + baseX + 1, guiTop + baseY, baseWidthX, baseHeightY);
-		if (Eki.isApiModLoaded) {
+		if (Eki.isApiModLoaded[0]) {
 			buttonProvide = new GuiButton(0, guiLeft + 23, guiTop + 52, 35, 20, new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.provide").getFormattedText());
 			buttonWithdraw = new GuiButton(1, guiLeft + 58, guiTop + 52, 45, 20, new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.button.withdraw").getFormattedText());
 			buttonClear = new GuiButton(2, guiLeft + 103, guiTop + 52, 35, 20, new UtilTCString(TranslateType.CONTAINER, "button.clear").getFormattedText());
@@ -89,7 +89,7 @@ public class GuiTicketVendor extends GuiContainer {
 
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-		if (Eki.isApiModLoaded)
+		if (Eki.isApiModLoaded[0])
 			buttonWithdraw.drawButton(mc, mouseX, mouseY, partialTicks);
 		drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
@@ -126,7 +126,7 @@ public class GuiTicketVendor extends GuiContainer {
 
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
-		if (Eki.isApiModLoaded) {
+		if (Eki.isApiModLoaded[0]) {
 			switch (button.id) {
 			case 0:
 				tryVendingTicket();
@@ -218,7 +218,7 @@ public class GuiTicketVendor extends GuiContainer {
 		if (price <= 0) {
 			state = new UtilTCString(TranslateType.CONTAINER, "ticket_vendor.state.shortage", price).applyFormat(TextFormatting.RED).getFormattedText();
 			return;
-		} else if (Eki.isApiModLoaded) {
+		} else if (Eki.isApiModLoaded[0]) {
 			if ((int) GrandEconomyApi.getBalance(player.getUniqueID(), true) >= price)
 				GrandEconomyApi.takeFromBalance(player.getUniqueID(), price, true);
 			else {

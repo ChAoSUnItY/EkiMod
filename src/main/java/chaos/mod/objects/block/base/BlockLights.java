@@ -35,8 +35,8 @@ public class BlockLights extends BlockBase {
 		return passable ? NULL_AABB : FULL_BLOCK_AABB;
 	}
 
-	public static class BlockFourFaceLights extends BlockFourFace {
-		public BlockFourFaceLights(String name, Float light, Material material, boolean passable, boolean transluent) {
+	public static class BlockHorizontalBaseLights extends BlockHorizontalBase {
+		public BlockHorizontalBaseLights(String name, Float light, Material material, boolean passable, boolean transluent) {
 			super(name, Eki.MISC, material, false);
 			setSoundType(SoundType.GLASS);
 			setLightLevel(light);
@@ -60,8 +60,8 @@ public class BlockLights extends BlockBase {
 		}
 	}
 
-	public static class BlockSixFaceLights extends BlockSixFace {
-		public BlockSixFaceLights(String name, Float light, Material material, boolean passable, boolean transluent) {
+	public static class BlockDirectionalBaseLights extends BlockDirectionalBase {
+		public BlockDirectionalBaseLights(String name, Float light, Material material, boolean passable, boolean transluent) {
 			super(name, Eki.MISC, material, false);
 			setSoundType(SoundType.GLASS);
 			setLightLevel(light);

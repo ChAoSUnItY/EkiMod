@@ -37,6 +37,10 @@ public class ServerProxy {
 	public void displayAnchor(TileEntityAnchor te) {
 		
 	}
+	
+	public void displayStationMap(EntityPlayer player) {
+		
+	}
 
 	public void registerItemRenderer(Item item, int meta, String id) {
 

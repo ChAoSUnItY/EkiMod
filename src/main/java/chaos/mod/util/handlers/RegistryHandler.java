@@ -77,7 +77,11 @@ public class RegistryHandler {
 		StationHandler.INSTANCE.saveAll();
 	}
 
-	public static boolean modChecker() {
+	public static boolean isEcoLoaded() {
 		return Loader.isModLoaded("grandeconomy");
+	}
+	
+	public static boolean isMapLoaded() {
+		return Loader.isModLoaded("journeymap");
 	}
 }

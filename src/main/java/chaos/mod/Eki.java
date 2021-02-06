@@ -26,7 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 public class Eki {
-	public static boolean isApiModLoaded;
+	public static boolean[] isApiModLoaded;
 	public static final CreativeTabs BLOCK = new CreativeTabs(UtilTranslatable.getEki("block")) {
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem() {
@@ -61,11 +61,14 @@ public class Eki {
 
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
+		proxy.init(event);
 	}
 
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event) {
-		isApiModLoaded = RegistryHandler.modChecker();
+		isApiModLoaded = new boolean[2];
+		isApiModLoaded[0] = RegistryHandler.isEcoLoaded();
+		isApiModLoaded[1] = RegistryHandler.isMapLoaded();
 	}
 
 	@EventHandler
@@ -86,5 +89,9 @@ public class Eki {
 
 		@Config.Comment("Flag to decide should display nametag on valid stations or not.")
 		public static boolean nametagDisplay = true;
+
+		@Config.Comment("station JSON format version, if you don't know what it is, do not change this.")
+		@Config.RangeInt(min = 1, max = 2)
+		public static int stationJSONFormatVersion = 1;
 	}
 }
