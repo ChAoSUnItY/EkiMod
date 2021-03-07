@@ -12,14 +12,17 @@ import chaos.mod.util.utils.UtilLogger;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-/***
+/**
  * Developers should use this, not using the raw java files like:
  * StationHandler.class.
+ *
+ * This Api is deprecated since <b>1.4.0</b> and will be replaced with a new Api with more secure operation.
  * 
  * @author ChAoS_UnItY
  */
+@Deprecated
 public class EkiApi {
-	/***
+	/**
 	 * Get list of stations.
 	 * 
 	 * @return a list of station.
@@ -28,7 +31,7 @@ public class EkiApi {
 		return StationHandler.INSTANCE.getStations();
 	}
 
-	/***
+	/**
 	 * Get list of stations' name.
 	 * 
 	 * @return a list of stations' name.
@@ -37,10 +40,10 @@ public class EkiApi {
 		return StationHandler.INSTANCE.getStationsName();
 	}
 
-	/***
+	/**
 	 * Get a station by position.
 	 * 
-	 * @param posistion of station to be got.
+	 * @param pos of station to be got.
 	 * @return if exists, then return the station matched; if not, then return the
 	 *         EXAMPLE station. This prevents return null.
 	 */
@@ -48,7 +51,7 @@ public class EkiApi {
 		return StationHandler.INSTANCE.getStation(pos);
 	}
 
-	/***
+	/**
 	 * Get a station by name.
 	 * 
 	 * @param name of station to be got.
@@ -59,7 +62,7 @@ public class EkiApi {
 		return StationHandler.INSTANCE.getStation(name, ignoreCase);
 	}
 
-	/***
+	/**
 	 * Add stations to the (over)world.
 	 * 
 	 * @param stations Stations to be added.
@@ -68,7 +71,7 @@ public class EkiApi {
 		Lists.newArrayList(sta).forEach(StationHandler.INSTANCE::addNewStation);
 	}
 
-	/***
+	/**
 	 * Replace a station from given position if existed.
 	 * 
 	 * @param positions of stations to be removed.
@@ -87,7 +90,7 @@ public class EkiApi {
 		return failCount != sta.length;
 	}
 
-	/***
+	/**
 	 * Remove a station from given position if existed.
 	 * 
 	 * @param positions of stations to be removed.
@@ -106,7 +109,7 @@ public class EkiApi {
 		return failCount != pos.length;
 	}
 
-	/***
+	/**
 	 * Check if there is a station at the given position.
 	 * 
 	 * @return does there a valid station exist at the given position.
@@ -115,7 +118,7 @@ public class EkiApi {
 		return StationHandler.INSTANCE.isExist(pos);
 	}
 
-	/***
+	/**
 	 * Reloads the Station Handler.
 	 * 
 	 * @param world, this should be overworld.

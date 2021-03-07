@@ -2,6 +2,7 @@ package chaos.mod;
 
 import java.io.File;
 
+import chaos.mod.api.EkiApi;
 import chaos.mod.init.BlockInit;
 import chaos.mod.init.ItemInit;
 import chaos.mod.proxy.ServerProxy;
