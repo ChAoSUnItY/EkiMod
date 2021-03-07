@@ -1,4 +1,4 @@
-package chaos.mod.objects.block.fence;
+package chaos.mod.objects.block.backport;
 
 import chaos.mod.Eki;
 import chaos.mod.objects.block.base.BlockFourFace;
@@ -14,6 +14,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -110,10 +112,10 @@ public class ImmersiveHandrailBlock extends BlockFourFace {
             EnumFacing facingB = stateB.getValue(FACING);
 
             if (facingB.getAxis() != state.getValue(FACING).getAxis()) {
-                if (facingB == facingB.rotateYCCW())
-                    return EnumShape.INNER_RIGHT;
+                if (facingB == facing.rotateYCCW())
+                    return EnumShape.INNER_LEFT;
 
-                return EnumShape.INNER_LEFT;
+                return EnumShape.INNER_RIGHT;
             }
         }
 
@@ -152,6 +154,56 @@ public class ImmersiveHandrailBlock extends BlockFourFace {
         }
 
         return raytraceresult;
+    }
+
+    @Override
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+        EnumFacing enumfacing = state.getValue(FACING);
+        BlockStairs.EnumShape blockstairs$enumshape = state.getValue(SHAPE);
+
+        switch (mirrorIn) {
+            case LEFT_RIGHT:
+
+                if (enumfacing.getAxis() == EnumFacing.Axis.Z) {
+                    switch (blockstairs$enumshape) {
+                        case OUTER_LEFT:
+                            return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.OUTER_RIGHT);
+                        case OUTER_RIGHT:
+                            return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.OUTER_LEFT);
+                        case INNER_RIGHT:
+                            return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.INNER_LEFT);
+                        case INNER_LEFT:
+                            return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.INNER_RIGHT);
+                        default:
+                            return state.withRotation(Rotation.CLOCKWISE_180);
+                    }
+                }
+
+                break;
+            case FRONT_BACK:
+
+                if (enumfacing.getAxis() == EnumFacing.Axis.X) {
+                    switch (blockstairs$enumshape) {
+                        case OUTER_LEFT:
+                            return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.OUTER_RIGHT);
+                        case OUTER_RIGHT:
+                            return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.OUTER_LEFT);
+                        case INNER_RIGHT:
+                            return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.INNER_RIGHT);
+                        case INNER_LEFT:
+                            return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.INNER_LEFT);
+                        case STRAIGHT:
+                            return state.withRotation(Rotation.CLOCKWISE_180);
+                    }
+                }
+        }
+
+        return super.withMirror(state, mirrorIn);
     }
 
     private List<AxisAlignedBB> getAABB(IBlockState state) {

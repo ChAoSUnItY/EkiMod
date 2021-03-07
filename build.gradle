@@ -10,9 +10,8 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'scala'
 
-version = "1.3.3"
+version = "1.4.0"
 group = "chaos.mod"
 archivesBaseName = "EkiMod"
 
@@ -28,11 +27,6 @@ minecraft {
 }
 
 dependencies {
-}
-
-sourceSets {
-    main.scala.srcDirs = ["src/main/scala", "src/main/java"]
-    main.java.srcDirs = []
 }
 
 processResources {

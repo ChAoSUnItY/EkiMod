@@ -7,6 +7,7 @@
 #station stuff
 tile.eki.handrail.name=Handrail
 tile.eki.handrail_corner.name=Handrail Corner
+tile.eki.immersive_handrail.name=Immersive Handrail
 #platforms
 tile.eki.platform_edge.name=Platform Edge
 tile.eki.platform_edge_with_guide_brick.name=Platform Edge With Guide Brick
@@ -48,6 +49,8 @@ tile.eki.barbed_wires_top.name=Barbed Wires Top
 #blocks
 tile.eki.retaining_wall.name=Retaining Wall
 tile.eki.retaining_wall_corner.name=Retaining Wall Corner
+tile.eki.immersive_retaining_wall.name=Immersive Retaining Wall
+tile.eki.immersive_retaining_wall_ladder.name=Immersive Retaining Wall with Ladder
 tile.eki.architectural_concrete.name=Architectural Concrete
 tile.eki.concrete.name=Concrete
 tile.eki.nichogake.name=Nichogake

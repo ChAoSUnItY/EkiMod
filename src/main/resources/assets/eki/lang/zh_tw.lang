@@ -7,6 +7,7 @@
 #station stuff
 tile.eki.handrail.name=扶手
 tile.eki.handrail_corner.name=扶手轉角
+tile.eki.immersive_handrail.name=沉浸式扶手
 #platforms
 tile.eki.platform_edge.name=月台邊
 tile.eki.platform_edge_with_guide_brick.name=月台邊含導盲磚
@@ -19,6 +20,7 @@ tile.eki.platform_edge_opf.name=月台邊加高
 tile.eki.platform_edge_with_guide_brick_opf.name=月台邊加高含導盲磚
 tile.eki.platform_edge_with_guide_brick_and_line_opf.name=月台邊加高含導盲磚和標線
 tile.eki.platform_edge_with_line_opf.name=月台邊加高含標線
+tile.eki.platform_asphalt_with_guide_brick_opf.name=月台邊加高含標線 (瀝青)
 tile.eki.platform_edge_with_line_and_light_off_opf.name=月台邊加高含標線和列車警示燈
 tile.eki.platform_edge_with_line_and_light_on_opf.name=月台邊加高含標線和列車警示燈 (開啟)
 #decorations
@@ -47,6 +49,8 @@ tile.eki.barbed_wires_top.name=有刺鐵絲網頂部
 #blocks
 tile.eki.retaining_wall.name=擋土牆
 tile.eki.retaining_wall_corner.name=擋土牆轉角
+tile.eki.immersive_retaining_wall.name=沉浸式擋土牆
+tile.eki.immersive_retaining_wall_ladder.name=沉浸式擋土牆爬梯
 tile.eki.architectural_concrete.name=清水混凝土
 tile.eki.concrete.name=混凝土
 tile.eki.nichogake.name=二丁磚
@@ -178,7 +182,7 @@ container.eki.signal=號誌站
 container.eki.non=未列級
 
 #TEXTS
-chat.type.text.eki.anchorAmount=該錨點已連接 %d 個票閘/售票機!
+chat.type.text.eki.anchoredAmount=該錨點已連接 %d 個票閘/售票機!
 chat.type.text.eki.setPos=已從 %d, %d, %d 進站!
 chat.type.text.eki.accessed=已從 %d, %d, %d 出站! 共花費了 %.2f, 行經了 %.2f 格!
 chat.type.text.eki.notEnoughValue=無法出站! 票價僅值 %d, 需要 %d.
@@ -196,4 +200,5 @@ chat.type.text.eki.command.stations.help=NF -> 由近至遠\nFN -> 由遠至近\
 
 #SYSTEM MESSAGES
 chat.type.text.eki.versioncheckValid=你正運行Eki Mod最新版本!\n版本 >> %s
-chat.type.text.eki.versioncheckInvalid=你的Eki Mod已經不再支援! 快去更新吧!\n點擊這裡來打開模組頁面.\n正在運行 >> %s\n最新版本 >> %s
+
+chat.type.text.eki.versioncheckInvalid=Your Eki Mod is out of date! Go update!\nClick this message to open mod page.\nNow Running >> %s\nLatest Version >> %schat.type.text.eki.versioncheckInvalid=This anchor had been bound to %d ticket gates / ticket vendors!chat.type.text.eki.versioncheckInvalid=你的Eki Mod已經不再支援! 快去更新吧!\n點擊這裡來打開模組頁面.\n正在運行 >> %s\n最新版本 >> %s

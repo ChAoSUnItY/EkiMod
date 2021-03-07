@@ -2,7 +2,9 @@ package chaos.mod.init;
 
 import java.util.List;
 
-import chaos.mod.objects.block.fence.ImmersiveHandrailBlock;
+import chaos.mod.objects.block.backport.ImmersiveHandrailBlock;
+import chaos.mod.objects.block.backport.ImmersiveRetainingWallBlock;
+import chaos.mod.objects.block.backport.ImmersiveRetainingWallLadderBlock;
 import com.google.common.collect.Lists;
 
 import chaos.mod.Eki;
@@ -123,6 +125,10 @@ public class BlockInit {
 	public static final Block RETAINING_WALL = new BlockFourFace("retaining_wall", BLOCK, Material.ROCK, false);
 
 	public static final Block RETAINING_WALL_CORNER = new BlockFourFace("retaining_wall_corner", BLOCK, Material.ROCK, false);
+
+	public static final Block IMMERSIVE_RETAINING_WALL = new ImmersiveRetainingWallBlock();
+
+	public static final Block IMMERSIVE_RETAINING_WALL_LADDER = new ImmersiveRetainingWallLadderBlock();
 
 	public static final Block ARCHITECTURAL_CONCRETE = new BlockBase("architectural_concrete", BLOCK, Material.ROCK);
 
