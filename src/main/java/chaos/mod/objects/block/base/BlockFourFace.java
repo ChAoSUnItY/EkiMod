@@ -2,7 +2,6 @@ package chaos.mod.objects.block.base;
 
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
@@ -29,12 +28,12 @@ public class BlockFourFace extends BlockBase {
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-		return isOpaqueCube ? true : false;
+		return isOpaqueCube;
 	}
 
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return isOpaqueCube ? true : false;
+		return isOpaqueCube;
 	}
 
 	@Override
@@ -53,7 +52,7 @@ public class BlockFourFace extends BlockBase {
 			IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
 			IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
 			IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
-			EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+			EnumFacing enumfacing = state.getValue(FACING);
 
 			if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
 				enumfacing = EnumFacing.SOUTH;
@@ -76,17 +75,17 @@ public class BlockFourFace extends BlockBase {
 
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
-		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+		return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
 	@Override
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-		return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
+		return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { FACING });
+		return new BlockStateContainer(this, FACING);
 	}
 
 	@Override
@@ -102,7 +101,7 @@ public class BlockFourFace extends BlockBase {
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing) state.getValue(FACING)).getIndex();
+		return state.getValue(FACING).getIndex();
 	}
 
 	@Override

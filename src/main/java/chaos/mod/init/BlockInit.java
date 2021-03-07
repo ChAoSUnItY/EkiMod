@@ -2,6 +2,7 @@ package chaos.mod.init;
 
 import java.util.List;
 
+import chaos.mod.objects.block.fence.ImmersiveHandrailBlock;
 import com.google.common.collect.Lists;
 
 import chaos.mod.Eki;
@@ -47,6 +48,8 @@ public class BlockInit {
 	public static final Block HANDRAIL = new BlockHandRail("handrail", 1);
 
 	public static final Block HANDRAIL_CORNER = new BlockHandRail("handrail_corner", 2);
+
+	public static final Block IMMERSIVE_HANDRAIL = new ImmersiveHandrailBlock();
 	// platforms
 	public static final Block PLATFORM_EDGE = new BlockPlatformEdge("platform_edge", false, false);
 
